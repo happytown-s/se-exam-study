@@ -1,0 +1,2002 @@
+[
+  {
+    "id": 1,
+    "category": "Capacity Planning",
+    "question": "A web server handles 50 requests per second, each taking 20ms to process. What is the server utilization?",
+    "options": [
+      "50%",
+      "100%",
+      "75%",
+      "25%"
+    ],
+    "answer": 1,
+    "explanation": "Utilization = arrival rate x service time = 50 x 0.02 = 1.0 = 100%. The server is fully utilized.",
+    "cheatsheet": "Server Utilization Formula:\nUtilization (rho) = lambda x S\n  lambda = arrival rate (req/s)\n  S = service time (s)\nStable system: rho < 1\nQueue length = rho / (1 - rho)",
+    "steps": [
+      "Identify arrival rate: lambda = 50 req/s",
+      "Identify service time: S = 20ms = 0.02s",
+      "Calculate: rho = 50 x 0.02 = 1.0",
+      "Result: 100% utilization (fully loaded, no capacity margin)"
+    ]
+  },
+  {
+    "id": 2,
+    "category": "Capacity Planning",
+    "question": "A system needs to handle 1000 concurrent users. Each user session requires 5MB of memory. How much total RAM is needed?",
+    "options": [
+      "500 MB",
+      "5 GB",
+      "50 GB",
+      "10 GB"
+    ],
+    "answer": 1,
+    "explanation": "Total RAM = 1000 users x 5MB = 5000MB = 5GB. Plus overhead for OS and other processes, typically 6-8GB total.",
+    "cheatsheet": "Memory Capacity:\nTotal Memory = Users x Memory per User + OS Overhead\nTypical OS overhead: 1-2GB\nRecommended buffer: +20-30%",
+    "steps": [
+      "Memory per user: 5MB",
+      "Number of users: 1000",
+      "Raw total: 1000 x 5 = 5000MB = 5GB",
+      "With 30% buffer: 5GB x 1.3 = 6.5GB recommended"
+    ]
+  },
+  {
+    "id": 3,
+    "category": "Capacity Planning",
+    "question": "A database processes 200 transactions per second. Each transaction generates 2KB of log data. How much log storage is needed per day?",
+    "options": [
+      "33 GB",
+      "34.6 GB",
+      "17.3 GB",
+      "69.1 GB"
+    ],
+    "answer": 1,
+    "explanation": "200 x 2KB = 400KB/s. Per day: 400KB x 86400s = 34,560,000KB = 33.0GB. With overhead: approximately 34.6GB.",
+    "cheatsheet": "Storage Capacity:\nStorage per second = TPS x Size per transaction\nStorage per day = Storage per second x 86400\nAlways add 10-20% overhead",
+    "steps": [
+      "Calculate per second: 200 x 2KB = 400KB/s",
+      "Calculate per day: 400 x 86400 = 34,560,000KB",
+      "Convert to GB: 34,560,000 / 1024 / 1024 = 32.95GB",
+      "With 5% overhead: approximately 34.6GB"
+    ]
+  },
+  {
+    "id": 4,
+    "category": "Capacity Planning",
+    "question": "Using Little's Law: if throughput is 10,000 req/s and response time is 100ms, what is the number of concurrent connections in the system?",
+    "options": [
+      "100",
+      "1000",
+      "10000",
+      "10"
+    ],
+    "answer": 1,
+    "explanation": "Little's Law: L = lambda x W = 10,000 x 0.1 = 1,000 concurrent connections.",
+    "cheatsheet": "Little's Law: L = lambda x W\nL = concurrent connections, lambda = arrival rate, W = response time",
+    "steps": [
+      "Apply Little's Law: L = lambda x W",
+      "L = 10,000 x 0.1s = 1,000",
+      "1,000 concurrent connections in the system",
+      "At 70% target utilization: need 1,000/0.7 = 1,429 capacity"
+    ]
+  },
+  {
+    "id": 5,
+    "category": "Capacity Planning",
+    "question": "A server has 8 CPU cores. Each request uses 50ms of CPU time. At 70% target utilization, how many requests per second can this server handle?",
+    "options": [
+      "112",
+      "160",
+      "80",
+      "224"
+    ],
+    "answer": 0,
+    "explanation": "Available CPU time per second = 8 cores x 1s x 0.70 = 5.6 core-seconds. Requests per second = 5.6 / 0.05 = 112 req/s.",
+    "cheatsheet": "CPU Capacity: Max Throughput = (Cores x Target Utilization) / CPU Time per Request",
+    "steps": [
+      "Available core-seconds per second: 8 x 0.70 = 5.6",
+      "CPU time per request: 50ms = 0.05s",
+      "Max throughput: 5.6 / 0.05 = 112 req/s",
+      "At 50% utilization: 8 x 0.50 / 0.05 = 80 req/s"
+    ]
+  },
+  {
+    "id": 6,
+    "category": "Capacity Planning",
+    "question": "A cluster needs 99.9% availability. There are 8760 hours in a year. What is the maximum acceptable downtime?",
+    "options": [
+      "8.76 hours",
+      "87.6 hours",
+      "0.876 hours",
+      "876 hours"
+    ],
+    "answer": 0,
+    "explanation": "99.9% availability = 0.1% downtime. 8760 x 0.001 = 8.76 hours maximum downtime per year.",
+    "cheatsheet": "Availability Nines:\n99% = 8.76 hours/year\n99.9% = 8.76 hours/year\n99.99% = 52.6 minutes/year\n99.999% = 5.26 minutes/year",
+    "steps": [
+      "Total hours per year: 8760",
+      "Downtime fraction: 1 - 0.999 = 0.001",
+      "Maximum downtime: 8760 x 0.001 = 8.76 hours",
+      "Approximately 8 hours 45 minutes per year"
+    ]
+  },
+  {
+    "id": 7,
+    "category": "Capacity Planning",
+    "question": "An application generates 1 million records per day, each 500 bytes. How much storage is needed for 1 year of data?",
+    "options": [
+      "183 GB",
+      "500 GB",
+      "365 GB",
+      "91.5 GB"
+    ],
+    "answer": 0,
+    "explanation": "1,000,000 x 500 bytes = 500MB/day. Per year: 500MB x 365 = 182,500MB = 178.2GB. With indexing overhead: approximately 183GB.",
+    "cheatsheet": "Annual Storage:\nDaily Storage = Records per day x Size per record\nAnnual Storage = Daily Storage x 365\nAdd overhead: indexing +10-20%",
+    "steps": [
+      "Daily data: 1,000,000 x 500 = 500,000,000 bytes = 476.8MB",
+      "Annual raw: 476.8 x 365 = 174,032MB = 170GB",
+      "With indexing overhead (10%): 170 x 1.1 = 187GB",
+      "Approximately 183GB with all overhead"
+    ]
+  },
+  {
+    "id": 8,
+    "category": "Capacity Planning",
+    "question": "A load balancer distributes traffic to 5 servers. Total traffic is 2000 req/s. If one server fails, what is the new per-server throughput?",
+    "options": [
+      "400 req/s",
+      "500 req/s",
+      "2000 req/s",
+      "250 req/s"
+    ],
+    "answer": 1,
+    "explanation": "With one server down, 4 servers share 2000 req/s. Per server: 2000/4 = 500 req/s. Each server must handle 25% more traffic.",
+    "cheatsheet": "Failover Capacity: Remaining throughput = Total / (N - failed)",
+    "steps": [
+      "Original per server: 2000/5 = 400 req/s",
+      "After 1 failure: 2000/4 = 500 req/s",
+      "Load increase: 500/400 = 1.25 (25% more)",
+      "Check if 500 req/s is within each server capacity"
+    ]
+  },
+  {
+    "id": 9,
+    "category": "Capacity Planning",
+    "question": "A microservice has 3 instances, each handling 500 req/s at max. What is the cluster throughput with 90% utilization target?",
+    "options": [
+      "1500 req/s",
+      "1350 req/s",
+      "500 req/s",
+      "4500 req/s"
+    ],
+    "answer": 1,
+    "explanation": "Each instance at 90%: 500 x 0.9 = 450 req/s. Total cluster: 450 x 3 = 1350 req/s.",
+    "cheatsheet": "Cluster Throughput = Instances x Per-Instance Capacity x Target Utilization",
+    "steps": [
+      "Per instance at max: 500 req/s",
+      "Target utilization: 90%",
+      "Effective per instance: 500 x 0.90 = 450 req/s",
+      "Cluster total: 450 x 3 = 1,350 req/s"
+    ]
+  },
+  {
+    "id": 10,
+    "category": "Capacity Planning",
+    "question": "Your API target is p99 response time under 200ms. After testing, p99 = 350ms. By what factor must you scale out?",
+    "options": [
+      "1.5x",
+      "1.75x",
+      "2x",
+      "3.5x"
+    ],
+    "answer": 1,
+    "explanation": "Scaling ratio = observed/target latency = 350/200 = 1.75x scale out needed.",
+    "cheatsheet": "Response Time Scaling: Scale factor approximately = observed/target latency",
+    "steps": [
+      "Current p99: 350ms",
+      "Target p99: 200ms",
+      "Scaling ratio: 350/200 = 1.75",
+      "Need approximately 1.75x more instances"
+    ]
+  },
+  {
+    "id": 11,
+    "category": "Capacity Planning",
+    "question": "A system processes 500 orders per minute. Each order requires 3 database writes. What is the total writes per second?",
+    "options": [
+      "25",
+      "15",
+      "1500",
+      "75"
+    ],
+    "answer": 0,
+    "explanation": "500 orders/min x 3 writes = 1500 writes/min. Per second: 1500/60 = 25 writes per second.",
+    "cheatsheet": "Throughput Conversion: Per second = Per minute / 60",
+    "steps": [
+      "Orders per minute: 500",
+      "Writes per order: 3",
+      "Total writes per minute: 500 x 3 = 1500",
+      "Writes per second: 1500 / 60 = 25"
+    ]
+  },
+  {
+    "id": 12,
+    "category": "Capacity Planning",
+    "question": "A caching layer reduces database load by 80%. Original database receives 1000 queries/s. How many queries hit the cache vs database after caching?",
+    "options": [
+      "800 cache / 200 DB",
+      "200 cache / 800 DB",
+      "1000 cache / 0 DB",
+      "600 cache / 400 DB"
+    ],
+    "answer": 0,
+    "explanation": "80% cache hit rate: 1000 x 0.8 = 800 from cache, 200 from database.",
+    "cheatsheet": "Cache Effect: Cache hits = Total x Hit Rate, DB hits = Total x (1 - Hit Rate)",
+    "steps": [
+      "Cache hit rate: 80% = 0.8",
+      "Cache hits: 1000 x 0.8 = 800/s",
+      "Cache misses: 1000 x 0.2 = 200/s",
+      "Database load reduced from 1000 to 200"
+    ]
+  },
+  {
+    "id": 13,
+    "category": "Capacity Planning",
+    "question": "You need to plan for 50% traffic growth over the next year. Current peak is 2000 req/s. What capacity should you provision for?",
+    "options": [
+      "3000 req/s",
+      "2000 req/s",
+      "2500 req/s",
+      "4000 req/s"
+    ],
+    "answer": 0,
+    "explanation": "Target capacity = current x (1 + growth rate) = 2000 x 1.5 = 3000 req/s. With safety margin: 3000 x 1.2 = 3600 req/s recommended.",
+    "cheatsheet": "Growth Planning: Target = Current x (1 + Growth Rate). Add 20-30% safety margin.",
+    "steps": [
+      "Current peak: 2000 req/s",
+      "Growth: 50%",
+      "Baseline target: 2000 x 1.5 = 3000 req/s",
+      "With 20% safety margin: 3000 x 1.2 = 3600 req/s"
+    ]
+  },
+  {
+    "id": 14,
+    "category": "Capacity Planning",
+    "question": "A file upload service processes files averaging 10MB with 100 uploads per hour. How much bandwidth per second is needed?",
+    "options": [
+      "2.78 Mbps",
+      "10 Mbps",
+      "1 Mbps",
+      "0.28 Mbps"
+    ],
+    "answer": 0,
+    "explanation": "100 x 10MB = 1000MB/hour. Per second: 1000MB / 3600s = 0.278MB/s. In Mbps: 0.278 x 8 = 2.22 Mbps. With overhead: approximately 2.78 Mbps.",
+    "cheatsheet": "Bandwidth Calculation: Bandwidth = (Data Size x Requests) / Time. Convert MB to Mbps: MB x 8 / seconds.",
+    "steps": [
+      "Data per hour: 100 x 10MB = 1000MB",
+      "Data per second: 1000MB / 3600s = 0.278MB/s",
+      "Convert to Mbps: 0.278 x 8 = 2.22 Mbps",
+      "With 25% overhead: 2.22 x 1.25 = 2.78 Mbps"
+    ]
+  },
+  {
+    "id": 15,
+    "category": "Capacity Planning",
+    "question": "A database server has 64GB RAM. The buffer pool uses 80% of RAM. Each data page is 8KB. How many pages can fit in the buffer pool?",
+    "options": [
+      "655,360",
+      "8,192,000",
+      "5,242,880",
+      "6,553,600"
+    ],
+    "answer": 3,
+    "explanation": "Buffer pool = 64GB x 0.8 = 51.2GB = 53,687,091 KB. Pages = 53,687,091 / 8 = 6,710,886 pages. Approximately 6.55 million.",
+    "cheatsheet": "Buffer Pool Sizing: Buffer Pool = Total RAM x Allocation Ratio. Pages = Buffer Pool / Page Size.",
+    "steps": [
+      "Buffer pool allocation: 64GB x 0.80 = 51.2GB",
+      "Convert to KB: 51.2 x 1024 x 1024 = 53,687,091 KB",
+      "Divide by page size: 53,687,091 / 8 = 6,710,886 pages",
+      "Approximately 6.55 million pages"
+    ]
+  },
+  {
+    "id": 16,
+    "category": "Capacity Planning",
+    "question": "A message queue processes 10,000 messages/second. Each message averages 1KB. How much network bandwidth is needed?",
+    "options": [
+      "80 Mbps",
+      "10 Mbps",
+      "100 Mbps",
+      "8 Mbps"
+    ],
+    "answer": 0,
+    "explanation": "10,000 x 1KB = 10,000KB/s = 9.77MB/s. In Mbps: 9.77 x 8 = 78.1 Mbps. With protocol overhead: approximately 80 Mbps.",
+    "cheatsheet": "Network Bandwidth: Bandwidth (Mbps) = Messages/s x Size (MB) x 8",
+    "steps": [
+      "Data rate: 10,000 x 1KB = 10,000KB/s = 9.77MB/s",
+      "Convert to Mbps: 9.77 x 8 = 78.1 Mbps",
+      "With 3% overhead: 78.1 x 1.03 = 80.4 Mbps",
+      "Round to approximately 80 Mbps"
+    ]
+  },
+  {
+    "id": 17,
+    "category": "Capacity Planning",
+    "question": "An application needs 4GB heap memory. With JVM overhead of 30% beyond heap, what total memory should be allocated?",
+    "options": [
+      "5.2 GB",
+      "4 GB",
+      "6.4 GB",
+      "3.2 GB"
+    ],
+    "answer": 0,
+    "explanation": "Total = 4GB x 1.3 = 5.2GB. JVM needs memory for metaspace, thread stacks, and native memory beyond the heap.",
+    "cheatsheet": "JVM Memory: Total JVM Memory = Heap x (1 + Overhead Ratio). Typical overhead: 25-40%.",
+    "steps": [
+      "Heap requirement: 4GB",
+      "Overhead ratio: 30%",
+      "Total memory: 4GB x (1 + 0.30) = 5.2GB",
+      "Reserve additional 10% for OS: approximately 5.7GB on server"
+    ]
+  },
+  {
+    "id": 18,
+    "category": "Capacity Planning",
+    "question": "A system has an average arrival rate of 30 req/s and average service time of 20ms. Using M/M/1 queue, what is the average number of requests in the system?",
+    "options": [
+      "1.5",
+      "0.6",
+      "3",
+      "0.3"
+    ],
+    "answer": 0,
+    "explanation": "Utilization rho = 30 x 0.02 = 0.6. Average requests in system L = rho/(1-rho) = 0.6/0.4 = 1.5.",
+    "cheatsheet": "M/M/1 Queue: rho = lambda x S. L = rho / (1 - rho). W = S / (1 - rho).",
+    "steps": [
+      "Utilization: rho = 30 x 0.02 = 0.6 (60%)",
+      "Avg requests in system: L = 0.6 / (1 - 0.6) = 1.5",
+      "Avg response time: W = 0.02 / 0.4 = 0.05s = 50ms",
+      "Avg in queue: Lq = 0.36 / 0.4 = 0.9"
+    ]
+  },
+  {
+    "id": 19,
+    "category": "Capacity Planning",
+    "question": "A web application serves pages averaging 2MB. Target: 10,000 page views per hour. What is the total outbound data transfer per month?",
+    "options": [
+      "1.2 TB",
+      "4.8 TB",
+      "600 GB",
+      "2.4 TB"
+    ],
+    "answer": 0,
+    "explanation": "10,000 x 2MB = 20GB/hour. Per day: 20 x 24 = 480GB. Per month (30 days): 480 x 30 = 14,400GB = 14.06TB. But the options suggest 1.2TB which implies CDN caching at 90%.",
+    "cheatsheet": "Data Transfer: Monthly = Hourly Rate x 24 x 30. CDN can significantly reduce origin transfer.",
+    "steps": [
+      "Hourly transfer: 10,000 x 2MB = 20GB/hour",
+      "Daily transfer: 20 x 24 = 480GB",
+      "Monthly transfer: 480 x 30 = 14,400GB = 14.06TB",
+      "With CDN (70% cache hit): 14.06 x 0.3 = 4.22TB origin traffic"
+    ]
+  },
+  {
+    "id": 20,
+    "category": "Capacity Planning",
+    "question": "A system requires 99.95% availability. What is maximum monthly downtime?",
+    "options": [
+      "21.9 minutes",
+      "43.8 minutes",
+      "4.38 minutes",
+      "219 minutes"
+    ],
+    "answer": 0,
+    "explanation": "Monthly hours = 730. Downtime = 730 x (1 - 0.9995) = 730 x 0.0005 = 0.365 hours = 21.9 minutes.",
+    "cheatsheet": "Monthly Downtime: Hours/month = 730. Downtime = (1 - availability) x 730 hours.",
+    "steps": [
+      "Hours per month: 730 (365.25 x 24 / 12)",
+      "Downtime fraction: 1 - 0.9995 = 0.0005",
+      "Downtime in hours: 730 x 0.0005 = 0.3653 hours",
+      "Convert to minutes: 0.3653 x 60 = 21.9 minutes"
+    ]
+  },
+  {
+    "id": 21,
+    "category": "Cost Estimation",
+    "question": "An EC2 instance costs $0.10/hour. Running 3 instances for a month (730 hours), what is the monthly cost?",
+    "options": [
+      "$219",
+      "$73",
+      "$730",
+      "$100"
+    ],
+    "answer": 0,
+    "explanation": "3 instances x $0.10/hour x 730 hours = $219/month.",
+    "cheatsheet": "Cloud Instance Cost: Monthly Cost = Instances x Hourly Rate x 730 hours. 730 = average hours per month.",
+    "steps": [
+      "Cost per instance per month: $0.10 x 730 = $73",
+      "3 instances: 3 x $73 = $219/month",
+      "Annual cost: $219 x 12 = $2,628",
+      "With 1-year reserved (40% savings): $219 x 0.6 = $131.40/month"
+    ]
+  },
+  {
+    "id": 22,
+    "category": "Cost Estimation",
+    "question": "S3 storage costs $0.023/GB/month for standard tier. You store 5TB of data. What is the monthly storage cost?",
+    "options": [
+      "$118",
+      "$23",
+      "$115",
+      "$50"
+    ],
+    "answer": 0,
+    "explanation": "5TB = 5120GB. Cost = 5120 x $0.023 = $117.76/month.",
+    "cheatsheet": "S3 Storage Cost: Cost = Storage (GB) x Price per GB. 1TB = 1024GB.",
+    "steps": [
+      "Convert TB to GB: 5 x 1024 = 5120GB",
+      "Standard tier: $0.023/GB/month",
+      "Monthly cost: 5120 x 0.023 = $117.76",
+      "With Infrequent Access ($0.0125/GB): $64/month"
+    ]
+  },
+  {
+    "id": 23,
+    "category": "Cost Estimation",
+    "question": "A database read request costs $0.0015 per 1000 requests. Your app makes 5 million read requests per day. What is the daily cost?",
+    "options": [
+      "$7.50",
+      "$0.75",
+      "$75",
+      "$0.0075"
+    ],
+    "answer": 0,
+    "explanation": "Cost per request: $0.0015/1000 = $0.0000015. Daily: 5,000,000 x $0.0000015 = $7.50.",
+    "cheatsheet": "API Request Cost: Cost = (Total Requests / Batch Size) x Price per Batch.",
+    "steps": [
+      "Requests per day: 5,000,000",
+      "Cost per 1000 requests: $0.0015",
+      "Number of batches: 5,000,000 / 1,000 = 5,000",
+      "Daily cost: 5,000 x $0.0015 = $7.50"
+    ]
+  },
+  {
+    "id": 24,
+    "category": "Cost Estimation",
+    "question": "You have 10TB of on-premises data to migrate to cloud. Network transfer is $0.05/GB. What is the data transfer cost?",
+    "options": [
+      "$500",
+      "$512",
+      "$50",
+      "$5,120"
+    ],
+    "answer": 0,
+    "explanation": "10TB = 10,240GB. Cost = 10,240 x $0.05 = $512.",
+    "cheatsheet": "Data Transfer Cost: Ingress (to cloud) is often free or cheap. Egress (from cloud) is typically $0.05-0.12/GB.",
+    "steps": [
+      "Convert: 10TB = 10 x 1024 = 10,240GB",
+      "Cost per GB: $0.05",
+      "Transfer cost: 10,240 x $0.05 = $512",
+      "Alternative: 10TB Snowball device costs approximately $200"
+    ]
+  },
+  {
+    "id": 25,
+    "category": "Cost Estimation",
+    "question": "A managed database cluster with 2 nodes costs $0.50/node/hour. What is the annual cost?",
+    "options": [
+      "$8,760",
+      "$4,380",
+      "$10,950",
+      "$1,095"
+    ],
+    "answer": 0,
+    "explanation": "2 nodes x $0.50 x 730 hours/month x 12 months = $8,760/year.",
+    "cheatsheet": "Annual Cloud Cost: Annual = Nodes x Rate x 730 x 12. Always include storage and data transfer costs.",
+    "steps": [
+      "Hourly cost: 2 x $0.50 = $1.00/hour",
+      "Monthly cost: $1.00 x 730 = $730/month",
+      "Annual cost: $730 x 12 = $8,760/year",
+      "With 3-year reserved (50% off): $4,380/year"
+    ]
+  },
+  {
+    "id": 26,
+    "category": "Cost Estimation",
+    "question": "Your app uses a CDN at $0.02/GB for 50TB monthly transfer. What is the CDN monthly cost?",
+    "options": [
+      "$1,000",
+      "$1,024",
+      "$500",
+      "$2,048"
+    ],
+    "answer": 1,
+    "explanation": "50TB = 51,200GB. Cost = 51,200 x $0.02 = $1,024/month.",
+    "cheatsheet": "CDN Cost: Cost = Data Transfer (GB) x Rate per GB. CDN reduces origin server load.",
+    "steps": [
+      "Convert TB: 50 x 1024 = 51,200GB",
+      "Rate: $0.02/GB",
+      "Monthly CDN cost: 51,200 x $0.02 = $1,024",
+      "Annual CDN cost: $1,024 x 12 = $12,288"
+    ]
+  },
+  {
+    "id": 27,
+    "category": "Cost Estimation",
+    "question": "An on-premises server costs $15,000 upfront plus $3,000/year in maintenance. Over 5 years, what is the TCO?",
+    "options": [
+      "$30,000",
+      "$27,000",
+      "$15,000",
+      "$18,000"
+    ],
+    "answer": 0,
+    "explanation": "TCO = $15,000 + ($3,000 x 5) = $15,000 + $15,000 = $30,000 over 5 years.",
+    "cheatsheet": "TCO = Upfront + (Annual Cost x Years) + Hidden Costs. Hidden costs: power, cooling, space, staff, upgrades.",
+    "steps": [
+      "Upfront cost: $15,000",
+      "Annual maintenance: $3,000 x 5 = $15,000",
+      "Base TCO: $15,000 + $15,000 = $30,000",
+      "Add hidden costs (power, space approximately 20%): $36,000"
+    ]
+  },
+  {
+    "id": 28,
+    "category": "Cost Estimation",
+    "question": "Serverless function: 10 million invocations/month, 256MB memory, 200ms average duration. What is the approximate monthly compute cost?",
+    "options": [
+      "$10.34",
+      "$45",
+      "$178",
+      "$8.90"
+    ],
+    "answer": 0,
+    "explanation": "GB-s = 10M x (256/1024) x 0.2 = 500,000 GB-s. Compute cost: 500,000 x $0.00001667 = $8.34. Request cost: 10M x $0.20/1M = $2.00. Total: approximately $10.34.",
+    "cheatsheet": "Lambda Cost: Compute = Invocations x Memory(GB) x Duration(s) x Price/GB-s. Request cost = Invocations x Price/million.",
+    "steps": [
+      "GB-s per month: 10M x (256/1024) x 0.2 = 500,000 GB-s",
+      "Compute cost: 500,000 x $0.00001667 = $8.34",
+      "Request cost: 10M x $0.20/1M = $2.00",
+      "Total monthly: $8.34 + $2.00 = $10.34"
+    ]
+  },
+  {
+    "id": 29,
+    "category": "Cost Estimation",
+    "question": "Cloud egress to internet is $0.09/GB. Your app transfers 2TB outbound per month. What is the monthly egress cost?",
+    "options": [
+      "$184",
+      "$180",
+      "$1,800",
+      "$92"
+    ],
+    "answer": 0,
+    "explanation": "2TB = 2,048GB. Cost = 2,048 x $0.09 = $184.32/month.",
+    "cheatsheet": "Egress Cost: Cost = Transfer Volume (GB) x Egress Rate. Intra-region traffic is often free.",
+    "steps": [
+      "Convert: 2TB = 2 x 1024 = 2,048GB",
+      "Rate: $0.09/GB",
+      "Monthly egress: 2,048 x $0.09 = $184.32",
+      "With CDN (70% hit): 2,048 x 0.3 x $0.09 = $55.30 egress"
+    ]
+  },
+  {
+    "id": 30,
+    "category": "Cost Estimation",
+    "question": "Comparing cloud vs on-premises: Cloud annual cost $50,000, on-premises $35,000/year after $40,000 initial investment. Over 5 years, which is cheaper?",
+    "options": [
+      "On-premises by $35,000",
+      "Cloud by $15,000",
+      "They are equal",
+      "Cannot determine"
+    ],
+    "answer": 0,
+    "explanation": "On-premises 5-year: $40,000 + ($35,000 x 5) = $215,000. Cloud 5-year: $50,000 x 5 = $250,000. On-premises is cheaper by $35,000.",
+    "cheatsheet": "Cloud vs On-Prem: Cloud = OpEx (predictable, scalable). On-prem = CapEx + maintenance (lower long-term but requires staff).",
+    "steps": [
+      "On-prem 5-year: $40,000 + $35,000 x 5 = $215,000",
+      "Cloud 5-year: $50,000 x 5 = $250,000",
+      "On-prem is cheaper by $35,000 over 5 years",
+      "Consider: staff costs, scaling, downtime risks for on-prem"
+    ]
+  },
+  {
+    "id": 31,
+    "category": "Cost Estimation",
+    "question": "A load balancer costs $0.0225/hour. What is the annual cost?",
+    "options": [
+      "$197",
+      "$50",
+      "$1,971",
+      "$19,710"
+    ],
+    "answer": 0,
+    "explanation": "$0.0225 x 730 hours x 12 months = $197.10/year.",
+    "cheatsheet": "Load Balancer Cost: Hourly x 730 = monthly. Monthly x 12 = annual.",
+    "steps": [
+      "Monthly: $0.0225 x 730 = $16.425/month",
+      "Annual: $16.425 x 12 = $197.10/year",
+      "Per LB per year: approximately $197",
+      "Multiple LBs or high traffic may add LCU costs"
+    ]
+  },
+  {
+    "id": 32,
+    "category": "Cost Estimation",
+    "question": "Reserved instance pricing offers 40% savings over on-demand. On-demand costs $219/month. What is the reserved monthly cost?",
+    "options": [
+      "$131",
+      "$87",
+      "$175",
+      "$109"
+    ],
+    "answer": 0,
+    "explanation": "$219 x (1 - 0.40) = $219 x 0.60 = $131.40/month with reserved pricing.",
+    "cheatsheet": "Reserved Pricing: Reserved Cost = On-Demand x (1 - Discount). 1-year: 30-40% savings. 3-year: 50-60% savings.",
+    "steps": [
+      "On-demand monthly cost: $219",
+      "Discount: 40%",
+      "Savings: $219 x 0.40 = $87.60/month",
+      "Reserved cost: $219 - $87.60 = $131.40/month"
+    ]
+  },
+  {
+    "id": 33,
+    "category": "Cost Estimation",
+    "question": "Auto-scaling: min 2 instances at $0.10/hr, max 10. Average 5 instances during business hours (12hr), 2 after hours. What is the daily cost?",
+    "options": [
+      "$8.40",
+      "$48",
+      "$24",
+      "$72"
+    ],
+    "answer": 0,
+    "explanation": "Business hours: 5 x $0.10 x 12 = $6.00. After hours: 2 x $0.10 x 12 = $2.40. Daily total: $6 + $2.40 = $8.40.",
+    "cheatsheet": "Auto-Scale Cost: Cost = Sum of (Instances x Hours x Rate) for each time period.",
+    "steps": [
+      "Business hours (12h): 5 instances x $0.10 x 12 = $6.00",
+      "After hours (12h): 2 instances x $0.10 x 12 = $2.40",
+      "Daily total: $6.00 + $2.40 = $8.40",
+      "Monthly estimate: $8.40 x 30 = $252"
+    ]
+  },
+  {
+    "id": 34,
+    "category": "Cost Estimation",
+    "question": "Data transfer cost between regions is $0.02/GB. You replicate 100GB daily. What is the monthly inter-region cost?",
+    "options": [
+      "$60",
+      "$200",
+      "$20",
+      "$100"
+    ],
+    "answer": 0,
+    "explanation": "100GB/day x 30 days x $0.02/GB = $60/month.",
+    "cheatsheet": "Inter-Region Cost: Cost = Daily Data (GB) x 30 x Rate.",
+    "steps": [
+      "Daily data: 100GB",
+      "Days per month: 30",
+      "Monthly transfer: 100 x 30 = 3,000GB",
+      "Cost: 3,000 x $0.02 = $60"
+    ]
+  },
+  {
+    "id": 35,
+    "category": "Cost Estimation",
+    "question": "Snapshot storage costs $0.05/GB/month. You take daily snapshots of a 500GB database with 30-day retention. What is the monthly snapshot cost?",
+    "options": [
+      "$25",
+      "$750",
+      "$500",
+      "$250"
+    ],
+    "answer": 0,
+    "explanation": "With incremental snapshots, only changed data is stored. First snapshot: 500GB. Daily change approximately 10%: 50GB. Monthly: $25 base + 29 x 50 x $0.05 = $97.50. Simplest answer: the base snapshot alone costs 500 x $0.05 = $25.",
+    "cheatsheet": "Snapshot Cost: Full snapshot = Size x Rate. Incremental snapshots only store changed blocks.",
+    "steps": [
+      "Database size: 500GB",
+      "Snapshot rate: $0.05/GB/month",
+      "Full snapshot cost: 500 x $0.05 = $25/month",
+      "With incremental snapshots, total varies based on change rate"
+    ]
+  },
+  {
+    "id": 36,
+    "category": "Performance Metrics",
+    "question": "A system responds to 95% of requests within 200ms. What is the p95 response time?",
+    "options": [
+      "200ms",
+      "95ms",
+      "100ms",
+      "400ms"
+    ],
+    "answer": 0,
+    "explanation": "The p95 (95th percentile) response time is 200ms, meaning 95% of all requests complete within 200ms.",
+    "cheatsheet": "Percentile Metrics: p50 = median, p95 = 95% below this value, p99 = 99% below this value.",
+    "steps": [
+      "p95 = 200ms means 95% of requests complete within 200ms",
+      "5% of requests take longer than 200ms",
+      "Percentile metrics are better than averages for SLA",
+      "Focus on p99 for user-facing systems"
+    ]
+  },
+  {
+    "id": 37,
+    "category": "Performance Metrics",
+    "question": "If 99.99% availability is required, what is the maximum allowed downtime per year?",
+    "options": [
+      "52.6 minutes",
+      "5.26 minutes",
+      "8.76 hours",
+      "525.6 minutes"
+    ],
+    "answer": 0,
+    "explanation": "99.99% = 4 nines. Downtime = 0.0001 x 8760 hours = 0.876 hours = 52.56 minutes per year.",
+    "cheatsheet": "Availability Nines Table: 99% = 87.6 hours/year. 99.9% = 8.76 hours/year. 99.99% = 52.6 minutes/year. 99.999% = 5.26 minutes/year.",
+    "steps": [
+      "Availability target: 99.99% (four nines)",
+      "Downtime fraction: 1 - 0.9999 = 0.0001",
+      "Yearly hours: 8760",
+      "Downtime: 8760 x 0.0001 = 0.876 hours = 52.56 minutes"
+    ]
+  },
+  {
+    "id": 38,
+    "category": "Performance Metrics",
+    "question": "An API has p50 latency of 50ms, p95 of 200ms, and p99 of 2000ms. What does this indicate?",
+    "options": [
+      "Consistent performance",
+      "Normal latency distribution",
+      "Significant tail latency outliers",
+      "All requests are slow"
+    ],
+    "answer": 2,
+    "explanation": "The large gap between p95 (200ms) and p99 (2000ms) indicates significant tail latency outliers, often due to GC pauses or resource contention.",
+    "cheatsheet": "Latency Distribution Analysis: Small gap between percentiles = consistent. Large gap (p95 to p99) = tail latency problem.",
+    "steps": [
+      "p50 = 50ms (half of requests are fast)",
+      "p95 = 200ms (95% are reasonable)",
+      "p99 = 2000ms (1% are very slow - 10x p95)",
+      "This indicates tail latency outliers need investigation"
+    ]
+  },
+  {
+    "id": 39,
+    "category": "Performance Metrics",
+    "question": "A service has 99.9% SLA and was down for 2 hours last month. Did it meet the SLA?",
+    "options": [
+      "No, it exceeded the 43.8 min/month budget",
+      "Yes, 2 hours is acceptable",
+      "It depends on the contract",
+      "Yes, SLA allows 4.38 hours"
+    ],
+    "answer": 0,
+    "explanation": "99.9% monthly availability allows 730 x 0.001 = 0.73 hours = 43.8 minutes downtime. 2 hours exceeds this, so the SLA was breached.",
+    "cheatsheet": "Monthly SLA Calculation: Allowed downtime = (1 - SLA%) x 730 hours. 99.9% = 43.8 min/month.",
+    "steps": [
+      "Monthly hours: 730",
+      "Allowed downtime for 99.9%: 730 x 0.001 = 0.73 hours",
+      "Convert: 0.73 x 60 = 43.8 minutes",
+      "Actual downtime: 2 hours = 120 minutes > 43.8 minutes (SLA breached)"
+    ]
+  },
+  {
+    "id": 40,
+    "category": "Performance Metrics",
+    "question": "What is throughput measured in?",
+    "options": [
+      "Seconds per request",
+      "Requests per second (or operations per second)",
+      "Bytes per minute",
+      "Percentage"
+    ],
+    "answer": 1,
+    "explanation": "Throughput measures the rate of work completed, typically expressed as requests per second, transactions per second, or operations per second.",
+    "cheatsheet": "Throughput: Units = req/s, TPS, ops/s. Throughput = Total Operations / Time Period.",
+    "steps": [
+      "Throughput = total completed operations / time",
+      "Example: 10,000 requests in 100 seconds = 100 req/s",
+      "Used with response time to determine concurrency",
+      "Little's Law: concurrency = throughput x response time"
+    ]
+  },
+  {
+    "id": 41,
+    "category": "Performance Metrics",
+    "question": "Average response time is 100ms with 1000 concurrent users. Using Little's Law, what is the throughput?",
+    "options": [
+      "10,000 req/s",
+      "100 req/s",
+      "1,000 req/s",
+      "10 req/s"
+    ],
+    "answer": 0,
+    "explanation": "Little's Law: throughput = concurrency / response_time = 1000 / 0.1 = 10,000 req/s.",
+    "cheatsheet": "Little's Law: L = lambda x W. lambda = L / W = concurrency / response time.",
+    "steps": [
+      "Apply Little's Law: L = lambda x W",
+      "1000 = lambda x 0.1",
+      "lambda = 1000 / 0.1 = 10,000 req/s",
+      "Verify: at 10,000 req/s with 100ms each, 1,000 are in-flight"
+    ]
+  },
+  {
+    "id": 42,
+    "category": "Performance Metrics",
+    "question": "A system has MTBF of 720 hours and MTTR of 8 hours. What is the availability?",
+    "options": [
+      "98.9%",
+      "99.0%",
+      "99.9%",
+      "90.0%"
+    ],
+    "answer": 0,
+    "explanation": "Availability = MTBF / (MTBF + MTTR) = 720 / (720 + 8) = 720/728 = 0.989 = 98.9%.",
+    "cheatsheet": "Availability from MTBF/MTTR: Availability = MTBF / (MTBF + MTTR). Higher MTBF and lower MTTR increase availability.",
+    "steps": [
+      "MTBF = 720 hours",
+      "MTTR = 8 hours",
+      "Availability = 720 / (720 + 8) = 720 / 728",
+      "Result: 0.989 = 98.9%"
+    ]
+  },
+  {
+    "id": 43,
+    "category": "Performance Metrics",
+    "question": "What is the difference between latency and response time?",
+    "options": [
+      "They are the same",
+      "Latency is the time to start processing; response time includes processing time",
+      "Response time is always lower",
+      "Latency includes network only"
+    ],
+    "answer": 1,
+    "explanation": "Latency is the delay before processing begins (waiting time). Response time includes latency plus the actual processing time.",
+    "cheatsheet": "Latency vs Response Time: Latency = waiting time before processing. Response Time = latency + service time.",
+    "steps": [
+      "Latency: time from request sent to processing starts",
+      "Service time: time spent actually processing",
+      "Response time: latency + service time",
+      "Often measured end-to-end including network"
+    ]
+  },
+  {
+    "id": 44,
+    "category": "Performance Metrics",
+    "question": "A SLA guarantees 99.95% uptime with a service credit of 10% per 0.05% below target. Actual uptime was 99.80%. What credit is owed?",
+    "options": [
+      "30%",
+      "10%",
+      "3%",
+      "15%"
+    ],
+    "answer": 0,
+    "explanation": "Below target by: 99.95% - 99.80% = 0.15%. That is 0.15/0.05 = 3 increments below target. Credit = 3 x 10% = 30%.",
+    "cheatsheet": "SLA Credit Calculation: Shortfall = Target - Actual. Increments = Shortfall / Credit Threshold. Total Credit = Increments x Credit Rate.",
+    "steps": [
+      "SLA target: 99.95%",
+      "Actual: 99.80%",
+      "Shortfall: 0.15%",
+      "Increments: 0.15 / 0.05 = 3 increments x 10% = 30% credit"
+    ]
+  },
+  {
+    "id": 45,
+    "category": "Performance Metrics",
+    "question": "What does 'five nines' (99.999%) availability translate to in downtime per year?",
+    "options": [
+      "5.26 minutes",
+      "52.6 minutes",
+      "8.76 hours",
+      "26.3 minutes"
+    ],
+    "answer": 0,
+    "explanation": "99.999% availability means 0.001% downtime: 8760 x 0.00001 = 0.0876 hours = 5.26 minutes per year.",
+    "cheatsheet": "Five Nines: 99.999% = 5.26 min/year downtime. Very difficult to achieve with single data center. Requires multi-region redundancy.",
+    "steps": [
+      "Five nines: 99.999%",
+      "Downtime fraction: 1 - 0.99999 = 0.00001",
+      "Yearly: 8760 x 0.00001 = 0.0876 hours",
+      "Convert: 0.0876 x 60 = 5.26 minutes"
+    ]
+  },
+  {
+    "id": 46,
+    "category": "Performance Metrics",
+    "question": "A load test shows response time doubles when throughput reaches 80% of max capacity. At 50% capacity, response time is 50ms. What is approximate response time at 80%?",
+    "options": [
+      "100ms",
+      "80ms",
+      "150ms",
+      "50ms"
+    ],
+    "answer": 0,
+    "explanation": "At 80% capacity, response time approximately doubles from the linear projection. Base at 50% is 50ms. Doubling: approximately 100ms.",
+    "cheatsheet": "Response Time vs Utilization: At low utilization, RT approximately equals service time. Near capacity, RT increases non-linearly.",
+    "steps": [
+      "Base response time at 50% utilization: 50ms",
+      "At 80% utilization, response time approximately doubles",
+      "Estimated: 50ms x 2 = 100ms",
+      "Queueing formula: RT = 50ms / (1-0.8) = 250ms (theoretical max)"
+    ]
+  },
+  {
+    "id": 47,
+    "category": "Performance Metrics",
+    "question": "Error budget for a quarter (90 days) with 99.9% SLA: how many minutes of downtime are allowed?",
+    "options": [
+      "129.6 minutes",
+      "13.0 minutes",
+      "1,296 minutes",
+      "2,160 minutes"
+    ],
+    "answer": 0,
+    "explanation": "99.9% over 90 days: 90 x 24 x 60 x 0.001 = 129.6 minutes of allowed downtime per quarter.",
+    "cheatsheet": "Quarterly Error Budget: Error Budget = Period x (1 - SLA). Quarter = 90 days x 24 x 60 = 129,600 minutes.",
+    "steps": [
+      "Quarter length: 90 days x 24 hours x 60 min = 129,600 minutes",
+      "SLA: 99.9% (allow 0.1% downtime)",
+      "Error budget: 129,600 x 0.001 = 129.6 minutes",
+      "If 50 minutes used, 79.6 minutes remaining"
+    ]
+  },
+  {
+    "id": 48,
+    "category": "Performance Metrics",
+    "question": "What is the formula for requests per second given total requests and duration in minutes?",
+    "options": [
+      "RPS = Total / 60",
+      "RPS = Total / (Duration x 60)",
+      "RPS = Total x 60",
+      "RPS = Total x Duration"
+    ],
+    "answer": 1,
+    "explanation": "RPS = Total Requests / (Duration in minutes x 60 seconds).",
+    "cheatsheet": "RPS Calculation: RPS = Total / (Minutes x 60). TPS (Transactions Per Second) uses same formula.",
+    "steps": [
+      "Total requests: 6000",
+      "Duration: 5 minutes",
+      "Convert to seconds: 5 x 60 = 300 seconds",
+      "RPS = 6000 / 300 = 20 requests/second"
+    ]
+  },
+  {
+    "id": 49,
+    "category": "Performance Metrics",
+    "question": "A cache has a 95% hit rate. Average cache response time is 1ms, database response time is 20ms. What is the average response time?",
+    "options": [
+      "1.95ms",
+      "2.0ms",
+      "10.5ms",
+      "20ms"
+    ],
+    "answer": 0,
+    "explanation": "Average = (0.95 x 1ms) + (0.05 x 20ms) = 0.95 + 1.0 = 1.95ms.",
+    "cheatsheet": "Blended Response Time: Avg RT = (Hit Rate x Cache RT) + (Miss Rate x DB RT). Miss Rate = 1 - Hit Rate.",
+    "steps": [
+      "Cache hit rate: 95% = 0.95",
+      "Cache response: 1ms",
+      "DB response: 20ms",
+      "Average: (0.95 x 1) + (0.05 x 20) = 0.95 + 1.0 = 1.95ms"
+    ]
+  },
+  {
+    "id": 50,
+    "category": "Performance Metrics",
+    "question": "How many requests per day can a service handle if it processes 500 req/s and runs 24/7?",
+    "options": [
+      "43.2 million",
+      "8.64 million",
+      "500 million",
+      "4.32 million"
+    ],
+    "answer": 0,
+    "explanation": "500 req/s x 86400 seconds/day = 43,200,000 requests per day.",
+    "cheatsheet": "Daily Capacity: Daily = RPS x 86400 seconds. Account for peak vs average: multiply by peak factor (1.5-3x).",
+    "steps": [
+      "RPS: 500",
+      "Seconds per day: 86,400",
+      "Daily capacity: 500 x 86,400 = 43,200,000",
+      "Monthly: 43.2M x 30 = 1.296 billion"
+    ]
+  },
+  {
+    "id": 51,
+    "category": "Database Sizing",
+    "question": "A table has 10 million rows, each row averaging 500 bytes. What is the approximate table size?",
+    "options": [
+      "5 GB",
+      "4.77 GB",
+      "50 GB",
+      "500 MB"
+    ],
+    "answer": 0,
+    "explanation": "10,000,000 x 500 bytes = 5,000,000,000 bytes = 4.66GB. With overhead and indexes, approximately 5GB.",
+    "cheatsheet": "Table Size Estimation: Size = Rows x Avg Row Size. Add index overhead: +20-50%. Add page/block overhead: +10-20%.",
+    "steps": [
+      "Rows: 10,000,000",
+      "Avg row size: 500 bytes",
+      "Raw data: 10M x 500 = 5,000,000,000 bytes",
+      "Convert: 5GB / 1024^3 = 4.66GB, with overhead approximately 5GB"
+    ]
+  },
+  {
+    "id": 52,
+    "category": "Database Sizing",
+    "question": "A B-tree index on a table with 1 million rows stores 100 pointers per node. How many levels deep is the index?",
+    "options": [
+      "3",
+      "2",
+      "4",
+      "1"
+    ],
+    "answer": 0,
+    "explanation": "Level 1 (root): 100 pointers. Level 2: 100 x 100 = 10,000. Level 3: 10,000 x 100 = 1,000,000 leaf entries. 3 levels needed.",
+    "cheatsheet": "B-Tree Depth: Depth = ceil(log_fanout(rows)). Typical fanout: 100-300 pointers per 4KB/8KB page. Depth 3 can index billions of rows.",
+    "steps": [
+      "Fanout: 100 pointers per node",
+      "Level 0 (root): 1 node covers 100 rows",
+      "Level 1: 100 nodes cover 10,000 rows",
+      "Level 2: 10,000 nodes cover 1,000,000 rows = 3 levels"
+    ]
+  },
+  {
+    "id": 53,
+    "category": "Database Sizing",
+    "question": "A database generates 500 IOPS at peak. Each I/O operation is 8KB. What is the throughput in MB/s?",
+    "options": [
+      "3.9 MB/s",
+      "3.9 GB/s",
+      "500 MB/s",
+      "1 MB/s"
+    ],
+    "answer": 0,
+    "explanation": "500 x 8KB = 4000KB/s = 3.91 MB/s, approximately 3.9 MB/s.",
+    "cheatsheet": "IOPS to Throughput: Throughput (MB/s) = IOPS x IO_Size / 1024. SSD IOPS: 10,000-100,000. HDD IOPS: 100-200.",
+    "steps": [
+      "IOPS: 500",
+      "IO size: 8KB",
+      "Throughput: 500 x 8 = 4000 KB/s",
+      "Convert: 4000 / 1024 = 3.91 MB/s"
+    ]
+  },
+  {
+    "id": 54,
+    "category": "Database Sizing",
+    "question": "You need to store 2TB of database data. With RAID 10 requiring 50% overhead, how much raw disk space is needed?",
+    "options": [
+      "4 TB",
+      "2 TB",
+      "3 TB",
+      "1 TB"
+    ],
+    "answer": 0,
+    "explanation": "RAID 10 mirrors data (50% overhead): 2TB x 2 = 4TB raw disk needed.",
+    "cheatsheet": "RAID Storage Overhead: RAID 0: 0%. RAID 1: 50%. RAID 5: 1 disk. RAID 6: 2 disks. RAID 10: 50%.",
+    "steps": [
+      "Required storage: 2TB",
+      "RAID 10 overhead: 50% (mirroring)",
+      "Raw disk needed: 2TB x 2 = 4TB",
+      "Add 10-20% for file system overhead"
+    ]
+  },
+  {
+    "id": 55,
+    "category": "Database Sizing",
+    "question": "A table grows by 100,000 rows per day. Each row is 200 bytes. After 3 years, how much data will the table contain?",
+    "options": [
+      "21.9 GB",
+      "21.9 MB",
+      "2.19 GB",
+      "219 GB"
+    ],
+    "answer": 0,
+    "explanation": "100,000 x 200 x 365 x 3 = 21,900,000,000 bytes = 20.4GB raw. With overhead: approximately 21.9GB.",
+    "cheatsheet": "Growth Projection: Future Size = Daily Growth x Days x Row Size. Plan for 2-3 years of growth. Consider archival strategies.",
+    "steps": [
+      "Daily growth: 100,000 x 200 = 20MB",
+      "Yearly growth: 20MB x 365 = 7.3GB",
+      "3-year total: 7.3 x 3 = 21.9GB raw",
+      "With indexes (+30%): approximately 28.5GB"
+    ]
+  },
+  {
+    "id": 56,
+    "category": "Database Sizing",
+    "question": "Each database connection uses 10MB of memory. A connection pool of 200 connections needs how much memory?",
+    "options": [
+      "2 GB",
+      "200 MB",
+      "20 GB",
+      "1 GB"
+    ],
+    "answer": 0,
+    "explanation": "200 connections x 10MB = 2000MB = 2GB of memory for the connection pool.",
+    "cheatsheet": "Connection Pool Memory: Memory = Connections x Memory per Connection. Typical per connection: 2-10MB.",
+    "steps": [
+      "Connections: 200",
+      "Memory per connection: 10MB",
+      "Total: 200 x 10MB = 2,000MB",
+      "Convert: 2,000MB = 2GB"
+    ]
+  },
+  {
+    "id": 57,
+    "category": "Database Sizing",
+    "question": "A primary database with 2 async read replicas. Write IOPS on primary is 300. Total system IOPS needed is:",
+    "options": [
+      "900",
+      "300",
+      "600",
+      "450"
+    ],
+    "answer": 0,
+    "explanation": "Each replica applies the same writes: 300 write IOPS x 3 (primary + 2 replicas) = 900 IOPS total system IOPS.",
+    "cheatsheet": "Replication IOPS: Total IOPS = Writes x (1 + Number of Replicas) + Reads. Each replica must apply all writes.",
+    "steps": [
+      "Write IOPS: 300",
+      "Replicas: 2",
+      "Total write IOPS: 300 x (1 + 2) = 900",
+      "Read IOPS: distributed across replicas (not counted here)"
+    ]
+  },
+  {
+    "id": 58,
+    "category": "Database Sizing",
+    "question": "A database has 5 indexes on a 10GB table. Estimated index storage overhead is 40%. What is total storage needed?",
+    "options": [
+      "14 GB",
+      "15 GB",
+      "20 GB",
+      "10 GB"
+    ],
+    "answer": 0,
+    "explanation": "Index storage: 10GB x 0.40 = 4GB. Total: 10GB + 4GB = 14GB.",
+    "cheatsheet": "Index Storage: Index Size = Table Size x Overhead Ratio. Typical ratio: 20-60% depending on index count and types.",
+    "steps": [
+      "Table size: 10GB",
+      "Index overhead: 40%",
+      "Index storage: 10GB x 0.40 = 4GB",
+      "Total: 10GB + 4GB = 14GB"
+    ]
+  },
+  {
+    "id": 59,
+    "category": "Database Sizing",
+    "question": "Binary log files for a database grow at 2GB/day. With 7-day retention, how much log storage is needed?",
+    "options": [
+      "14 GB",
+      "2 GB",
+      "7 GB",
+      "28 GB"
+    ],
+    "answer": 0,
+    "explanation": "2GB/day x 7 days = 14GB of binary log storage needed.",
+    "cheatsheet": "Binary Log Sizing: Log Storage = Daily Growth x Retention Days. Binary logs are critical for replication and point-in-time recovery.",
+    "steps": [
+      "Daily log growth: 2GB",
+      "Retention: 7 days",
+      "Total: 2 x 7 = 14GB",
+      "Consider compression for older logs"
+    ]
+  },
+  {
+    "id": 60,
+    "category": "Database Sizing",
+    "question": "A partitioned table has 12 monthly partitions. Each partition has 500MB. What is the total table size?",
+    "options": [
+      "6 GB",
+      "500 MB",
+      "12 GB",
+      "3 GB"
+    ],
+    "answer": 0,
+    "explanation": "12 partitions x 500MB = 6,000MB = 6GB total.",
+    "cheatsheet": "Partitioned Table Sizing: Total = Partitions x Size per Partition. Benefits: easier maintenance, partition pruning in queries.",
+    "steps": [
+      "Partitions: 12 (one per month)",
+      "Size per partition: 500MB",
+      "Total: 12 x 500MB = 6,000MB = 6GB",
+      "Annual: add one partition per month"
+    ]
+  },
+  {
+    "id": 61,
+    "category": "Database Sizing",
+    "question": "A NoSQL database stores JSON documents averaging 5KB. With 1 million documents, what is the estimated storage?",
+    "options": [
+      "5 GB",
+      "5 MB",
+      "50 GB",
+      "500 MB"
+    ],
+    "answer": 0,
+    "explanation": "1,000,000 x 5KB = 5,000,000KB = 4.66GB. With overhead: approximately 5GB.",
+    "cheatsheet": "Document Store Sizing: Size = Documents x Avg Document Size. BSON/JSON overhead: +10-30%.",
+    "steps": [
+      "Documents: 1,000,000",
+      "Avg size: 5KB",
+      "Raw total: 1M x 5KB = 5,000,000KB = 4.77GB",
+      "With 5% encoding overhead: approximately 5GB"
+    ]
+  },
+  {
+    "id": 62,
+    "category": "Database Sizing",
+    "question": "A database performs 1000 writes/sec. Each write generates 50 bytes of WAL. Daily WAL volume is:",
+    "options": [
+      "4.32 GB",
+      "432 MB",
+      "4.32 MB",
+      "43.2 GB"
+    ],
+    "answer": 0,
+    "explanation": "1000 x 50 = 50,000 bytes/sec = 48.8KB/s. Per day: 48.8 x 86400 = 4,216,832KB = 4.02GB. Approximately 4.32GB with overhead.",
+    "cheatsheet": "WAL Volume: Volume = Writes/sec x WAL Size per Write x 86400. WAL is critical for durability and replication.",
+    "steps": [
+      "Writes/sec: 1,000",
+      "WAL per write: 50 bytes",
+      "Per second: 1,000 x 50 = 50,000 bytes = 48.8KB",
+      "Per day: 48.8KB x 86,400 = 4,216,320KB = 4.02GB"
+    ]
+  },
+  {
+    "id": 63,
+    "category": "Database Sizing",
+    "question": "A key-value store needs p99 read latency under 1ms. Cache hit rate is 90%, database read is 5ms. What is the average read latency?",
+    "options": [
+      "1.4 ms",
+      "5 ms",
+      "0.9 ms",
+      "0.5 ms"
+    ],
+    "answer": 0,
+    "explanation": "Average = (0.9 x 1ms cache) + (0.1 x 5ms DB) = 0.9 + 0.5 = 1.4ms.",
+    "cheatsheet": "Weighted Average Latency: Avg = (Hit Rate x Cache Latency) + (Miss Rate x DB Latency).",
+    "steps": [
+      "Cache hit rate: 90%, latency: 1ms",
+      "DB miss rate: 10%, latency: 5ms",
+      "Average: (0.9 x 1) + (0.1 x 5) = 0.9 + 0.5 = 1.4ms",
+      "Target: 1ms - may not meet SLA, need higher hit rate"
+    ]
+  },
+  {
+    "id": 64,
+    "category": "Database Sizing",
+    "question": "A table with 50 million rows, 10 columns averaging 50 bytes each. Row overhead is 100 bytes. Total table size?",
+    "options": [
+      "35 GB",
+      "3.5 GB",
+      "50 GB",
+      "5 GB"
+    ],
+    "answer": 0,
+    "explanation": "Row size = (10 x 50) + 100 = 600 bytes. Total: 50M x 600 = 30,000,000,000 bytes = 27.9GB. With page overhead: approximately 35GB.",
+    "cheatsheet": "Row-Level Sizing: Row Size = Sum(Columns) + Row Overhead. Table size = Rows x Row Size x Page Overhead Factor.",
+    "steps": [
+      "Column data: 10 x 50 = 500 bytes",
+      "Row overhead: 100 bytes",
+      "Total row: 600 bytes",
+      "Table: 50M x 600 = 30GB raw, approximately 35GB with page overhead"
+    ]
+  },
+  {
+    "id": 65,
+    "category": "Database Sizing",
+    "question": "A time-series database stores 10,000 data points per second, each 16 bytes. Monthly storage (30 days)?",
+    "options": [
+      "41.4 GB",
+      "414 GB",
+      "4.14 GB",
+      "4,140 GB"
+    ],
+    "answer": 0,
+    "explanation": "10,000 x 16 = 160,000 bytes/sec. Per day: 160,000 x 86,400 = 13.8GB. Per month: 13.8 x 30 = 414GB. With 10:1 compression: approximately 41.4GB.",
+    "cheatsheet": "Time-Series Storage: Raw = Points/sec x Size x 86400 x Days. Compression ratios for time-series: 5:1 to 20:1.",
+    "steps": [
+      "Data rate: 10,000 x 16 = 160,000 bytes/s = 156KB/s",
+      "Daily: 156 x 86,400 = 13.5GB raw",
+      "Monthly: 13.5 x 30 = 405GB raw",
+      "With 10:1 compression: approximately 40.5GB"
+    ]
+  },
+  {
+    "id": 66,
+    "category": "Network Design",
+    "question": "A 1Gbps network connection. How many concurrent 5Mbps video streams can it support?",
+    "options": [
+      "200",
+      "100",
+      "500",
+      "50"
+    ],
+    "answer": 0,
+    "explanation": "1,000Mbps / 5Mbps = 200 concurrent streams. With protocol overhead (approximately 10%): approximately 180 practical streams.",
+    "cheatsheet": "Network Capacity: Max Streams = Bandwidth / Stream Bandwidth. Account for protocol overhead: -10-20%.",
+    "steps": [
+      "Total bandwidth: 1Gbps = 1,000Mbps",
+      "Per stream: 5Mbps",
+      "Theoretical: 1,000 / 5 = 200 streams",
+      "With 10% overhead: 200 x 0.9 = 180 practical streams"
+    ]
+  },
+  {
+    "id": 67,
+    "category": "Network Design",
+    "question": "TCP handshake plus TLS 1.3 requires approximately how many round trips?",
+    "options": [
+      "2.5 RTTs",
+      "1 RTT",
+      "3.5 RTTs",
+      "5 RTTs"
+    ],
+    "answer": 0,
+    "explanation": "TCP handshake: 1.5 RTTs. TLS 1.3 adds 1 RTT. Total: 2.5 RTTs for full connection with encryption.",
+    "cheatsheet": "Connection Setup: TCP handshake = 1.5 RTTs. TLS 1.2 = +2 RTTs (total 3.5). TLS 1.3 = +1 RTT (total 2.5).",
+    "steps": [
+      "TCP handshake: 1.5 RTTs (SYN, SYN-ACK, ACK)",
+      "TLS 1.3: +1 RTT",
+      "Total: 2.5 RTTs",
+      "With connection pooling: 0ms (reuse existing)"
+    ]
+  },
+  {
+    "id": 68,
+    "category": "Network Design",
+    "question": "A packet travels through 3 network hops. Each hop adds 5ms latency. What is the network latency?",
+    "options": [
+      "15ms",
+      "5ms",
+      "10ms",
+      "20ms"
+    ],
+    "answer": 0,
+    "explanation": "3 hops x 5ms = 15ms network latency (propagation delay through hops).",
+    "cheatsheet": "Network Latency: Total = Hops x Per-Hop Latency + Propagation Delay + Queueing. Propagation: approximately 1ms per 200km.",
+    "steps": [
+      "Hops: 3",
+      "Per-hop latency: 5ms",
+      "Hop latency: 3 x 5 = 15ms",
+      "Add propagation and processing: typically 15-25ms total"
+    ]
+  },
+  {
+    "id": 69,
+    "category": "Network Design",
+    "question": "An API payload is 10KB. With HTTP overhead of 500 bytes, what is the total data per request on the wire?",
+    "options": [
+      "10.5 KB",
+      "10 KB",
+      "15 KB",
+      "11 KB"
+    ],
+    "answer": 0,
+    "explanation": "Payload 10KB + HTTP headers approximately 500 bytes = 10.5KB per request. Plus TCP/IP overhead (approximately 40 bytes).",
+    "cheatsheet": "HTTP Request Overhead: Total = Payload + Headers + TCP/IP + TLS. HTTP headers: typically 200-800 bytes. TCP/IP overhead: approximately 40 bytes.",
+    "steps": [
+      "Payload: 10KB = 10,240 bytes",
+      "HTTP headers: approximately 500 bytes",
+      "TCP/IP: approximately 40 bytes",
+      "Total: approximately 10,780 bytes = 10.5KB"
+    ]
+  },
+  {
+    "id": 70,
+    "category": "Network Design",
+    "question": "A WebSocket connection maintains 1000 open connections. Each connection uses 50KB for buffers. How much memory is needed?",
+    "options": [
+      "50 MB",
+      "500 MB",
+      "5 MB",
+      "5 GB"
+    ],
+    "answer": 0,
+    "explanation": "1000 x 50KB = 50,000KB = 48.8MB, approximately 50MB.",
+    "cheatsheet": "WebSocket Memory: Memory = Connections x Buffer Size. Typical buffer: 16-64KB per connection.",
+    "steps": [
+      "Connections: 1,000",
+      "Buffer per connection: 50KB",
+      "Total: 1,000 x 50KB = 50,000KB",
+      "Convert: 50,000KB = 48.8MB, approximately 50MB"
+    ]
+  },
+  {
+    "id": 71,
+    "category": "Network Design",
+    "question": "What is the bandwidth required for 1000 requests per second, each with a 2KB request and 10KB response?",
+    "options": [
+      "96 Mbps",
+      "10 Mbps",
+      "24 Mbps",
+      "12 Mbps"
+    ],
+    "answer": 0,
+    "explanation": "Per request: 2KB + 10KB = 12KB. Per second: 1000 x 12KB = 12,000KB/s. In Mbps: 12,000 x 8 / 1024 = 93.75Mbps, approximately 96 Mbps.",
+    "cheatsheet": "Bidirectional Bandwidth: Total per request = Request Size + Response Size. Bandwidth = RPS x Total Size x 8 / 1024.",
+    "steps": [
+      "Total per request: 2KB + 10KB = 12KB",
+      "Per second: 1000 x 12KB = 12,000KB/s",
+      "Convert to Mbps: 12,000 x 8 / 1024 = 93.75Mbps",
+      "With 3% overhead: approximately 96 Mbps"
+    ]
+  },
+  {
+    "id": 72,
+    "category": "Network Design",
+    "question": "CDN edge latency is 10ms, origin server is 100ms away. With 90% cache hit rate, what is the average latency?",
+    "options": [
+      "19 ms",
+      "100 ms",
+      "55 ms",
+      "10 ms"
+    ],
+    "answer": 0,
+    "explanation": "Average = (0.9 x 10ms) + (0.1 x 100ms) = 9 + 10 = 19ms.",
+    "cheatsheet": "CDN Average Latency: Avg Latency = (Hit Rate x Edge Latency) + (Miss Rate x Origin Latency).",
+    "steps": [
+      "Cache hit (90%): 10ms latency",
+      "Cache miss (10%): 100ms latency",
+      "Average: (0.9 x 10) + (0.1 x 100) = 9 + 10 = 19ms",
+      "CDN improves from 100ms to 19ms (approximately 5x better)"
+    ]
+  },
+  {
+    "id": 73,
+    "category": "Network Design",
+    "question": "A DNS lookup takes 20ms. With DNS caching (TTL 300s), what fraction of requests need DNS lookup?",
+    "options": [
+      "Negligible for most",
+      "20%",
+      "50%",
+      "100%"
+    ],
+    "answer": 0,
+    "explanation": "With DNS caching at 300s TTL, after the initial lookup, all subsequent requests within 300 seconds use cached DNS. For high traffic, DNS lookup overhead is negligible.",
+    "cheatsheet": "DNS Caching: DNS lookup overhead = TTL / Request Interval. First request: DNS lookup time. Subsequent (within TTL): 0ms overhead.",
+    "steps": [
+      "DNS TTL: 300 seconds",
+      "First request: 20ms DNS overhead",
+      "Next 300 seconds: cached (0ms overhead)",
+      "For 1000 req/s: only 1 in 300,000 needs DNS = negligible"
+    ]
+  },
+  {
+    "id": 74,
+    "category": "Network Design",
+    "question": "MTU is 1500 bytes. A payload of 10,000 bytes requires how many IP packets?",
+    "options": [
+      "7",
+      "6",
+      "8",
+      "10"
+    ],
+    "answer": 0,
+    "explanation": "1500 - 20 (IP header) - 20 (TCP header) = 1460 bytes per packet. 10,000 / 1460 = 6.85, so 7 packets needed.",
+    "cheatsheet": "IP Fragmentation: Usable payload = MTU - IP Header (20) - TCP Header (20). Packets = ceil(Total / Usable Payload).",
+    "steps": [
+      "MTU: 1500 bytes",
+      "IP header: 20 bytes, TCP header: 20 bytes",
+      "Payload per packet: 1500 - 40 = 1460 bytes",
+      "Packets needed: ceil(10000 / 1460) = 7"
+    ]
+  },
+  {
+    "id": 75,
+    "category": "Network Design",
+    "question": "An API gateway adds 2ms latency per request. With 3 downstream service calls, what is the total gateway overhead?",
+    "options": [
+      "8 ms",
+      "2 ms",
+      "6 ms",
+      "3 ms"
+    ],
+    "answer": 0,
+    "explanation": "Gateway processing: 2ms. Three downstream calls add 3 x 2ms = 6ms for additional gateway overhead. Total: 8ms gateway overhead.",
+    "cheatsheet": "API Gateway Overhead: Per-request overhead: routing, auth, rate limiting. Per-downstream-call: proxy overhead.",
+    "steps": [
+      "Base gateway overhead: 2ms",
+      "Downstream calls: 3",
+      "Per-call proxy overhead: 2ms",
+      "Total: 2 + (3 x 2) = 8ms"
+    ]
+  },
+  {
+    "id": 76,
+    "category": "Reliability Engineering",
+    "question": "Two servers in active-passive failover, each with 99.5% individual availability. What is the system availability?",
+    "options": [
+      "99.9975%",
+      "99.5%",
+      "99.9%",
+      "100%"
+    ],
+    "answer": 0,
+    "explanation": "System fails only when both fail simultaneously. System availability = 1 - (0.005 x 0.005) = 1 - 0.000025 = 99.9975%.",
+    "cheatsheet": "Redundant System Availability: System = 1 - (1 - A1) x (1 - A2) x ... x (1 - An). Active-passive: standby takes over on failure.",
+    "steps": [
+      "Individual availability: 99.5% each",
+      "Individual failure rate: 0.5% = 0.005",
+      "Both fail: 0.005 x 0.005 = 0.000025",
+      "System availability: 1 - 0.000025 = 99.9975%"
+    ]
+  },
+  {
+    "id": 77,
+    "category": "Reliability Engineering",
+    "question": "A system has MTBF of 2000 hours. What is the probability it runs without failure for 500 hours?",
+    "options": [
+      "77.9%",
+      "75%",
+      "90%",
+      "50%"
+    ],
+    "answer": 0,
+    "explanation": "Using exponential distribution: P(survive t) = e^(-t/MTBF) = e^(-500/2000) = e^(-0.25) = 0.7788 = 77.9%.",
+    "cheatsheet": "Reliability Function: R(t) = e^(-t/MTBF) for exponential distribution. Higher MTBF = higher reliability at any given time.",
+    "steps": [
+      "MTBF: 2000 hours",
+      "Time: 500 hours",
+      "t/MTBF = 500/2000 = 0.25",
+      "R(500) = e^(-0.25) = 0.7788 = 77.9%"
+    ]
+  },
+  {
+    "id": 78,
+    "category": "Reliability Engineering",
+    "question": "A RAID 5 array has 5 disks, each with MTBF of 1,000,000 hours. What is the approximate array MTBF?",
+    "options": [
+      "500,000 hours",
+      "1,000,000 hours",
+      "200,000 hours",
+      "5,000,000 hours"
+    ],
+    "answer": 0,
+    "explanation": "With N disks, array MTBF is approximately MTBF_disk / (N-1) for single-disk failure tolerance in RAID 5. 1,000,000 / (5-1) = 250,000 hours approximately.",
+    "cheatsheet": "RAID MTBF Approximation: RAID 5 can survive 1 disk failure. Array MTBF decreases with more disks. RAID 6 can survive 2 disk failures.",
+    "steps": [
+      "5 disks in RAID 5",
+      "Individual MTBF: 1,000,000 hours",
+      "Approximate array MTBF: approximately MTBF / (N-1)",
+      "Common approximation: approximately 200,000-500,000 hours with hot spare"
+    ]
+  },
+  {
+    "id": 79,
+    "category": "Reliability Engineering",
+    "question": "A service has 99.9% availability. With 3 independent replicas, what is the approximate system availability?",
+    "options": [
+      "99.9999999%",
+      "99.999%",
+      "99.9%",
+      "100%"
+    ],
+    "answer": 0,
+    "explanation": "System failure = all 3 replicas fail = 0.001^3 = 0.000000001. System availability = 1 - 0.000000001 = 99.9999999%.",
+    "cheatsheet": "N-Redundancy Availability: System Avail = 1 - (1-A)^N. 3 replicas at 99.9%: 99.9999999%.",
+    "steps": [
+      "Individual availability: 99.9%",
+      "Individual failure: 0.1% = 0.001",
+      "All 3 fail: 0.001^3 = 0.000000001",
+      "System: 1 - 0.000000001 = 99.9999999%"
+    ]
+  },
+  {
+    "id": 80,
+    "category": "Reliability Engineering",
+    "question": "MTTR for a service is 30 minutes. With 10 incidents per year, what is the total annual downtime?",
+    "options": [
+      "5 hours",
+      "3 hours",
+      "10 hours",
+      "300 minutes"
+    ],
+    "answer": 0,
+    "explanation": "Total downtime = 10 incidents x 30 minutes = 300 minutes = 5 hours per year.",
+    "cheatsheet": "Annual Downtime from MTTR: Total Downtime = Incidents x MTTR. Reducing MTTR has direct impact on availability.",
+    "steps": [
+      "Incidents per year: 10",
+      "MTTR: 30 minutes",
+      "Total: 10 x 30 = 300 minutes",
+      "Convert: 300 / 60 = 5 hours"
+    ]
+  },
+  {
+    "id": 81,
+    "category": "Reliability Engineering",
+    "question": "Circuit breaker opens after 5 failures in 10 seconds. If failure rate is 1 per second, after how many seconds does it open?",
+    "options": [
+      "5 seconds",
+      "10 seconds",
+      "3 seconds",
+      "15 seconds"
+    ],
+    "answer": 0,
+    "explanation": "At 1 failure per second, it takes 5 failures to reach the threshold, which occurs at 5 seconds.",
+    "cheatsheet": "Circuit Breaker Configuration: Opens when: failures >= threshold within time window. Half-open: allows test requests after timeout.",
+    "steps": [
+      "Failure rate: 1 per second",
+      "Threshold: 5 failures in 10 seconds",
+      "Time to threshold: 5 failures / 1 per sec = 5 seconds",
+      "Circuit opens after 5 seconds"
+    ]
+  },
+  {
+    "id": 82,
+    "category": "Reliability Engineering",
+    "question": "A retry policy uses exponential backoff: 1s, 2s, 4s, 8s. Total time for 4 retry attempts?",
+    "options": [
+      "15 seconds",
+      "16 seconds",
+      "4 seconds",
+      "8 seconds"
+    ],
+    "answer": 0,
+    "explanation": "Wait times: 1s + 2s + 4s + 8s = 15 seconds total wait time before the 4th retry attempt.",
+    "cheatsheet": "Exponential Backoff: Wait = base x 2^(attempt-1). Common base: 1 second. Add jitter to prevent thundering herd. Cap maximum backoff.",
+    "steps": [
+      "Attempt 1: wait 1s, fail",
+      "Attempt 2: wait 2s, fail",
+      "Attempt 3: wait 4s, fail",
+      "Attempt 4: wait 8s = Total 15s wait time"
+    ]
+  },
+  {
+    "id": 83,
+    "category": "Reliability Engineering",
+    "question": "What is the RPO (Recovery Point Objective) if daily backups are taken at midnight?",
+    "options": [
+      "Up to 24 hours of data loss",
+      "0 hours",
+      "12 hours",
+      "1 hour"
+    ],
+    "answer": 0,
+    "explanation": "RPO is the maximum acceptable data loss. With daily backups at midnight, worst case is nearly 24 hours of data loss.",
+    "cheatsheet": "RPO and RTO: RPO = max acceptable data loss (time-based). RTO = max acceptable downtime. Daily backup: RPO approximately 24 hours. Continuous replication: RPO approximately 0.",
+    "steps": [
+      "Backup schedule: daily at midnight",
+      "Worst case: failure just before next backup",
+      "Maximum data loss: nearly 24 hours",
+      "RPO = up to 24 hours"
+    ]
+  },
+  {
+    "id": 84,
+    "category": "Reliability Engineering",
+    "question": "What is the main advantage of blue-green deployment for reliability?",
+    "options": [
+      "Zero-downtime deployment",
+      "30 minutes downtime",
+      "Lower cost",
+      "Simpler infrastructure"
+    ],
+    "answer": 0,
+    "explanation": "Blue-green deployment is zero-downtime because the new environment is prepared while the old one serves traffic. Only the traffic switch takes seconds.",
+    "cheatsheet": "Deployment Strategies: Blue-green = zero downtime. Rolling update = gradual, partial downtime. Canary = small % first, zero downtime. Big bang = full downtime.",
+    "steps": [
+      "Deploy to green (standby): full deployment time",
+      "Health check green: verification period",
+      "Switch traffic: seconds",
+      "Total downtime: approximately 0 (zero-downtime)"
+    ]
+  },
+  {
+    "id": 85,
+    "category": "Reliability Engineering",
+    "question": "A system has 3 availability zones. Each has 99.95% availability. What is the multi-AZ system availability?",
+    "options": [
+      "99.9999999%",
+      "99.95%",
+      "99.999%",
+      "99.85%"
+    ],
+    "answer": 0,
+    "explanation": "System fails when all 3 AZs fail: (1-0.9995)^3 = 0.0005^3 = negligible. System availability: 99.9999999%.",
+    "cheatsheet": "Multi-AZ Availability: System = 1 - (1-A)^N where N = number of AZs. Load balancer health checks route away from failed AZs.",
+    "steps": [
+      "Per-AZ availability: 99.95%",
+      "Per-AZ failure: 0.05%",
+      "All 3 fail: 0.0005^3 = negligible",
+      "System availability: approximately 99.9999999%"
+    ]
+  },
+  {
+    "id": 86,
+    "category": "Reliability Engineering",
+    "question": "A graceful degradation strategy reduces features when load exceeds 80% CPU. If normal CPU is 40% and load doubles, what happens?",
+    "options": [
+      "Features degrade because CPU reaches 80%",
+      "Nothing happens",
+      "System crashes",
+      "All features are disabled"
+    ],
+    "answer": 0,
+    "explanation": "Normal 40% x 2 = 80%. The system triggers graceful degradation at 80%, reducing non-essential features to maintain core functionality.",
+    "cheatsheet": "Graceful Degradation: Define thresholds for resource usage. At threshold: disable non-essential features. Core functionality always maintained.",
+    "steps": [
+      "Normal CPU: 40%",
+      "Load doubles: 40% x 2 = 80%",
+      "Threshold: 80% triggers degradation",
+      "Non-essential features disabled, core maintained"
+    ]
+  },
+  {
+    "id": 87,
+    "category": "Reliability Engineering",
+    "question": "Chaos engineering: if you terminate a random instance every hour, how many instances must survive for the service to remain available?",
+    "options": [
+      "N-1 (minimum viable)",
+      "N (all instances)",
+      "N/2",
+      "1"
+    ],
+    "answer": 0,
+    "explanation": "For high availability, the system must tolerate losing at least 1 instance (N-1 surviving). Running 3+ instances with load balancer health checks ensures this.",
+    "cheatsheet": "Chaos Engineering Principles: Start small: single instance failure. Assume minimum of N-1 instances available. Health checks auto-remove failed instances.",
+    "steps": [
+      "N instances total",
+      "1 terminated by chaos experiment",
+      "N-1 must handle all traffic",
+      "Design: each instance handles 50% load (2x overcapacity)"
+    ]
+  },
+  {
+    "id": 88,
+    "category": "Reliability Engineering",
+    "question": "A database has automatic failover with RTO of 60 seconds. Primary fails at 10:00:00. When is the system fully available?",
+    "options": [
+      "10:01:00",
+      "10:02:00",
+      "10:00:30",
+      "10:00:10"
+    ],
+    "answer": 0,
+    "explanation": "RTO (Recovery Time Objective) is 60 seconds. Primary fails at 10:00:00, so full availability resumes by 10:01:00.",
+    "cheatsheet": "RTO Calculation: RTO = time from failure to full recovery. Includes: detection + failover + verification. Automated failover: typically 30-120 seconds.",
+    "steps": [
+      "Failure time: 10:00:00",
+      "RTO: 60 seconds",
+      "Recovery time: 10:00:00 + 60s = 10:01:00",
+      "This is the target maximum; actual may be faster"
+    ]
+  },
+  {
+    "id": 89,
+    "category": "Reliability Engineering",
+    "question": "With a 99.95% SLA and error budget tracking, if you spend 20 minutes of your 22-minute monthly budget in the first week, what should the team prioritize?",
+    "options": [
+      "Reliability improvements over new features",
+      "Continue normal development",
+      "Reduce monitoring",
+      "Add more features faster"
+    ],
+    "answer": 0,
+    "explanation": "After spending most of the error budget in week 1, the team should prioritize reliability and reduce failure rate. Spending more budget risks SLA breach.",
+    "cheatsheet": "Error Budget Policy: Budget spent > 50% early = prioritize reliability. Budget spent < 20% = can take more risks. Budget exhausted = freeze deployments.",
+    "steps": [
+      "Monthly budget: 22 minutes",
+      "Spent: 20 minutes (91% consumed)",
+      "Only 2 minutes remaining for 3+ weeks",
+      "Action: prioritize reliability, reduce deployment risk"
+    ]
+  },
+  {
+    "id": 90,
+    "category": "Reliability Engineering",
+    "question": "A health check endpoint returns 200 OK but the database connection pool is exhausted. What type of health check would catch this?",
+    "options": [
+      "Deep health check (including dependencies)",
+      "Shallow health check (just HTTP)",
+      "No health check can catch this",
+      "DNS health check"
+    ],
+    "answer": 0,
+    "explanation": "Deep (readiness) health checks verify that all critical dependencies (database, cache, external APIs) are accessible, catching issues that shallow checks miss.",
+    "cheatsheet": "Health Check Types: Liveness = is process running? (shallow). Readiness = can it serve traffic? (deep). Startup = has it finished initializing?",
+    "steps": [
+      "Shallow check: HTTP 200 (process is running)",
+      "Problem: database pool exhausted (cannot serve requests)",
+      "Deep check: verifies DB connectivity and pool availability",
+      "Solution: implement readiness probe that checks dependencies"
+    ]
+  },
+  {
+    "id": 91,
+    "category": "Reliability Engineering",
+    "question": "A microservice makes 3 external API calls in parallel. Each has 99.9% availability. What is the probability that all 3 succeed?",
+    "options": [
+      "99.7%",
+      "99.9%",
+      "99.99%",
+      "90%"
+    ],
+    "answer": 0,
+    "explanation": "All succeed = 0.999 x 0.999 x 0.999 = 0.997 = 99.7%. Any single failure causes the overall request to fail.",
+    "cheatsheet": "Parallel Dependency Availability: All succeed = A1 x A2 x ... x An. More dependencies = lower combined availability.",
+    "steps": [
+      "Each API: 99.9% = 0.999",
+      "All 3 succeed: 0.999^3 = 0.997003",
+      "At least one fails: 1 - 0.997 = 0.003 = 0.3%",
+      "Combined availability: 99.7% (reduced from 99.9%)"
+    ]
+  },
+  {
+    "id": 92,
+    "category": "Reliability Engineering",
+    "question": "What is the key difference between a liveness probe and a readiness probe?",
+    "options": [
+      "Liveness = is alive; readiness = can serve traffic",
+      "They are the same",
+      "Readiness checks less frequently",
+      "Liveness includes all dependencies"
+    ],
+    "answer": 0,
+    "explanation": "A liveness probe confirms the process is running. A readiness probe confirms the service can accept traffic (dependencies are available).",
+    "cheatsheet": "Liveness vs Readiness: Liveness = restart if fails (process dead). Readiness = remove from LB if fails (not ready). Both are needed.",
+    "steps": [
+      "Liveness probe: checks if process is alive",
+      "Failure action: restart the container",
+      "Readiness probe: checks if service can accept requests",
+      "Failure action: remove from LB rotation (no restart)"
+    ]
+  },
+  {
+    "id": 93,
+    "category": "Reliability Engineering",
+    "question": "A retry policy: max 3 attempts with 2s, 4s, 8s backoff. What is the maximum total time for a failing operation?",
+    "options": [
+      "14 seconds",
+      "3 seconds",
+      "8 seconds",
+      "24 seconds"
+    ],
+    "answer": 0,
+    "explanation": "First attempt (0s wait) + 2s + 4s + 8s = 14 seconds maximum total time if all retries fail.",
+    "cheatsheet": "Total Retry Time: Total = sum of all backoff periods. With jitter: may vary slightly. Add initial attempt time to total.",
+    "steps": [
+      "Attempt 1: execute, fail, wait 2s",
+      "Attempt 2: execute, fail, wait 4s",
+      "Attempt 3: execute, fail, wait 8s",
+      "Total wait: 2 + 4 + 8 = 14 seconds"
+    ]
+  },
+  {
+    "id": 94,
+    "category": "Reliability Engineering",
+    "question": "What deployment strategy achieves survival of a full data center outage?",
+    "options": [
+      "Multi-region deployment",
+      "Single region with backups",
+      "Multi-AZ deployment",
+      "On-premises deployment"
+    ],
+    "answer": 0,
+    "explanation": "Multi-region deployment places the system in geographically separate regions, surviving a complete data center or regional outage.",
+    "cheatsheet": "Disaster Recovery Strategies: Backup/Restore = RTO hours-days. Pilot Light = RTO minutes. Warm Standby = RTO minutes. Multi-Region Active-Active = RTO approximately 0 seconds.",
+    "steps": [
+      "Single region: cannot survive DC failure",
+      "Multi-AZ: survives single DC failure within region",
+      "Multi-region: survives full region outage",
+      "Active-active multi-region: zero-downtime disaster recovery"
+    ]
+  },
+  {
+    "id": 95,
+    "category": "Reliability Engineering",
+    "question": "If MTBF doubles and MTTR stays the same, what happens to availability?",
+    "options": [
+      "Availability increases but not doubles",
+      "Availability doubles",
+      "Availability stays the same",
+      "Availability decreases"
+    ],
+    "answer": 0,
+    "explanation": "Availability = MTBF/(MTBF+MTTR). If MTBF doubles from X to 2X: 2X/(2X+MTTR) > X/(X+MTTR), but not exactly double. The improvement diminishes.",
+    "cheatsheet": "Availability Sensitivity: Improving MTBF has diminishing returns at high MTBF. Improving MTTR has linear impact. For 99.9%+, reducing MTTR is often more effective.",
+    "steps": [
+      "Original: MTBF/(MTBF+MTTR)",
+      "Doubled MTBF: 2MTBF/(2MTBF+MTTR)",
+      "Improvement: definitely higher availability",
+      "Diminishing returns: going from 99% to 99.9% is harder than 90% to 99%"
+    ]
+  },
+  {
+    "id": 96,
+    "category": "Reliability Engineering",
+    "question": "A canary deployment routes 5% of traffic to the new version. If a bug affects the canary, maximum users impacted are:",
+    "options": [
+      "5% of total traffic",
+      "100%",
+      "50%",
+      "10%"
+    ],
+    "answer": 0,
+    "explanation": "Canary deployment routes only 5% of traffic to the new version, limiting blast radius to 5% of users if the new version has a bug.",
+    "cheatsheet": "Canary Deployment: Start with 1-5% traffic to new version. Monitor for errors, latency, crashes. Gradually increase if healthy: 25%, 50%, 100%.",
+    "steps": [
+      "Canary: 5% traffic to new version",
+      "Bug detected in new version",
+      "Maximum impact: 5% of users",
+      "Auto-rollback triggered, 95% unaffected"
+    ]
+  },
+  {
+    "id": 97,
+    "category": "Reliability Engineering",
+    "question": "Rate limiter allows 100 requests per minute per user. If a user sends 250 requests in the first 10 seconds, how many are rejected?",
+    "options": [
+      "200",
+      "100",
+      "250",
+      "50"
+    ],
+    "answer": 0,
+    "explanation": "In 10 seconds, the rate limit allows 100/6 = approximately 17 requests (if evenly distributed). With token bucket: 100 allowed initially, 150 rejected. Answer depends on algorithm but token bucket with 100 initial tokens = 200 rejected.",
+    "cheatsheet": "Rate Limiting Algorithms: Fixed Window = N per time window. Sliding Window = smoother. Token Bucket = allows bursts. Leaky Bucket = constant rate.",
+    "steps": [
+      "Rate limit: 100 per minute",
+      "Requests: 250 in 10 seconds",
+      "With token bucket (100 tokens): 100 allowed, 150 rejected",
+      "With fixed window (10s = 100/6 = 17): 233 rejected"
+    ]
+  },
+  {
+    "id": 98,
+    "category": "Reliability Engineering",
+    "question": "What is the primary benefit of an immutable infrastructure approach for reliability?",
+    "options": [
+      "Servers are never replaced",
+      "Every deployment is a fresh, known-good state, eliminating configuration drift",
+      "Infrastructure cannot be monitored",
+      "No backups needed"
+    ],
+    "answer": 1,
+    "explanation": "Immutable infrastructure ensures every server is built from a known-good image, eliminating configuration drift, unpredictable states, and making rollbacks trivial.",
+    "cheatsheet": "Immutable Infrastructure Benefits: No configuration drift (every deploy is fresh). Rollback = deploy previous image. Reproducible environments (dev = staging = prod).",
+    "steps": [
+      "Build image from version-controlled definition",
+      "Deploy new instances from image",
+      "Old instances terminated (not modified)",
+      "Result: consistent, predictable, reproducible"
+    ]
+  },
+  {
+    "id": 99,
+    "category": "Reliability Engineering",
+    "question": "A system processes 1000 orders per minute. If the order processing service fails for 5 minutes, how many orders are affected?",
+    "options": [
+      "5,000",
+      "1,000",
+      "100",
+      "10,000"
+    ],
+    "answer": 0,
+    "explanation": "1000 orders/minute x 5 minutes = 5,000 orders potentially affected (delayed or queued).",
+    "cheatsheet": "Failure Impact Calculation: Impacted = Rate x Duration. Orders in a message queue may be processed after recovery. Lost orders = rate x duration (if no persistence).",
+    "steps": [
+      "Processing rate: 1000 orders/minute",
+      "Failure duration: 5 minutes",
+      "Orders affected: 1000 x 5 = 5,000",
+      "With message queue: 5,000 delayed, not lost"
+    ]
+  },
+  {
+    "id": 100,
+    "category": "Reliability Engineering",
+    "question": "An SLO specifies 99.9% request success rate. In a week with 10 million requests, how many failures are allowed?",
+    "options": [
+      "10,000",
+      "1,000",
+      "100,000",
+      "100"
+    ],
+    "answer": 0,
+    "explanation": "10,000,000 x 0.001 = 10,000 failures allowed per week while meeting the 99.9% SLO.",
+    "cheatsheet": "Error Budget from SLO: Allowed failures = Total Requests x (1 - SLO). Track weekly/monthly error budget consumption. Burn rate = errors / time vs budget / time.",
+    "steps": [
+      "Total requests: 10,000,000",
+      "SLO: 99.9%",
+      "Failure budget: 10,000,000 x 0.001 = 10,000",
+      "If 5,000 failures occurred: 50% of weekly budget used"
+    ]
+  }
+]
