@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "category": "Capacity Planning",
-    "question": "A web server handles 50 requests per second, each taking 20ms to process. What is the server utilization?",
+    "category": "キャパシティプランニング",
+    "question": "Webサーバーが1秒あたり50件のリクエストを処理し、各リクエストの処理に20msかかる。サーバーの利用率は何%か。",
     "options": [
       "50%",
       "100%",
@@ -10,19 +10,19 @@
       "25%"
     ],
     "answer": 1,
-    "explanation": "Utilization = arrival rate x service time = 50 x 0.02 = 1.0 = 100%. The server is fully utilized.",
-    "cheatsheet": "Server Utilization Formula:\nUtilization (rho) = lambda x S\n  lambda = arrival rate (req/s)\n  S = service time (s)\nStable system: rho < 1\nQueue length = rho / (1 - rho)",
+    "explanation": "利用率 = 到着率 x サービス時間 = 50 x 0.02 = 1.0 = 100%。サーバーは完全に稼働している。",
+    "cheatsheet": "サーバー利用率の公式:\n利用率 (rho) = lambda x S\n  lambda = 到着率 (リクエスト/秒)\n  S = サービス時間 (秒)\n安定システム: rho < 1\nキュー長 = rho / (1 - rho)",
     "steps": [
-      "Identify arrival rate: lambda = 50 req/s",
-      "Identify service time: S = 20ms = 0.02s",
-      "Calculate: rho = 50 x 0.02 = 1.0",
-      "Result: 100% utilization (fully loaded, no capacity margin)"
+      "到着率を特定: lambda = 50 リクエスト/秒",
+      "サービス時間を特定: S = 20ms = 0.02秒",
+      "計算: rho = 50 x 0.02 = 1.0",
+      "結果: 100%利用率(フル稼働、余裕なし)"
     ]
   },
   {
     "id": 2,
-    "category": "Capacity Planning",
-    "question": "A system needs to handle 1000 concurrent users. Each user session requires 5MB of memory. How much total RAM is needed?",
+    "category": "キャパシティプランニング",
+    "question": "システムが1,000人の同時ユーザーを処理する必要がある。各ユーザーセッションは5MBのメモリを必要とする。総RAMはいくらか。",
     "options": [
       "500 MB",
       "5 GB",
@@ -30,19 +30,19 @@
       "10 GB"
     ],
     "answer": 1,
-    "explanation": "Total RAM = 1000 users x 5MB = 5000MB = 5GB. Plus overhead for OS and other processes, typically 6-8GB total.",
-    "cheatsheet": "Memory Capacity:\nTotal Memory = Users x Memory per User + OS Overhead\nTypical OS overhead: 1-2GB\nRecommended buffer: +20-30%",
+    "explanation": "総RAM = 1,000ユーザー x 5MB = 5,000MB = 5GB。OSや他のプロセスのオーバーヘッドを加えると通常6-8GB必要。",
+    "cheatsheet": "メモリキャパシティ:\n総メモリ = ユーザー数 x ユーザーあたりメモリ + OSオーバーヘッド\n通常のOSオーバーヘッド: 1-2GB\n推奨バッファ: +20-30%",
     "steps": [
-      "Memory per user: 5MB",
-      "Number of users: 1000",
-      "Raw total: 1000 x 5 = 5000MB = 5GB",
-      "With 30% buffer: 5GB x 1.3 = 6.5GB recommended"
+      "ユーザーあたりメモリ: 5MB",
+      "ユーザー数: 1,000",
+      "生合計: 1,000 x 5 = 5,000MB = 5GB",
+      "30%バッファ付: 5GB x 1.3 = 6.5GB推奨"
     ]
   },
   {
     "id": 3,
-    "category": "Capacity Planning",
-    "question": "A database processes 200 transactions per second. Each transaction generates 2KB of log data. How much log storage is needed per day?",
+    "category": "キャパシティプランニング",
+    "question": "データベースが1秒あたり200件のトランザクションを処理する。各トランザクションは2KBのログデータを生成する。1日あたりのログストレージはいくらか。",
     "options": [
       "33 GB",
       "34.6 GB",
@@ -50,19 +50,19 @@
       "69.1 GB"
     ],
     "answer": 1,
-    "explanation": "200 x 2KB = 400KB/s. Per day: 400KB x 86400s = 34,560,000KB = 33.0GB. With overhead: approximately 34.6GB.",
-    "cheatsheet": "Storage Capacity:\nStorage per second = TPS x Size per transaction\nStorage per day = Storage per second x 86400\nAlways add 10-20% overhead",
+    "explanation": "200 x 2KB = 400KB/秒。1日あたり: 400KB x 86,400秒 = 34,560,000KB = 33.0GB。オーバーヘッド付: 約34.6GB。",
+    "cheatsheet": "ストレージキャパシティ:\n1秒あたりストレージ = TPS x トランザクションあたりサイズ\n1日あたりストレージ = 1秒あたり x 86,400\n常に10-20%のオーバーヘッドを追加",
     "steps": [
-      "Calculate per second: 200 x 2KB = 400KB/s",
-      "Calculate per day: 400 x 86400 = 34,560,000KB",
-      "Convert to GB: 34,560,000 / 1024 / 1024 = 32.95GB",
-      "With 5% overhead: approximately 34.6GB"
+      "1秒あたり計算: 200 x 2KB = 400KB/秒",
+      "1日あたり計算: 400 x 86,400 = 34,560,000KB",
+      "GB変換: 34,560,000 / 1024 / 1024 = 32.95GB",
+      "5%オーバーヘッド付: 約34.6GB"
     ]
   },
   {
     "id": 4,
-    "category": "Capacity Planning",
-    "question": "Using Little's Law: if throughput is 10,000 req/s and response time is 100ms, what is the number of concurrent connections in the system?",
+    "category": "キャパシティプランニング",
+    "question": "リトルの法則を用いて: スループットが10,000リクエスト/秒、応答時間が100msの場合、システム内の同時接続数はいくらか。",
     "options": [
       "100",
       "1000",
@@ -70,19 +70,19 @@
       "10"
     ],
     "answer": 1,
-    "explanation": "Little's Law: L = lambda x W = 10,000 x 0.1 = 1,000 concurrent connections.",
-    "cheatsheet": "Little's Law: L = lambda x W\nL = concurrent connections, lambda = arrival rate, W = response time",
+    "explanation": "リトルの法則: L = lambda x W = 10,000 x 0.1 = 1,000同時接続。",
+    "cheatsheet": "リトルの法則: L = lambda x W\nL = 同時接続数、lambda = 到着率、W = 応答時間",
     "steps": [
-      "Apply Little's Law: L = lambda x W",
-      "L = 10,000 x 0.1s = 1,000",
-      "1,000 concurrent connections in the system",
-      "At 70% target utilization: need 1,000/0.7 = 1,429 capacity"
+      "リトルの法則を適用: L = lambda x W",
+      "L = 10,000 x 0.1秒 = 1,000",
+      "システム内に1,000の同時接続",
+      "70%目標利用率の場合: 1,000/0.7 = 1,429のキャパシティが必要"
     ]
   },
   {
     "id": 5,
-    "category": "Capacity Planning",
-    "question": "A server has 8 CPU cores. Each request uses 50ms of CPU time. At 70% target utilization, how many requests per second can this server handle?",
+    "category": "キャパシティプランニング",
+    "question": "サーバーが8コアCPUを持つ。各リクエストは50msのCPU時間を使用する。70%の目標利用率で、1秒あたり何件のリクエストを処理できるか。",
     "options": [
       "112",
       "160",
@@ -90,39 +90,39 @@
       "224"
     ],
     "answer": 0,
-    "explanation": "Available CPU time per second = 8 cores x 1s x 0.70 = 5.6 core-seconds. Requests per second = 5.6 / 0.05 = 112 req/s.",
-    "cheatsheet": "CPU Capacity: Max Throughput = (Cores x Target Utilization) / CPU Time per Request",
+    "explanation": "1秒あたりの利用可能CPU時間 = 8コア x 1秒 x 0.70 = 5.6コア秒。1秒あたりリクエスト数 = 5.6 / 0.05 = 112リクエスト/秒。",
+    "cheatsheet": "CPUキャパシティ: 最大スループット = (コア数 x 目標利用率) / リクエストあたりCPU時間",
     "steps": [
-      "Available core-seconds per second: 8 x 0.70 = 5.6",
-      "CPU time per request: 50ms = 0.05s",
-      "Max throughput: 5.6 / 0.05 = 112 req/s",
-      "At 50% utilization: 8 x 0.50 / 0.05 = 80 req/s"
+      "1秒あたり利用可能コア秒: 8 x 0.70 = 5.6",
+      "リクエストあたりCPU時間: 50ms = 0.05秒",
+      "最大スループット: 5.6 / 0.05 = 112リクエスト/秒",
+      "50%利用率の場合: 8 x 0.50 / 0.05 = 80リクエスト/秒"
     ]
   },
   {
     "id": 6,
-    "category": "Capacity Planning",
-    "question": "A cluster needs 99.9% availability. There are 8760 hours in a year. What is the maximum acceptable downtime?",
+    "category": "キャパシティプランニング",
+    "question": "クラスタは99.9%の可用性が必要。1年は8,760時間。許容される最大ダウンタイムは何時間か。",
     "options": [
-      "8.76 hours",
-      "87.6 hours",
-      "0.876 hours",
-      "876 hours"
+      "8.76時間",
+      "87.6時間",
+      "0.876時間",
+      "876時間"
     ],
     "answer": 0,
-    "explanation": "99.9% availability = 0.1% downtime. 8760 x 0.001 = 8.76 hours maximum downtime per year.",
-    "cheatsheet": "Availability Nines:\n99% = 8.76 hours/year\n99.9% = 8.76 hours/year\n99.99% = 52.6 minutes/year\n99.999% = 5.26 minutes/year",
+    "explanation": "99.9%可用性 = 0.1%ダウンタイム。8,760 x 0.001 = 8.76時間が年間最大ダウンタイム。",
+    "cheatsheet": "可用性のナイン数:\n99% = 8.76時間/年\n99.9% = 8.76時間/年\n99.99% = 52.6分/年\n99.999% = 5.26分/年",
     "steps": [
-      "Total hours per year: 8760",
-      "Downtime fraction: 1 - 0.999 = 0.001",
-      "Maximum downtime: 8760 x 0.001 = 8.76 hours",
-      "Approximately 8 hours 45 minutes per year"
+      "年間総時間: 8,760",
+      "ダウンタイム割合: 1 - 0.999 = 0.001",
+      "最大ダウンタイム: 8,760 x 0.001 = 8.76時間",
+      "年間約8時間45分"
     ]
   },
   {
     "id": 7,
-    "category": "Capacity Planning",
-    "question": "An application generates 1 million records per day, each 500 bytes. How much storage is needed for 1 year of data?",
+    "category": "キャパシティプランニング",
+    "question": "アプリケーションが1日100万レコードを生成、各500バイト。1年分のデータに必要なストレージはいくらか。",
     "options": [
       "183 GB",
       "500 GB",
@@ -130,79 +130,79 @@
       "91.5 GB"
     ],
     "answer": 0,
-    "explanation": "1,000,000 x 500 bytes = 500MB/day. Per year: 500MB x 365 = 182,500MB = 178.2GB. With indexing overhead: approximately 183GB.",
-    "cheatsheet": "Annual Storage:\nDaily Storage = Records per day x Size per record\nAnnual Storage = Daily Storage x 365\nAdd overhead: indexing +10-20%",
+    "explanation": "1,000,000 x 500バイト = 500MB/日。1年あたり: 500MB x 365 = 182,500MB = 178.2GB。インデックスオーバーヘッド付: 約183GB。",
+    "cheatsheet": "年間ストレージ:\n1日ストレージ = 1日あたりレコード数 x レコードあたりサイズ\n年間ストレージ = 1日ストレージ x 365\nオーバーヘッド追加: インデックス +10-20%",
     "steps": [
-      "Daily data: 1,000,000 x 500 = 500,000,000 bytes = 476.8MB",
-      "Annual raw: 476.8 x 365 = 174,032MB = 170GB",
-      "With indexing overhead (10%): 170 x 1.1 = 187GB",
-      "Approximately 183GB with all overhead"
+      "1日データ: 1,000,000 x 500 = 500,000,000バイト = 476.8MB",
+      "年間生データ: 476.8 x 365 = 174,032MB = 170GB",
+      "インデックスオーバーヘッド(10%)付: 170 x 1.1 = 187GB",
+      "全オーバーヘッド込で約183GB"
     ]
   },
   {
     "id": 8,
-    "category": "Capacity Planning",
-    "question": "A load balancer distributes traffic to 5 servers. Total traffic is 2000 req/s. If one server fails, what is the new per-server throughput?",
+    "category": "キャパシティプランニング",
+    "question": "ロードバランサが5台のサーバーにトラフィックを分散。総トラフィック2,000リクエスト/秒。1台のサーバーが故障した場合、新しいサーバーあたりのスループットはいくらか。",
     "options": [
-      "400 req/s",
-      "500 req/s",
-      "2000 req/s",
-      "250 req/s"
+      "400リクエスト/秒",
+      "500リクエスト/秒",
+      "2000リクエスト/秒",
+      "250リクエスト/秒"
     ],
     "answer": 1,
-    "explanation": "With one server down, 4 servers share 2000 req/s. Per server: 2000/4 = 500 req/s. Each server must handle 25% more traffic.",
-    "cheatsheet": "Failover Capacity: Remaining throughput = Total / (N - failed)",
+    "explanation": "1台ダウン後、4台で2,000リクエスト/秒を分担。サーバーあたり: 2,000/4 = 500リクエスト/秒。各サーバーは25%多いトラフィックを処理する必要がある。",
+    "cheatsheet": "フェイルオーバーキャパシティ: 残りスループット = 総計 / (N - 故障数)",
     "steps": [
-      "Original per server: 2000/5 = 400 req/s",
-      "After 1 failure: 2000/4 = 500 req/s",
-      "Load increase: 500/400 = 1.25 (25% more)",
-      "Check if 500 req/s is within each server capacity"
+      "元のサーバーあたり: 2,000/5 = 400リクエスト/秒",
+      "1台故障後: 2,000/4 = 500リクエスト/秒",
+      "負荷増加: 500/400 = 1.25(25%増加)",
+      "500リクエスト/秒が各サーバーのキャパシティ内か確認"
     ]
   },
   {
     "id": 9,
-    "category": "Capacity Planning",
-    "question": "A microservice has 3 instances, each handling 500 req/s at max. What is the cluster throughput with 90% utilization target?",
+    "category": "キャパシティプランニング",
+    "question": "マイクロサービスが3つのインスタンスを持ち、各インスタンスは最大500リクエスト/秒を処理。90%の目標利用率でのクラスタスループットはいくらか。",
     "options": [
-      "1500 req/s",
-      "1350 req/s",
-      "500 req/s",
-      "4500 req/s"
+      "1500リクエスト/秒",
+      "1350リクエスト/秒",
+      "500リクエスト/秒",
+      "4500リクエスト/秒"
     ],
     "answer": 1,
-    "explanation": "Each instance at 90%: 500 x 0.9 = 450 req/s. Total cluster: 450 x 3 = 1350 req/s.",
-    "cheatsheet": "Cluster Throughput = Instances x Per-Instance Capacity x Target Utilization",
+    "explanation": "各インスタンス90%時: 500 x 0.9 = 450リクエスト/秒。クラスタ合計: 450 x 3 = 1,350リクエスト/秒。",
+    "cheatsheet": "クラスタスループット = インスタンス数 x インスタンスあたりキャパシティ x 目標利用率",
     "steps": [
-      "Per instance at max: 500 req/s",
-      "Target utilization: 90%",
-      "Effective per instance: 500 x 0.90 = 450 req/s",
-      "Cluster total: 450 x 3 = 1,350 req/s"
+      "インスタンスあたり最大: 500リクエスト/秒",
+      "目標利用率: 90%",
+      "有効インスタンスあたり: 500 x 0.90 = 450リクエスト/秒",
+      "クラスタ合計: 450 x 3 = 1,350リクエスト/秒"
     ]
   },
   {
     "id": 10,
-    "category": "Capacity Planning",
-    "question": "Your API target is p99 response time under 200ms. After testing, p99 = 350ms. By what factor must you scale out?",
+    "category": "キャパシティプランニング",
+    "question": "API目標はp99応答時間200ms以下。テスト結果p99 = 350ms。何倍のスケールアウトが必要か。",
     "options": [
-      "1.5x",
-      "1.75x",
-      "2x",
-      "3.5x"
+      "1.5倍",
+      "1.75倍",
+      "2倍",
+      "3.5倍"
     ],
     "answer": 1,
-    "explanation": "Scaling ratio = observed/target latency = 350/200 = 1.75x scale out needed.",
-    "cheatsheet": "Response Time Scaling: Scale factor approximately = observed/target latency",
+    "explanation": "スケーリング比 = 観測値/目標レイテンシ = 350/200 = 1.75倍のスケールアウトが必要。",
+    "cheatsheet": "応答時間スケーリング: スケール係数は約 = 観測値/目標レイテンシ",
     "steps": [
-      "Current p99: 350ms",
-      "Target p99: 200ms",
-      "Scaling ratio: 350/200 = 1.75",
-      "Need approximately 1.75x more instances"
+      "現在のp99: 350ms",
+      "目標p99: 200ms",
+      "スケーリング比: 350/200 = 1.75",
+      "約1.75倍のインスタンスが必要"
     ]
   },
   {
     "id": 11,
-    "category": "Capacity Planning",
-    "question": "A system processes 500 orders per minute. Each order requires 3 database writes. What is the total writes per second?",
+    "category": "キャパシティプランニング",
+    "question": "システムが1分あたり500件の注文を処理する。各注文は3回のデータベース書き込みを必要とする。1秒あたりの総書き込み数はいくらか。",
     "options": [
       "25",
       "15",
@@ -210,59 +210,59 @@
       "75"
     ],
     "answer": 0,
-    "explanation": "500 orders/min x 3 writes = 1500 writes/min. Per second: 1500/60 = 25 writes per second.",
-    "cheatsheet": "Throughput Conversion: Per second = Per minute / 60",
+    "explanation": "500注文/分 x 3書き込み = 1,500書き込み/分。1秒あたり: 1,500/60 = 25書き込み/秒。",
+    "cheatsheet": "スループット変換: 1秒あたり = 1分あたり / 60",
     "steps": [
-      "Orders per minute: 500",
-      "Writes per order: 3",
-      "Total writes per minute: 500 x 3 = 1500",
-      "Writes per second: 1500 / 60 = 25"
+      "1分あたり注文数: 500",
+      "注文あたり書き込み: 3",
+      "1分あたり総書き込み: 500 x 3 = 1,500",
+      "1秒あたり書き込み: 1,500 / 60 = 25"
     ]
   },
   {
     "id": 12,
-    "category": "Capacity Planning",
-    "question": "A caching layer reduces database load by 80%. Original database receives 1000 queries/s. How many queries hit the cache vs database after caching?",
+    "category": "キャパシティプランニング",
+    "question": "キャッシュ層がデータベース負荷を80%削減する。元のデータベースは1,000クエリ/秒を受信。キャッシュ導入後、キャッシュとデータベースのヒット数はどうなるか。",
     "options": [
-      "800 cache / 200 DB",
-      "200 cache / 800 DB",
-      "1000 cache / 0 DB",
-      "600 cache / 400 DB"
+      "キャッシュ800件 / DB200件",
+      "キャッシュ200件 / DB800件",
+      "キャッシュ1,000件 / DB0件",
+      "キャッシュ600件 / DB400件"
     ],
     "answer": 0,
-    "explanation": "80% cache hit rate: 1000 x 0.8 = 800 from cache, 200 from database.",
-    "cheatsheet": "Cache Effect: Cache hits = Total x Hit Rate, DB hits = Total x (1 - Hit Rate)",
+    "explanation": "80%キャッシュヒット率: 1,000 x 0.8 = 800がキャッシュから、200がデータベースから。",
+    "cheatsheet": "キャッシュ効果: キャッシュヒット = 総計 x ヒット率、DBヒット = 総計 x (1 - ヒット率)",
     "steps": [
-      "Cache hit rate: 80% = 0.8",
-      "Cache hits: 1000 x 0.8 = 800/s",
-      "Cache misses: 1000 x 0.2 = 200/s",
-      "Database load reduced from 1000 to 200"
+      "キャッシュヒット率: 80% = 0.8",
+      "キャッシュヒット: 1,000 x 0.8 = 800/秒",
+      "キャッシュミス: 1,000 x 0.2 = 200/秒",
+      "データベース負荷は1,000から200に削減"
     ]
   },
   {
     "id": 13,
-    "category": "Capacity Planning",
-    "question": "You need to plan for 50% traffic growth over the next year. Current peak is 2000 req/s. What capacity should you provision for?",
+    "category": "キャパシティプランニング",
+    "question": "来年50%のトラフィック成長を見込む必要がある。現在のピークは2,000リクエスト/秒。どのくらいのキャパシティを計画すべきか。",
     "options": [
-      "3000 req/s",
-      "2000 req/s",
-      "2500 req/s",
-      "4000 req/s"
+      "3000リクエスト/秒",
+      "2000リクエスト/秒",
+      "2500リクエスト/秒",
+      "4000リクエスト/秒"
     ],
     "answer": 0,
-    "explanation": "Target capacity = current x (1 + growth rate) = 2000 x 1.5 = 3000 req/s. With safety margin: 3000 x 1.2 = 3600 req/s recommended.",
-    "cheatsheet": "Growth Planning: Target = Current x (1 + Growth Rate). Add 20-30% safety margin.",
+    "explanation": "目標キャパシティ = 現在 x (1 + 成長率) = 2,000 x 1.5 = 3,000リクエスト/秒。安全マージン付: 3,000 x 1.2 = 3,600リクエスト/秒推奨。",
+    "cheatsheet": "成長計画: 目標 = 現在 x (1 + 成長率)。20-30%の安全マージンを追加。",
     "steps": [
-      "Current peak: 2000 req/s",
-      "Growth: 50%",
-      "Baseline target: 2000 x 1.5 = 3000 req/s",
-      "With 20% safety margin: 3000 x 1.2 = 3600 req/s"
+      "現在のピーク: 2,000リクエスト/秒",
+      "成長: 50%",
+      "基本目標: 2,000 x 1.5 = 3,000リクエスト/秒",
+      "20%安全マージン付: 3,000 x 1.2 = 3,600リクエスト/秒"
     ]
   },
   {
     "id": 14,
-    "category": "Capacity Planning",
-    "question": "A file upload service processes files averaging 10MB with 100 uploads per hour. How much bandwidth per second is needed?",
+    "category": "キャパシティプランニング",
+    "question": "ファイルアップロードサービスが平均10MBのファイルを1時間あたり100件処理。1秒あたりの帯域幅はいくらか。",
     "options": [
       "2.78 Mbps",
       "10 Mbps",
@@ -270,19 +270,19 @@
       "0.28 Mbps"
     ],
     "answer": 0,
-    "explanation": "100 x 10MB = 1000MB/hour. Per second: 1000MB / 3600s = 0.278MB/s. In Mbps: 0.278 x 8 = 2.22 Mbps. With overhead: approximately 2.78 Mbps.",
-    "cheatsheet": "Bandwidth Calculation: Bandwidth = (Data Size x Requests) / Time. Convert MB to Mbps: MB x 8 / seconds.",
+    "explanation": "100 x 10MB = 1,000MB/時間。1秒あたり: 1,000MB / 3,600秒 = 0.278MB/秒。Mbps: 0.278 x 8 = 2.22Mbps。オーバーヘッド付: 約2.78Mbps。",
+    "cheatsheet": "帯域幅計算: 帯域幅 = (データサイズ x リクエスト数) / 時間。MB→Mbps: MB x 8 / 秒。",
     "steps": [
-      "Data per hour: 100 x 10MB = 1000MB",
-      "Data per second: 1000MB / 3600s = 0.278MB/s",
-      "Convert to Mbps: 0.278 x 8 = 2.22 Mbps",
-      "With 25% overhead: 2.22 x 1.25 = 2.78 Mbps"
+      "1時間あたりデータ: 100 x 10MB = 1,000MB",
+      "1秒あたりデータ: 1,000MB / 3,600秒 = 0.278MB/秒",
+      "Mbps変換: 0.278 x 8 = 2.22Mbps",
+      "25%オーバーヘッド付: 2.22 x 1.25 = 2.78Mbps"
     ]
   },
   {
     "id": 15,
-    "category": "Capacity Planning",
-    "question": "A database server has 64GB RAM. The buffer pool uses 80% of RAM. Each data page is 8KB. How many pages can fit in the buffer pool?",
+    "category": "キャパシティプランニング",
+    "question": "データベースサーバーが64GB RAMを持つ。バッファプールはRAMの80%を使用。各データページは8KB。バッファプールに収まるページ数はいくらか。",
     "options": [
       "655,360",
       "8,192,000",
@@ -290,19 +290,19 @@
       "6,553,600"
     ],
     "answer": 3,
-    "explanation": "Buffer pool = 64GB x 0.8 = 51.2GB = 53,687,091 KB. Pages = 53,687,091 / 8 = 6,710,886 pages. Approximately 6.55 million.",
-    "cheatsheet": "Buffer Pool Sizing: Buffer Pool = Total RAM x Allocation Ratio. Pages = Buffer Pool / Page Size.",
+    "explanation": "バッファプール = 64GB x 0.8 = 51.2GB = 53,687,091KB。ページ数 = 53,687,091 / 8 = 6,710,886ページ。約655万ページ。",
+    "cheatsheet": "バッファプールサイジング: バッファプール = 総RAM x 割当率。ページ数 = バッファプール / ページサイズ。",
     "steps": [
-      "Buffer pool allocation: 64GB x 0.80 = 51.2GB",
-      "Convert to KB: 51.2 x 1024 x 1024 = 53,687,091 KB",
-      "Divide by page size: 53,687,091 / 8 = 6,710,886 pages",
-      "Approximately 6.55 million pages"
+      "バッファプール割当: 64GB x 0.80 = 51.2GB",
+      "KB変換: 51.2 x 1024 x 1024 = 53,687,091KB",
+      "ページサイズで除算: 53,687,091 / 8 = 6,710,886ページ",
+      "約655万ページ"
     ]
   },
   {
     "id": 16,
-    "category": "Capacity Planning",
-    "question": "A message queue processes 10,000 messages/second. Each message averages 1KB. How much network bandwidth is needed?",
+    "category": "キャパシティプランニング",
+    "question": "メッセージキューが1秒あたり10,000メッセージを処理。各メッセージは平均1KB。必要なネットワーク帯域幅はいくらか。",
     "options": [
       "80 Mbps",
       "10 Mbps",
@@ -310,19 +310,19 @@
       "8 Mbps"
     ],
     "answer": 0,
-    "explanation": "10,000 x 1KB = 10,000KB/s = 9.77MB/s. In Mbps: 9.77 x 8 = 78.1 Mbps. With protocol overhead: approximately 80 Mbps.",
-    "cheatsheet": "Network Bandwidth: Bandwidth (Mbps) = Messages/s x Size (MB) x 8",
+    "explanation": "10,000 x 1KB = 10,000KB/秒 = 9.77MB/秒。Mbps: 9.77 x 8 = 78.1Mbps。プロトコルオーバーヘッド付: 約80Mbps。",
+    "cheatsheet": "ネットワーク帯域幅: 帯域幅(Mbps) = メッセージ/秒 x サイズ(MB) x 8",
     "steps": [
-      "Data rate: 10,000 x 1KB = 10,000KB/s = 9.77MB/s",
-      "Convert to Mbps: 9.77 x 8 = 78.1 Mbps",
-      "With 3% overhead: 78.1 x 1.03 = 80.4 Mbps",
-      "Round to approximately 80 Mbps"
+      "データレート: 10,000 x 1KB = 10,000KB/秒 = 9.77MB/秒",
+      "Mbps変換: 9.77 x 8 = 78.1Mbps",
+      "3%オーバーヘッド付: 78.1 x 1.03 = 80.4Mbps",
+      "約80Mbpsに丸める"
     ]
   },
   {
     "id": 17,
-    "category": "Capacity Planning",
-    "question": "An application needs 4GB heap memory. With JVM overhead of 30% beyond heap, what total memory should be allocated?",
+    "category": "キャパシティプランニング",
+    "question": "アプリケーションが4GBのヒープメモリを必要とする。ヒープ超過のJVMオーバーヘッド30%の場合、総メモリはいくらか。",
     "options": [
       "5.2 GB",
       "4 GB",
@@ -330,19 +330,19 @@
       "3.2 GB"
     ],
     "answer": 0,
-    "explanation": "Total = 4GB x 1.3 = 5.2GB. JVM needs memory for metaspace, thread stacks, and native memory beyond the heap.",
-    "cheatsheet": "JVM Memory: Total JVM Memory = Heap x (1 + Overhead Ratio). Typical overhead: 25-40%.",
+    "explanation": "総計 = 4GB x 1.3 = 5.2GB。JVMはメタスペース、スレッドスタック、ネイティブメモリにヒープ外のメモリが必要。",
+    "cheatsheet": "JVMメモリ: 総JVMメモリ = ヒープ x (1 + オーバーヘッド率)。通常オーバーヘッド: 25-40%。",
     "steps": [
-      "Heap requirement: 4GB",
-      "Overhead ratio: 30%",
-      "Total memory: 4GB x (1 + 0.30) = 5.2GB",
-      "Reserve additional 10% for OS: approximately 5.7GB on server"
+      "ヒープ要件: 4GB",
+      "オーバーヘッド率: 30%",
+      "総メモリ: 4GB x (1 + 0.30) = 5.2GB",
+      "OS用追加10%予約: サーバー上で約5.7GB"
     ]
   },
   {
     "id": 18,
-    "category": "Capacity Planning",
-    "question": "A system has an average arrival rate of 30 req/s and average service time of 20ms. Using M/M/1 queue, what is the average number of requests in the system?",
+    "category": "キャパシティプランニング",
+    "question": "システムの平均到着率30リクエスト/秒、平均サービス時間20ms。M/M/1キューを用いて、システム内の平均リクエスト数はいくらか。",
     "options": [
       "1.5",
       "0.6",
@@ -350,19 +350,19 @@
       "0.3"
     ],
     "answer": 0,
-    "explanation": "Utilization rho = 30 x 0.02 = 0.6. Average requests in system L = rho/(1-rho) = 0.6/0.4 = 1.5.",
-    "cheatsheet": "M/M/1 Queue: rho = lambda x S. L = rho / (1 - rho). W = S / (1 - rho).",
+    "explanation": "利用率rho = 30 x 0.02 = 0.6。システム内平均リクエスト数 L = rho/(1-rho) = 0.6/0.4 = 1.5。",
+    "cheatsheet": "M/M/1キュー: rho = lambda x S。L = rho / (1 - rho)。W = S / (1 - rho)。",
     "steps": [
-      "Utilization: rho = 30 x 0.02 = 0.6 (60%)",
-      "Avg requests in system: L = 0.6 / (1 - 0.6) = 1.5",
-      "Avg response time: W = 0.02 / 0.4 = 0.05s = 50ms",
-      "Avg in queue: Lq = 0.36 / 0.4 = 0.9"
+      "利用率: rho = 30 x 0.02 = 0.6(60%)",
+      "システム内平均リクエスト数: L = 0.6 / (1 - 0.6) = 1.5",
+      "平均応答時間: W = 0.02 / 0.4 = 0.05秒 = 50ms",
+      "キュー内平均: Lq = 0.36 / 0.4 = 0.9"
     ]
   },
   {
     "id": 19,
-    "category": "Capacity Planning",
-    "question": "A web application serves pages averaging 2MB. Target: 10,000 page views per hour. What is the total outbound data transfer per month?",
+    "category": "キャパシティプランニング",
+    "question": "Webアプリケーションが平均2MBのページを配信。目標: 1時間あたり10,000ページビュー。月間の総アウトバウンドデータ転送量はいくらか。",
     "options": [
       "1.2 TB",
       "4.8 TB",
@@ -370,39 +370,39 @@
       "2.4 TB"
     ],
     "answer": 0,
-    "explanation": "10,000 x 2MB = 20GB/hour. Per day: 20 x 24 = 480GB. Per month (30 days): 480 x 30 = 14,400GB = 14.06TB. But the options suggest 1.2TB which implies CDN caching at 90%.",
-    "cheatsheet": "Data Transfer: Monthly = Hourly Rate x 24 x 30. CDN can significantly reduce origin transfer.",
+    "explanation": "10,000 x 2MB = 20GB/時間。1日あたり: 20 x 24 = 480GB。月間(30日): 480 x 30 = 14,400GB = 14.06TB。オプションは1.2TBを示唆(CDNキャッシュ90%)。",
+    "cheatsheet": "データ転送: 月間 = 1時間あたり x 24 x 30。CDNはオリジン転送を大幅に削減。",
     "steps": [
-      "Hourly transfer: 10,000 x 2MB = 20GB/hour",
-      "Daily transfer: 20 x 24 = 480GB",
-      "Monthly transfer: 480 x 30 = 14,400GB = 14.06TB",
-      "With CDN (70% cache hit): 14.06 x 0.3 = 4.22TB origin traffic"
+      "1時間あたり転送: 10,000 x 2MB = 20GB/時間",
+      "1日あたり転送: 20 x 24 = 480GB",
+      "月間転送: 480 x 30 = 14,400GB = 14.06TB",
+      "CDN(70%キャッシュヒット)付: 14.06 x 0.3 = 4.22TBオリジントラフィック"
     ]
   },
   {
     "id": 20,
-    "category": "Capacity Planning",
-    "question": "A system requires 99.95% availability. What is maximum monthly downtime?",
+    "category": "キャパシティプランニング",
+    "question": "システムに99.95%の可用性が必要。月間の最大ダウンタイムはいくらか。",
     "options": [
-      "21.9 minutes",
-      "43.8 minutes",
-      "4.38 minutes",
-      "219 minutes"
+      "21.9分",
+      "43.8分",
+      "4.38分",
+      "219分"
     ],
     "answer": 0,
-    "explanation": "Monthly hours = 730. Downtime = 730 x (1 - 0.9995) = 730 x 0.0005 = 0.365 hours = 21.9 minutes.",
-    "cheatsheet": "Monthly Downtime: Hours/month = 730. Downtime = (1 - availability) x 730 hours.",
+    "explanation": "月間時間 = 730時間。ダウンタイム = 730 x (1 - 0.9995) = 730 x 0.0005 = 0.365時間 = 21.9分。",
+    "cheatsheet": "月間ダウンタイム: 月間時間 = 730。ダウンタイム = (1 - 可用性) x 730時間。",
     "steps": [
-      "Hours per month: 730 (365.25 x 24 / 12)",
-      "Downtime fraction: 1 - 0.9995 = 0.0005",
-      "Downtime in hours: 730 x 0.0005 = 0.3653 hours",
-      "Convert to minutes: 0.3653 x 60 = 21.9 minutes"
+      "月間時間: 730(365.25 x 24 / 12)",
+      "ダウンタイム割合: 1 - 0.9995 = 0.0005",
+      "時間単位ダウンタイム: 730 x 0.0005 = 0.3653時間",
+      "分変換: 0.3653 x 60 = 21.9分"
     ]
   },
   {
     "id": 21,
-    "category": "Cost Estimation",
-    "question": "An EC2 instance costs $0.10/hour. Running 3 instances for a month (730 hours), what is the monthly cost?",
+    "category": "コスト見積もり",
+    "question": "EC2インスタンスが1時間あたり$0.10。3インスタンスを1ヶ月(730時間)実行、月間コストはいくらか。",
     "options": [
       "$219",
       "$73",
@@ -410,19 +410,19 @@
       "$100"
     ],
     "answer": 0,
-    "explanation": "3 instances x $0.10/hour x 730 hours = $219/month.",
-    "cheatsheet": "Cloud Instance Cost: Monthly Cost = Instances x Hourly Rate x 730 hours. 730 = average hours per month.",
+    "explanation": "3インスタンス x $0.10/時間 x 730時間 = $219/月。",
+    "cheatsheet": "クラウドインスタンスコスト: 月間コスト = インスタンス数 x 時間単価 x 730時間。730 = 月平均時間。",
     "steps": [
-      "Cost per instance per month: $0.10 x 730 = $73",
-      "3 instances: 3 x $73 = $219/month",
-      "Annual cost: $219 x 12 = $2,628",
-      "With 1-year reserved (40% savings): $219 x 0.6 = $131.40/month"
+      "インスタンスあたり月間コスト: $0.10 x 730 = $73",
+      "3インスタンス: 3 x $73 = $219/月",
+      "年間コスト: $219 x 12 = $2,628",
+      "1年リザーブ(40%節約)付: $219 x 0.6 = $131.40/月"
     ]
   },
   {
     "id": 22,
-    "category": "Cost Estimation",
-    "question": "S3 storage costs $0.023/GB/month for standard tier. You store 5TB of data. What is the monthly storage cost?",
+    "category": "コスト見積もり",
+    "question": "S3ストレージは標準ティアで$0.023/GB/月。5TBのデータを保存。月間ストレージコストはいくらか。",
     "options": [
       "$118",
       "$23",
@@ -430,19 +430,19 @@
       "$50"
     ],
     "answer": 0,
-    "explanation": "5TB = 5120GB. Cost = 5120 x $0.023 = $117.76/month.",
-    "cheatsheet": "S3 Storage Cost: Cost = Storage (GB) x Price per GB. 1TB = 1024GB.",
+    "explanation": "5TB = 5,120GB。コスト = 5,120 x $0.023 = $117.76/月。",
+    "cheatsheet": "S3ストレージコスト: コスト = ストレージ(GB) x GBあたり単価。1TB = 1,024GB。",
     "steps": [
-      "Convert TB to GB: 5 x 1024 = 5120GB",
-      "Standard tier: $0.023/GB/month",
-      "Monthly cost: 5120 x 0.023 = $117.76",
-      "With Infrequent Access ($0.0125/GB): $64/month"
+      "TB→GB変換: 5 x 1,024 = 5,120GB",
+      "標準ティア: $0.023/GB/月",
+      "月間コスト: 5,120 x 0.023 = $117.76",
+      "低頻度アクセス($0.0125/GB)の場合: $64/月"
     ]
   },
   {
     "id": 23,
-    "category": "Cost Estimation",
-    "question": "A database read request costs $0.0015 per 1000 requests. Your app makes 5 million read requests per day. What is the daily cost?",
+    "category": "コスト見積もり",
+    "question": "データベース読み取りリクエストが1,000リクエストあたり$0.0015。アプリが1日500万件の読み取りリクエストを実行。日間コストはいくらか。",
     "options": [
       "$7.50",
       "$0.75",
@@ -450,19 +450,19 @@
       "$0.0075"
     ],
     "answer": 0,
-    "explanation": "Cost per request: $0.0015/1000 = $0.0000015. Daily: 5,000,000 x $0.0000015 = $7.50.",
-    "cheatsheet": "API Request Cost: Cost = (Total Requests / Batch Size) x Price per Batch.",
+    "explanation": "リクエストあたりコスト: $0.0015/1,000 = $0.0000015。日間: 5,000,000 x $0.0000015 = $7.50。",
+    "cheatsheet": "APIリクエストコスト: コスト = (総リクエスト数 / バッチサイズ) x バッチあたり単価。",
     "steps": [
-      "Requests per day: 5,000,000",
-      "Cost per 1000 requests: $0.0015",
-      "Number of batches: 5,000,000 / 1,000 = 5,000",
-      "Daily cost: 5,000 x $0.0015 = $7.50"
+      "1日リクエスト数: 5,000,000",
+      "1,000リクエストあたりコスト: $0.0015",
+      "バッチ数: 5,000,000 / 1,000 = 5,000",
+      "日間コスト: 5,000 x $0.0015 = $7.50"
     ]
   },
   {
     "id": 24,
-    "category": "Cost Estimation",
-    "question": "You have 10TB of on-premises data to migrate to cloud. Network transfer is $0.05/GB. What is the data transfer cost?",
+    "category": "コスト見積もり",
+    "question": "オンプレミスの10TBデータをクラウドに移行。ネットワーク転送コストは$0.05/GB。データ転送コストはいくらか。",
     "options": [
       "$500",
       "$512",
@@ -470,19 +470,19 @@
       "$5,120"
     ],
     "answer": 0,
-    "explanation": "10TB = 10,240GB. Cost = 10,240 x $0.05 = $512.",
-    "cheatsheet": "Data Transfer Cost: Ingress (to cloud) is often free or cheap. Egress (from cloud) is typically $0.05-0.12/GB.",
+    "explanation": "10TB = 10,240GB。コスト = 10,240 x $0.05 = $512。",
+    "cheatsheet": "データ転送コスト: イングレス(クラウドへ)は無料または安価。エグレス(クラウドから)は通常$0.05-0.12/GB。",
     "steps": [
-      "Convert: 10TB = 10 x 1024 = 10,240GB",
-      "Cost per GB: $0.05",
-      "Transfer cost: 10,240 x $0.05 = $512",
-      "Alternative: 10TB Snowball device costs approximately $200"
+      "変換: 10TB = 10 x 1,024 = 10,240GB",
+      "GBあたりコスト: $0.05",
+      "転送コスト: 10,240 x $0.05 = $512",
+      "代替: 10TB Snowballデバイスは約$200"
     ]
   },
   {
     "id": 25,
-    "category": "Cost Estimation",
-    "question": "A managed database cluster with 2 nodes costs $0.50/node/hour. What is the annual cost?",
+    "category": "コスト見積もり",
+    "question": "マネージドデータベースクラスタ、2ノード、各$0.50/ノード/時間。年間コストはいくらか。",
     "options": [
       "$8,760",
       "$4,380",
@@ -490,19 +490,19 @@
       "$1,095"
     ],
     "answer": 0,
-    "explanation": "2 nodes x $0.50 x 730 hours/month x 12 months = $8,760/year.",
-    "cheatsheet": "Annual Cloud Cost: Annual = Nodes x Rate x 730 x 12. Always include storage and data transfer costs.",
+    "explanation": "2ノード x $0.50 x 730時間/月 x 12ヶ月 = $8,760/年。",
+    "cheatsheet": "年間クラウドコスト: 年間 = ノード数 x 単価 x 730 x 12。ストレージとデータ転送コストも必ず含める。",
     "steps": [
-      "Hourly cost: 2 x $0.50 = $1.00/hour",
-      "Monthly cost: $1.00 x 730 = $730/month",
-      "Annual cost: $730 x 12 = $8,760/year",
-      "With 3-year reserved (50% off): $4,380/year"
+      "時間単価: 2 x $0.50 = $1.00/時間",
+      "月間コスト: $1.00 x 730 = $730/月",
+      "年間コスト: $730 x 12 = $8,760/年",
+      "3年リザーブ(50%オフ): $4,380/年"
     ]
   },
   {
     "id": 26,
-    "category": "Cost Estimation",
-    "question": "Your app uses a CDN at $0.02/GB for 50TB monthly transfer. What is the CDN monthly cost?",
+    "category": "コスト見積もり",
+    "question": "アプリが月間50TB転送で$0.02/GBのCDNを使用。月間CDNコストはいくらか。",
     "options": [
       "$1,000",
       "$1,024",
@@ -510,19 +510,19 @@
       "$2,048"
     ],
     "answer": 1,
-    "explanation": "50TB = 51,200GB. Cost = 51,200 x $0.02 = $1,024/month.",
-    "cheatsheet": "CDN Cost: Cost = Data Transfer (GB) x Rate per GB. CDN reduces origin server load.",
+    "explanation": "50TB = 51,200GB。コスト = 51,200 x $0.02 = $1,024/月。",
+    "cheatsheet": "CDNコスト: コスト = データ転送量(GB) x GBあたり単価。CDNはオリジンサーバー負荷を削減。",
     "steps": [
-      "Convert TB: 50 x 1024 = 51,200GB",
-      "Rate: $0.02/GB",
-      "Monthly CDN cost: 51,200 x $0.02 = $1,024",
-      "Annual CDN cost: $1,024 x 12 = $12,288"
+      "TB変換: 50 x 1,024 = 51,200GB",
+      "単価: $0.02/GB",
+      "月間CDNコスト: 51,200 x $0.02 = $1,024",
+      "年間CDNコスト: $1,024 x 12 = $12,288"
     ]
   },
   {
     "id": 27,
-    "category": "Cost Estimation",
-    "question": "An on-premises server costs $15,000 upfront plus $3,000/year in maintenance. Over 5 years, what is the TCO?",
+    "category": "コスト見積もり",
+    "question": "オンプレミスサーバーが初期費用$15,000、年間メンテナンス$3,000。5年間のTCOはいくらか。",
     "options": [
       "$30,000",
       "$27,000",
@@ -530,19 +530,19 @@
       "$18,000"
     ],
     "answer": 0,
-    "explanation": "TCO = $15,000 + ($3,000 x 5) = $15,000 + $15,000 = $30,000 over 5 years.",
-    "cheatsheet": "TCO = Upfront + (Annual Cost x Years) + Hidden Costs. Hidden costs: power, cooling, space, staff, upgrades.",
+    "explanation": "TCO = $15,000 + ($3,000 x 5) = $15,000 + $15,000 = 5年間で$30,000。",
+    "cheatsheet": "TCO = 初期費用 + (年間コスト x 年数) + 隠れたコスト。隠れたコスト: 電力、冷却、スペース、スタッフ、アップグレード。",
     "steps": [
-      "Upfront cost: $15,000",
-      "Annual maintenance: $3,000 x 5 = $15,000",
-      "Base TCO: $15,000 + $15,000 = $30,000",
-      "Add hidden costs (power, space approximately 20%): $36,000"
+      "初期費用: $15,000",
+      "年間メンテナンス: $3,000 x 5 = $15,000",
+      "基本TCO: $15,000 + $15,000 = $30,000",
+      "隠れたコスト(電力、スペース約20%)追加: $36,000"
     ]
   },
   {
     "id": 28,
-    "category": "Cost Estimation",
-    "question": "Serverless function: 10 million invocations/month, 256MB memory, 200ms average duration. What is the approximate monthly compute cost?",
+    "category": "コスト見積もり",
+    "question": "サーバーレス関数: 月間1,000万回呼び出し、256MBメモリ、平均200ms。概算月間コンピュートコストはいくらか。",
     "options": [
       "$10.34",
       "$45",
@@ -550,19 +550,19 @@
       "$8.90"
     ],
     "answer": 0,
-    "explanation": "GB-s = 10M x (256/1024) x 0.2 = 500,000 GB-s. Compute cost: 500,000 x $0.00001667 = $8.34. Request cost: 10M x $0.20/1M = $2.00. Total: approximately $10.34.",
-    "cheatsheet": "Lambda Cost: Compute = Invocations x Memory(GB) x Duration(s) x Price/GB-s. Request cost = Invocations x Price/million.",
+    "explanation": "GB-秒 = 10M x (256/1024) x 0.2 = 500,000GB-秒。コンピュート: 500,000 x $0.00001667 = $8.34。リクエスト: 10M x $0.20/1M = $2.00。合計: 約$10.34。",
+    "cheatsheet": "Lambdaコスト: コンピュート = 呼び出し回数 x メモリ(GB) x 実行時間(秒) x 単価/GB-秒。リクエストコスト = 呼び出し回数 x 単価/百万回。",
     "steps": [
-      "GB-s per month: 10M x (256/1024) x 0.2 = 500,000 GB-s",
-      "Compute cost: 500,000 x $0.00001667 = $8.34",
-      "Request cost: 10M x $0.20/1M = $2.00",
-      "Total monthly: $8.34 + $2.00 = $10.34"
+      "月間GB-秒: 10M x (256/1024) x 0.2 = 500,000GB-秒",
+      "コンピュートコスト: 500,000 x $0.00001667 = $8.34",
+      "リクエストコスト: 10M x $0.20/1M = $2.00",
+      "月間合計: $8.34 + $2.00 = $10.34"
     ]
   },
   {
     "id": 29,
-    "category": "Cost Estimation",
-    "question": "Cloud egress to internet is $0.09/GB. Your app transfers 2TB outbound per month. What is the monthly egress cost?",
+    "category": "コスト見積もり",
+    "question": "クラウドエグレスは$0.09/GB。アプリは月間2TBのアウトバウンド転送。月間エグレスコストはいくらか。",
     "options": [
       "$184",
       "$180",
@@ -570,39 +570,39 @@
       "$92"
     ],
     "answer": 0,
-    "explanation": "2TB = 2,048GB. Cost = 2,048 x $0.09 = $184.32/month.",
-    "cheatsheet": "Egress Cost: Cost = Transfer Volume (GB) x Egress Rate. Intra-region traffic is often free.",
+    "explanation": "2TB = 2,048GB。コスト = 2,048 x $0.09 = $184.32/月。",
+    "cheatsheet": "エグレスコスト: コスト = 転送量(GB) x エグレス単価。リージョン内トラフィックは多くの場合無料。",
     "steps": [
-      "Convert: 2TB = 2 x 1024 = 2,048GB",
-      "Rate: $0.09/GB",
-      "Monthly egress: 2,048 x $0.09 = $184.32",
-      "With CDN (70% hit): 2,048 x 0.3 x $0.09 = $55.30 egress"
+      "変換: 2TB = 2 x 1,024 = 2,048GB",
+      "単価: $0.09/GB",
+      "月間エグレス: 2,048 x $0.09 = $184.32",
+      "CDN(70%ヒット)付: 2,048 x 0.3 x $0.09 = $55.30エグレス"
     ]
   },
   {
     "id": 30,
-    "category": "Cost Estimation",
-    "question": "Comparing cloud vs on-premises: Cloud annual cost $50,000, on-premises $35,000/year after $40,000 initial investment. Over 5 years, which is cheaper?",
+    "category": "コスト見積もり",
+    "question": "クラウドとオンプレミスの比較: クラウド年間$50,000、オンプレミスは$40,000初期投資後年間$35,000。5年間でどちらが安いか。",
     "options": [
-      "On-premises by $35,000",
-      "Cloud by $15,000",
-      "They are equal",
-      "Cannot determine"
+      "オンプレミスが$35,000安い",
+      "クラウドが$15,000安い",
+      "同じ",
+      "判定不可"
     ],
     "answer": 0,
-    "explanation": "On-premises 5-year: $40,000 + ($35,000 x 5) = $215,000. Cloud 5-year: $50,000 x 5 = $250,000. On-premises is cheaper by $35,000.",
-    "cheatsheet": "Cloud vs On-Prem: Cloud = OpEx (predictable, scalable). On-prem = CapEx + maintenance (lower long-term but requires staff).",
+    "explanation": "オンプレミス5年間: $40,000 + ($35,000 x 5) = $215,000。クラウド5年間: $50,000 x 5 = $250,000。オンプレミスが$35,000安い。",
+    "cheatsheet": "クラウド vs オンプレミス: クラウド = 運用費(予測可能、拡張可能)。オンプレミス = 資本支出 + メンテナンス(長期的には安いがスタッフ必要)。",
     "steps": [
-      "On-prem 5-year: $40,000 + $35,000 x 5 = $215,000",
-      "Cloud 5-year: $50,000 x 5 = $250,000",
-      "On-prem is cheaper by $35,000 over 5 years",
-      "Consider: staff costs, scaling, downtime risks for on-prem"
+      "オンプレミス5年間: $40,000 + $35,000 x 5 = $215,000",
+      "クラウド5年間: $50,000 x 5 = $250,000",
+      "オンプレミスが5年間で$35,000安い",
+      "考慮: スタッフコスト、スケーリング、オンプレミスのダウンタイムリスク"
     ]
   },
   {
     "id": 31,
-    "category": "Cost Estimation",
-    "question": "A load balancer costs $0.0225/hour. What is the annual cost?",
+    "category": "コスト見積もり",
+    "question": "ロードバランサーが$0.0225/時間。年間コストはいくらか。",
     "options": [
       "$197",
       "$50",
@@ -610,19 +610,19 @@
       "$19,710"
     ],
     "answer": 0,
-    "explanation": "$0.0225 x 730 hours x 12 months = $197.10/year.",
-    "cheatsheet": "Load Balancer Cost: Hourly x 730 = monthly. Monthly x 12 = annual.",
+    "explanation": "$0.0225 x 730時間 x 12ヶ月 = $197.10/年。",
+    "cheatsheet": "ロードバランサーコスト: 時間 x 730 = 月間。月間 x 12 = 年間。",
     "steps": [
-      "Monthly: $0.0225 x 730 = $16.425/month",
-      "Annual: $16.425 x 12 = $197.10/year",
-      "Per LB per year: approximately $197",
-      "Multiple LBs or high traffic may add LCU costs"
+      "月間: $0.0225 x 730 = $16.425/月",
+      "年間: $16.425 x 12 = $197.10/年",
+      "LBあたり年間: 約$197",
+      "複数LBや高トラフィックはLCUコストを追加"
     ]
   },
   {
     "id": 32,
-    "category": "Cost Estimation",
-    "question": "Reserved instance pricing offers 40% savings over on-demand. On-demand costs $219/month. What is the reserved monthly cost?",
+    "category": "コスト見積もり",
+    "question": "リザーブドインスタンス価格がオンデマンドより40%割引。オンデマンド月間$219。リザーブド月間コストはいくらか。",
     "options": [
       "$131",
       "$87",
@@ -630,19 +630,19 @@
       "$109"
     ],
     "answer": 0,
-    "explanation": "$219 x (1 - 0.40) = $219 x 0.60 = $131.40/month with reserved pricing.",
-    "cheatsheet": "Reserved Pricing: Reserved Cost = On-Demand x (1 - Discount). 1-year: 30-40% savings. 3-year: 50-60% savings.",
+    "explanation": "$219 x (1 - 0.40) = $219 x 0.60 = $131.40/月のリザーブド価格。",
+    "cheatsheet": "リザーブド価格: リザーブドコスト = オンデマンド x (1 - 割引率)。1年: 30-40%節約。3年: 50-60%節約。",
     "steps": [
-      "On-demand monthly cost: $219",
-      "Discount: 40%",
-      "Savings: $219 x 0.40 = $87.60/month",
-      "Reserved cost: $219 - $87.60 = $131.40/month"
+      "オンデマンド月間コスト: $219",
+      "割引: 40%",
+      "節約額: $219 x 0.40 = $87.60/月",
+      "リザーブドコスト: $219 - $87.60 = $131.40/月"
     ]
   },
   {
     "id": 33,
-    "category": "Cost Estimation",
-    "question": "Auto-scaling: min 2 instances at $0.10/hr, max 10. Average 5 instances during business hours (12hr), 2 after hours. What is the daily cost?",
+    "category": "コスト見積もり",
+    "question": "オートスケーリング: 最小2インスタンス($0.10/時間)、最大10。業務時間(12時間)平均5インスタンス、業務時間外2インスタンス。日間コストはいくらか。",
     "options": [
       "$8.40",
       "$48",
@@ -650,19 +650,19 @@
       "$72"
     ],
     "answer": 0,
-    "explanation": "Business hours: 5 x $0.10 x 12 = $6.00. After hours: 2 x $0.10 x 12 = $2.40. Daily total: $6 + $2.40 = $8.40.",
-    "cheatsheet": "Auto-Scale Cost: Cost = Sum of (Instances x Hours x Rate) for each time period.",
+    "explanation": "業務時間: 5 x $0.10 x 12 = $6.00。業務時間外: 2 x $0.10 x 12 = $2.40。日間合計: $6 + $2.40 = $8.40。",
+    "cheatsheet": "オートスケールコスト: コスト = 各期間の(インスタンス数 x 時間 x 単価)の合計。",
     "steps": [
-      "Business hours (12h): 5 instances x $0.10 x 12 = $6.00",
-      "After hours (12h): 2 instances x $0.10 x 12 = $2.40",
-      "Daily total: $6.00 + $2.40 = $8.40",
-      "Monthly estimate: $8.40 x 30 = $252"
+      "業務時間(12時間): 5インスタンス x $0.10 x 12 = $6.00",
+      "業務時間外(12時間): 2インスタンス x $0.10 x 12 = $2.40",
+      "日間合計: $6.00 + $2.40 = $8.40",
+      "月間推定: $8.40 x 30 = $252"
     ]
   },
   {
     "id": 34,
-    "category": "Cost Estimation",
-    "question": "Data transfer cost between regions is $0.02/GB. You replicate 100GB daily. What is the monthly inter-region cost?",
+    "category": "コスト見積もり",
+    "question": "リージョン間データ転送は$0.02/GB。1日100GBをレプリケート。月間リージョン間コストはいくらか。",
     "options": [
       "$60",
       "$200",
@@ -670,19 +670,19 @@
       "$100"
     ],
     "answer": 0,
-    "explanation": "100GB/day x 30 days x $0.02/GB = $60/month.",
-    "cheatsheet": "Inter-Region Cost: Cost = Daily Data (GB) x 30 x Rate.",
+    "explanation": "100GB/日 x 30日 x $0.02/GB = $60/月。",
+    "cheatsheet": "リージョン間コスト: コスト = 1日データ(GB) x 30 x 単価。",
     "steps": [
-      "Daily data: 100GB",
-      "Days per month: 30",
-      "Monthly transfer: 100 x 30 = 3,000GB",
-      "Cost: 3,000 x $0.02 = $60"
+      "1日データ: 100GB",
+      "月間日数: 30",
+      "月間転送量: 100 x 30 = 3,000GB",
+      "コスト: 3,000 x $0.02 = $60"
     ]
   },
   {
     "id": 35,
-    "category": "Cost Estimation",
-    "question": "Snapshot storage costs $0.05/GB/month. You take daily snapshots of a 500GB database with 30-day retention. What is the monthly snapshot cost?",
+    "category": "コスト見積もり",
+    "question": "スナップショットストレージが$0.05/GB/月。500GBデータベースを30日保持で毎日スナップショット。月間スナップショットコストはいくらか。",
     "options": [
       "$25",
       "$750",
@@ -690,19 +690,19 @@
       "$250"
     ],
     "answer": 0,
-    "explanation": "With incremental snapshots, only changed data is stored. First snapshot: 500GB. Daily change approximately 10%: 50GB. Monthly: $25 base + 29 x 50 x $0.05 = $97.50. Simplest answer: the base snapshot alone costs 500 x $0.05 = $25.",
-    "cheatsheet": "Snapshot Cost: Full snapshot = Size x Rate. Incremental snapshots only store changed blocks.",
+    "explanation": "増分スナップショットでは変更データのみ保存。最初のスナップショット: 500GB。差分は約25%。最もシンプルな答え: 基本スナップショット単独で500 x $0.05 = $25。",
+    "cheatsheet": "スナップショットコスト: フルスナップショット = サイズ x 単価。増分スナップショットは変更ブロックのみ保存。",
     "steps": [
-      "Database size: 500GB",
-      "Snapshot rate: $0.05/GB/month",
-      "Full snapshot cost: 500 x $0.05 = $25/month",
-      "With incremental snapshots, total varies based on change rate"
+      "データベースサイズ: 500GB",
+      "スナップショット単価: $0.05/GB/月",
+      "フルスナップショットコスト: 500 x $0.05 = $25/月",
+      "増分スナップショットでは変更率に応じて合計は変動"
     ]
   },
   {
     "id": 36,
-    "category": "Performance Metrics",
-    "question": "A system responds to 95% of requests within 200ms. What is the p95 response time?",
+    "category": "パフォーマンス指標",
+    "question": "システムが95%のリクエストを200ms以内に応答する。p95応答時間はいくらか。",
     "options": [
       "200ms",
       "95ms",
@@ -710,119 +710,119 @@
       "400ms"
     ],
     "answer": 0,
-    "explanation": "The p95 (95th percentile) response time is 200ms, meaning 95% of all requests complete within 200ms.",
-    "cheatsheet": "Percentile Metrics: p50 = median, p95 = 95% below this value, p99 = 99% below this value.",
+    "explanation": "p95(95パーセンタイル)応答時間は200ms。全リクエストの95%が200ms以内に完了することを意味する。",
+    "cheatsheet": "パーセンタイル指標: p50 = 中央値、p95 = 95%がこの値以下、p99 = 99%がこの値以下。",
     "steps": [
-      "p95 = 200ms means 95% of requests complete within 200ms",
-      "5% of requests take longer than 200ms",
-      "Percentile metrics are better than averages for SLA",
-      "Focus on p99 for user-facing systems"
+      "p95 = 200msは95%のリクエストが200ms以内に完了",
+      "5%のリクエストは200msより長い",
+      "パーセンタイル指標はSLAにおいて平均より優れた指標",
+      "ユーザー向けシステムではp99に注目"
     ]
   },
   {
     "id": 37,
-    "category": "Performance Metrics",
-    "question": "If 99.99% availability is required, what is the maximum allowed downtime per year?",
+    "category": "パフォーマンス指標",
+    "question": "99.99%の可用性が必要な場合、年間の許容最大ダウンタイムはいくらか。",
     "options": [
-      "52.6 minutes",
-      "5.26 minutes",
-      "8.76 hours",
-      "525.6 minutes"
+      "52.6分",
+      "5.26分",
+      "8.76時間",
+      "525.6分"
     ],
     "answer": 0,
-    "explanation": "99.99% = 4 nines. Downtime = 0.0001 x 8760 hours = 0.876 hours = 52.56 minutes per year.",
-    "cheatsheet": "Availability Nines Table: 99% = 87.6 hours/year. 99.9% = 8.76 hours/year. 99.99% = 52.6 minutes/year. 99.999% = 5.26 minutes/year.",
+    "explanation": "99.99% = 4ナイン。ダウンタイム = 0.0001 x 8,760時間 = 0.876時間 = 年間52.56分。",
+    "cheatsheet": "可用性ナイン数表: 99% = 87.6時間/年。99.9% = 8.76時間/年。99.99% = 52.6分/年。99.999% = 5.26分/年。",
     "steps": [
-      "Availability target: 99.99% (four nines)",
-      "Downtime fraction: 1 - 0.9999 = 0.0001",
-      "Yearly hours: 8760",
-      "Downtime: 8760 x 0.0001 = 0.876 hours = 52.56 minutes"
+      "可用性目標: 99.99%(4ナイン)",
+      "ダウンタイム割合: 1 - 0.9999 = 0.0001",
+      "年間時間: 8,760",
+      "ダウンタイム: 8,760 x 0.0001 = 0.876時間 = 52.56分"
     ]
   },
   {
     "id": 38,
-    "category": "Performance Metrics",
-    "question": "An API has p50 latency of 50ms, p95 of 200ms, and p99 of 2000ms. What does this indicate?",
+    "category": "パフォーマンス指標",
+    "question": "APIがp50レイテンシ50ms、p95が200ms、p99が2000ms。これは何を示しているか。",
     "options": [
-      "Consistent performance",
-      "Normal latency distribution",
-      "Significant tail latency outliers",
-      "All requests are slow"
+      "一貫したパフォーマンス",
+      "正常なレイテンシ分布",
+      "テールレイテンシの有意な外れ値",
+      "すべてのリクエストが遅い"
     ],
     "answer": 2,
-    "explanation": "The large gap between p95 (200ms) and p99 (2000ms) indicates significant tail latency outliers, often due to GC pauses or resource contention.",
-    "cheatsheet": "Latency Distribution Analysis: Small gap between percentiles = consistent. Large gap (p95 to p99) = tail latency problem.",
+    "explanation": "p95(200ms)とp99(2000ms)の大きな差はテールレイテンシの有意な外れ値を示す。GC一時停止やリソース競合が原因のことが多い。",
+    "cheatsheet": "レイテンシ分布分析: パーセンタイル間の差が小さい = 一貫性あり。差が大きい(p95→p99) = テールレイテンシ問題。",
     "steps": [
-      "p50 = 50ms (half of requests are fast)",
-      "p95 = 200ms (95% are reasonable)",
-      "p99 = 2000ms (1% are very slow - 10x p95)",
-      "This indicates tail latency outliers need investigation"
+      "p50 = 50ms(半数のリクエストが高速)",
+      "p95 = 200ms(95%が合理的)",
+      "p99 = 2000ms(1%が非常に遅い - p95の10倍)",
+      "テールレイテンシ外れ値の調査が必要"
     ]
   },
   {
     "id": 39,
-    "category": "Performance Metrics",
-    "question": "A service has 99.9% SLA and was down for 2 hours last month. Did it meet the SLA?",
+    "category": "パフォーマンス指標",
+    "question": "サービスが99.9%SLAで、先月2時間のダウンタイムがあった。SLAを満たしているか。",
     "options": [
-      "No, it exceeded the 43.8 min/month budget",
-      "Yes, 2 hours is acceptable",
-      "It depends on the contract",
-      "Yes, SLA allows 4.38 hours"
+      "いいえ、月間43.8分の予算を超過",
+      "はい、2時間は許容範囲",
+ "契約による",
+      "はい、SLAは4.38時間を許容"
     ],
     "answer": 0,
-    "explanation": "99.9% monthly availability allows 730 x 0.001 = 0.73 hours = 43.8 minutes downtime. 2 hours exceeds this, so the SLA was breached.",
-    "cheatsheet": "Monthly SLA Calculation: Allowed downtime = (1 - SLA%) x 730 hours. 99.9% = 43.8 min/month.",
+    "explanation": "99.9%月間可用性は730 x 0.001 = 0.73時間 = 43.8分のダウンタイムを許容。2時間はこれを超過、SLA違反。",
+    "cheatsheet": "月間SLA計算: 許容ダウンタイム = (1 - SLA%) x 730時間。99.9% = 43.8分/月。",
     "steps": [
-      "Monthly hours: 730",
-      "Allowed downtime for 99.9%: 730 x 0.001 = 0.73 hours",
-      "Convert: 0.73 x 60 = 43.8 minutes",
-      "Actual downtime: 2 hours = 120 minutes > 43.8 minutes (SLA breached)"
+      "月間時間: 730",
+      "99.9%の許容ダウンタイム: 730 x 0.001 = 0.73時間",
+      "変換: 0.73 x 60 = 43.8分",
+      "実際のダウンタイム: 2時間 = 120分 > 43.8分(SLA違反)"
     ]
   },
   {
     "id": 40,
-    "category": "Performance Metrics",
-    "question": "What is throughput measured in?",
+    "category": "パフォーマンス指標",
+    "question": "スループットは何の単位で測定されるか。",
     "options": [
-      "Seconds per request",
-      "Requests per second (or operations per second)",
-      "Bytes per minute",
-      "Percentage"
+      "リクエストあたり秒数",
+      "リクエスト/秒(または処理/秒)",
+      "分あたりバイト数",
+      "パーセント"
     ],
     "answer": 1,
-    "explanation": "Throughput measures the rate of work completed, typically expressed as requests per second, transactions per second, or operations per second.",
-    "cheatsheet": "Throughput: Units = req/s, TPS, ops/s. Throughput = Total Operations / Time Period.",
+    "explanation": "スループットは完了した作業の割合を測定。通常、リクエスト/秒、トランザクション/秒、処理/秒で表現。",
+    "cheatsheet": "スループット: 単位 = リクエスト/秒、TPS、処理/秒。スループット = 総操作数 / 期間。",
     "steps": [
-      "Throughput = total completed operations / time",
-      "Example: 10,000 requests in 100 seconds = 100 req/s",
-      "Used with response time to determine concurrency",
-      "Little's Law: concurrency = throughput x response time"
+      "スループット = 完了した総操作 / 時間",
+      "例: 100秒で10,000リクエスト = 100リクエスト/秒",
+      "応答時間と併せて同時実行数を決定",
+      "リトルの法則: 同時実行数 = スループット x 応答時間"
     ]
   },
   {
     "id": 41,
-    "category": "Performance Metrics",
-    "question": "Average response time is 100ms with 1000 concurrent users. Using Little's Law, what is the throughput?",
+    "category": "パフォーマンス指標",
+    "question": "平均応答時間100ms、1,000人の同時ユーザー。リトルの法則でスループットはいくらか。",
     "options": [
-      "10,000 req/s",
-      "100 req/s",
-      "1,000 req/s",
-      "10 req/s"
+      "10,000リクエスト/秒",
+      "100リクエスト/秒",
+      "1,000リクエスト/秒",
+      "10リクエスト/秒"
     ],
     "answer": 0,
-    "explanation": "Little's Law: throughput = concurrency / response_time = 1000 / 0.1 = 10,000 req/s.",
-    "cheatsheet": "Little's Law: L = lambda x W. lambda = L / W = concurrency / response time.",
+    "explanation": "リトルの法則: スループット = 同時実行数 / 応答時間 = 1,000 / 0.1 = 10,000リクエスト/秒。",
+    "cheatsheet": "リトルの法則: L = lambda x W。lambda = L / W = 同時実行数 / 応答時間。",
     "steps": [
-      "Apply Little's Law: L = lambda x W",
-      "1000 = lambda x 0.1",
-      "lambda = 1000 / 0.1 = 10,000 req/s",
-      "Verify: at 10,000 req/s with 100ms each, 1,000 are in-flight"
+      "リトルの法則を適用: L = lambda x W",
+      "1,000 = lambda x 0.1",
+      "lambda = 1,000 / 0.1 = 10,000リクエスト/秒",
+      "検証: 10,000リクエスト/秒で各100msなら、1,000が処理中"
     ]
   },
   {
     "id": 42,
-    "category": "Performance Metrics",
-    "question": "A system has MTBF of 720 hours and MTTR of 8 hours. What is the availability?",
+    "category": "パフォーマンス指標",
+    "question": "システムのMTBFが720時間、MTTRが8時間。可用性は何%か。",
     "options": [
       "98.9%",
       "99.0%",
@@ -830,39 +830,39 @@
       "90.0%"
     ],
     "answer": 0,
-    "explanation": "Availability = MTBF / (MTBF + MTTR) = 720 / (720 + 8) = 720/728 = 0.989 = 98.9%.",
-    "cheatsheet": "Availability from MTBF/MTTR: Availability = MTBF / (MTBF + MTTR). Higher MTBF and lower MTTR increase availability.",
+    "explanation": "可用性 = MTBF / (MTBF + MTTR) = 720 / (720 + 8) = 720/728 = 0.989 = 98.9%。",
+    "cheatsheet": "MTBF/MTTRからの可用性: 可用性 = MTBF / (MTBF + MTTR)。MTBFが高くMTTRが低いほど可用性が向上。",
     "steps": [
-      "MTBF = 720 hours",
-      "MTTR = 8 hours",
-      "Availability = 720 / (720 + 8) = 720 / 728",
-      "Result: 0.989 = 98.9%"
+      "MTBF = 720時間",
+      "MTTR = 8時間",
+      "可用性 = 720 / (720 + 8) = 720 / 728",
+      "結果: 0.989 = 98.9%"
     ]
   },
   {
     "id": 43,
-    "category": "Performance Metrics",
-    "question": "What is the difference between latency and response time?",
+    "category": "パフォーマンス指標",
+    "question": "レイテンシと応答時間の違いは何か。",
     "options": [
-      "They are the same",
-      "Latency is the time to start processing; response time includes processing time",
-      "Response time is always lower",
-      "Latency includes network only"
+      "同じ",
+      "レイテンシは処理開始までの時間; 応答時間は処理時間を含む",
+      "応答時間は常に低い",
+      "レイテンシはネットワークのみを含む"
     ],
     "answer": 1,
-    "explanation": "Latency is the delay before processing begins (waiting time). Response time includes latency plus the actual processing time.",
-    "cheatsheet": "Latency vs Response Time: Latency = waiting time before processing. Response Time = latency + service time.",
+    "explanation": "レイテンシは処理開始前の遅延(待ち時間)。応答時間はレイテンシと実際の処理時間の合計。",
+    "cheatsheet": "レイテンシ vs 応答時間: レイテンシ = 処理開始までの待ち時間。応答時間 = レイテンシ + サービス時間。",
     "steps": [
-      "Latency: time from request sent to processing starts",
-      "Service time: time spent actually processing",
-      "Response time: latency + service time",
-      "Often measured end-to-end including network"
+      "レイテンシ: リクエスト送信から処理開始までの時間",
+      "サービス時間: 実際の処理に費やした時間",
+      "応答時間: レイテンシ + サービス時間",
+      "多くの場合エンドツーエンド(ネットワーク含む)で測定"
     ]
   },
   {
     "id": 44,
-    "category": "Performance Metrics",
-    "question": "A SLA guarantees 99.95% uptime with a service credit of 10% per 0.05% below target. Actual uptime was 99.80%. What credit is owed?",
+    "category": "パフォーマンス指標",
+    "question": "SLAが99.95%稼働を保証、目標未達0.05%ごとに10%のサービスクレジット。実際の稼働率は99.80%。いくらのクレジットが発生するか。",
     "options": [
       "30%",
       "10%",
@@ -870,39 +870,39 @@
       "15%"
     ],
     "answer": 0,
-    "explanation": "Below target by: 99.95% - 99.80% = 0.15%. That is 0.15/0.05 = 3 increments below target. Credit = 3 x 10% = 30%.",
-    "cheatsheet": "SLA Credit Calculation: Shortfall = Target - Actual. Increments = Shortfall / Credit Threshold. Total Credit = Increments x Credit Rate.",
+    "explanation": "目標未達: 99.95% - 99.80% = 0.15%。0.15/0.05 = 3段階の目標未達。クレジット = 3 x 10% = 30%。",
+    "cheatsheet": "SLAクレジット計算: 未達幅 = 目標 - 実績。段階数 = 未達幅 / クレジット閾値。総クレジット = 段階数 x クレジット率。",
     "steps": [
-      "SLA target: 99.95%",
-      "Actual: 99.80%",
-      "Shortfall: 0.15%",
-      "Increments: 0.15 / 0.05 = 3 increments x 10% = 30% credit"
+      "SLA目標: 99.95%",
+      "実績: 99.80%",
+      "未達幅: 0.15%",
+      "段階数: 0.15 / 0.05 = 3段階 x 10% = 30%クレジット"
     ]
   },
   {
     "id": 45,
-    "category": "Performance Metrics",
-    "question": "What does 'five nines' (99.999%) availability translate to in downtime per year?",
+    "category": "パフォーマンス指標",
+    "question": "「ファイブナイン」(99.999%)の可用性は年間ダウンタイムにするといくらか。",
     "options": [
-      "5.26 minutes",
-      "52.6 minutes",
-      "8.76 hours",
-      "26.3 minutes"
+      "5.26分",
+      "52.6分",
+      "8.76時間",
+      "26.3分"
     ],
     "answer": 0,
-    "explanation": "99.999% availability means 0.001% downtime: 8760 x 0.00001 = 0.0876 hours = 5.26 minutes per year.",
-    "cheatsheet": "Five Nines: 99.999% = 5.26 min/year downtime. Very difficult to achieve with single data center. Requires multi-region redundancy.",
+    "explanation": "99.999%可用性は0.001%ダウンタイム: 8,760 x 0.00001 = 0.0876時間 = 年間5.26分。",
+    "cheatsheet": "ファイブナイン: 99.999% = 5.26分/年のダウンタイム。単一データセンターでは非常に困難。マルチリージョン冗長化が必要。",
     "steps": [
-      "Five nines: 99.999%",
-      "Downtime fraction: 1 - 0.99999 = 0.00001",
-      "Yearly: 8760 x 0.00001 = 0.0876 hours",
-      "Convert: 0.0876 x 60 = 5.26 minutes"
+      "ファイブナイン: 99.999%",
+      "ダウンタイム割合: 1 - 0.99999 = 0.00001",
+      "年間: 8,760 x 0.00001 = 0.0876時間",
+      "変換: 0.0876 x 60 = 5.26分"
     ]
   },
   {
     "id": 46,
-    "category": "Performance Metrics",
-    "question": "A load test shows response time doubles when throughput reaches 80% of max capacity. At 50% capacity, response time is 50ms. What is approximate response time at 80%?",
+    "category": "パフォーマンス指標",
+    "question": "負荷テストでスループットが最大キャパシティの80%に達すると応答時間が2倍になる。50%キャパシティで応答時間50ms。80%での近似応答時間はいくらか。",
     "options": [
       "100ms",
       "80ms",
@@ -910,59 +910,59 @@
       "50ms"
     ],
     "answer": 0,
-    "explanation": "At 80% capacity, response time approximately doubles from the linear projection. Base at 50% is 50ms. Doubling: approximately 100ms.",
-    "cheatsheet": "Response Time vs Utilization: At low utilization, RT approximately equals service time. Near capacity, RT increases non-linearly.",
+    "explanation": "80%キャパシティで応答時間は線形予測の約2倍になる。50%の基本値50ms。2倍: 約100ms。",
+    "cheatsheet": "応答時間 vs 利用率: 低利用率ではRTはほぼサービス時間に等しい。キャパシティ付近ではRTは非線形に増加。",
     "steps": [
-      "Base response time at 50% utilization: 50ms",
-      "At 80% utilization, response time approximately doubles",
-      "Estimated: 50ms x 2 = 100ms",
-      "Queueing formula: RT = 50ms / (1-0.8) = 250ms (theoretical max)"
+      "50%利用率の基本応答時間: 50ms",
+      "80%利用率で応答時間は約2倍",
+      "推定: 50ms x 2 = 100ms",
+      "キュー公式: RT = 50ms / (1-0.8) = 250ms(理論上の最大)"
     ]
   },
   {
     "id": 47,
-    "category": "Performance Metrics",
-    "question": "Error budget for a quarter (90 days) with 99.9% SLA: how many minutes of downtime are allowed?",
+    "category": "パフォーマンス指標",
+    "question": "四半期(90日)、99.9%SLAのエラーバジェット: 許容ダウンタイムは何分か。",
     "options": [
-      "129.6 minutes",
-      "13.0 minutes",
-      "1,296 minutes",
-      "2,160 minutes"
+      "129.6分",
+      "13.0分",
+      "1,296分",
+      "2,160分"
     ],
     "answer": 0,
-    "explanation": "99.9% over 90 days: 90 x 24 x 60 x 0.001 = 129.6 minutes of allowed downtime per quarter.",
-    "cheatsheet": "Quarterly Error Budget: Error Budget = Period x (1 - SLA). Quarter = 90 days x 24 x 60 = 129,600 minutes.",
+    "explanation": "99.9%で90日間: 90 x 24 x 60 x 0.001 = 129.6分の許容ダウンタイム/四半期。",
+    "cheatsheet": "四半期エラーバジェット: エラーバジェット = 期間 x (1 - SLA)。四半期 = 90日 x 24 x 60 = 129,600分。",
     "steps": [
-      "Quarter length: 90 days x 24 hours x 60 min = 129,600 minutes",
-      "SLA: 99.9% (allow 0.1% downtime)",
-      "Error budget: 129,600 x 0.001 = 129.6 minutes",
-      "If 50 minutes used, 79.6 minutes remaining"
+      "四半期: 90日 x 24時間 x 60分 = 129,600分",
+      "SLA: 99.9%(0.1%ダウンタイム許容)",
+      "エラーバジェット: 129,600 x 0.001 = 129.6分",
+      "50分使用済みの場合、79.6分残り"
     ]
   },
   {
     "id": 48,
-    "category": "Performance Metrics",
-    "question": "What is the formula for requests per second given total requests and duration in minutes?",
+    "category": "パフォーマンス指標",
+    "question": "総リクエスト数と分単位の期間から1秒あたりリクエスト数の公式はどれか。",
     "options": [
-      "RPS = Total / 60",
-      "RPS = Total / (Duration x 60)",
-      "RPS = Total x 60",
-      "RPS = Total x Duration"
+      "RPS = 総計 / 60",
+      "RPS = 総計 / (期間 x 60)",
+      "RPS = 総計 x 60",
+      "RPS = 総計 x 期間"
     ],
     "answer": 1,
-    "explanation": "RPS = Total Requests / (Duration in minutes x 60 seconds).",
-    "cheatsheet": "RPS Calculation: RPS = Total / (Minutes x 60). TPS (Transactions Per Second) uses same formula.",
+    "explanation": "RPS = 総リクエスト数 / (分単位の期間 x 60秒)。",
+    "cheatsheet": "RPS計算: RPS = 総計 / (分 x 60)。TPSも同じ公式を使用。",
     "steps": [
-      "Total requests: 6000",
-      "Duration: 5 minutes",
-      "Convert to seconds: 5 x 60 = 300 seconds",
-      "RPS = 6000 / 300 = 20 requests/second"
+      "総リクエスト: 6,000",
+      "期間: 5分",
+      "秒変換: 5 x 60 = 300秒",
+      "RPS = 6,000 / 300 = 20リクエスト/秒"
     ]
   },
   {
     "id": 49,
-    "category": "Performance Metrics",
-    "question": "A cache has a 95% hit rate. Average cache response time is 1ms, database response time is 20ms. What is the average response time?",
+    "category": "パフォーマンス指標",
+    "question": "キャッシュのヒット率95%。平均キャッシュ応答時間1ms、データベース応答時間20ms。平均応答時間はいくらか。",
     "options": [
       "1.95ms",
       "2.0ms",
@@ -970,39 +970,39 @@
       "20ms"
     ],
     "answer": 0,
-    "explanation": "Average = (0.95 x 1ms) + (0.05 x 20ms) = 0.95 + 1.0 = 1.95ms.",
-    "cheatsheet": "Blended Response Time: Avg RT = (Hit Rate x Cache RT) + (Miss Rate x DB RT). Miss Rate = 1 - Hit Rate.",
+    "explanation": "平均 = (0.95 x 1ms) + (0.05 x 20ms) = 0.95 + 1.0 = 1.95ms。",
+    "cheatsheet": "ブレンド応答時間: 平均RT = (ヒット率 x キャッシュRT) + (ミス率 x DBRT)。ミス率 = 1 - ヒット率。",
     "steps": [
-      "Cache hit rate: 95% = 0.95",
-      "Cache response: 1ms",
-      "DB response: 20ms",
-      "Average: (0.95 x 1) + (0.05 x 20) = 0.95 + 1.0 = 1.95ms"
+      "キャッシュヒット率: 95% = 0.95",
+      "キャッシュ応答: 1ms",
+      "DB応答: 20ms",
+      "平均: (0.95 x 1) + (0.05 x 20) = 0.95 + 1.0 = 1.95ms"
     ]
   },
   {
     "id": 50,
-    "category": "Performance Metrics",
-    "question": "How many requests per day can a service handle if it processes 500 req/s and runs 24/7?",
+    "category": "パフォーマンス指標",
+    "question": "サービスが500リクエスト/秒で24/7稼働の場合、1日あたり何件のリクエストを処理できるか。",
     "options": [
-      "43.2 million",
-      "8.64 million",
-      "500 million",
-      "4.32 million"
+      "4,320万件",
+      "864万件",
+      "5億件",
+      "432万件"
     ],
     "answer": 0,
-    "explanation": "500 req/s x 86400 seconds/day = 43,200,000 requests per day.",
-    "cheatsheet": "Daily Capacity: Daily = RPS x 86400 seconds. Account for peak vs average: multiply by peak factor (1.5-3x).",
+    "explanation": "500リクエスト/秒 x 86,400秒/日 = 43,200,000リクエスト/日。",
+    "cheatsheet": "日間キャパシティ: 日間 = RPS x 86,400秒。ピークvs平均を考慮: ピーク係数(1.5-3倍)を掛ける。",
     "steps": [
       "RPS: 500",
-      "Seconds per day: 86,400",
-      "Daily capacity: 500 x 86,400 = 43,200,000",
-      "Monthly: 43.2M x 30 = 1.296 billion"
+      "1日の秒数: 86,400",
+      "日間キャパシティ: 500 x 86,400 = 43,200,000",
+      "月間: 43.2M x 30 = 12.96億件"
     ]
   },
   {
     "id": 51,
-    "category": "Database Sizing",
-    "question": "A table has 10 million rows, each row averaging 500 bytes. What is the approximate table size?",
+    "category": "データベースサイジング",
+    "question": "テーブルが1,000万行、各行平均500バイト。テーブルサイズの概算はいくらか。",
     "options": [
       "5 GB",
       "4.77 GB",
@@ -1010,19 +1010,19 @@
       "500 MB"
     ],
     "answer": 0,
-    "explanation": "10,000,000 x 500 bytes = 5,000,000,000 bytes = 4.66GB. With overhead and indexes, approximately 5GB.",
-    "cheatsheet": "Table Size Estimation: Size = Rows x Avg Row Size. Add index overhead: +20-50%. Add page/block overhead: +10-20%.",
+    "explanation": "10,000,000 x 500バイト = 5,000,000,000バイト = 4.66GB。オーバーヘッドとインデックス付: 約5GB。",
+    "cheatsheet": "テーブルサイズ推定: サイズ = 行数 x 平均行サイズ。インデックスオーバーヘッド追加: +20-50%。ページ/ブロックオーバーヘッド: +10-20%。",
     "steps": [
-      "Rows: 10,000,000",
-      "Avg row size: 500 bytes",
-      "Raw data: 10M x 500 = 5,000,000,000 bytes",
-      "Convert: 5GB / 1024^3 = 4.66GB, with overhead approximately 5GB"
+      "行数: 10,000,000",
+      "平均行サイズ: 500バイト",
+      "生データ: 10M x 500 = 5,000,000,000バイト",
+      "変換: 5GB / 1024^3 = 4.66GB、オーバーヘッド付で約5GB"
     ]
   },
   {
     "id": 52,
-    "category": "Database Sizing",
-    "question": "A B-tree index on a table with 1 million rows stores 100 pointers per node. How many levels deep is the index?",
+    "category": "データベースサイジング",
+    "question": "100万行のテーブルのBツリーインデックス、各ノードに100ポインタ。インデックスの深さは何階か。",
     "options": [
       "3",
       "2",
@@ -1030,39 +1030,39 @@
       "1"
     ],
     "answer": 0,
-    "explanation": "Level 1 (root): 100 pointers. Level 2: 100 x 100 = 10,000. Level 3: 10,000 x 100 = 1,000,000 leaf entries. 3 levels needed.",
-    "cheatsheet": "B-Tree Depth: Depth = ceil(log_fanout(rows)). Typical fanout: 100-300 pointers per 4KB/8KB page. Depth 3 can index billions of rows.",
+    "explanation": "階層1(ルート): 100ポインタ。階層2: 100 x 100 = 10,000。階層3: 10,000 x 100 = 1,000,000リーフエントリ。3階必要。",
+    "cheatsheet": "Bツリー深さ: 深さ = ceil(log_fanout(行数))。通常ファンアウト: 4KB/8KBページあたり100-300ポインタ。深さ3で数十億行をインデックス可能。",
     "steps": [
-      "Fanout: 100 pointers per node",
-      "Level 0 (root): 1 node covers 100 rows",
-      "Level 1: 100 nodes cover 10,000 rows",
-      "Level 2: 10,000 nodes cover 1,000,000 rows = 3 levels"
+      "ファンアウト: 各ノード100ポインタ",
+      "階層0(ルート): 1ノードで100行カバー",
+      "階層1: 100ノードで10,000行カバー",
+      "階層2: 10,000ノードで1,000,000行カバー = 3階"
     ]
   },
   {
     "id": 53,
-    "category": "Database Sizing",
-    "question": "A database generates 500 IOPS at peak. Each I/O operation is 8KB. What is the throughput in MB/s?",
+    "category": "データベースサイジング",
+    "question": "データベースがピーク時500IOPSを生成。各I/O操作は8KB。スループットはMB/秒でいくらか。",
     "options": [
-      "3.9 MB/s",
-      "3.9 GB/s",
-      "500 MB/s",
-      "1 MB/s"
+      "3.9 MB/秒",
+      "3.9 GB/秒",
+      "500 MB/秒",
+      "1 MB/秒"
     ],
     "answer": 0,
-    "explanation": "500 x 8KB = 4000KB/s = 3.91 MB/s, approximately 3.9 MB/s.",
-    "cheatsheet": "IOPS to Throughput: Throughput (MB/s) = IOPS x IO_Size / 1024. SSD IOPS: 10,000-100,000. HDD IOPS: 100-200.",
+    "explanation": "500 x 8KB = 4,000KB/秒 = 3.91MB/秒、約3.9MB/秒。",
+    "cheatsheet": "IOPS→スループット: スループット(MB/秒) = IOPS x IOサイズ / 1024。SSD IOPS: 10,000-100,000。HDD IOPS: 100-200。",
     "steps": [
       "IOPS: 500",
-      "IO size: 8KB",
-      "Throughput: 500 x 8 = 4000 KB/s",
-      "Convert: 4000 / 1024 = 3.91 MB/s"
+      "IOサイズ: 8KB",
+      "スループット: 500 x 8 = 4,000KB/秒",
+      "変換: 4,000 / 1,024 = 3.91MB/秒"
     ]
   },
   {
     "id": 54,
-    "category": "Database Sizing",
-    "question": "You need to store 2TB of database data. With RAID 10 requiring 50% overhead, how much raw disk space is needed?",
+    "category": "データベースサイジング",
+    "question": "2TBのデータベースデータを保存。RAID 10で50%のオーバーヘッドが必要。必要な生ディスク容量はいくらか。",
     "options": [
       "4 TB",
       "2 TB",
@@ -1070,19 +1070,19 @@
       "1 TB"
     ],
     "answer": 0,
-    "explanation": "RAID 10 mirrors data (50% overhead): 2TB x 2 = 4TB raw disk needed.",
-    "cheatsheet": "RAID Storage Overhead: RAID 0: 0%. RAID 1: 50%. RAID 5: 1 disk. RAID 6: 2 disks. RAID 10: 50%.",
+    "explanation": "RAID 10はデータをミラー(50%オーバーヘッド): 2TB x 2 = 4TBの生ディスクが必要。",
+    "cheatsheet": "RAIDストレージオーバーヘッド: RAID 0: 0%。RAID 1: 50%。RAID 5: 1ディスク。RAID 6: 2ディスク。RAID 10: 50%。",
     "steps": [
-      "Required storage: 2TB",
-      "RAID 10 overhead: 50% (mirroring)",
-      "Raw disk needed: 2TB x 2 = 4TB",
-      "Add 10-20% for file system overhead"
+      "必要ストレージ: 2TB",
+      "RAID 10オーバーヘッド: 50%(ミラー)",
+      "必要生ディスク: 2TB x 2 = 4TB",
+      "ファイルシステムオーバーヘッド10-20%を追加"
     ]
   },
   {
     "id": 55,
-    "category": "Database Sizing",
-    "question": "A table grows by 100,000 rows per day. Each row is 200 bytes. After 3 years, how much data will the table contain?",
+    "category": "データベースサイジング",
+    "question": "テーブルが1日100,000行増加。各行200バイト。3年後のデータ量はいくらか。",
     "options": [
       "21.9 GB",
       "21.9 MB",
@@ -1090,19 +1090,19 @@
       "219 GB"
     ],
     "answer": 0,
-    "explanation": "100,000 x 200 x 365 x 3 = 21,900,000,000 bytes = 20.4GB raw. With overhead: approximately 21.9GB.",
-    "cheatsheet": "Growth Projection: Future Size = Daily Growth x Days x Row Size. Plan for 2-3 years of growth. Consider archival strategies.",
+    "explanation": "100,000 x 200 x 365 x 3 = 21,900,000,000バイト = 20.4GB生データ。オーバーヘッド付: 約21.9GB。",
+    "cheatsheet": "成長予測: 将来サイズ = 日次成長 x 日数 x 行サイズ。2-3年の成長を計画。アーカイブ戦略を検討。",
     "steps": [
-      "Daily growth: 100,000 x 200 = 20MB",
-      "Yearly growth: 20MB x 365 = 7.3GB",
-      "3-year total: 7.3 x 3 = 21.9GB raw",
-      "With indexes (+30%): approximately 28.5GB"
+      "日次成長: 100,000 x 200 = 20MB",
+      "年間成長: 20MB x 365 = 7.3GB",
+      "3年合計: 7.3 x 3 = 21.9GB生データ",
+      "インデックス付(+30%): 約28.5GB"
     ]
   },
   {
     "id": 56,
-    "category": "Database Sizing",
-    "question": "Each database connection uses 10MB of memory. A connection pool of 200 connections needs how much memory?",
+    "category": "データベースサイジング",
+    "question": "各データベース接続が10MBのメモリを使用。200接続のコネクションプールに必要なメモリはいくらか。",
     "options": [
       "2 GB",
       "200 MB",
@@ -1110,19 +1110,19 @@
       "1 GB"
     ],
     "answer": 0,
-    "explanation": "200 connections x 10MB = 2000MB = 2GB of memory for the connection pool.",
-    "cheatsheet": "Connection Pool Memory: Memory = Connections x Memory per Connection. Typical per connection: 2-10MB.",
+    "explanation": "200接続 x 10MB = 2,000MB = 2GBのコネクションプールメモリ。",
+    "cheatsheet": "コネクションプールメモリ: メモリ = 接続数 x 接続あたりメモリ。通常接続あたり: 2-10MB。",
     "steps": [
-      "Connections: 200",
-      "Memory per connection: 10MB",
-      "Total: 200 x 10MB = 2,000MB",
-      "Convert: 2,000MB = 2GB"
+      "接続数: 200",
+      "接続あたりメモリ: 10MB",
+      "合計: 200 x 10MB = 2,000MB",
+      "変換: 2,000MB = 2GB"
     ]
   },
   {
     "id": 57,
-    "category": "Database Sizing",
-    "question": "A primary database with 2 async read replicas. Write IOPS on primary is 300. Total system IOPS needed is:",
+    "category": "データベースサイジング",
+    "question": "プライマリデータベースに2つの非同期リードレプリカ。プライマリの書き込みIOPSは300。総システムIOPSはいくらか。",
     "options": [
       "900",
       "300",
@@ -1130,19 +1130,19 @@
       "450"
     ],
     "answer": 0,
-    "explanation": "Each replica applies the same writes: 300 write IOPS x 3 (primary + 2 replicas) = 900 IOPS total system IOPS.",
-    "cheatsheet": "Replication IOPS: Total IOPS = Writes x (1 + Number of Replicas) + Reads. Each replica must apply all writes.",
+    "explanation": "各レプリカは同じ書き込みを適用: 300書き込みIOPS x 3(プライマリ + 2レプリカ) = 900総システムIOPS。",
+    "cheatsheet": "レプリケーションIOPS: 総IOPS = 書き込み x (1 + レプリカ数) + 読み取り。各レプリカはすべての書き込みを適用。",
     "steps": [
-      "Write IOPS: 300",
-      "Replicas: 2",
-      "Total write IOPS: 300 x (1 + 2) = 900",
-      "Read IOPS: distributed across replicas (not counted here)"
+      "書き込みIOPS: 300",
+      "レプリカ: 2",
+      "総書き込みIOPS: 300 x (1 + 2) = 900",
+      "読み取りIOPS: レプリカに分散(ここでは対象外)"
     ]
   },
   {
     "id": 58,
-    "category": "Database Sizing",
-    "question": "A database has 5 indexes on a 10GB table. Estimated index storage overhead is 40%. What is total storage needed?",
+    "category": "データベースサイジング",
+    "question": "データベースが10GBのテーブルに5つのインデックス。推定インデックスストレージオーバーヘッド40%。総ストレージはいくらか。",
     "options": [
       "14 GB",
       "15 GB",
@@ -1150,19 +1150,19 @@
       "10 GB"
     ],
     "answer": 0,
-    "explanation": "Index storage: 10GB x 0.40 = 4GB. Total: 10GB + 4GB = 14GB.",
-    "cheatsheet": "Index Storage: Index Size = Table Size x Overhead Ratio. Typical ratio: 20-60% depending on index count and types.",
+    "explanation": "インデックスストレージ: 10GB x 0.40 = 4GB。合計: 10GB + 4GB = 14GB。",
+    "cheatsheet": "インデックスストレージ: インデックスサイズ = テーブルサイズ x オーバーヘッド率。通常比率: 20-60%(インデックス数と種類による)。",
     "steps": [
-      "Table size: 10GB",
-      "Index overhead: 40%",
-      "Index storage: 10GB x 0.40 = 4GB",
-      "Total: 10GB + 4GB = 14GB"
+      "テーブルサイズ: 10GB",
+      "インデックスオーバーヘッド: 40%",
+      "インデックスストレージ: 10GB x 0.40 = 4GB",
+      "合計: 10GB + 4GB = 14GB"
     ]
   },
   {
     "id": 59,
-    "category": "Database Sizing",
-    "question": "Binary log files for a database grow at 2GB/day. With 7-day retention, how much log storage is needed?",
+    "category": "データベースサイジング",
+    "question": "バイナリログが1日2GB増加。7日間保持する場合、ログストレージはいくらか。",
     "options": [
       "14 GB",
       "2 GB",
@@ -1170,19 +1170,19 @@
       "28 GB"
     ],
     "answer": 0,
-    "explanation": "2GB/day x 7 days = 14GB of binary log storage needed.",
-    "cheatsheet": "Binary Log Sizing: Log Storage = Daily Growth x Retention Days. Binary logs are critical for replication and point-in-time recovery.",
+    "explanation": "2GB/日 x 7日 = 14GBのバイナリログストレージが必要。",
+    "cheatsheet": "バイナリログサイジング: ログストレージ = 日次増加 x 保持日数。バイナリログはレプリケーションとポイントインタイムリカバリに重要。",
     "steps": [
-      "Daily log growth: 2GB",
-      "Retention: 7 days",
-      "Total: 2 x 7 = 14GB",
-      "Consider compression for older logs"
+      "日次ログ増加: 2GB",
+      "保持期間: 7日",
+      "合計: 2 x 7 = 14GB",
+      "古いログの圧縮を検討"
     ]
   },
   {
     "id": 60,
-    "category": "Database Sizing",
-    "question": "A partitioned table has 12 monthly partitions. Each partition has 500MB. What is the total table size?",
+    "category": "データベースサイジング",
+    "question": "パーティション化テーブルが12の月次パーティション。各パーティション500MB。テーブル合計サイズはいくらか。",
     "options": [
       "6 GB",
       "500 MB",
@@ -1190,19 +1190,19 @@
       "3 GB"
     ],
     "answer": 0,
-    "explanation": "12 partitions x 500MB = 6,000MB = 6GB total.",
-    "cheatsheet": "Partitioned Table Sizing: Total = Partitions x Size per Partition. Benefits: easier maintenance, partition pruning in queries.",
+    "explanation": "12パーティション x 500MB = 6,000MB = 6GB合計。",
+    "cheatsheet": "パーティションテーブルサイジング: 合計 = パーティション数 x パーティションあたりサイズ。メリット: 保守が容易、クエリのパーティションプルーニング。",
     "steps": [
-      "Partitions: 12 (one per month)",
-      "Size per partition: 500MB",
-      "Total: 12 x 500MB = 6,000MB = 6GB",
-      "Annual: add one partition per month"
+      "パーティション: 12(月ごと)",
+      "パーティションあたりサイズ: 500MB",
+      "合計: 12 x 500MB = 6,000MB = 6GB",
+      "年次: 毎月1パーティション追加"
     ]
   },
   {
     "id": 61,
-    "category": "Database Sizing",
-    "question": "A NoSQL database stores JSON documents averaging 5KB. With 1 million documents, what is the estimated storage?",
+    "category": "データベースサイジング",
+    "question": "NoSQLデータベースが平均5KBのJSON文書を保存。100万文書の場合、推定ストレージはいくらか。",
     "options": [
       "5 GB",
       "5 MB",
@@ -1210,19 +1210,19 @@
       "500 MB"
     ],
     "answer": 0,
-    "explanation": "1,000,000 x 5KB = 5,000,000KB = 4.66GB. With overhead: approximately 5GB.",
-    "cheatsheet": "Document Store Sizing: Size = Documents x Avg Document Size. BSON/JSON overhead: +10-30%.",
+    "explanation": "1,000,000 x 5KB = 5,000,000KB = 4.66GB。オーバーヘッド付: 約5GB。",
+    "cheatsheet": "ドキュメントストアサイジング: サイズ = 文書数 x 平均文書サイズ。BSON/JSONオーバーヘッド: +10-30%。",
     "steps": [
-      "Documents: 1,000,000",
-      "Avg size: 5KB",
-      "Raw total: 1M x 5KB = 5,000,000KB = 4.77GB",
-      "With 5% encoding overhead: approximately 5GB"
+      "文書数: 1,000,000",
+      "平均サイズ: 5KB",
+      "生合計: 1M x 5KB = 5,000,000KB = 4.77GB",
+      "5%エンコードオーバーヘッド付: 約5GB"
     ]
   },
   {
     "id": 62,
-    "category": "Database Sizing",
-    "question": "A database performs 1000 writes/sec. Each write generates 50 bytes of WAL. Daily WAL volume is:",
+    "category": "データベースサイジング",
+    "question": "データベースが1,000書き込み/秒。各書き込みが50バイトのWALを生成。日次WAL量はいくらか。",
     "options": [
       "4.32 GB",
       "432 MB",
@@ -1230,19 +1230,19 @@
       "43.2 GB"
     ],
     "answer": 0,
-    "explanation": "1000 x 50 = 50,000 bytes/sec = 48.8KB/s. Per day: 48.8 x 86400 = 4,216,832KB = 4.02GB. Approximately 4.32GB with overhead.",
-    "cheatsheet": "WAL Volume: Volume = Writes/sec x WAL Size per Write x 86400. WAL is critical for durability and replication.",
+    "explanation": "1,000 x 50 = 50,000バイト/秒 = 48.8KB/秒。1日あたり: 48.8 x 86,400 = 4,216,832KB = 4.02GB。オーバーヘッド付約4.32GB。",
+    "cheatsheet": "WAL量: 量 = 書き込み/秒 x WALあたりサイズ x 86,400。WALは耐久性とレプリケーションに重要。",
     "steps": [
-      "Writes/sec: 1,000",
-      "WAL per write: 50 bytes",
-      "Per second: 1,000 x 50 = 50,000 bytes = 48.8KB",
-      "Per day: 48.8KB x 86,400 = 4,216,320KB = 4.02GB"
+      "書き込み/秒: 1,000",
+      "書き込みあたりWAL: 50バイト",
+      "1秒あたり: 1,000 x 50 = 50,000バイト = 48.8KB",
+      "1日あたり: 48.8KB x 86,400 = 4,216,320KB = 4.02GB"
     ]
   },
   {
     "id": 63,
-    "category": "Database Sizing",
-    "question": "A key-value store needs p99 read latency under 1ms. Cache hit rate is 90%, database read is 5ms. What is the average read latency?",
+    "category": "データベースサイジング",
+    "question": "キーバリューストアがp99読み取りレイテンシ1ms以下。キャッシュヒット率90%、DB読み取り5ms。平均読み取りレイテンシはいくらか。",
     "options": [
       "1.4 ms",
       "5 ms",
@@ -1250,19 +1250,19 @@
       "0.5 ms"
     ],
     "answer": 0,
-    "explanation": "Average = (0.9 x 1ms cache) + (0.1 x 5ms DB) = 0.9 + 0.5 = 1.4ms.",
-    "cheatsheet": "Weighted Average Latency: Avg = (Hit Rate x Cache Latency) + (Miss Rate x DB Latency).",
+    "explanation": "平均 = (0.9 x 1msキャッシュ) + (0.1 x 5ms DB) = 0.9 + 0.5 = 1.4ms。",
+    "cheatsheet": "加重平均レイテンシ: 平均 = (ヒット率 x キャッシュレイテンシ) + (ミス率 x DBレイテンシ)。",
     "steps": [
-      "Cache hit rate: 90%, latency: 1ms",
-      "DB miss rate: 10%, latency: 5ms",
-      "Average: (0.9 x 1) + (0.1 x 5) = 0.9 + 0.5 = 1.4ms",
-      "Target: 1ms - may not meet SLA, need higher hit rate"
+      "キャッシュヒット率: 90%、レイテンシ: 1ms",
+      "DBミス率: 10%、レイテンシ: 5ms",
+      "平均: (0.9 x 1) + (0.1 x 5) = 0.9 + 0.5 = 1.4ms",
+      "目標: 1ms - SLAを満たさない可能性、ヒット率を上げる必要"
     ]
   },
   {
     "id": 64,
-    "category": "Database Sizing",
-    "question": "A table with 50 million rows, 10 columns averaging 50 bytes each. Row overhead is 100 bytes. Total table size?",
+    "category": "データベースサイジング",
+    "question": "テーブルが5,000万行、10列、各列平均50バイト。行オーバーヘッド100バイト。テーブル合計サイズはいくらか。",
     "options": [
       "35 GB",
       "3.5 GB",
@@ -1270,19 +1270,19 @@
       "5 GB"
     ],
     "answer": 0,
-    "explanation": "Row size = (10 x 50) + 100 = 600 bytes. Total: 50M x 600 = 30,000,000,000 bytes = 27.9GB. With page overhead: approximately 35GB.",
-    "cheatsheet": "Row-Level Sizing: Row Size = Sum(Columns) + Row Overhead. Table size = Rows x Row Size x Page Overhead Factor.",
+    "explanation": "行サイズ = (10 x 50) + 100 = 600バイト。合計: 50M x 600 = 30,000,000,000バイト = 27.9GB。ページオーバーヘッド付: 約35GB。",
+    "cheatsheet": "行レベルサイジング: 行サイズ = 列の合計 + 行オーバーヘッド。テーブルサイズ = 行数 x 行サイズ x ページオーバーヘッド係数。",
     "steps": [
-      "Column data: 10 x 50 = 500 bytes",
-      "Row overhead: 100 bytes",
-      "Total row: 600 bytes",
-      "Table: 50M x 600 = 30GB raw, approximately 35GB with page overhead"
+      "列データ: 10 x 50 = 500バイト",
+      "行オーバーヘッド: 100バイト",
+      "合計行: 600バイト",
+      "テーブル: 50M x 600 = 30GB生データ、ページオーバーヘッド付約35GB"
     ]
   },
   {
     "id": 65,
-    "category": "Database Sizing",
-    "question": "A time-series database stores 10,000 data points per second, each 16 bytes. Monthly storage (30 days)?",
+    "category": "データベースサイジング",
+    "question": "時系列データベースが1秒あたり10,000データポイントを保存、各16バイト。月間ストレージ(30日)はいくらか。",
     "options": [
       "41.4 GB",
       "414 GB",
@@ -1290,19 +1290,19 @@
       "4,140 GB"
     ],
     "answer": 0,
-    "explanation": "10,000 x 16 = 160,000 bytes/sec. Per day: 160,000 x 86,400 = 13.8GB. Per month: 13.8 x 30 = 414GB. With 10:1 compression: approximately 41.4GB.",
-    "cheatsheet": "Time-Series Storage: Raw = Points/sec x Size x 86400 x Days. Compression ratios for time-series: 5:1 to 20:1.",
+    "explanation": "10,000 x 16 = 160,000バイト/秒。1日: 160,000 x 86,400 = 13.8GB。月間: 13.8 x 30 = 414GB。10:1圧縮で: 約41.4GB。",
+    "cheatsheet": "時系列ストレージ: 生データ = ポイント/秒 x サイズ x 86,400 x 日数。時系列圧縮率: 5:1〜20:1。",
     "steps": [
-      "Data rate: 10,000 x 16 = 160,000 bytes/s = 156KB/s",
-      "Daily: 156 x 86,400 = 13.5GB raw",
-      "Monthly: 13.5 x 30 = 405GB raw",
-      "With 10:1 compression: approximately 40.5GB"
+      "データレート: 10,000 x 16 = 160,000バイト/秒 = 156KB/秒",
+      "1日: 156 x 86,400 = 13.5GB生データ",
+      "月間: 13.5 x 30 = 405GB生データ",
+      "10:1圧縮で: 約40.5GB"
     ]
   },
   {
     "id": 66,
-    "category": "Network Design",
-    "question": "A 1Gbps network connection. How many concurrent 5Mbps video streams can it support?",
+    "category": "ネットワーク設計",
+    "question": "1Gbpsネットワーク接続。5Mbpsのビデオストリームを同時何本サポートできるか。",
     "options": [
       "200",
       "100",
@@ -1310,39 +1310,39 @@
       "50"
     ],
     "answer": 0,
-    "explanation": "1,000Mbps / 5Mbps = 200 concurrent streams. With protocol overhead (approximately 10%): approximately 180 practical streams.",
-    "cheatsheet": "Network Capacity: Max Streams = Bandwidth / Stream Bandwidth. Account for protocol overhead: -10-20%.",
+    "explanation": "1,000Mbps / 5Mbps = 200同時ストリーム。プロトコルオーバーヘッド(約10%)考慮: 約180実用ストリーム。",
+    "cheatsheet": "ネットワークキャパシティ: 最大ストリーム数 = 帯域幅 / ストリーム帯域幅。プロトコルオーバーヘッド考慮: -10-20%。",
     "steps": [
-      "Total bandwidth: 1Gbps = 1,000Mbps",
-      "Per stream: 5Mbps",
-      "Theoretical: 1,000 / 5 = 200 streams",
-      "With 10% overhead: 200 x 0.9 = 180 practical streams"
+      "総帯域幅: 1Gbps = 1,000Mbps",
+      "ストリームあたり: 5Mbps",
+      "理論上: 1,000 / 5 = 200ストリーム",
+      "10%オーバーヘッド付: 200 x 0.9 = 180実用ストリーム"
     ]
   },
   {
     "id": 67,
-    "category": "Network Design",
-    "question": "TCP handshake plus TLS 1.3 requires approximately how many round trips?",
+    "category": "ネットワーク設計",
+    "question": "TCPハンドシェイクとTLS 1.3で約何往復が必要か。",
     "options": [
-      "2.5 RTTs",
+      "2.5 RTT",
       "1 RTT",
-      "3.5 RTTs",
-      "5 RTTs"
+      "3.5 RTT",
+      "5 RTT"
     ],
     "answer": 0,
-    "explanation": "TCP handshake: 1.5 RTTs. TLS 1.3 adds 1 RTT. Total: 2.5 RTTs for full connection with encryption.",
-    "cheatsheet": "Connection Setup: TCP handshake = 1.5 RTTs. TLS 1.2 = +2 RTTs (total 3.5). TLS 1.3 = +1 RTT (total 2.5).",
+    "explanation": "TCPハンドシェイク: 1.5RTT。TLS 1.3が+1RTT。合計: 2.5RTTで暗号化付き完全接続。",
+    "cheatsheet": "接続セットアップ: TCPハンドシェイク = 1.5RTT。TLS 1.2 = +2RTT(合計3.5)。TLS 1.3 = +1RTT(合計2.5)。",
     "steps": [
-      "TCP handshake: 1.5 RTTs (SYN, SYN-ACK, ACK)",
-      "TLS 1.3: +1 RTT",
-      "Total: 2.5 RTTs",
-      "With connection pooling: 0ms (reuse existing)"
+      "TCPハンドシェイク: 1.5RTT(SYN, SYN-ACK, ACK)",
+      "TLS 1.3: +1RTT",
+      "合計: 2.5RTT",
+      "コネクションプーリングの場合: 0ms(既存を再利用)"
     ]
   },
   {
     "id": 68,
-    "category": "Network Design",
-    "question": "A packet travels through 3 network hops. Each hop adds 5ms latency. What is the network latency?",
+    "category": "ネットワーク設計",
+    "question": "パケットが3つのネットワークホップを通過。各ホップが5msのレイテンシを追加。ネットワークレイテンシはいくらか。",
     "options": [
       "15ms",
       "5ms",
@@ -1350,19 +1350,19 @@
       "20ms"
     ],
     "answer": 0,
-    "explanation": "3 hops x 5ms = 15ms network latency (propagation delay through hops).",
-    "cheatsheet": "Network Latency: Total = Hops x Per-Hop Latency + Propagation Delay + Queueing. Propagation: approximately 1ms per 200km.",
+    "explanation": "3ホップ x 5ms = 15msネットワークレイテンシ(ホップを通過する伝搬遅延)。",
+    "cheatsheet": "ネットワークレイテンシ: 合計 = ホップ数 x ホップあたりレイテンシ + 伝搬遅延 + キューイング。伝搬: 約1ms/200km。",
     "steps": [
-      "Hops: 3",
-      "Per-hop latency: 5ms",
-      "Hop latency: 3 x 5 = 15ms",
-      "Add propagation and processing: typically 15-25ms total"
+      "ホップ数: 3",
+      "ホップあたりレイテンシ: 5ms",
+      "ホップレイテンシ: 3 x 5 = 15ms",
+      "伝搬と処理を追加: 通常15-25ms合計"
     ]
   },
   {
     "id": 69,
-    "category": "Network Design",
-    "question": "An API payload is 10KB. With HTTP overhead of 500 bytes, what is the total data per request on the wire?",
+    "category": "ネットワーク設計",
+    "question": "APIペイロードが10KB。HTTPオーバーヘッド500バイト。回線上の1リクエストあたりの総データ量はいくらか。",
     "options": [
       "10.5 KB",
       "10 KB",
@@ -1370,19 +1370,19 @@
       "11 KB"
     ],
     "answer": 0,
-    "explanation": "Payload 10KB + HTTP headers approximately 500 bytes = 10.5KB per request. Plus TCP/IP overhead (approximately 40 bytes).",
-    "cheatsheet": "HTTP Request Overhead: Total = Payload + Headers + TCP/IP + TLS. HTTP headers: typically 200-800 bytes. TCP/IP overhead: approximately 40 bytes.",
+    "explanation": "ペイロード10KB + HTTPヘッダー約500バイト = 10.5KB/リクエスト。TCP/IPオーバーヘッド(約40バイト)を追加。",
+    "cheatsheet": "HTTPリクエストオーバーヘッド: 合計 = ペイロード + ヘッダー + TCP/IP + TLS。HTTPヘッダー: 通常200-800バイト。TCP/IPオーバーヘッド: 約40バイト。",
     "steps": [
-      "Payload: 10KB = 10,240 bytes",
-      "HTTP headers: approximately 500 bytes",
-      "TCP/IP: approximately 40 bytes",
-      "Total: approximately 10,780 bytes = 10.5KB"
+      "ペイロード: 10KB = 10,240バイト",
+      "HTTPヘッダー: 約500バイト",
+      "TCP/IP: 約40バイト",
+      "合計: 約10,780バイト = 10.5KB"
     ]
   },
   {
     "id": 70,
-    "category": "Network Design",
-    "question": "A WebSocket connection maintains 1000 open connections. Each connection uses 50KB for buffers. How much memory is needed?",
+    "category": "ネットワーク設計",
+    "question": "WebSocket接続で1,000のオープン接続を維持。各接続が50KBのバッファを使用。必要なメモリはいくらか。",
     "options": [
       "50 MB",
       "500 MB",
@@ -1390,19 +1390,19 @@
       "5 GB"
     ],
     "answer": 0,
-    "explanation": "1000 x 50KB = 50,000KB = 48.8MB, approximately 50MB.",
-    "cheatsheet": "WebSocket Memory: Memory = Connections x Buffer Size. Typical buffer: 16-64KB per connection.",
+    "explanation": "1,000 x 50KB = 50,000KB = 48.8MB、約50MB。",
+    "cheatsheet": "WebSocketメモリ: メモリ = 接続数 x バッファサイズ。通常バッファ: 16-64KB/接続。",
     "steps": [
-      "Connections: 1,000",
-      "Buffer per connection: 50KB",
-      "Total: 1,000 x 50KB = 50,000KB",
-      "Convert: 50,000KB = 48.8MB, approximately 50MB"
+      "接続数: 1,000",
+      "接続あたりバッファ: 50KB",
+      "合計: 1,000 x 50KB = 50,000KB",
+      "変換: 50,000KB = 48.8MB、約50MB"
     ]
   },
   {
     "id": 71,
-    "category": "Network Design",
-    "question": "What is the bandwidth required for 1000 requests per second, each with a 2KB request and 10KB response?",
+    "category": "ネットワーク設計",
+    "question": "1秒あたり1,000リクエスト、各リクエストが2KBのリクエストと10KBのレスポンス。必要な帯域幅はいくらか。",
     "options": [
       "96 Mbps",
       "10 Mbps",
@@ -1410,19 +1410,19 @@
       "12 Mbps"
     ],
     "answer": 0,
-    "explanation": "Per request: 2KB + 10KB = 12KB. Per second: 1000 x 12KB = 12,000KB/s. In Mbps: 12,000 x 8 / 1024 = 93.75Mbps, approximately 96 Mbps.",
-    "cheatsheet": "Bidirectional Bandwidth: Total per request = Request Size + Response Size. Bandwidth = RPS x Total Size x 8 / 1024.",
+    "explanation": "リクエストあたり: 2KB + 10KB = 12KB。1秒あたり: 1,000 x 12KB = 12,000KB/秒。Mbps: 12,000 x 8 / 1,024 = 93.75Mbps、約96Mbps。",
+    "cheatsheet": "双方向帯域幅: リクエストあたり合計 = リクエストサイズ + レスポンスサイズ。帯域幅 = RPS x 合計サイズ x 8 / 1,024。",
     "steps": [
-      "Total per request: 2KB + 10KB = 12KB",
-      "Per second: 1000 x 12KB = 12,000KB/s",
-      "Convert to Mbps: 12,000 x 8 / 1024 = 93.75Mbps",
-      "With 3% overhead: approximately 96 Mbps"
+      "リクエストあたり合計: 2KB + 10KB = 12KB",
+      "1秒あたり: 1,000 x 12KB = 12,000KB/秒",
+      "Mbps変換: 12,000 x 8 / 1,024 = 93.75Mbps",
+      "3%オーバーヘッド付: 約96Mbps"
     ]
   },
   {
     "id": 72,
-    "category": "Network Design",
-    "question": "CDN edge latency is 10ms, origin server is 100ms away. With 90% cache hit rate, what is the average latency?",
+    "category": "ネットワーク設計",
+    "question": "CDNエッジレイテンシ10ms、オリジンサーバー100ms。90%キャッシュヒット率の場合、平均レイテンシはいくらか。",
     "options": [
       "19 ms",
       "100 ms",
@@ -1430,39 +1430,39 @@
       "10 ms"
     ],
     "answer": 0,
-    "explanation": "Average = (0.9 x 10ms) + (0.1 x 100ms) = 9 + 10 = 19ms.",
-    "cheatsheet": "CDN Average Latency: Avg Latency = (Hit Rate x Edge Latency) + (Miss Rate x Origin Latency).",
+    "explanation": "平均 = (0.9 x 10ms) + (0.1 x 100ms) = 9 + 10 = 19ms。",
+    "cheatsheet": "CDN平均レイテンシ: 平均レイテンシ = (ヒット率 x エッジレイテンシ) + (ミス率 x オリジンレイテンシ)。",
     "steps": [
-      "Cache hit (90%): 10ms latency",
-      "Cache miss (10%): 100ms latency",
-      "Average: (0.9 x 10) + (0.1 x 100) = 9 + 10 = 19ms",
-      "CDN improves from 100ms to 19ms (approximately 5x better)"
+      "キャッシュヒット(90%): 10msレイテンシ",
+      "キャッシュミス(10%): 100msレイテンシ",
+      "平均: (0.9 x 10) + (0.1 x 100) = 9 + 10 = 19ms",
+      "CDNで100msから19msに改善(約5倍)"
     ]
   },
   {
     "id": 73,
-    "category": "Network Design",
-    "question": "A DNS lookup takes 20ms. With DNS caching (TTL 300s), what fraction of requests need DNS lookup?",
+    "category": "ネットワーク設計",
+    "question": "DNSルックアップが20msかかる。DNSキャッシュ(TTL 300秒)の場合、DNSルックアップが必要なリクエストの割合はどれくらいか。",
     "options": [
-      "Negligible for most",
+      "ほぼ無視できる",
       "20%",
       "50%",
       "100%"
     ],
     "answer": 0,
-    "explanation": "With DNS caching at 300s TTL, after the initial lookup, all subsequent requests within 300 seconds use cached DNS. For high traffic, DNS lookup overhead is negligible.",
-    "cheatsheet": "DNS Caching: DNS lookup overhead = TTL / Request Interval. First request: DNS lookup time. Subsequent (within TTL): 0ms overhead.",
+    "explanation": "300秒TTLのDNSキャッシュでは、初期ルックアップ後、300秒以内のすべてのリクエストはキャッシュ済みDNSを使用。高トラフィックではDNSルックアップのオーバーヘッドは無視できる。",
+    "cheatsheet": "DNSキャッシング: DNSルックアップオーバーヘッド = TTL / リクエスト間隔。最初のリクエスト: DNSルックアップ時間。以降(TTL内): 0msオーバーヘッド。",
     "steps": [
-      "DNS TTL: 300 seconds",
-      "First request: 20ms DNS overhead",
-      "Next 300 seconds: cached (0ms overhead)",
-      "For 1000 req/s: only 1 in 300,000 needs DNS = negligible"
+      "DNS TTL: 300秒",
+      "最初のリクエスト: 20ms DNSオーバーヘッド",
+      "次の300秒: キャッシュ(0msオーバーヘッド)",
+      "1,000リクエスト/秒の場合: 300,000件に1件のみDNS必要 = 無視できる"
     ]
   },
   {
     "id": 74,
-    "category": "Network Design",
-    "question": "MTU is 1500 bytes. A payload of 10,000 bytes requires how many IP packets?",
+    "category": "ネットワーク設計",
+    "question": "MTUが1,500バイト。10,000バイトのペイロードには何パケットのIPパケットが必要か。",
     "options": [
       "7",
       "6",
@@ -1470,19 +1470,19 @@
       "10"
     ],
     "answer": 0,
-    "explanation": "1500 - 20 (IP header) - 20 (TCP header) = 1460 bytes per packet. 10,000 / 1460 = 6.85, so 7 packets needed.",
-    "cheatsheet": "IP Fragmentation: Usable payload = MTU - IP Header (20) - TCP Header (20). Packets = ceil(Total / Usable Payload).",
+    "explanation": "1,500 - 20(IPヘッダー) - 20(TCPヘッダー) = 1,460バイト/パケット。10,000 / 1,460 = 6.85、7パケットが必要。",
+    "cheatsheet": "IPフラグメンテーション: 使用可能ペイロード = MTU - IPヘッダー(20) - TCPヘッダー(20)。パケット数 = ceil(合計 / 使用可能ペイロード)。",
     "steps": [
-      "MTU: 1500 bytes",
-      "IP header: 20 bytes, TCP header: 20 bytes",
-      "Payload per packet: 1500 - 40 = 1460 bytes",
-      "Packets needed: ceil(10000 / 1460) = 7"
+      "MTU: 1,500バイト",
+      "IPヘッダー: 20バイト、TCPヘッダー: 20バイト",
+      "パケットあたりペイロード: 1,500 - 40 = 1,460バイト",
+      "必要パケット: ceil(10,000 / 1,460) = 7"
     ]
   },
   {
     "id": 75,
-    "category": "Network Design",
-    "question": "An API gateway adds 2ms latency per request. With 3 downstream service calls, what is the total gateway overhead?",
+    "category": "ネットワーク設計",
+    "question": "APIゲートウェイが各リクエストに2msのレイテンシを追加。3つのダウンストリームサービス呼び出しの場合、総ゲートウェイオーバーヘッドはいくらか。",
     "options": [
       "8 ms",
       "2 ms",
@@ -1490,19 +1490,19 @@
       "3 ms"
     ],
     "answer": 0,
-    "explanation": "Gateway processing: 2ms. Three downstream calls add 3 x 2ms = 6ms for additional gateway overhead. Total: 8ms gateway overhead.",
-    "cheatsheet": "API Gateway Overhead: Per-request overhead: routing, auth, rate limiting. Per-downstream-call: proxy overhead.",
+    "explanation": "ゲートウェイ処理: 2ms。3つのダウンストリーム呼び出しに3 x 2ms = 6msの追加ゲートウェイオーバーヘッド。合計: 8ms。",
+    "cheatsheet": "APIゲートウェイオーバーヘッド: リクエストあたりオーバーヘッド: ルーティング、認証、レート制限。ダウンストリーム呼び出しあたり: プロキシオーバーヘッド。",
     "steps": [
-      "Base gateway overhead: 2ms",
-      "Downstream calls: 3",
-      "Per-call proxy overhead: 2ms",
-      "Total: 2 + (3 x 2) = 8ms"
+      "基本ゲートウェイオーバーヘッド: 2ms",
+      "ダウンストリーム呼び出し: 3",
+      "呼び出しあたりプロキシオーバーヘッド: 2ms",
+      "合計: 2 + (3 x 2) = 8ms"
     ]
   },
   {
     "id": 76,
-    "category": "Reliability Engineering",
-    "question": "Two servers in active-passive failover, each with 99.5% individual availability. What is the system availability?",
+    "category": "信頼性エンジニアリング",
+    "question": "アクティブ-パッシブフェイルオーバーの2台のサーバー、各99.5%の個別可用性。システム可用性はいくらか。",
     "options": [
       "99.9975%",
       "99.5%",
@@ -1510,19 +1510,19 @@
       "100%"
     ],
     "answer": 0,
-    "explanation": "System fails only when both fail simultaneously. System availability = 1 - (0.005 x 0.005) = 1 - 0.000025 = 99.9975%.",
-    "cheatsheet": "Redundant System Availability: System = 1 - (1 - A1) x (1 - A2) x ... x (1 - An). Active-passive: standby takes over on failure.",
+    "explanation": "システムは両方が同時に故障した場合のみ故障。システム可用性 = 1 - (0.005 x 0.005) = 1 - 0.000025 = 99.9975%。",
+    "cheatsheet": "冗長システム可用性: システム = 1 - (1 - A1) x (1 - A2) x ... x (1 - An)。アクティブ-パッシブ: スタンバイが故障時に引き継ぎ。",
     "steps": [
-      "Individual availability: 99.5% each",
-      "Individual failure rate: 0.5% = 0.005",
-      "Both fail: 0.005 x 0.005 = 0.000025",
-      "System availability: 1 - 0.000025 = 99.9975%"
+      "個別可用性: 各99.5%",
+      "個別故障率: 0.5% = 0.005",
+      "両方故障: 0.005 x 0.005 = 0.000025",
+      "システム可用性: 1 - 0.000025 = 99.9975%"
     ]
   },
   {
     "id": 77,
-    "category": "Reliability Engineering",
-    "question": "A system has MTBF of 2000 hours. What is the probability it runs without failure for 500 hours?",
+    "category": "信頼性エンジニアリング",
+    "question": "システムのMTBFが2,000時間。500時間無故障で稼働する確率はいくらか。",
     "options": [
       "77.9%",
       "75%",
@@ -1530,39 +1530,39 @@
       "50%"
     ],
     "answer": 0,
-    "explanation": "Using exponential distribution: P(survive t) = e^(-t/MTBF) = e^(-500/2000) = e^(-0.25) = 0.7788 = 77.9%.",
-    "cheatsheet": "Reliability Function: R(t) = e^(-t/MTBF) for exponential distribution. Higher MTBF = higher reliability at any given time.",
+    "explanation": "指数分布を使用: P(生存t) = e^(-t/MTBF) = e^(-500/2000) = e^(-0.25) = 0.7788 = 77.9%。",
+    "cheatsheet": "信頼性関数: R(t) = e^(-t/MTBF)指数分布。MTBFが高いほど任意の時点での信頼性が高い。",
     "steps": [
-      "MTBF: 2000 hours",
-      "Time: 500 hours",
-      "t/MTBF = 500/2000 = 0.25",
+      "MTBF: 2,000時間",
+      "時間: 500時間",
+      "t/MTBF = 500/2,000 = 0.25",
       "R(500) = e^(-0.25) = 0.7788 = 77.9%"
     ]
   },
   {
     "id": 78,
-    "category": "Reliability Engineering",
-    "question": "A RAID 5 array has 5 disks, each with MTBF of 1,000,000 hours. What is the approximate array MTBF?",
+    "category": "信頼性エンジニアリング",
+    "question": "RAID 5アレイが5ディスク、各MTBF 1,000,000時間。アレイの概算MTBFはいくらか。",
     "options": [
-      "500,000 hours",
-      "1,000,000 hours",
-      "200,000 hours",
-      "5,000,000 hours"
+      "500,000時間",
+      "1,000,000時間",
+      "200,000時間",
+      "5,000,000時間"
     ],
     "answer": 0,
-    "explanation": "With N disks, array MTBF is approximately MTBF_disk / (N-1) for single-disk failure tolerance in RAID 5. 1,000,000 / (5-1) = 250,000 hours approximately.",
-    "cheatsheet": "RAID MTBF Approximation: RAID 5 can survive 1 disk failure. Array MTBF decreases with more disks. RAID 6 can survive 2 disk failures.",
+    "explanation": "Nディスクの場合、アレイMTBFはRAID 5で単一ディスク故障耐性の概算MTBF_disk / (N-1)。1,000,000 / (5-1) = 250,000時間概算。",
+    "cheatsheet": "RAID MTBF概算: RAID 5は1ディスク故障を耐えられる。アレイMTBFはディスク数増加で減少。RAID 6は2ディスク故障を耐えられる。",
     "steps": [
-      "5 disks in RAID 5",
-      "Individual MTBF: 1,000,000 hours",
-      "Approximate array MTBF: approximately MTBF / (N-1)",
-      "Common approximation: approximately 200,000-500,000 hours with hot spare"
+      "RAID 5で5ディスク",
+      "個別MTBF: 1,000,000時間",
+      "概算アレイMTBF: 約MTBF / (N-1)",
+      "一般的概算: ホットスペア付き約200,000-500,000時間"
     ]
   },
   {
     "id": 79,
-    "category": "Reliability Engineering",
-    "question": "A service has 99.9% availability. With 3 independent replicas, what is the approximate system availability?",
+    "category": "信頼性エンジニアリング",
+    "question": "サービスが99.9%可用性。3つの独立したレプリカの場合、システム可用性は概算いくらか。",
     "options": [
       "99.9999999%",
       "99.999%",
@@ -1570,119 +1570,119 @@
       "100%"
     ],
     "answer": 0,
-    "explanation": "System failure = all 3 replicas fail = 0.001^3 = 0.000000001. System availability = 1 - 0.000000001 = 99.9999999%.",
-    "cheatsheet": "N-Redundancy Availability: System Avail = 1 - (1-A)^N. 3 replicas at 99.9%: 99.9999999%.",
+    "explanation": "システム故障 = 3レプリカすべて故障 = 0.001^3 = 0.000000001。システム可用性 = 1 - 0.000000001 = 99.9999999%。",
+    "cheatsheet": "N冗長可用性: システム可用性 = 1 - (1-A)^N。99.9%の3レプリカ: 99.9999999%。",
     "steps": [
-      "Individual availability: 99.9%",
-      "Individual failure: 0.1% = 0.001",
-      "All 3 fail: 0.001^3 = 0.000000001",
-      "System: 1 - 0.000000001 = 99.9999999%"
+      "個別可用性: 99.9%",
+      "個別故障: 0.1% = 0.001",
+      "3台すべて故障: 0.001^3 = 0.000000001",
+      "システム: 1 - 0.000000001 = 99.9999999%"
     ]
   },
   {
     "id": 80,
-    "category": "Reliability Engineering",
-    "question": "MTTR for a service is 30 minutes. With 10 incidents per year, what is the total annual downtime?",
+    "category": "信頼性エンジニアリング",
+    "question": "サービスのMTTRが30分。年間10インシデントの場合、年間総ダウンタイムはいくらか。",
     "options": [
-      "5 hours",
-      "3 hours",
-      "10 hours",
-      "300 minutes"
+      "5時間",
+      "3時間",
+      "10時間",
+      "300分"
     ],
     "answer": 0,
-    "explanation": "Total downtime = 10 incidents x 30 minutes = 300 minutes = 5 hours per year.",
-    "cheatsheet": "Annual Downtime from MTTR: Total Downtime = Incidents x MTTR. Reducing MTTR has direct impact on availability.",
+    "explanation": "総ダウンタイム = 10インシデント x 30分 = 300分 = 年間5時間。",
+    "cheatsheet": "MTTRからの年間ダウンタイム: 総ダウンタイム = インシデント数 x MTTR。MTTR削減は可用性に直接的な影響。",
     "steps": [
-      "Incidents per year: 10",
-      "MTTR: 30 minutes",
-      "Total: 10 x 30 = 300 minutes",
-      "Convert: 300 / 60 = 5 hours"
+      "年間インシデント: 10",
+      "MTTR: 30分",
+      "合計: 10 x 30 = 300分",
+      "変換: 300 / 60 = 5時間"
     ]
   },
   {
     "id": 81,
-    "category": "Reliability Engineering",
-    "question": "Circuit breaker opens after 5 failures in 10 seconds. If failure rate is 1 per second, after how many seconds does it open?",
+    "category": "信頼性エンジニアリング",
+    "question": "サーキットブレーカーが10秒間に5回の故障で開く。故障率が1回/秒の場合、何秒後に開くか。",
     "options": [
-      "5 seconds",
-      "10 seconds",
-      "3 seconds",
-      "15 seconds"
+      "5秒",
+      "10秒",
+      "3秒",
+      "15秒"
     ],
     "answer": 0,
-    "explanation": "At 1 failure per second, it takes 5 failures to reach the threshold, which occurs at 5 seconds.",
-    "cheatsheet": "Circuit Breaker Configuration: Opens when: failures >= threshold within time window. Half-open: allows test requests after timeout.",
+    "explanation": "1回/秒の故障率で、閾値の5回に到達するには5回の故障が必要。5秒で発生。",
+    "cheatsheet": "サーキットブレーカー設定: 時間枠内で故障 >= 閾値の時に開く。ハーフオープン: タイムアウト後にテストリクエストを許可。",
     "steps": [
-      "Failure rate: 1 per second",
-      "Threshold: 5 failures in 10 seconds",
-      "Time to threshold: 5 failures / 1 per sec = 5 seconds",
-      "Circuit opens after 5 seconds"
+      "故障率: 1回/秒",
+      "閾値: 10秒間に5回故障",
+      "閾値到達時間: 5故障 / 1回/秒 = 5秒",
+      "5秒後にサーキットが開く"
     ]
   },
   {
     "id": 82,
-    "category": "Reliability Engineering",
-    "question": "A retry policy uses exponential backoff: 1s, 2s, 4s, 8s. Total time for 4 retry attempts?",
+    "category": "信頼性エンジニアリング",
+    "question": "リトライポリシーが指数バックオフ: 1秒、2秒、4秒、8秒。4回のリトライ試行の合計時間はいくらか。",
     "options": [
-      "15 seconds",
-      "16 seconds",
-      "4 seconds",
-      "8 seconds"
+      "15秒",
+      "16秒",
+      "4秒",
+      "8秒"
     ],
     "answer": 0,
-    "explanation": "Wait times: 1s + 2s + 4s + 8s = 15 seconds total wait time before the 4th retry attempt.",
-    "cheatsheet": "Exponential Backoff: Wait = base x 2^(attempt-1). Common base: 1 second. Add jitter to prevent thundering herd. Cap maximum backoff.",
+    "explanation": "待機時間: 1秒 + 2秒 + 4秒 + 8秒 = 15秒の合計待機時間。4回目のリトライ試行前。",
+    "cheatsheet": "指数バックオフ: 待機 = 基本値 x 2^(試行回数-1)。通常基本値: 1秒。ジャッター追加で同時アクセスを防止。最大バックオフを設定。",
     "steps": [
-      "Attempt 1: wait 1s, fail",
-      "Attempt 2: wait 2s, fail",
-      "Attempt 3: wait 4s, fail",
-      "Attempt 4: wait 8s = Total 15s wait time"
+      "試行1: 待機1秒、失敗",
+      "試行2: 待機2秒、失敗",
+      "試行3: 待機4秒、失敗",
+      "試行4: 待機8秒 = 合計15秒待機時間"
     ]
   },
   {
     "id": 83,
-    "category": "Reliability Engineering",
-    "question": "What is the RPO (Recovery Point Objective) if daily backups are taken at midnight?",
+    "category": "信頼性エンジニアリング",
+    "question": "毎日午前0時に日次バックアップを取得している場合、RPO(リカバリポイント目標)はいくらか。",
     "options": [
-      "Up to 24 hours of data loss",
-      "0 hours",
-      "12 hours",
-      "1 hour"
+      "最大24時間のデータ損失",
+      "0時間",
+      "12時間",
+      "1時間"
     ],
     "answer": 0,
-    "explanation": "RPO is the maximum acceptable data loss. With daily backups at midnight, worst case is nearly 24 hours of data loss.",
-    "cheatsheet": "RPO and RTO: RPO = max acceptable data loss (time-based). RTO = max acceptable downtime. Daily backup: RPO approximately 24 hours. Continuous replication: RPO approximately 0.",
+    "explanation": "RPOは許容される最大データ損失。日次バックアップの場合、最悪ケースはほぼ24時間のデータ損失。",
+    "cheatsheet": "RPOとRTO: RPO = 許容される最大データ損失(時間ベース)。RTO = 許容される最大ダウンタイム。日次バックアップ: RPO約24時間。継続レプリケーション: RPO約0。",
     "steps": [
-      "Backup schedule: daily at midnight",
-      "Worst case: failure just before next backup",
-      "Maximum data loss: nearly 24 hours",
-      "RPO = up to 24 hours"
+      "バックアップスケジュール: 毎日午前0時",
+      "最悪ケース: 次のバックアップ直前に故障",
+      "最大データ損失: ほぼ24時間",
+      "RPO = 最大24時間"
     ]
   },
   {
     "id": 84,
-    "category": "Reliability Engineering",
-    "question": "What is the main advantage of blue-green deployment for reliability?",
+    "category": "信頼性エンジニアリング",
+    "question": "信頼性におけるブルーグリーンデプロイの主な利点は何か。",
     "options": [
-      "Zero-downtime deployment",
-      "30 minutes downtime",
-      "Lower cost",
-      "Simpler infrastructure"
+      "ゼロダウンタイムデプロイメント",
+      "30分のダウンタイム",
+      "低コスト",
+      "よりシンプルなインフラ"
     ],
     "answer": 0,
-    "explanation": "Blue-green deployment is zero-downtime because the new environment is prepared while the old one serves traffic. Only the traffic switch takes seconds.",
-    "cheatsheet": "Deployment Strategies: Blue-green = zero downtime. Rolling update = gradual, partial downtime. Canary = small % first, zero downtime. Big bang = full downtime.",
+    "explanation": "ブルーグリーンデプロイはゼロダウンタイム。新しい環境が準備されている間、旧環境がトラフィックを処理。トラフィック切り替えは数秒。",
+    "cheatsheet": "デプロイメント戦略: ブルーグリーン = ゼロダウンタイム。ローリングアップデート = 段階的、部分ダウンタイム。カナリア = 小割合から、ゼロダウンタイム。ビッグバン = 完全ダウンタイム。",
     "steps": [
-      "Deploy to green (standby): full deployment time",
-      "Health check green: verification period",
-      "Switch traffic: seconds",
-      "Total downtime: approximately 0 (zero-downtime)"
+      "グリーン(スタンバイ)にデプロイ: フルデプロイ時間",
+      "グリーンのヘルスチェック: 検証期間",
+      "トラフィック切り替え: 数秒",
+      "合計ダウンタイム: 約0(ゼロダウンタイム)"
     ]
   },
   {
     "id": 85,
-    "category": "Reliability Engineering",
-    "question": "A system has 3 availability zones. Each has 99.95% availability. What is the multi-AZ system availability?",
+    "category": "信頼性エンジニアリング",
+    "question": "システムが3つのアベイラビリティゾーンを持つ。各99.95%可用性。マルチAZシステム可用性はいくらか。",
     "options": [
       "99.9999999%",
       "99.95%",
@@ -1690,59 +1690,59 @@
       "99.85%"
     ],
     "answer": 0,
-    "explanation": "System fails when all 3 AZs fail: (1-0.9995)^3 = 0.0005^3 = negligible. System availability: 99.9999999%.",
-    "cheatsheet": "Multi-AZ Availability: System = 1 - (1-A)^N where N = number of AZs. Load balancer health checks route away from failed AZs.",
+    "explanation": "システムは3AZすべて故障時に故障: (1-0.9995)^3 = 0.0005^3 = 無視できる。システム可用性: 99.9999999%。",
+    "cheatsheet": "マルチAZ可用性: システム = 1 - (1-A)^N。N = AZ数。ロードバランサーヘルスチェックが故障AZを迂回。",
     "steps": [
-      "Per-AZ availability: 99.95%",
-      "Per-AZ failure: 0.05%",
-      "All 3 fail: 0.0005^3 = negligible",
-      "System availability: approximately 99.9999999%"
+      "AZあたり可用性: 99.95%",
+      "AZあたり故障率: 0.05%",
+      "3AZすべて故障: 0.0005^3 = 無視できる",
+      "システム可用性: 約99.9999999%"
     ]
   },
   {
     "id": 86,
-    "category": "Reliability Engineering",
-    "question": "A graceful degradation strategy reduces features when load exceeds 80% CPU. If normal CPU is 40% and load doubles, what happens?",
+    "category": "信頼性エンジニアリング",
+    "question": "グレースフルデグラデーション戦略がCPU使用率80%を超えると機能を削減。通常CPU40%で負荷が2倍になった場合どうなるか。",
     "options": [
-      "Features degrade because CPU reaches 80%",
-      "Nothing happens",
-      "System crashes",
-      "All features are disabled"
+      "CPUが80%に到達するため機能がデグレード",
+      "何も起きない",
+      "システムがクラッシュ",
+      "すべての機能が無効化"
     ],
     "answer": 0,
-    "explanation": "Normal 40% x 2 = 80%. The system triggers graceful degradation at 80%, reducing non-essential features to maintain core functionality.",
-    "cheatsheet": "Graceful Degradation: Define thresholds for resource usage. At threshold: disable non-essential features. Core functionality always maintained.",
+    "explanation": "通常40% x 2 = 80%。システムが80%でグレースフルデグラデーションをトリガーし、非本質的な機能を削減してコア機能を維持。",
+    "cheatsheet": "グレースフルデグラデーション: リソース使用率の閾値を定義。閾値到達時: 非本質機能を無効化。コア機能は常に維持。",
     "steps": [
-      "Normal CPU: 40%",
-      "Load doubles: 40% x 2 = 80%",
-      "Threshold: 80% triggers degradation",
-      "Non-essential features disabled, core maintained"
+      "通常CPU: 40%",
+      "負荷2倍: 40% x 2 = 80%",
+      "閾値: 80%でデグレードーションをトリガー",
+      "非本質機能無効化、コア機能維持"
     ]
   },
   {
     "id": 87,
-    "category": "Reliability Engineering",
-    "question": "Chaos engineering: if you terminate a random instance every hour, how many instances must survive for the service to remain available?",
+    "category": "信頼性エンジニアリング",
+    "question": "カオスエンジニアリング: 毎時間ランダムにインスタンスを終了する場合、サービスを維持するために何インスタンスが生存する必要があるか。",
     "options": [
-      "N-1 (minimum viable)",
-      "N (all instances)",
+      "N-1(最小限",
+      "N(全インスタンス)",
       "N/2",
       "1"
     ],
     "answer": 0,
-    "explanation": "For high availability, the system must tolerate losing at least 1 instance (N-1 surviving). Running 3+ instances with load balancer health checks ensures this.",
-    "cheatsheet": "Chaos Engineering Principles: Start small: single instance failure. Assume minimum of N-1 instances available. Health checks auto-remove failed instances.",
+    "explanation": "高可用性のため、システムは少なくとも1インスタンスの損失(N-1生存)に耐える必要がある。3+インスタンスとロードバランサーヘルスチェックでこれを保証。",
+    "cheatsheet": "カオスエンジニアリング原則: 小さく開始: 単一インスタンス故障。最小N-1インスタンスが利用可能と仮定。ヘルスチェックが故障インスタンスを自動除去。",
     "steps": [
-      "N instances total",
-      "1 terminated by chaos experiment",
-      "N-1 must handle all traffic",
-      "Design: each instance handles 50% load (2x overcapacity)"
+      "総インスタンス: N",
+      "カオス実験で1台終了",
+      "N-1が全トラフィックを処理する必要",
+      "設計: 各インスタンスが50%負荷(2倍の過剰キャパシティ)"
     ]
   },
   {
     "id": 88,
-    "category": "Reliability Engineering",
-    "question": "A database has automatic failover with RTO of 60 seconds. Primary fails at 10:00:00. When is the system fully available?",
+    "category": "信頼性エンジニアリング",
+    "question": "データベースがRTO 60秒の自動フェイルオーバー。プライマリが10:00:00に故障。システムが完全に復旧するのはいつか。",
     "options": [
       "10:01:00",
       "10:02:00",
@@ -1750,59 +1750,59 @@
       "10:00:10"
     ],
     "answer": 0,
-    "explanation": "RTO (Recovery Time Objective) is 60 seconds. Primary fails at 10:00:00, so full availability resumes by 10:01:00.",
-    "cheatsheet": "RTO Calculation: RTO = time from failure to full recovery. Includes: detection + failover + verification. Automated failover: typically 30-120 seconds.",
+    "explanation": "RTO(リカバリ時間目標)は60秒。プライマリが10:00:00に故障、完全復旧は10:01:00までに。",
+    "cheatsheet": "RTO計算: RTO = 故障から完全復旧までの時間。含む: 検出 + フェイルオーバー + 検証。自動フェイルオーバー: 通常30-120秒。",
     "steps": [
-      "Failure time: 10:00:00",
-      "RTO: 60 seconds",
-      "Recovery time: 10:00:00 + 60s = 10:01:00",
-      "This is the target maximum; actual may be faster"
+      "故障時刻: 10:00:00",
+      "RTO: 60秒",
+      "復旧時刻: 10:00:00 + 60秒 = 10:01:00",
+      "これは目標最大値。実際はより速い可能性"
     ]
   },
   {
     "id": 89,
-    "category": "Reliability Engineering",
-    "question": "With a 99.95% SLA and error budget tracking, if you spend 20 minutes of your 22-minute monthly budget in the first week, what should the team prioritize?",
+    "category": "信頼性エンジニアリング",
+    "question": "99.95%SLAとエラーバジェット追跡。最初の週で月間22分の予算のうち20分を消費した場合、チームは何を優先すべきか。",
     "options": [
-      "Reliability improvements over new features",
-      "Continue normal development",
-      "Reduce monitoring",
-      "Add more features faster"
+      "新機能よりも信頼性改善",
+      "通常の開発を継続",
+      "監視を削減",
+      "より速く機能を追加"
     ],
     "answer": 0,
-    "explanation": "After spending most of the error budget in week 1, the team should prioritize reliability and reduce failure rate. Spending more budget risks SLA breach.",
-    "cheatsheet": "Error Budget Policy: Budget spent > 50% early = prioritize reliability. Budget spent < 20% = can take more risks. Budget exhausted = freeze deployments.",
+    "explanation": "1週目でエラーバジェットの大部分を消費した場合、チームは信頼性を優先し、故障率を下げるべき。予算を超えるとSLA違反のリスク。",
+    "cheatsheet": "エラーバジェットポリシー: 予算消費 > 50%(初期) = 信頼性を優先。予算消費 < 20% = よりリスクを取れる。予算枯渇 = デプロイメント凍結。",
     "steps": [
-      "Monthly budget: 22 minutes",
-      "Spent: 20 minutes (91% consumed)",
-      "Only 2 minutes remaining for 3+ weeks",
-      "Action: prioritize reliability, reduce deployment risk"
+      "月間予算: 22分",
+      "消費済み: 20分(91%消費)",
+      "残り3週以上で2分のみ",
+      "アクション: 信頼性を優先、デプロイメントリスクを低減"
     ]
   },
   {
     "id": 90,
-    "category": "Reliability Engineering",
-    "question": "A health check endpoint returns 200 OK but the database connection pool is exhausted. What type of health check would catch this?",
+    "category": "信頼性エンジニアリング",
+    "question": "ヘルスチェックエンドポイントが200 OKを返すが、データベース接続プールが枯渇。どのヘルスチェックがこれを検出できるか。",
     "options": [
-      "Deep health check (including dependencies)",
-      "Shallow health check (just HTTP)",
-      "No health check can catch this",
-      "DNS health check"
+      "ディープヘルスチェック(依存関係を含む)",
+      "シャローヘルスチェック(HTTPのみ)",
+      "ヘルスチェックでは検出不可",
+      "DNSヘルスチェック"
     ],
     "answer": 0,
-    "explanation": "Deep (readiness) health checks verify that all critical dependencies (database, cache, external APIs) are accessible, catching issues that shallow checks miss.",
-    "cheatsheet": "Health Check Types: Liveness = is process running? (shallow). Readiness = can it serve traffic? (deep). Startup = has it finished initializing?",
+    "explanation": "ディープ(レディネス)ヘルスチェックはすべてのクリティカルな依存関係(データベース、キャッシュ、外部API)のアクセス可能性を検証し、シャローチェックが見逃す問題を検出。",
+    "cheatsheet": "ヘルスチェック種類: リブネス = プロセス実行中か(シャロー)。レディネス = トラフィックを処理可能か(ディープ)。スタートアップ = 初期化完了したか。",
     "steps": [
-      "Shallow check: HTTP 200 (process is running)",
-      "Problem: database pool exhausted (cannot serve requests)",
-      "Deep check: verifies DB connectivity and pool availability",
-      "Solution: implement readiness probe that checks dependencies"
+      "シャローチェック: HTTP 200(プロセス実行中)",
+      "問題: DBプール枯渇(リクエスト処理不可)",
+      "ディープチェック: DB接続性とプール可用性を検証",
+      "解決: 依存関係をチェックするレディネスプローブを実装"
     ]
   },
   {
     "id": 91,
-    "category": "Reliability Engineering",
-    "question": "A microservice makes 3 external API calls in parallel. Each has 99.9% availability. What is the probability that all 3 succeed?",
+    "category": "信頼性エンジニアリング",
+    "question": "マイクロサービスが3つの外部API呼び出しを並列実行。各99.9%可用性。3つすべて成功する確率はいくらか。",
     "options": [
       "99.7%",
       "99.9%",
@@ -1810,119 +1810,119 @@
       "90%"
     ],
     "answer": 0,
-    "explanation": "All succeed = 0.999 x 0.999 x 0.999 = 0.997 = 99.7%. Any single failure causes the overall request to fail.",
-    "cheatsheet": "Parallel Dependency Availability: All succeed = A1 x A2 x ... x An. More dependencies = lower combined availability.",
+    "explanation": "全成功 = 0.999 x 0.999 x 0.999 = 0.997 = 99.7%。いずれか1つの故障が全体のリクエストを失敗させる。",
+    "cheatsheet": "並列依存関係可用性: 全成功 = A1 x A2 x ... x An。依存関係が多いほど結合可用性が低くなる。",
     "steps": [
-      "Each API: 99.9% = 0.999",
-      "All 3 succeed: 0.999^3 = 0.997003",
-      "At least one fails: 1 - 0.997 = 0.003 = 0.3%",
-      "Combined availability: 99.7% (reduced from 99.9%)"
+      "各API: 99.9% = 0.999",
+      "3つすべて成功: 0.999^3 = 0.997003",
+      "いずれか1つ故障: 1 - 0.997 = 0.003 = 0.3%",
+      "結合可用性: 99.7%(99.9%から低下)"
     ]
   },
   {
     "id": 92,
-    "category": "Reliability Engineering",
-    "question": "What is the key difference between a liveness probe and a readiness probe?",
+    "category": "信頼性エンジニアリング",
+    "question": "リブネスプローブとレディネスプローブの主な違いは何か。",
     "options": [
-      "Liveness = is alive; readiness = can serve traffic",
-      "They are the same",
-      "Readiness checks less frequently",
-      "Liveness includes all dependencies"
+      "リブネス = 生存確認; レディネス = トラフィック処理可能",
+      "同じ",
+      "レディネスは低頻度",
+      "リブネスは全依存関係を含む"
     ],
     "answer": 0,
-    "explanation": "A liveness probe confirms the process is running. A readiness probe confirms the service can accept traffic (dependencies are available).",
-    "cheatsheet": "Liveness vs Readiness: Liveness = restart if fails (process dead). Readiness = remove from LB if fails (not ready). Both are needed.",
+    "explanation": "リブネスプローブはプロセスが実行中か確認。レディネスプローブはサービスがトラフィックを受け入れ可能か(依存関係が利用可能)を確認。",
+    "cheatsheet": "リブネス vs レディネス: リブネス = 故障時に再起動(プロセス死)。レディネス = 故障時にLBから除外(未準備)。両方が必要。",
     "steps": [
-      "Liveness probe: checks if process is alive",
-      "Failure action: restart the container",
-      "Readiness probe: checks if service can accept requests",
-      "Failure action: remove from LB rotation (no restart)"
+      "リブネスプローブ: プロセスが生存中かチェック",
+      "故障時アクション: コンテナを再起動",
+      "レディネスプローブ: サービスがリクエストを受け入れ可能かチェック",
+      "故障時アクション: LBローテーションから除外(再起動なし)"
     ]
   },
   {
     "id": 93,
-    "category": "Reliability Engineering",
-    "question": "A retry policy: max 3 attempts with 2s, 4s, 8s backoff. What is the maximum total time for a failing operation?",
+    "category": "信頼性エンジニアリング",
+    "question": "リトライポリシー: 最大3回、バックオフ2秒、4秒、8秒。失敗操作の最大合計時間はいくらか。",
     "options": [
-      "14 seconds",
-      "3 seconds",
-      "8 seconds",
-      "24 seconds"
+      "14秒",
+      "3秒",
+      "8秒",
+      "24秒"
     ],
     "answer": 0,
-    "explanation": "First attempt (0s wait) + 2s + 4s + 8s = 14 seconds maximum total time if all retries fail.",
-    "cheatsheet": "Total Retry Time: Total = sum of all backoff periods. With jitter: may vary slightly. Add initial attempt time to total.",
+    "explanation": "最初の試行(0秒待機) + 2秒 + 4秒 + 8秒 = 14秒の最大合計時間(全リトライ失敗時)。",
+    "cheatsheet": "総リトライ時間: 合計 = すべてのバックオフ期間の合計。ジャッター付きではわずかに変動。初期試行時間を合計に追加。",
     "steps": [
-      "Attempt 1: execute, fail, wait 2s",
-      "Attempt 2: execute, fail, wait 4s",
-      "Attempt 3: execute, fail, wait 8s",
-      "Total wait: 2 + 4 + 8 = 14 seconds"
+      "試行1: 実行、失敗、2秒待機",
+      "試行2: 実行、失敗、4秒待機",
+      "試行3: 実行、失敗、8秒待機",
+      "合計待機: 2 + 4 + 8 = 14秒"
     ]
   },
   {
     "id": 94,
-    "category": "Reliability Engineering",
-    "question": "What deployment strategy achieves survival of a full data center outage?",
+    "category": "信頼性エンジニアリング",
+    "question": "完全なデータセンター障害を生き残るデプロイメント戦略はどれか。",
     "options": [
-      "Multi-region deployment",
-      "Single region with backups",
-      "Multi-AZ deployment",
-      "On-premises deployment"
+      "マルチリージョンデプロイメント",
+      "バックアップ付き単一リージョン",
+      "マルチAZデプロイメント",
+      "オンプレミスデプロイメント"
     ],
     "answer": 0,
-    "explanation": "Multi-region deployment places the system in geographically separate regions, surviving a complete data center or regional outage.",
-    "cheatsheet": "Disaster Recovery Strategies: Backup/Restore = RTO hours-days. Pilot Light = RTO minutes. Warm Standby = RTO minutes. Multi-Region Active-Active = RTO approximately 0 seconds.",
+    "explanation": "マルチリージョンデプロイメントは地理的に分離されたリージョンにシステムを配置し、完全なデータセンターまたはリージョン障害を生き残る。",
+    "cheatsheet": "ディザスタリカバリ戦略: バックアップ/リストア = RTO時間〜日。パイロットライト = RTO分。ウォームスタンバイ = RTO分。マルチリージョンアクティブ-アクティブ = RTO約0秒。",
     "steps": [
-      "Single region: cannot survive DC failure",
-      "Multi-AZ: survives single DC failure within region",
-      "Multi-region: survives full region outage",
-      "Active-active multi-region: zero-downtime disaster recovery"
+      "単一リージョン: DC故障を生き残れない",
+      "マルチAZ: リージョン内の単一DC故障を生き残る",
+      "マルチリージョン: 完全なリージョン障害を生き残る",
+      "アクティブ-アクティブマルチリージョン: ゼロダウンタイムDR"
     ]
   },
   {
     "id": 95,
-    "category": "Reliability Engineering",
-    "question": "If MTBF doubles and MTTR stays the same, what happens to availability?",
+    "category": "信頼性エンジニアリング",
+    "question": "MTBFが2倍になりMTTRが同じ場合、可用性はどうなるか。",
     "options": [
-      "Availability increases but not doubles",
-      "Availability doubles",
-      "Availability stays the same",
-      "Availability decreases"
+      "可用性は向上するが2倍ではない",
+      "可用性が2倍になる",
+      "可用性は同じ",
+      "可用性は低下"
     ],
     "answer": 0,
-    "explanation": "Availability = MTBF/(MTBF+MTTR). If MTBF doubles from X to 2X: 2X/(2X+MTTR) > X/(X+MTTR), but not exactly double. The improvement diminishes.",
-    "cheatsheet": "Availability Sensitivity: Improving MTBF has diminishing returns at high MTBF. Improving MTTR has linear impact. For 99.9%+, reducing MTTR is often more effective.",
+    "explanation": "可用性 = MTBF/(MTBF+MTTR)。MTBFがXから2Xに2倍: 2X/(2X+MTTR) > X/(X+MTTR)だが、正確に2倍ではない。改善は逓減。",
+    "cheatsheet": "可用性感度: MTBF改善は高MTBFで逓減効果。MTTR改善は線形効果。99.9%以上ではMTTR削減がより効果的。",
     "steps": [
-      "Original: MTBF/(MTBF+MTTR)",
-      "Doubled MTBF: 2MTBF/(2MTBF+MTTR)",
-      "Improvement: definitely higher availability",
-      "Diminishing returns: going from 99% to 99.9% is harder than 90% to 99%"
+      "元の式: MTBF/(MTBF+MTTR)",
+      "MTBF2倍: 2MTBF/(2MTBF+MTTR)",
+      "改善: 確実により高い可用性",
+      "逓減効果: 90%→99%より99%→99.9%の方が困難"
     ]
   },
   {
     "id": 96,
-    "category": "Reliability Engineering",
-    "question": "A canary deployment routes 5% of traffic to the new version. If a bug affects the canary, maximum users impacted are:",
+    "category": "信頼性エンジニアリング",
+    "question": "カナリアデプロイメントがトラフィックの5%を新バージョンにルーティング。新バージョンにバグがあった場合、影響を受ける最大ユーザー数はいくらか。",
     "options": [
-      "5% of total traffic",
+      "総トラフィックの5%",
       "100%",
       "50%",
       "10%"
     ],
     "answer": 0,
-    "explanation": "Canary deployment routes only 5% of traffic to the new version, limiting blast radius to 5% of users if the new version has a bug.",
-    "cheatsheet": "Canary Deployment: Start with 1-5% traffic to new version. Monitor for errors, latency, crashes. Gradually increase if healthy: 25%, 50%, 100%.",
+    "explanation": "カナリアデプロイメントはトラフィックの5%のみを新バージョンにルーティングし、バグ時の影響範囲を総ユーザーの5%に制限。",
+    "cheatsheet": "カナリアデプロイメント: 1-5%のトラフィックを新バージョンに。エラー、レイテンシ、クラッシュを監視。正常なら段階的に増加: 25%、50%、100%。",
     "steps": [
-      "Canary: 5% traffic to new version",
-      "Bug detected in new version",
-      "Maximum impact: 5% of users",
-      "Auto-rollback triggered, 95% unaffected"
+      "カナリア: 5%トラフィックを新バージョンに",
+      "新バージョンでバグ検出",
+      "最大影響: ユーザーの5%",
+      "自動ロールバック、95%は影響なし"
     ]
   },
   {
     "id": 97,
-    "category": "Reliability Engineering",
-    "question": "Rate limiter allows 100 requests per minute per user. If a user sends 250 requests in the first 10 seconds, how many are rejected?",
+    "category": "信頼性エンジニアリング",
+    "question": "レートリミッターがユーザーあたり1分あたり100リクエストを許可。ユーザーが最初の10秒で250リクエストを送信した場合、何件が拒否されるか。",
     "options": [
       "200",
       "100",
@@ -1930,39 +1930,39 @@
       "50"
     ],
     "answer": 0,
-    "explanation": "In 10 seconds, the rate limit allows 100/6 = approximately 17 requests (if evenly distributed). With token bucket: 100 allowed initially, 150 rejected. Answer depends on algorithm but token bucket with 100 initial tokens = 200 rejected.",
-    "cheatsheet": "Rate Limiting Algorithms: Fixed Window = N per time window. Sliding Window = smoother. Token Bucket = allows bursts. Leaky Bucket = constant rate.",
+    "explanation": "10秒でレート制限は100/6 = 約17リクエスト(均等分散時)。トークンバケット: 100初期トークンで許可、150拒否。トークンバケット(100初期トークン)で200拒否。",
+    "cheatsheet": "レート制限アルゴリズム: 固定ウィンドウ = 期間あたりN。スライディングウィンドウ = より滑らか。トークンバケット = バースト許可。リーキーバケット = 一定割合。",
     "steps": [
-      "Rate limit: 100 per minute",
-      "Requests: 250 in 10 seconds",
-      "With token bucket (100 tokens): 100 allowed, 150 rejected",
-      "With fixed window (10s = 100/6 = 17): 233 rejected"
+      "レート制限: 1分あたり100",
+      "リクエスト: 10秒で250",
+      "トークンバケット(100トークン): 100許可、150拒否",
+      "固定ウィンドウ(10秒 = 100/6 = 約17): 233拒否"
     ]
   },
   {
     "id": 98,
-    "category": "Reliability Engineering",
-    "question": "What is the primary benefit of an immutable infrastructure approach for reliability?",
+    "category": "信頼性エンジニアリング",
+    "question": "イミュータブルインフラの信頼性における主な利点は何か。",
     "options": [
-      "Servers are never replaced",
-      "Every deployment is a fresh, known-good state, eliminating configuration drift",
-      "Infrastructure cannot be monitored",
-      "No backups needed"
+      "サーバーは永遠に交換されない",
+      "全デプロイメントが既知の正常状態の新鮮なものになり、コンフィグレーションドリフトを排除",
+      "インフラは監視不可",
+      "バックアップ不要"
     ],
     "answer": 1,
-    "explanation": "Immutable infrastructure ensures every server is built from a known-good image, eliminating configuration drift, unpredictable states, and making rollbacks trivial.",
-    "cheatsheet": "Immutable Infrastructure Benefits: No configuration drift (every deploy is fresh). Rollback = deploy previous image. Reproducible environments (dev = staging = prod).",
+    "explanation": "イミュータブルインフラはすべてのサーバーが既知の正常イメージから構築されることを保証し、コンフィグレーションドリフト、予測不可能な状態を排除し、ロールバックを容易に。",
+    "cheatsheet": "イミュータブルインフラの利点: コンフィグレーションドリフトなし(各デプロイが新鮮)。ロールバック = 以前のイメージをデプロイ。再現可能な環境(dev = staging = prod)。",
     "steps": [
-      "Build image from version-controlled definition",
-      "Deploy new instances from image",
-      "Old instances terminated (not modified)",
-      "Result: consistent, predictable, reproducible"
+      "バージョン管理された定義からイメージを構築",
+      "イメージから新インスタンスをデプロイ",
+      "旧インスタンスを終了(変更せず)",
+      "結果: 一貫性、予測可能、再現可能"
     ]
   },
   {
     "id": 99,
-    "category": "Reliability Engineering",
-    "question": "A system processes 1000 orders per minute. If the order processing service fails for 5 minutes, how many orders are affected?",
+    "category": "信頼性エンジニアリング",
+    "question": "システムが1分あたり1,000件の注文を処理。注文処理サービスが5分間故障した場合、影響を受ける注文数はいくらか。",
     "options": [
       "5,000",
       "1,000",
@@ -1970,19 +1970,19 @@
       "10,000"
     ],
     "answer": 0,
-    "explanation": "1000 orders/minute x 5 minutes = 5,000 orders potentially affected (delayed or queued).",
-    "cheatsheet": "Failure Impact Calculation: Impacted = Rate x Duration. Orders in a message queue may be processed after recovery. Lost orders = rate x duration (if no persistence).",
+    "explanation": "1,000注文/分 x 5分 = 5,000件の注文が影響を受ける(遅延またはキューイング)。",
+    "cheatsheet": "故障影響計算: 影響数 = レート x 期間。メッセージキューの注文は復旧後に処理可能。喪失注文 = レート x 期間(永続性なしの場合)。",
     "steps": [
-      "Processing rate: 1000 orders/minute",
-      "Failure duration: 5 minutes",
-      "Orders affected: 1000 x 5 = 5,000",
-      "With message queue: 5,000 delayed, not lost"
+      "処理レート: 1,000注文/分",
+      "故障期間: 5分",
+      "影響を受ける注文: 1,000 x 5 = 5,000",
+      "メッセージキュー: 5,000遅延、喪失なし"
     ]
   },
   {
     "id": 100,
-    "category": "Reliability Engineering",
-    "question": "An SLO specifies 99.9% request success rate. In a week with 10 million requests, how many failures are allowed?",
+    "category": "信頼性エンジニアリング",
+    "question": "SLOが99.9%のリクエスト成功率を規定。週間1,000万リクエストの場合、許容される故障数はいくらか。",
     "options": [
       "10,000",
       "1,000",
@@ -1990,13 +1990,13 @@
       "100"
     ],
     "answer": 0,
-    "explanation": "10,000,000 x 0.001 = 10,000 failures allowed per week while meeting the 99.9% SLO.",
-    "cheatsheet": "Error Budget from SLO: Allowed failures = Total Requests x (1 - SLO). Track weekly/monthly error budget consumption. Burn rate = errors / time vs budget / time.",
+    "explanation": "10,000,000 x 0.001 = 10,000件の故障が99.9%SLOを満たす週間で許容される。",
+    "cheatsheet": "SLOからのエラーバジェット: 許容故障数 = 総リクエスト数 x (1 - SLO)。週/月のエラーバジェット消費を追跡。バーンレート = エラー/時間 vs 予算/時間。",
     "steps": [
-      "Total requests: 10,000,000",
+      "総リクエスト数: 10,000,000",
       "SLO: 99.9%",
-      "Failure budget: 10,000,000 x 0.001 = 10,000",
-      "If 5,000 failures occurred: 50% of weekly budget used"
+      "故障予算: 10,000,000 x 0.001 = 10,000",
+      "5,000故障の場合: 週間予算の50%消費"
     ]
   }
 ]

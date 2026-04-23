@@ -1,82 +1,1122 @@
 [
-  {"id":1,"category":"Architecture Decisions","question":"You need to build a real-time notification system for 1 million users. Which architecture approach is best?","options":["Synchronous REST API polling every 10 seconds","WebSocket-based event-driven architecture with message broker","Batch processing with hourly email notifications","Single-threaded event loop"],"answer":1,"explanation":"WebSocket provides persistent, bidirectional connections ideal for real-time notifications at scale. Combined with a message broker, it handles fan-out efficiently to 1M users.","designNote":"WebSocket connection: ~1M x 50KB = 50GB memory for connections.\nMessage broker (Kafka) handles ordering and delivery guarantees.\nFallback: SSE for browsers without WebSocket support."},
-  {"id":2,"category":"Architecture Decisions","question":"A payment system needs ACID guarantees across multiple services. Which approach is most appropriate?","options":["Eventual consistency with async replication","Saga pattern with compensating transactions","Best-effort delivery without guarantees","Single monolithic database transaction"],"answer":1,"explanation":"The Saga pattern provides distributed transaction management with compensating actions for rollback, maintaining data consistency across microservices without distributed locks.","designNote":"Choreography vs orchestration: use orchestration (central coordinator) for complex sagas.\nEach step has a compensating action.\nExample: Charge card -> if fails -> refund + cancel order."},
-  {"id":3,"category":"Architecture Decisions","question":"For a content management system with 10,000 daily editors and 1 million daily readers, which caching strategy is optimal?","options":["No caching, direct database reads","Multi-tier cache with CDN for static content, application cache for dynamic content, database cache for queries","Cache everything with infinite TTL","Client-side caching only"],"answer":1,"explanation":"Multi-tier caching handles different access patterns: CDN for static assets (images, CSS), application cache for rendered pages, and database query cache for editor operations.","designNote":"Cache invalidation strategy:\n- Static content: versioned URLs (cache-bust on deploy)\n- Dynamic content: event-driven invalidation on content update\n- Editor changes propagate through invalidation events."},
-  {"id":4,"category":"Architecture Decisions","question":"A startup needs to launch an MVP in 2 months. Which architecture minimizes development time?","options":["Microservices with Kubernetes","Serverless functions with managed services","Monolithic architecture with modular code","Custom distributed system"],"answer":1,"explanation":"Serverless with managed services eliminates infrastructure management, allowing the team to focus on business logic. No need for Kubernetes, load balancers, or server management.","designNote":"Trade-off: vendor lock-in vs speed.\nRecommended: API Gateway (AWS API Gateway) + Lambda + DynamoDB + S3.\nCan refactor to containers when scale requires it."},
-  {"id":5,"category":"Architecture Decisions","question":"An e-commerce platform must handle Black Friday traffic (100x normal). Which strategy is most cost-effective?","options":["Over-provision 100x capacity year-round","Auto-scaling with CDN caching and queue-based order processing","Reject excess traffic with HTTP 503","Move to a larger single server"],"answer":1,"explanation":"Auto-scaling handles temporary spikes cost-effectively. CDN absorbs read traffic, and queue-based processing smooths write spikes, preventing database overload.","designNote":"Pre-warm auto-scaling: start scaling up before predicted peak.\nQueue depth monitoring: alert on growing queue length.\nRate limit non-critical APIs during peak to protect core checkout flow."},
-  {"id":6,"category":"Architecture Decisions","question":"You need to process user-uploaded videos (encoding, thumbnail generation). Which pattern is best?","options":["Synchronous processing during upload","Asynchronous job queue with worker pool","Store raw videos and process manually","Client-side processing only"],"answer":1,"explanation":"Video processing is CPU-intensive and time-consuming. An async job queue with workers allows uploads to complete quickly while processing happens in the background.","designNote":"Queue: SQS or RabbitMQ for job distribution.\nWorkers: auto-scaling based on queue depth.\nProgress tracking: WebSocket or polling for status.\nFailure handling: dead-letter queue + retry with backoff."},
-  {"id":7,"category":"Architecture Decisions","question":"A financial application requires zero data loss. Which database replication strategy is most appropriate?","options":["Asynchronous replication to one replica","Synchronous replication with quorum-based writes","No replication (single node)","Eventual consistency with multi-master"],"answer":1,"explanation":"Synchronous replication ensures every write is confirmed on multiple nodes before acknowledging success, providing zero data loss at the cost of higher write latency.","designNote":"Trade-off: write latency increases (RTT to replica).\nConsider: 3-node synchronous with quorum (2 of 3) for balance.\nRPO = 0, RTO depends on failover automation."},
-  {"id":8,"category":"Architecture Decisions","question":"You are building a social media feed. Users follow each other and see a merged timeline. Which data model is most scalable?","options":["Join all followed users' posts at query time (fan-out on read)","Pre-compute feeds on write (fan-out on write) with a hybrid approach for celebrities","Store all posts in a single global feed table","No timeline, show posts chronologically"],"answer":1,"explanation":"Hybrid fan-out: write fan-out for normal users (< 10K followers), read fan-out for celebrities (> 10K followers). This balances write and read costs at scale.","designNote":"Fan-out on write: post is copied to each follower's feed on publish.\nFan-out on read: feed is assembled from followed users at query time.\nCelebrity threshold: users with > 10K followers use read fan-out."},
-  {"id":9,"category":"Architecture Decisions","question":"An IoT platform receives data from 100,000 devices sending telemetry every 5 seconds. Which ingestion architecture is best?","options":["REST API with individual HTTP requests per device","Message broker (Kafka) with time-series database","Email each data point","Store in relational database with individual inserts"],"answer":1,"explanation":"Kafka handles high-throughput ingestion from many devices. Time-series databases (InfluxDB, TimescaleDB) efficiently store and query time-ordered data with built-in downsampling.","designNote":"Throughput: 100K devices x 1 msg/5s = 20,000 msgs/sec.\nKafka partitioning: partition by device ID for ordering.\nTime-series DB: automatic retention policies and downsampling."},
-  {"id":10,"category":"Architecture Decisions","question":"A healthcare application must comply with data residency laws (data must stay in-country). Which architecture approach ensures compliance?","options":["Single global database in one country","Region-locked infrastructure with per-country data isolation and no cross-border replication","Replicate all data globally","Store data in the cloud (no country restrictions)"],"answer":1,"explanation":"Region-locked infrastructure with data isolation ensures data never leaves the required jurisdiction. Per-country deployments with no cross-border data flows guarantee compliance.","designNote":"Deploy separate infrastructure per country/region.\nNo cross-region replication of regulated data.\nUser routing: based on registration country.\nAudit logging for compliance verification."},
-  {"id":11,"category":"Architecture Decisions","question":"Your API needs to support multiple client types (web, mobile, IoT) with different data needs. Which pattern is most appropriate?","options":["One generic API for all clients","Backend for Frontend (BFF) with tailored APIs per client type","Multiple codebases duplicating backend logic","No API, direct database access"],"answer":1,"explanation":"BFF provides optimized APIs for each client type. Web BFF returns aggregated page data, mobile BFF returns compact payloads, IoT BFF provides lightweight protocols.","designNote":"BFF per client:\n- Web: REST/GraphQL with full data, server-side rendering\n- Mobile: GraphQL with minimal payloads, offline support\n- IoT: lightweight REST or MQTT with binary payloads"},
-  {"id":12,"category":"Architecture Decisions","question":"A reporting system must aggregate data from 5 microservices. Which pattern avoids tight coupling?","options":["Direct database queries to each service's database","Event sourcing with CQRS read model or data lake for analytics","Synchronous API calls to each service on every report","Copy all data to a single monolithic database nightly"],"answer":1,"explanation":"CQRS read model or data lake aggregates data asynchronously, avoiding synchronous coupling between services and providing optimized query performance for reports.","designNote":"Approach 1: Event sourcing - replay events to build read model.\nApproach 2: CDC (Change Data Capture) streams to data lake.\nApproach 3: ETL pipeline for periodic batch aggregation.\nChoose based on freshness requirements (real-time vs daily)."},
-  {"id":13,"category":"Architecture Decisions","question":"A gaming leaderboard needs to update rankings in real-time for 1 million concurrent players. Which data structure approach is best?","options":["Relational database with full table scan for ranking","Redis Sorted Set for O(log N) score updates and O(log N + M) range queries","Flat file with sorting","NoSQL document store with full document updates"],"answer":1,"explanation":"Redis Sorted Sets provide O(log N) insert/update and O(log N + M) range retrieval, perfect for real-time leaderboards with millions of entries.","designNote":"Redis Sorted Set: ZADD for score updates, ZRANGE for top-N queries.\nPersistence: RDB snapshots + AOF for durability.\nSharding: partition by game/region if needed.\nTTL: expire old leaderboard entries."},
-  {"id":14,"category":"Architecture Decisions","question":"You need to migrate from a monolithic database to separate databases per microservice. Which migration strategy minimizes risk?","options":["Big bang migration over a weekend","Strangler Fig pattern: migrate one service at a time with dual-write during transition","Keep the monolithic database forever","Copy all data first, then switch"],"answer":1,"explanation":"The Strangler Fig pattern allows incremental migration: move one service's data at a time, using dual-write or CDC for synchronization during the transition period.","designNote":"Steps:\n1. Identify service boundary and its data\n2. Create new database\n3. Implement CDC (Change Data Capture) for sync\n4. Switch reads to new DB\n5. Switch writes to new DB\n6. Remove CDC pipeline\n7. Repeat for next service."},
-  {"id":15,"category":"Architecture Decisions","question":"A search feature must provide autocomplete suggestions within 50ms for a catalog of 10 million products. Which approach is best?","options":["Full SQL LIKE query on the database","Elasticsearch with edge n-gram tokenizer for fast prefix matching","Linear scan through all products in memory","Google Custom Search API"],"answer":1,"explanation":"Elasticsearch with edge n-gram tokenizer indexes all prefix variations of terms, enabling instant prefix matching with sub-50ms latency even for large catalogs.","designNote":"Indexing: edge_ngram filter creates tokens for each prefix.\nQuery: match_phrase_prefix for autocomplete.\nFuzzy matching: edit_distance for typo tolerance.\nCaching: frequent queries cached at CDN level."},
-  {"id":16,"category":"Architecture Decisions","question":"Your team has 3 developers and needs to deliver 5 microservices. What is the recommended approach?","options":["Build all 5 microservices immediately from scratch","Start with a modular monolith, extract services as needed based on scaling boundaries","Use serverless for everything","Hire more developers first"],"answer":1,"explanation":"A modular monolith provides clear boundaries and allows the team to move fast. Extract microservices later when specific services need independent scaling or deployment.","designNote":"Modular monolith principles:\n- Clear module boundaries (separate packages/namespaces)\n- Internal APIs between modules (not direct DB access)\n- Each module can be extracted independently\n- Extract when: scaling need, team ownership, or deployment frequency demands it."},
-  {"id":17,"category":"Architecture Decisions","question":"An API must return different responses based on the client's subscription level (free, pro, enterprise). Where should this logic be implemented?","options":["Only on the frontend","API Gateway with request transformation or backend middleware with feature flags","Database level with row-level security only","Separate codebase per subscription level"],"answer":1,"explanation":"API Gateway or middleware provides a centralized point for subscription-based filtering, while feature flags enable flexible, deployable configuration changes without code changes.","designNote":"Implementation options:\n1. API Gateway: strip/add fields based on subscription header\n2. Middleware: filter response before sending\n3. Feature flags: enable/disable features per tier\nBest: combine gateway routing with backend feature flags."},
-  {"id":18,"category":"Architecture Decisions","question":"A file storage service must handle uploads up to 10GB with resume capability. Which upload strategy is best?","options":["Single HTTP PUT request","Multipart upload with chunked transfer and ETag verification","Base64 encode in JSON body","FTP upload"],"answer":1,"explanation":"Multipart upload splits large files into chunks, enables parallel upload for speed, supports resume on failure, and verifies integrity with ETags for each part.","designNote":"Chunk size: 5-100MB per part.\nParallel upload: 3-5 concurrent part uploads.\nResume: track uploaded parts, retry failed parts.\nCloud support: S3 multipart, GCS resumable upload."},
-  {"id":19,"category":"Architecture Decisions","question":"You need to implement audit logging for compliance (who did what, when, from where). Which approach is most maintainable?","options":["Add logging code to every function manually","Event sourcing or middleware-based audit trail with immutable log storage","Log to console only","Store audit data in the same database as application data"],"answer":1,"explanation":"Centralized audit middleware captures all operations consistently without modifying business logic. Immutable log storage (append-only) ensures audit integrity for compliance.","designNote":"Implementation:\n- Middleware/hook: intercepts all mutations\n- Log format: actor, action, resource, timestamp, IP, changes\n- Storage: append-only (WORM) storage or event log\n- Retention: per compliance requirements (typically 5-7 years)"},
-  {"id":20,"category":"Architecture Decisions","question":"A system needs to handle both OLTP (fast transactions) and OLAP (complex analytics). Which architecture pattern is best?","options":["One database for both workloads","Polyglot persistence: OLTP database + separate OLAP data warehouse with ETL pipeline","No analytics capability","Use OLAP database for everything"],"answer":1,"explanation":"Polyglot persistence uses optimized databases for each workload: OLTP (PostgreSQL, MySQL) for fast transactions, OLAP (Snowflake, BigQuery) for analytics, connected by ETL/CDC.","designNote":"OLTP: normalized schema, fast writes, indexed queries.\nOLAP: denormalized star schema, columnar storage, batch ETL.\nCDC (Change Data Capture): real-time sync from OLTP to OLAP.\nLambda/Kappa architecture for real-time + batch analytics."},
-  {"id":21,"category":"Design Review","question":"A proposed design has a single database shared by 10 microservices that all directly query it. What is the main issue?","options":["Performance will be too fast","Tight coupling - schema changes in one service can break others","Cost is too low","Too much security"],"answer":1,"explanation":"Shared database creates tight coupling: any schema change affects all services, preventing independent deployment and creating a single point of failure.","designNote":"Issue: Shared database anti-pattern.\nFix: Each service owns its data, exposes it via API.\nMigration: extract one service's tables at a time using CDC.\nData needed by multiple services: API call or event-based sync."},
-  {"id":22,"category":"Design Review","question":"A REST API returns user passwords in the response body. What security issue does this create?","options":["Better user experience","Sensitive data exposure - passwords should never be returned in API responses","No issue, passwords are encrypted","Performance improvement"],"answer":1,"explanation":"Returning passwords in API responses exposes sensitive data in logs, browser history, and network captures. Passwords should be hashed and never retrievable.","designNote":"Fix: Never include password hash or encrypted password in API responses.\nAPI response should only include safe user fields (id, name, email).\nImplement field-level filtering to prevent accidental exposure.\nAudit all API responses for sensitive data leakage."},
-  {"id":23,"category":"Design Review","question":"A design specifies synchronous HTTP calls between 5 services for a single user request. What problem does this cause?","options":["Too fast response time","Cascading latency: total response time = sum of all service latencies, multiplied by failure probability","Better reliability","Simpler debugging"],"answer":1,"explanation":"Synchronous chains multiply latency (100ms x 5 = 500ms minimum) and failure probability (if any service fails, the entire request fails).","designNote":"Fix options:\n1. Parallel calls where possible (reduce total latency)\n2. Async messaging for non-critical paths\n3. Caching intermediate results\n4. Circuit breakers to prevent cascading failures\n5. API composition layer (gateway) for parallel aggregation."},
-  {"id":24,"category":"Design Review","question":"A design has no retry logic for database connections. What happens during temporary network issues?","options":["Connections succeed immediately","All requests fail permanently until manual intervention","The system is more secure","Performance improves"],"answer":1,"explanation":"Without retry logic, transient failures (network blips, brief DB unavailability) cause immediate and permanent request failures, even though the issue resolves in seconds.","designNote":"Fix: Implement retry with exponential backoff.\n- Max retries: 3-5\n- Backoff: 1s, 2s, 4s, 8s (with jitter)\n- Retry only on retriable errors (connection timeout, deadlock)\n- Do not retry on non-retriable errors (constraint violation, auth failure)"},
-  {"id":25,"category":"Design Review","question":"A caching layer has no cache invalidation strategy. What problem will occur?","options":["Better performance over time","Stale data served to users - cache returns outdated information after source data changes","No issues with caching","Reduced memory usage"],"answer":1,"explanation":"Without invalidation, cached data becomes stale after source updates. Users see outdated information until cache TTL expires naturally, which may be hours or days.","designNote":"Invalidation strategies:\n1. Time-based (TTL): simple but may serve stale data\n2. Event-based: invalidate on data change (immediate)\n3. Version-based: URL includes data version\n4. Write-through: update cache on every write\nBest practice: combine TTL (fallback) with event-based invalidation."},
-  {"id":26,"category":"Design Review","question":"An API design uses GET requests to modify data (e.g., GET /deleteUser?id=123). What is wrong?","options":["Faster execution","GET should be idempotent and safe; mutations should use POST/PUT/DELETE","No issues, it is a valid approach","Better security"],"answer":1,"explanation":"GET requests should never cause side effects. They can be cached, pre-fetched by browsers, and logged without concern. Using GET for mutations violates HTTP semantics.","designNote":"Fix: Use proper HTTP methods.\n- GET: read-only, cacheable, idempotent\n- POST: create, not idempotent\n- PUT: replace, idempotent\n- DELETE: remove, idempotent\n- PATCH: partial update, not necessarily idempotent"},
-  {"id":27,"category":"Design Review","question":"A load balancer uses round-robin distribution but some servers are slower than others. What issue arises?","options":["Perfect distribution","Slower servers receive same traffic as faster ones, creating uneven response times and potential timeouts","Better resource utilization","No issues"],"answer":1,"explanation":"Round-robin sends equal traffic to all servers regardless of capacity. Slower servers get overwhelmed while faster servers are underutilized, creating inconsistent user experience.","designNote":"Fix: Use weighted round-robin or least-connections.\n- Weighted: assign weights based on server capacity\n- Least connections: route to server with fewest active connections\n- Response-time based: route to fastest responding server\n- Health checks: remove slow servers from rotation"},
-  {"id":28,"category":"Design Review","question":"A microservice directly accesses another service's database tables. What principle does this violate?","options":["Performance optimization","Service autonomy / loose coupling - each service should own and expose its data through its API only","Data security","Cost efficiency"],"answer":1,"explanation":"Direct database access between services creates tight coupling: the accessing service breaks if the database schema changes, violating service autonomy and independent deployability.","designNote":"Principle: Database per service (service autonomy).\nFix: Access data through the owning service's API.\nIf performance is critical: consider event-based data replication\nor a shared read-only replica with schema versioning.\nNever allow cross-service write access to another's database."},
-  {"id":29,"category":"Design Review","question":"A design has no rate limiting on public API endpoints. What risk does this introduce?","options":["No risk, unlimited access is better","Vulnerability to abuse, DDoS attacks, and resource exhaustion by malicious or misconfigured clients","Faster API response times","More API usage"],"answer":1,"explanation":"Without rate limiting, any client can send unlimited requests, potentially overwhelming the API, exhausting database connections, and denying service to legitimate users.","designNote":"Implementation:\n1. Rate limit per API key/IP: e.g., 100 req/min\n2. Token bucket algorithm: allows burst within limit\n3. Return 429 Too Many Requests with Retry-After header\n4. Different limits per tier (free, pro, enterprise)\n5. Distributed rate limiting for multi-instance deployments"},
-  {"id":30,"category":"Design Review","question":"All configuration (database URLs, API keys) is hardcoded in source code. What problem does this cause?","options":["Faster deployment","Cannot change configuration without code redeployment; security risk of credentials in version control","Better performance","Simpler debugging"],"answer":1,"explanation":"Hardcoded config requires code changes and redeployment for any configuration update. Credentials in code are a security risk (exposed in version control).","designNote":"Fix: Externalize configuration.\n- Environment variables (12-factor app)\n- Config files outside code (not in git)\n- Secret management (Vault, AWS Secrets Manager)\n- Feature flags for toggleable configuration\n- Environment-specific configs (dev/staging/prod)"},
-  {"id":31,"category":"Design Review","question":"A system stores user session state in local server memory. What happens when the server restarts or behind a load balancer?","options":["Sessions persist fine","All sessions lost on restart; sessions not shared across load-balanced instances","Better security","Improved performance"],"answer":1,"explanation":"In-memory session state is lost on server restart. With multiple servers behind a load balancer, a user may hit a different server that has no knowledge of their session.","designNote":"Fix: Externalize session storage.\n- Redis/Memcached: shared session store\n- Sticky sessions: route same user to same server (limits scalability)\n- JWT tokens: stateless, session data in token\nBest: Redis for session store with TTL and encryption."},
-  {"id":32,"category":"Design Review","question":"A database query retrieves all columns from a table with 50 columns when only 3 are needed. What issue does this cause?","options":["Faster queries","Wasted bandwidth, memory, and slower queries due to unnecessary data transfer","Better data integrity","Simpler code"],"answer":1,"explanation":"SELECT * retrieves all columns including large text/blob fields, wasting network bandwidth, application memory, and preventing index-only scans.","designNote":"Fix: SELECT only needed columns.\nBenefits:\n- Less network transfer\n- Less memory allocation\n- Enables covering index scans\n- Future schema changes (new columns) do not affect query\nORMs: specify explicit field selection, not default all."},
-  {"id":33,"category":"Design Review","question":"A service returns HTTP 200 with error details in the response body for all errors. What API design issue is this?","options":["Correct RESTful design","Improper HTTP status codes - errors should use appropriate 4xx/5xx status codes","Better user experience","No issue"],"answer":1,"explanation":"HTTP 200 implies success. Returning error information with a success status code misleads clients, API gateways, and monitoring systems about the actual response status.","designNote":"Correct status codes:\n- 200: Success\n- 201: Created\n- 400: Bad Request (validation error)\n- 401: Unauthorized\n- 403: Forbidden\n- 404: Not Found\n- 409: Conflict\n- 422: Unprocessable Entity\n- 500: Internal Server Error\n- 503: Service Unavailable"},
-  {"id":34,"category":"Design Review","question":"A proposed system has no health check endpoints. What operational risk does this create?","options":["No risk","Load balancers cannot detect unhealthy instances; monitoring cannot detect service degradation automatically","Better security","Reduced complexity"],"answer":1,"explanation":"Without health checks, unhealthy instances continue receiving traffic (serving errors), and there is no automated way to detect or recover from service degradation.","designNote":"Implement two health check types:\n1. Liveness: /health/live - process is running (restart if fails)\n2. Readiness: /health/ready - can serve traffic (remove from LB if fails)\n3. Include dependency checks in readiness (DB, cache, external APIs)\nConfigure health check intervals: 10-30 seconds."},
-  {"id":35,"category":"Design Review","question":"A design uses string concatenation for SQL queries with user input. What vulnerability does this introduce?","options":["Better performance","SQL injection - attackers can manipulate queries to access unauthorized data","No vulnerability, databases are safe","Improved flexibility"],"answer":1,"explanation":"String concatenation with user input allows attackers to inject malicious SQL, potentially reading, modifying, or deleting data, and even executing system commands.","designNote":"Fix: Parameterized queries / prepared statements.\nExamples:\n- Java: PreparedStatement\n- Python: cursor.execute('SELECT * FROM users WHERE id = %s', (user_id,))\n- Node.js: connection.query('SELECT * FROM users WHERE id = ?', [id])\nAdditional: input validation and ORM usage."},
-  {"id":36,"category":"Design Review","question":"An API returns paginated results but does not include total count or pagination metadata. What problem does this cause for clients?","options":["Faster API responses","Clients cannot determine total pages, implement infinite scroll, or show accurate progress indicators","Less bandwidth usage","Simpler implementation"],"answer":1,"explanation":"Without pagination metadata, clients cannot build proper pagination UI (total pages, progress bars), implement infinite scroll triggers, or estimate remaining data.","designNote":"Include in paginated responses:\n- total_items: total count of matching records\n- total_pages: total number of pages\n- current_page: current page number\n- per_page: items per page\n- has_next: boolean for infinite scroll\n- next_cursor: cursor for cursor-based pagination"},
-  {"id":37,"category":"Design Review","question":"A system uses synchronous email sending (SMTP) during user registration. What user experience issue does this cause?","options":["Faster registration","Registration appears slow (2-5 seconds) because the response waits for email delivery","Better email reliability","No issue"],"answer":1,"explanation":"SMTP delivery can take 2-5 seconds per email. Making registration wait for email sending creates a poor user experience with unnecessarily slow response times.","designNote":"Fix: Move email sending to background queue.\n1. User registers -> save to DB -> return response immediately\n2. Publish 'user_registered' event to message queue\n3. Email worker consumes event -> sends email\n4. Include retry logic for transient failures\n5. Dead-letter queue for permanently failing emails."},
-  {"id":38,"category":"Design Review","question":"A database has no indexes on frequently queried columns. What performance issue will occur?","options":["Faster writes","Full table scans on every query, causing O(N) performance instead of O(log N)","Less storage usage","Better data integrity"],"answer":1,"explanation":"Without indexes, queries must scan the entire table (O(N)) to find matching rows. With indexes, the database can use B-tree lookups (O(log N)) for fast retrieval.","designNote":"Index strategy:\n1. Index all columns used in WHERE clauses\n2. Composite indexes for multi-column queries (leading column rule)\n3. Covering indexes for frequent queries (include all needed columns)\n4. Monitor slow queries and add indexes accordingly\n5. Balance: indexes improve reads but slow writes"},
-  {"id":39,"category":"Design Review","question":"A microservice architecture has no distributed tracing. What operational challenge does this create?","options":["Simpler debugging","Cannot trace requests across service boundaries; difficult to identify latency bottlenecks and failure root causes","Better performance","Reduced complexity"],"answer":1,"explanation":"Without distributed tracing, when a request fails or is slow, it is impossible to determine which service caused the issue or where time is being spent across the chain.","designNote":"Implementation:\n- Add trace context (trace_id, span_id) to requests\n- propagate across service boundaries (HTTP headers, message metadata)\n- Tools: Jaeger, Zipkin, AWS X-Ray, OpenTelemetry\n- Trace every external call: HTTP, DB, cache, message queue\n- Integrate with metrics and logging (trace_id in logs)"},
-  {"id":40,"category":"Design Review","question":"A system generates IDs using auto-incrementing integers. What potential issue arises in a distributed system?","options":["Better performance","ID collisions across services, ID predictability (security risk), and bottleneck at single ID generator","Simpler code","Less storage usage"],"answer":1,"explanation":"Auto-increment IDs in distributed systems cause collisions (multiple services generating same IDs), are predictable (enabling enumeration attacks), and create bottlenecks.","designNote":"Distributed ID alternatives:\n1. UUID v4: globally unique, no coordination needed (128-bit, not sortable)\n2. ULID: UUID-like but sortable by time\n3. Snowflake: time-based + machine ID + sequence (Twitter)\n4. Database sequence with larger allocation blocks\nChoose based on: sortability, size, collision tolerance."},
-  {"id":41,"category":"Migration Planning","question":"What is the recommended first step when migrating from on-premises to cloud?","options":["Move everything at once over a weekend","Assessment and planning: inventory assets, identify dependencies, categorize workloads, define migration strategy","Skip planning and start migrating immediately","Only migrate the easiest services first"],"answer":1,"explanation":"Assessment identifies what you have, dependencies, compatibility issues, and helps choose the right migration strategy (rehost, replatform, refactor, or repurchase) for each workload.","designNote":"Assessment steps:\n1. Asset inventory (servers, databases, applications)\n2. Dependency mapping (what depends on what)\n3. Workload categorization by complexity and criticality\n4. Compatibility assessment (OS, runtime, database)\n5. Cost estimation (current vs cloud)\n6. Migration wave planning"},
-  {"id":42,"category":"Migration Planning","question":"Which migration strategy (6 Rs) involves minimal changes, essentially lifting and shifting VMs?","options":["Refactor","Rehost (lift and shift)","Rearchitect","Retire"],"answer":1,"explanation":"Rehost moves applications as-is to cloud VMs with minimal changes, providing the fastest migration path but least cloud optimization.","designNote":"6 Rs of Migration:\n1. Rehost: Lift and shift (IaaS VMs)\n2. Replatform: Lift, optimize, and shift (managed services)\n3. Repurchase: Replace with SaaS\n4. Refactor / Rearchitect: Redesign for cloud-native\n5. Retire: Decommission unused systems\n6. Retain: Keep on-premises (compliance, cost)"},
-  {"id":43,"category":"Migration Planning","question":"During database migration, how do you minimize downtime for the cutover?","options":["Stop the application, copy data, start application","Use CDC (Change Data Capture) for near-zero downtime: replicate data in real-time, sync, then switch","Copy data manually over several days","Do not migrate the database"],"answer":1,"explanation":"CDC continuously replicates changes from source to target, allowing a quick cutover with minimal data loss and near-zero downtime.","designNote":"CDC Migration Steps:\n1. Initial full snapshot of source database\n2. Start CDC stream for ongoing changes\n3. Verify data consistency between source and target\n4. During cutover window: stop writes, apply remaining CDC events\n5. Switch application to target database\n6. Validate and monitor"},
-  {"id":44,"category":"Migration Planning","question":"When migrating a monolith to microservices, what should you migrate first?","options":["The most complex service","A low-risk, well-bounded service to validate the migration approach and tooling","The most critical business service","All services simultaneously"],"answer":1,"explanation":"Starting with a low-risk service lets you validate the migration approach, establish patterns, and build confidence before tackling more complex services.","designNote":"Migration order strategy:\n1. Start: low-risk, well-bounded service (e.g., notifications)\n2. Validate: patterns, CI/CD, monitoring, deployment\n3. Next: incrementally migrate based on business priority\n4. Gradually: extract services at domain boundaries\n5. Finally: the most complex, tightly-coupled components"},
-  {"id":45,"category":"Migration Planning","question":"What is a common pitfall when migrating to managed database services?","options":["Too much automation","Not testing compatibility: SQL dialect differences, feature support gaps, and performance characteristics may differ","Better performance automatically","Lower costs"],"answer":1,"explanation":"Managed databases may use different SQL dialects, have different default configurations, or lack certain features, requiring thorough compatibility testing.","designNote":"Compatibility checklist:\n1. SQL dialect: stored procedures, functions, triggers\n2. Data types: check all column types are supported\n3. Configuration: default timeouts, buffer sizes, isolation levels\n4. Features: specific extensions, partitioning, full-text search\n5. Performance: benchmark query performance on target\n6. Connectivity: connection pooling, SSL, driver compatibility"},
-  {"id":46,"category":"Migration Planning","question":"You are migrating from self-hosted Redis to a managed Redis service. What is the main operational benefit?","options":["More control over configuration","Managed patching, backups, failover, and monitoring without operational overhead","Better performance always","Lower latency"],"answer":1,"explanation":"Managed Redis eliminates operational burden: automatic patching, point-in-time recovery, multi-AZ replication, and built-in monitoring and alerting.","designNote":"Migration approach:\n1. Set up managed Redis cluster\n2. Configure replication from self-hosted to managed\n3. Dual-write period: write to both, read from self-hosted\n4. Switch reads to managed\n5. Stop writes to self-hosted\n6. Decommission self-hosted Redis"},
-  {"id":47,"category":"Migration Planning","question":"A legacy system uses Oracle PL/SQL heavily. What migration consideration is most critical?","options":["It will work fine on any database","Application logic in stored procedures must be rewritten or the database engine must support PL/SQL compatibility","Hardware compatibility only","Network configuration"],"answer":1,"explanation":"Heavy reliance on database-specific features (PL/SQL) makes migration to a different database engine extremely costly as the business logic must be rewritten.","designNote":"Options for PL/SQL-heavy migration:\n1. Move to Oracle Cloud (same engine, minimal changes)\n2. Migrate PL/SQL to application code (long-term)\n3. Use compatible engines (e.g., PostgreSQL with orafce extension)\n4. Gradual extraction: move logic to app layer over time\nAssessment: quantify PL/SQL dependency before choosing strategy."},
-  {"id":48,"category":"Migration Planning","question":"What is a rollback plan essential for during cloud migration?","options":["It is not needed","Ability to quickly revert to the previous state if migration issues are discovered, minimizing business impact","Legal compliance only","Documentation purposes"],"answer":1,"explanation":"A rollback plan ensures you can quickly revert if the migration encounters critical issues, minimizing downtime and business impact.","designNote":"Rollback plan elements:\n1. Defined rollback triggers (what conditions cause rollback)\n2. Documented rollback procedures (step-by-step)\n3. Data synchronization back to source\n4. DNS/routing rollback\n5. Communication plan (notify stakeholders)\n6. Maximum rollback time target\n7. Testing: validate rollback procedure before migration"},
-  {"id":49,"category":"Migration Planning","question":"When migrating network configuration to cloud VPC, what must be carefully planned?","options":["Nothing, it works the same","IP address planning, subnet design, security groups, NAT/VPN connectivity, and DNS resolution","Only firewall rules","Only load balancer configuration"],"answer":1,"explanation":"Cloud networking requires deliberate planning of IP ranges (no overlap with on-prem), subnet sizing, security group rules (stateful), hybrid connectivity (VPN/Direct Connect), and DNS.","designNote":"Network migration checklist:\n1. IP address range: non-overlapping with on-premises\n2. Subnets: public (ALB, NAT) and private (application, database)\n3. Security groups: replace on-prem firewall rules\n4. VPN/Direct Connect: hybrid connectivity\n5. DNS: split-horizon or conditional forwarding\n6. NAT: outbound internet for private subnets"},
-  {"id":50,"category":"Migration Planning","question":"During migration, what is 'parallel run' and why is it important?","options":["Running on two computers simultaneously","Running old and new systems simultaneously to compare results and validate the new system before full cutover","A performance testing technique","A backup strategy"],"answer":1,"explanation":"Parallel running both systems allows comparison of results, verification of data consistency, and validation of the new system before committing to the switch.","designNote":"Parallel run approach:\n1. Route traffic to both old and new systems\n2. Compare responses for discrepancies\n3. Log all differences for analysis\n4. New system serves as 'shadow' initially (no user impact)\n5. Gradually shift traffic to new system (canary)\n6. Full cutover after validation period"},
-  {"id":51,"category":"Migration Planning","question":"What is the biggest risk of migrating during peak business hours?","options":["Faster migration","Maximum business impact if issues occur; limited rollback window; team under pressure","Better testing conditions","More stakeholders available"],"answer":1,"explanation":"Migrating during peak hours maximizes the impact of any issues. Team is under pressure, users are affected, and there is less time for careful problem resolution.","designNote":"Migration timing best practices:\n1. Schedule during lowest traffic window\n2. weekends or holidays if possible\n3. Have rollback ready and tested\n4. Communication: notify users of planned maintenance\n5. Staged approach: migrate non-critical systems first\n6. War room: key team members available during migration"},
-  {"id":52,"category":"Migration Planning","question":"A company has 200 on-premises servers. What is the most efficient migration tool?","options":["Manually reconfigure each server","Application Migration Service (AWS MGN, Azure Migrate) for automated server replication and conversion","Copy files manually","Rewrite all applications"],"answer":1,"explanation":"Cloud migration services automate server replication, OS conversion, and landing in cloud VMs, dramatically reducing manual effort for large-scale migrations.","designNote":"Migration tools comparison:\n1. AWS MGN: continuous replication, auto-conversion\n2. Azure Migrate: assessment + migration\n3. GCP Migrate to Virtual Machines: lift and shift\n4. For containerized: Kubernetes migration tools\nChoose based on source platform and scale."},
-  {"id":53,"category":"Migration Planning","question":"What is 'data gravity' in cloud migration?","options":["Physical weight of servers","The tendency for applications and services to accumulate around where data resides, making migration more complex","Database performance metric","Storage capacity measurement"],"answer":1,"explanation":"Data gravity means that as data accumulates in one location, it becomes increasingly difficult to move due to dependencies, bandwidth costs, and application coupling.","designNote":"Managing data gravity:\n1. Identify large data stores and their dependents\n2. Plan data migration early (often the bottleneck)\n3. Consider hybrid approach: analyze in cloud, store on-prem initially\n4. Use data streaming (CDC) for ongoing sync\n5. Evaluate data lifecycle: archive old data before migrating"},
-  {"id":54,"category":"Migration Planning","question":"Which cost trap should you watch for after migrating to cloud?","options":["Costs will always be lower","Resource over-provisioning: running larger instances than needed, forgetting to shut down dev/staging environments, and not using reserved pricing","Cloud is always expensive","Only compute costs matter"],"answer":1,"explanation":"Post-migration, organizations often over-provision resources, leave idle environments running, and miss reserved/spot pricing opportunities, leading to unexpectedly high bills.","designNote":"Cost optimization checklist:\n1. Right-size instances based on actual usage\n2. Use auto-scaling instead of always-on peak capacity\n3. Reserved instances for stable workloads (30-60% savings)\n4. Spot instances for fault-tolerant workloads (60-90% savings)\n5. Automated shutdown of non-production environments\n6. Storage lifecycle policies (archive cold data)"},
-  {"id":55,"category":"Migration Planning","question":"What is the recommended approach for migrating a database schema with zero downtime?","options":["ALTER TABLE directly on production during peak hours","Expand and contract pattern: add new columns/tables alongside old, migrate data, switch reads, switch writes, drop old","Delete old schema and recreate","Do not change the schema"],"answer":1,"explanation":"The expand-contract pattern adds new schema elements alongside old ones, allowing gradual migration of data and consumers without downtime.","designNote":"Expand-Contract steps:\n1. EXPAND: Add new column/table (nullable)\n2. Migrate: background job copies data to new structure\n3. ADAPT: Update application to write to both old and new\n4. SWITCH: Change reads to new structure\n5. CONTRACT: Remove old column/table\nEach step is independently deployable and reversible."},
-  {"id":56,"category":"Scalability Scenarios","question":"Your application traffic grows 10x in 6 months. What is the first scalability bottleneck you should address?","options":["Add more features immediately","Database: identify and optimize slow queries, add read replicas, implement caching before scaling compute","Buy more servers","Rewrite the entire application"],"answer":1,"explanation":"The database is typically the first bottleneck under load growth. Caching, read replicas, and query optimization provide the highest ROI for handling increased traffic.","designNote":"Scalability priority order:\n1. Cache (highest ROI, lowest effort)\n2. Database optimization (indexes, read replicas)\n3. Async processing (message queues)\n4. Horizontal scaling (more app instances)\n5. Database sharding (last resort, high complexity)"},
-  {"id":57,"category":"Scalability Scenarios","question":"A social media platform goes viral, growing from 1K to 1M users in a week. What immediate action is most critical?","options":["Redesign the architecture from scratch","Scale horizontally: auto-scale compute, add CDN, implement rate limiting, and throttle non-critical features","Focus on marketing","Add more database indexes only"],"answer":1,"explanation":"Immediate survival requires horizontal scaling (add capacity), CDN (offload static content), and rate limiting (protect from abuse). Architecture redesign comes after stabilizing.","designNote":"Emergency scaling checklist:\n1. Auto-scale compute (horizontal)\n2. CDN for all static assets\n3. Rate limiting on API endpoints\n4. Database read replicas\n5. Disable non-essential features temporarily\n6. Queue-based processing for writes\n7. Monitor and alert on all key metrics"},
-  {"id":58,"category":"Scalability Scenarios","question":"A payment processing service must scale from 100 to 10,000 TPS for a flash sale. How do you handle the write spike?","options":["Single database with larger instance","Write-behind pattern: accept writes into a durable queue, process asynchronously with rate-limited database writes","Reject all excess payments","Batch all writes at end of sale"],"answer":1,"explanation":"A durable message queue absorbs write spikes, buffering payment requests and feeding them to the database at a sustainable rate while preserving ordering and durability.","designNote":"Implementation:\n1. Accept payment request -> validate -> enqueue (Kafka/RabbitMQ)\n2. Return provisional confirmation to user\n3. Consumer processes from queue -> database write\n4. Send final confirmation via WebSocket/push\n5. Monitor queue depth -> scale consumers\n6. Dead-letter queue for failed processing"},
-  {"id":59,"category":"Scalability Scenarios","question":"Your API response time increases from 100ms to 2 seconds as traffic doubles. What is likely the bottleneck?","options":["Network is faster","Database or shared resource contention - connection pool exhaustion, lock contention, or disk I/O saturation","CPU is underutilized","Too much caching"],"answer":1,"explanation":"Super-linear latency increase (not proportional to traffic) indicates resource contention: database connection pool exhaustion, lock contention, or I/O saturation.","designNote":"Diagnosis steps:\n1. Check database connection pool utilization\n2. Monitor disk I/O wait times\n3. Check for lock contention (long-running transactions)\n4. Review slow query log\n5. Monitor GC pauses (if JVM)\n6. Check thread pool saturation\nFixes: connection pooling, read replicas, caching, indexing."},
-  {"id":60,"category":"Scalability Scenarios","question":"A file storage service needs to handle 1 million file uploads per day (avg 5MB each). How do you scale storage?","options":["Single server with large disk","Object storage (S3) with multipart upload, CDN for distribution, and lifecycle policies for archiving","Email files to storage team","Compress all files to 1KB"],"answer":1,"explanation":"Cloud object storage (S3) provides virtually unlimited, durable, scalable storage. Multipart upload handles large files efficiently, and lifecycle policies manage cost.","designNote":"Daily volume: 1M x 5MB = 5TB/day.\nArchitecture:\n1. Pre-signed URLs for direct client-to-S3 upload\n2. Multipart upload for files > 100MB\n3. CDN (CloudFront) for download distribution\n4. Lifecycle: move to IA after 30 days, Glacier after 90 days\n5. Event notifications (S3 events) for post-upload processing"},
-  {"id":61,"category":"Scalability Scenarios","question":"A real-time chat application needs to support 100,000 concurrent WebSocket connections per server. What is the main scalability concern?","options":["Not enough features","Memory per connection, file descriptor limits, and OS kernel tuning for maximum concurrent connections","Database performance","SSL certificate management"],"answer":1,"explanation":"100K WebSocket connections require ~50KB each = 5GB memory per server. OS limits (file descriptors, ephemeral ports) and kernel tuning are critical.","designNote":"Tuning checklist:\n1. File descriptors: ulimit -n 1000000 (per process)\n2. TCP backlog: net.core.somaxconn\n3. Ephemeral ports: net.ipv4.ip_local_port_range\n4. Memory: set appropriate WebSocket buffer sizes\n5. Load balancing: sticky sessions or WebSocket-aware LB\n6. Consider connection draining for graceful shutdown"},
-  {"id":62,"category":"Scalability Scenarios","question":"Your application's database grows to 5TB and query performance degrades. What scaling approach should you consider first?","options":["Buy a bigger server (vertical scaling)","Read replicas + query optimization + selective sharding for the hottest tables","Delete old data only","Move to spreadsheets"],"answer":1,"explanation":"Before sharding (high complexity), try read replicas for read-heavy workloads, query optimization, and selective sharding for only the largest/hottest tables.","designNote":"Scaling roadmap for large databases:\n1. Optimize: indexes, query rewriting, schema redesign\n2. Read replicas: offload read queries\n3. Caching: Redis for frequent reads\n4. Partitioning: table-level partitioning (by date)\n5. Selective sharding: shard only the largest tables\n6. Full sharding: last resort (operational complexity)"},
-  {"id":63,"category":"Scalability Scenarios","question":"A recommendation engine must generate personalized suggestions for 10 million users within 1 hour. How do you approach this?","options":["Single-threaded processing on one server","Distributed batch processing (Spark) with pre-computed user feature vectors and offline model scoring","Real-time calculation for each user on request","Manual recommendations"],"answer":1,"explanation":"Distributed batch processing (Spark) parallelizes computation across a cluster. Pre-computed feature vectors enable efficient batch scoring for millions of users.","designNote":"Architecture:\n1. ETL pipeline: aggregate user behavior data\n2. Feature computation: Spark job to build user feature vectors\n3. Model scoring: batch inference for all users\n4. Store results: Redis or database for fast lookup\n5. Refresh: daily or hourly batch job\n6. Real-time: capture recent interactions for next batch"},
-  {"id":64,"category":"Scalability Scenarios","question":"A global application needs <100ms response time for users worldwide. What architecture achieves this?","options":["Single data center in one region","Multi-region deployment with edge caching (CDN) and regional data centers with local database reads","DNS round-robin only","Slower response time is acceptable"],"answer":1,"explanation":"Multi-region deployment with CDN edge caching and regional databases provides low latency worldwide. Users are served from the nearest edge and read from local replicas.","designNote":"Multi-region architecture:\n1. CDN: static content from nearest edge\n2. Regional compute: app servers per region\n3. Regional database replicas: fast local reads\n4. Cross-region writes: async replication with conflict resolution\n5. Global load balancer: route to nearest region\n6. Trade-off: eventual consistency vs latency"},
-  {"id":65,"category":"Scalability Scenarios","question":"An e-commerce checkout service hits a bottleneck at the inventory check step. How do you scale this critical path?","options":["Skip inventory checks","Distributed counter (Redis) for real-time inventory with optimistic locking and fallback to database reconciliation","Check inventory daily only","Let overselling happen"],"answer":1,"explanation":"Redis distributed counters provide O(1) atomic decrement for real-time inventory checks. Optimistic locking prevents overselling while maintaining high throughput.","designNote":"Implementation:\n1. Redis DECR for atomic inventory decrement\n2. If result < 0: INCR back (rollback) and return 'out of stock'\n3. Publish inventory event to Kafka for order processing\n4. Database is source of truth (periodic reconciliation)\n5. Redis inventory = cache of database inventory\n6. Handle race conditions with Lua scripts or transactions"},
-  {"id":66,"category":"Scalability Scenarios","question":"A log aggregation system must ingest 1TB of logs daily and make them searchable within 1 minute. Which architecture works?","options":["Single relational database","Log shippers -> Kafka -> stream processing -> Elasticsearch cluster with daily indices","Store logs in flat files","Email logs to admin"],"answer":1,"explanation":"Kafka buffers the high-throughput log stream. Stream processing (Logstash/Flink) transforms and routes to Elasticsearch, which provides near-real-time full-text search.","designNote":"Pipeline:\n1. Log shippers (Fluentd/Filebeat) on each server\n2. Kafka: buffer and partition by service/host\n3. Stream processing: parse, enrich, filter\n4. Elasticsearch: index with daily indices\n5. Kibana: search and visualization\n6. Retention: delete indices older than retention policy\nCapacity: 1TB/day = ~12GB/hour"},
-  {"id":67,"category":"Scalability Scenarios","question":"Your service receives 50,000 requests per second but the load balancer becomes the bottleneck. What should you do?","options":["Remove the load balancer","Use DNS-based load balancing or upgrade to a higher-capacity LB with connection pooling and SSL offloading","Add more application servers","Reduce traffic by blocking users"],"answer":1,"explanation":"Load balancer bottlenecks can be addressed by upgrading to higher-capacity LBs, using DNS-level distribution, SSL offloading, or multi-level load balancing (global + local).","designNote":"LB scaling strategies:\n1. Upgrade LB capacity (higher tier)\n2. Multi-LB with DNS round-robin\n3. Global LB (CloudFront, Route 53) + regional LBs\n4. SSL offloading at edge (reduces per-connection cost)\n5. Connection pooling at LB level\n6. HTTP/2 multiplexing (fewer connections needed)"},
-  {"id":68,"category":"Scalability Scenarios","question":"A machine learning inference service needs to process 1000 predictions per second. Each model takes 50ms. How many instances are needed?","options":["1 instance","10 instances (with buffer for safety)","100 instances","5 instances"],"answer":1,"explanation":"Each instance handles 1/0.05 = 20 req/s at 100% utilization. For 1000 req/s at 70% utilization: 1000/(20x0.7) = ~72 instances. Rounded up with safety: ~100 instances.","designNote":"ML inference scaling:\n1. Batch predictions: group requests for GPU efficiency\n2. Model server: TensorFlow Serving, TorchServe\n3. GPU instances for faster inference\n4. Auto-scaling based on queue depth\n5. A/B test model versions with canary deployment\n6. Consider edge inference for latency-sensitive applications"},
-  {"id":69,"category":"Scalability Scenarios","question":"Traffic patterns show 90% of requests hit 10% of data (popular products). What caching strategy maximizes cache hit rate?","options":["Cache everything randomly","LRU cache with sufficient capacity to hold the working set of popular items","No caching needed","Cache least popular items"],"answer":1,"explanation":"LRU eviction naturally keeps popular items in cache since they are frequently accessed. A cache large enough to hold the 10% working set achieves ~90% hit rate.","designNote":"Cache sizing:\n1. Calculate working set: 10% of data = identify size\n2. Set cache capacity: 1.2x working set (20% buffer)\n3. LRU eviction: naturally evicts cold items\n4. Monitor hit rate: target >90%\n5. Pre-warm cache: load popular items on startup\n6. Consider multi-tier: L1 (in-process) + L2 (Redis)"},
-  {"id":70,"category":"Scalability Scenarios","question":"A notification service needs to push updates to 1 million users simultaneously (breaking news). How do you avoid thundering herd?","options":["Send individual requests to each user","Fan-out via message broker to WebSocket connections, with gradual delivery and backpressure","Send one broadcast to all users","Email everyone instead"],"answer":1,"explanation":"A message broker fans out the message to all connected WebSocket instances, each managing its subset of connections. Backpressure prevents overwhelming clients.","designNote":"Implementation:\n1. Publish message to topic (Kafka/RabbitMQ)\n2. Each WebSocket server subscribes and receives the message once\n3. Server iterates its connected clients and sends\n4. Backpressure: pause delivery if write buffer is full\n5. Delivery acknowledgment: track which clients received\n6. Offline fallback: push notification or in-app notification"},
-  {"id":71,"category":"Integration Design","question":"Two systems need to share data in real-time. System A uses REST, System B uses gRPC. What integration pattern works best?","options":["Rewrite both systems to use the same protocol","API Gateway / adapter pattern: Gateway exposes unified interface, translates between REST and gRPC internally","Manual data entry between systems","No integration, keep them separate"],"answer":1,"explanation":"An API Gateway or adapter pattern translates between protocols, allowing both systems to communicate without code changes in either system.","designNote":"Implementation options:\n1. API Gateway with protocol translation\n2. Sidecar proxy (Envoy) with protocol conversion\n3. Message broker as integration point (language-agnostic)\n4. Adapter service: REST frontend, gRPC backend\nChoose based on: traffic volume, latency requirements, team ownership."},
-  {"id":72,"category":"Integration Design","question":"A legacy system only supports file-based data exchange (CSV). A new system needs real-time data. How do you integrate?","options":["Force the legacy system to support APIs immediately","File-based integration with monitoring, plus parallel implementation of event-based integration for the new system","Abandon the legacy system","Copy data manually every day"],"answer":1,"explanation":"Pragmatic integration: maintain the existing file-based exchange while building event-based integration in parallel, gradually transitioning as the legacy system is modernized.","designNote":"Phased integration:\nPhase 1 (immediate): File-based (SFTP + scheduled polling)\nPhase 2 (short-term): Add message queue (publish CSV events)\nPhase 3 (medium-term): Modernize legacy API endpoints\nPhase 4 (long-term): Full event-driven integration\nAlways maintain backward compatibility during transition."},
-  {"id":73,"category":"Integration Design","question":"You need to integrate with a third-party payment provider that has a 99.5% SLA. Your system needs 99.9% availability. How do you bridge this gap?","options":["Accept lower availability","Circuit breaker with fallback: queue payments during provider outage, process when provider recovers","Switch provider immediately","No payment processing during outages"],"answer":1,"explanation":"A circuit breaker detects provider failures and activates a fallback mode (queue payments). When the provider recovers, queued payments are processed automatically.","designNote":"Resilience patterns:\n1. Circuit breaker: detect and trip on sustained failures\n2. Fallback: queue payments (guaranteed delivery)\n3. Timeout: set aggressive timeouts (3-5 seconds)\n4. Retry: exponential backoff for transient failures\n5. Multi-provider: failover to backup provider\n6. Idempotency: ensure duplicate payment processing is safe"},
-  {"id":74,"category":"Integration Design","question":"Data needs to flow from 10 different sources to a data warehouse. Which integration pattern is most maintainable?","options":["Point-to-point connections between each source and warehouse","Event bus / ETL pipeline with standardized data format, schema registry, and centralized monitoring","Manual data entry for each source","One massive stored procedure"],"answer":1,"explanation":"A centralized event bus with standardized format and schema registry reduces N^2 point-to-point connections to N connections, improving maintainability.","designNote":"Architecture:\n1. Sources publish events to message bus (Kafka)\n2. Schema registry (Avro/Protobuf) ensures compatibility\n3. ETL pipeline: transform, validate, enrich\n4. Data warehouse: load transformed data\n5. Monitoring: track pipeline health, data quality\n6. Error handling: dead-letter queue for failed events\n7. Scalability: add new sources without changing consumers"},
-  {"id":75,"category":"Integration Design","question":"Two microservices need to maintain consistent data. Service A creates an order, Service B updates inventory. What pattern ensures consistency?","options":["Direct database calls between services","Saga pattern: Service A publishes event, Service B consumes and updates inventory, with compensating actions for rollback","Ignore consistency, hope for the best","Share the same database"],"answer":1,"explanation":"The Saga pattern uses events to coordinate between services: each step has a compensating action for rollback, maintaining eventual consistency without distributed transactions.","designNote":"Saga implementation:\nOrchestration (recommended for this case):\n1. Saga coordinator starts transaction\n2. Step 1: Create order (compensate: cancel order)\n3. Step 2: Reserve inventory (compensate: release inventory)\n4. Step 3: Process payment (compensate: refund)\n5. If any step fails: run compensating actions in reverse order"},
-  {"id":76,"category":"Integration Design","question":"You need to integrate a new analytics service without impacting the main application's performance. Which approach is best?","options":["Add analytics code directly in the main application's request path","Fire-and-forget event publishing to a message queue from the main application; analytics service consumes asynchronously","Batch export data nightly","Call analytics API synchronously"],"answer":1,"explanation":"Fire-and-forget event publishing decouples analytics from the main request path, ensuring analytics never impacts application performance.","designNote":"Implementation:\n1. Main app: after request, publish event to message queue (non-blocking)\n2. Analytics service: consumes events at its own pace\n3. Benefits: zero impact on main app, scalable analytics, replay capability\n4. Consider: event buffer for high-throughput scenarios\n5. Monitoring: track event publish success/failure rate"},
-  {"id":77,"category":"Integration Design","question":"A partner company provides an API that changes frequently without versioning. How do you protect your system?","options":["Trust the partner and update immediately every time","Anti-corruption layer: isolate partner API behind your own stable interface, absorbing their changes without impacting your domain","Stop integrating with them","Mirror their API exactly"],"answer":1,"explanation":"An anti-corruption layer translates between your domain model and the partner's API, absorbing their changes so your internal system remains stable.","designNote":"Anti-corruption layer:\n1. Define your own domain model (stable interface)\n2. Adapter translates partner API to your model\n3. Partner API changes only require adapter updates\n4. Your domain services remain unchanged\n5. Version your adapter independently\n6. Integration tests: verify adapter handles partner API changes"},
-  {"id":78,"category":"Integration Design","question":"Your system needs to call an external API that is slow (500ms average) and occasionally times out. How do you prevent cascade failure?","options":["Call the API synchronously every time","Circuit breaker with timeout, retry with backoff, and cached fallback response","Remove the integration","Call the API more frequently"],"answer":1,"explanation":"Circuit breaker prevents cascade failures by tripping after repeated timeouts. Cached fallback ensures degraded service during outages rather than complete failure.","designNote":"Resilience configuration:\n1. Timeout: 3 seconds (fail fast)\n2. Circuit breaker: trip after 5 failures in 30s\n3. Retry: 2 retries with exponential backoff (1s, 2s)\n4. Fallback: serve cached response (5-minute TTL)\n5. Half-open: after 30s, allow 1 test request\n6. Monitoring: alert on circuit breaker state changes"},
-  {"id":79,"category":"Integration Design","question":"A batch system needs to process 10 million records nightly from an operational database without impacting production performance. Which pattern is best?","options":["Run queries directly on production database at night","CDC (Change Data Capture) streaming to a replica, then batch process on the replica; or use a dedicated analytics replica","Export data manually","Run batch queries during peak hours"],"answer":1,"explanation":"CDC captures changes in real-time to a replica, allowing batch processing without impacting the production database. A dedicated read replica isolates analytical workloads.","designNote":"Implementation:\n1. CDC tool (Debezium) captures production DB changes\n2. Stream to staging area or analytics replica\n3. Batch job runs on replica (isolated from production)\n4. Processing: filter, transform, aggregate\n5. Output: data warehouse or reporting database\n6. Scheduling: cron or workflow orchestrator (Airflow)"},
-  {"id":80,"category":"Integration Design","question":"Multiple services need to agree on a canonical data format for customer data. Each service currently has a different schema. What approach resolves this?","options":["Force all services to use one service's schema immediately","Schema registry with canonical data model: define standard schema, adapters for each service to translate to/from canonical format","No standardization needed","Duplicate all data in every service's format"],"answer":1,"explanation":"A schema registry with a canonical data model provides a standard format. Each service uses adapters to translate to/from this format, enabling interoperability without forcing schema changes.","designNote":"Implementation:\n1. Define canonical customer model (Confluent Schema Registry)\n2. Each service maintains its own internal schema\n3. Adapters translate: service schema <-> canonical\n4. Event bus uses canonical format for inter-service communication\n5. Evolution: version schemas with backward compatibility\n6. Validation: automated schema compatibility checks"}
+  {
+    "id": 1,
+    "category": "アーキテクチャ決定",
+    "question": "100万人のユーザー向けのリアルタイム通知システムを構築する必要がある。最適なアーキテクチャはどれか。",
+    "options": [
+      "10秒ごとの同期REST APIポーリング",
+      "メッセージブローカーを備えたWebSocketベースのイベント駆動アーキテクチャ",
+      "1時間ごとのメール通知によるバッチ処理",
+      "シングルスレッドのイベントループ"
+    ],
+    "answer": 1,
+    "explanation": "WebSocketは永続的な双方向接続を提供し、大規模なリアルタイム通知に最適。メッセージブローカーと組み合わせることで、100万人のユーザーへのファンアウトを効率的に処理。",
+    "designNote": "WebSocket接続: ~100万 x 50KB = 接続用50GBメモリ。\nメッセージブローカー(Kafka)が順序と配送保証を処理。\nフォールバック: WebSocket非対応ブラウザ向けにSSE。"
+  },
+  {
+    "id": 2,
+    "category": "アーキテクチャ決定",
+    "question": "決済システムが複数サービス間でACID保証を必要としている。最も適切なアプローチはどれか。",
+    "options": [
+      "非同期レプリケーションによる結果整合性",
+      "補償トランザクションを備えたSagaパターン",
+      "保証なしのベストエフォート配送",
+      "単一のモノリシックデータベーストランザクション"
+    ],
+    "answer": 1,
+    "explanation": "Sagaパターンは補償アクションによるロールバックで分散トランザクション管理を提供し、分散ロックなしでマイクロサービス間のデータ整合性を維持。",
+    "designNote": "コレオグラフィ vs オーケストレーション: 複雑なSagaにはオーケストレーション(中央コーディネータ)を使用。\n各ステップに補償アクション。\n例: カード決済 -> 失敗時 -> 返金 + 注文キャンセル。"
+  },
+  {
+    "id": 3,
+    "category": "アーキテクチャ決定",
+    "question": "1日10,000人のエディターと100万人の読者を持つCMS。最適なキャッシュ戦略はどれか。",
+    "options": [
+      "キャッシュなし、データベース直接読み取り",
+      "CDN(静的コンテンツ)、アプリケーションキャッシュ(動的コンテンツ)、データベースキャッシュ(クエリ)の多階層キャッシュ",
+      "全てを無限TTLでキャッシュ",
+      "クライアントサイドキャッシュのみ"
+    ],
+    "answer": 1,
+    "explanation": "多階層キャッシュは異なるアクセスパターンに対応: CDNは静的アセット(画像、CSS)、アプリケーションキャッシュはレンダリング済みページ、DBキャッシュはエディター操作用クエリ。",
+    "designNote": "キャッシュ無効化戦略:\n- 静的コンテンツ: バージョン付きURL(デプロイ時にキャッシュバスト)\n- 動的コンテンツ: コンテンツ更新時のイベント駆動無効化\n- エディターの変更は無効化イベントで伝播。"
+  },
+  {
+    "id": 4,
+    "category": "アーキテクチャ決定",
+    "question": "スタートアップが2ヶ月でMVPをローンチする必要がある。開発時間を最小化するアーキテクチャはどれか。",
+    "options": [
+      "Kubernetesのマイクロサービス",
+      "マネージドサービスのサーバーレス関数",
+      "モジュラーコードのモノリスアーキテクチャ",
+      "カスタム分散システム"
+    ],
+    "answer": 1,
+    "explanation": "マネージドサービスのサーバーレスはインフラ管理を排除し、チームがビジネスロジックに集中できる。Kubernetes、ロードバランサー、サーバー管理が不要。",
+    "designNote": "トレードオフ: ベンダーロックイン vs スピード。\n推奨: API Gateway + Lambda + DynamoDB + S3。\nスケールが必要になったらコンテナにリファクタ。"
+  },
+  {
+    "id": 5,
+    "category": "アーキテクチャ決定",
+    "question": "電子商取引サイトがブラックフライデーのトラフィック(通常の100倍)を処理する必要がある。最もコスト効率の良い戦略はどれか。",
+    "options": [
+      "1年中100倍のキャパシティを過剰プロビジョニング",
+      "コンテンツ配信ネットワークキャッシュとキュー ベース注文処理によるオートスケーリング",
+      "プロトコルエラー503で過剰トラフィックを拒否",
+      "より大きな単一サーバーに移行"
+    ],
+    "answer": 1,
+    "explanation": "オートスケーリングは一時的なスパイクをコスト効率よく処理。CDNは読み取りトラフィックを吸収し、キュー-based処理は書き込みスパイクを平滑化し、データベース過負荷を防止。",
+    "designNote": "オートスケーリングの事前ウォーム: 予測ピーク前にスケールアップ開始。\nキューデプス監視: キュー長の増加でアラート。\nピーク時は非クリティカルなAPIをレート制限してコア決済フローを保護。"
+  },
+  {
+    "id": 6,
+    "category": "アーキテクチャ決定",
+    "question": "ユーザーアップロード動画(エンコード、サムネイル生成)を処理する必要がある。最適なパターンはどれか。",
+    "options": [
+      "アップロード中の同期処理",
+      "ワーカープールによる非同期ジョブキュー",
+      "未処理動画を保存して手動処理",
+      "クライアントサイド処理のみ"
+    ],
+    "answer": 1,
+    "explanation": "動画処理はCPU集約的で時間がかかる。非同期ジョブキューとワーカーにより、アップロードは高速に完了し、処理はバックグラウンドで行われる。",
+    "designNote": "キュー: SQSまたはRabbitMQでジョブ配信。\nワーカー: キューデプスに基づくオートスケーリング。\n進捗追跡: WebSocketまたはポーリング。\n障害処理: デッドレターキュー + バックオフ付きリトライ。"
+  },
+  {
+    "id": 7,
+    "category": "アーキテクチャ決定",
+    "question": "金融アプリケーションがゼロデータロスを要求。最も適切なデータベースレプリケーション戦略はどれか。",
+    "options": [
+      "1つのレプリカへの非同期レプリケーション",
+      "クォーラム-based書き込みによる同期レプリケーション",
+      "レプリケーションなし(単一ノード)",
+      "マルチマスターの結果整合性"
+    ],
+    "answer": 1,
+    "explanation": "同期レプリケーションは全書き込みが成功を確認する前に複数ノードで確認されることを保証し、ゼロデータロスを提供(書き込みレイテンシは増加)。",
+    "designNote": "トレードオフ: 書き込みレイテンシ増加(レプリカへのRTT)。\n考慮: 3ノード同期とクォーラム(3中2)でバランス。\nRPO = 0、RTOはフェイルオーバー自動化に依存。"
+  },
+  {
+    "id": 8,
+    "category": "アーキテクチャ決定",
+    "question": "ソーシャルメディアのフィードを構築。ユーザーが互いにフォローし、マージされたタイムラインを表示。最もスケーラブルなデータモデルはどれか。",
+    "options": [
+      "クエリ時にフォローしている全ユーザーの投稿を結合(リード時ファンアウト)",
+      "ライト時ファンアウトのハイブリッド(通常ユーザー< 1万フォロワー)、読み時ファンアウト(有名人 > 1万フォロワー)",
+      "全投稿を単一のグローバルフィードテーブルに保存",
+      "タイムラインなし、時系列で投稿を表示"
+    ],
+    "answer": 1,
+    "explanation": "ハイブリッドファンアウト: 通常ユーザー(1万フォロワー未満)はライト時ファンアウト、有名人(1万フォロワー超)はリード時ファンアウト。スケールでの書き込み・読み取りコストのバランス。",
+    "designNote": "ライト時ファンアウト: 投稿公開時に各フォロワーのフィードにコピー。\nリード時ファンアウト: クエリ時にフォロー済みユーザーからフィードを構築。\n有名人閾値: 1万フォロワー超のユーザーはリード時ファンアウトを使用。"
+  },
+  {
+    "id": 9,
+    "category": "アーキテクチャ決定",
+    "question": "モノのインターネットプラットフォームが10万台のデバイスから5秒ごとにテレメトリを受信。最適な取り込みアーキテクチャはどれか。",
+    "options": [
+      "デバイスごとの個別WebリクエストによるWebサービスエンドポイント",
+      "メッセージブローカー(Kafka)と時系列データベース",
+      "各データポイントをメール送信",
+      "個別行追加でリレーショナルデータベースに保存"
+    ],
+    "answer": 1,
+    "explanation": "Kafkaは多数のデバイスからの高スループット取り込みを処理。時系列DB(InfluxDB、TimescaleDB)は時系列データを効率的に保存・クエリし、内蔵ダウンサンプリングを提供。",
+    "designNote": "スループット: 10万台 x 1メッセージ/5秒 = 20,000メッセージ/秒。\nKafkaパーティショニング: デバイスIDでパーティショニングして順序を保証。\n時系列DB: 自動保持ポリシーとダウンサンプリング。"
+  },
+  {
+    "id": 10,
+    "category": "アーキテクチャ決定",
+    "question": "ヘルスケアアプリがデータ国内留保法(データは国内に留める必要)に準拠する必要がある。どのアーキテクチャがコンプライアンスを保証するか。",
+    "options": [
+      "1カ国の単一グローバルDB",
+      "国ごとのデータ分離を備えたリージョンロックインフラ、クロスボーダーレプリケーションなし",
+      "全データをグローバルにレプリケート",
+      "クラウドに保存(国制限なし)"
+    ],
+    "answer": 1,
+    "explanation": "リージョンロックインフラとデータ分離により、データが要求された管轄外に出ないことを保証。国ごとのデプロイメントでクロスボーダーデータフローなしでコンプライアンスを保証。",
+    "designNote": "国/リージョンごとに別インフラをデプロイ。\n規制データのクロスリージョンレプリケーションなし。\nユーザールーティング: 登録国に基づく。\n監査ログでコンプライアンス検証。"
+  },
+  {
+    "id": 11,
+    "category": "アーキテクチャ決定",
+    "question": "アプリケーションインターフェースが複数のクライアントタイプ(Web、モバイル、モノのインターネット)で異なるデータニーズをサポートする必要がある。最も適切なパターンはどれか。",
+    "options": [
+      "すべてのクライアントに1つの汎用アプリケーションインターフェース",
+      "クライアントタイプごとに最適化されたアプリケーションインターフェースを提供するフロントエンド向けバックエンド(Backend for Frontend)",
+      "バックエンドロジックを重複する複数のコードベース",
+      "アプリケーションインターフェースなし、データベース直接アクセス"
+    ],
+    "answer": 1,
+    "explanation": "BFFは各クライアントタイプに最適化されたAPIを提供。Web BFFは集計ページデータ、モバイルBFFはコンパクトなペイロード、IoT BFFは軽量プロトコルを返す。",
+    "designNote": "クライアントごとのBFF:\n- Web: REST/GraphQLでフルデータ、サーバーサイドレンダリング\n- モバイル: GraphQLで最小ペイロード、オフラインサポート\n- IoT: 軽量RESTまたはMQTTでバイナリペイロード"
+  },
+  {
+    "id": 12,
+    "category": "アーキテクチャ決定",
+    "question": "レポートシステムが5つのマイクロサービスからデータを集計する必要がある。どのパターンが密結合を回避するか。",
+    "options": [
+      "各サービスのDBへの直接クエリ",
+      "CQRS読み取りモデルまたはアナリティクス用データレイク",
+      "全レポートで各サービスに同期API呼び出し",
+      "全データを毎晩単一モノリシックDBにコピー"
+    ],
+    "answer": 1,
+    "explanation": "CQRS読み取りモデルまたはデータレイクは非同期的にデータを集計し、サービス間の同期的結合を回避し、レポート用に最適化されたクエリパフォーマンスを提供。",
+    "designNote": "アプローチ1: イベントソーシング - イベントを再生して読み取りモデルを構築。\nアプローチ2: CDC(Change Data Capture)ストリームをデータレイクに。\nアプローチ3: 定期バッチ集計のETLパイプライン。\n鮮度要件(リアルタイム vs 日次)に基づき選択。"
+  },
+  {
+    "id": 13,
+    "category": "アーキテクチャ決定",
+    "question": "ゲームリーダーボードが100万人の同時プレイヤーのリアルタイムランキング更新を必要とする。最適なデータ構造アプローチはどれか。",
+    "options": [
+      "フルテーブルスキャンによるリレーショナルDB",
+      "O(log N)スコア更新とO(log N + M)範囲クエリのRedis Sorted Set",
+      "ソート付きフラットファイル",
+      "フル文書更新のNoSQLドキュメントストア"
+    ],
+    "answer": 1,
+    "explanation": "Redis Sorted SetはO(log N)の挿入/更新とO(log N + M)の範囲取得を提供し、数百万エントリのリアルタイムリーダーボードに最適。",
+    "designNote": "Redis Sorted Set: ZADDでスコア更新、ZRANGEでTop-Nクエリ。\n永続性: RDBスナップショット + AOF。\nシャーディング: ゲーム/リージョンでパーティショニング。\nTTL: 古いリーダーボードエントリを期限切れ。"
+  },
+  {
+    "id": 14,
+    "category": "アーキテクチャ決定",
+    "question": "モノリシックDBからマイクロサービスごとの別DBに移行する必要がある。リスクを最小化する移行戦略はどれか。",
+    "options": [
+      "週末にビッグバン移行",
+      "Strangler Figパターン: 1サービスずつ移行、移行期間はデュアルライト",
+      "モノリシックDBを永遠に維持",
+      "全データを先にコピーしてから切り替え"
+    ],
+    "answer": 1,
+    "explanation": "Strangler Figパターンは段階的移行を可能に: 1サービスのデータをずつ移動し、移行期間はデュアルライトまたはCDCで同期。",
+    "designNote": "ステップ:\n1. サービス境界とそのデータを識別\n2. 新DB作成\n3. CDC(Change Data Capture)で同期を実装\n4. 読み取りを新DBに切り替え\n5. 書き込みを新DBに切り替え\n6. CDCパイプラインを削除\n7. 次のサービスに繰り返し"
+  },
+  {
+    "id": 15,
+    "category": "アーキテクチャ決定",
+    "question": "検索機能が1,000万製品のカタログで50ms以内のオートコンプリート候補を提供する必要がある。最適なアプローチはどれか。",
+    "options": [
+      "DBでのフルSQL LIKEクエリ",
+      "高速プレフィックスマッチングのためのエッジn-gramトークナイザーを備えたElasticsearch",
+      "メモリ上の全製品のリニアスキャン",
+      "Google Custom Search API"
+    ],
+    "answer": 1,
+    "explanation": "エッジn-gramトークナイザーを備えたElasticsearchは全用語の全プレフィックスバリエーションをインデックスし、大規模カタログでも50ms未満のレイテンシで即座のプレフィックスマッチを可能に。",
+    "designNote": "インデキシング: edge_ngramフィルタが各プレフィックスのトークンを作成。\nクエリ: autocompleteにmatch_phrase_prefix。\nファジーマッチ: タイプミス許容のedit_distance。\nキャッシング: 高頻度クエリをCDNレベルでキャッシュ。"
+  },
+  {
+    "id": 16,
+    "category": "アーキテクチャ決定",
+    "question": "チームが3人の開発者で5つのマイクロサービスを構築する必要がある。推奨アプローチはどれか。",
+    "options": [
+      "5つのマイクロサービスを最初から全て構築",
+      "モジュラーモノリスから開始、スケーリング境界に基づいて必要に応じてサービスを抽出",
+      "全てサーバーレス",
+      "先に開発者を採用"
+    ],
+    "answer": 1,
+    "explanation": "モジュラーモノリスは明確な境界を提供し、チームが高速に動ける。特定のサービスが独立したスケーリングやデプロイメントを必要とする時にマイクロサービスを抽出。",
+    "designNote": "モジュラーモノリスの原則:\n- 明確なモジュール境界(別パッケージ/名前空間)\n- モジュール間の内部API(直接DBアクセスなし)\n- 各モジュールは独立して抽出可能\n- 抽出タイミング: スケーリング需要、チーム所有権、デプロイ頻度"
+  },
+  {
+    "id": 17,
+    "category": "アーキテクチャ決定",
+    "question": "アプリケーションインターフェースがクライアントのサブスクリプションレベル(無料、Pro、エンタープライズ)に基づいて異なるレスポンスを返す必要がある。このロジックはどこに実装すべきか。",
+    "options": [
+      "フロントエンドのみ",
+      "リクエスト変換を備えたアプリケーションインターフェースゲートウェイまたはフィーチャーフラグを備えたバックエンドミドルウェア",
+      "行レベルセキュリティのみのデータベースレベル",
+      "サブスクリプションレベルごとの別コードベース"
+    ],
+    "answer": 1,
+    "explanation": "API Gatewayまたはミドルウェアはサブスクリプションベースのフィルタリングの中央ポイントを提供し、フィーチャーフラグはコード変更なしで柔軟な設定変更を有効化。",
+    "designNote": "実装オプション:\n1. API Gateway: サブスクリプションヘッダーに基づくフィールドの追加/削除\n2. ミドルウェア: 送信前にレスポンスをフィルタ\n3. フィーチャーフラグ: ティアごとに機能を有効/無効化\n最適: ゲートウェイルーティングとバックエンドフィーチャーフラグの組み合わせ"
+  },
+  {
+    "id": 18,
+    "category": "アーキテクチャ決定",
+    "question": "ファイルストレージサービスが最大10GBのアップロードをレジューム可能に処理する必要がある。最適なアップロード戦略はどれか。",
+    "options": [
+      "単一HTTP PUTリクエスト",
+      "チャンク転送とETag検証を備えたマルチパートアップロード",
+      "JSON本文にBase64エンコード",
+      "FTPアップロード"
+    ],
+    "answer": 1,
+    "explanation": "マルチパートアップロードは大きなファイルをチャンクに分割し、並列アップロードで高速化、故障時のレジュームをサポートし、各パートのETagで整合性を検証。",
+    "designNote": "チャンクサイズ: パートあたり5-100MB。\n並列アップロード: 3-5の同時パートアップロード。\nレジューム: アップロード済みパートを追跡、失敗パートをリトライ。\nクラウドサポート: S3マルチパート、GCSレジューマブルアップロード。"
+  },
+  {
+    "id": 19,
+    "category": "アーキテクチャ決定",
+    "question": "コンプライアンス用の監査ログ(誰がいつどこから何をしたか)を実装する必要がある。最も保守しやすいアプローチはどれか。",
+    "options": [
+      "全関数に手動でログコードを追加",
+      "ミドルウェアベースの監査証跡または不変ログストレージを備えたイベントソーシング",
+      "コンソールへのログのみ",
+      "監査データをアプリデータと同じDBに保存"
+    ],
+    "answer": 1,
+    "explanation": "一元化された監査ミドルウェアはビジネスロジックを変更せずにすべての操作を一貫してキャプチャ。不変ログストレージ(追記のみ)はコンプライアンスの監査整合性を保証。",
+    "designNote": "実装:\n- ミドルウェア/フック: 全ミューテーションを傍受\n- ログ形式: アクター、アクション、リソース、タイムスタンプ、IP、変更内容\n- ストレージ: 追記のみ(WORM)またはイベントログ\n- 保持期間: コンプライアンス要件に従う(通常5-7年)"
+  },
+  {
+    "id": 20,
+    "category": "アーキテクチャ決定",
+    "question": "システムがOLTP(高速トランザクション)とOLAP(複雑な分析)の両方を処理する必要がある。最適なアーキテクチャパターンはどれか。",
+    "options": [
+      "両方のワークロードに1つのDB",
+      "OLTP DB + ETLパイプラインで接続された別OLAPデータウェアハウスのPolyglot Persistence",
+      "分析機能なし",
+      "全てOLAP DBで処理"
+    ],
+    "answer": 1,
+    "explanation": "Polyglot Persistenceは各ワークロードに最適化されたDBを使用: OLTP(PostgreSQL、MySQL)で高速トランザクション、OLAP(Snowflake、BigQuery)で分析、ETL/CDCで接続。",
+    "designNote": "OLTP: 正規化スキーマ、高速書き込み、インデックスクエリ。\nOLAP: 非正規化スタースキーマ、カラムナストア、バッチETL。\nCDC(Change Data Capture): OLTPからOLAPへのリアルタイム同期。\nLambda/Kappaアーキテクチャでリアルタイム+バッチ分析。"
+  },
+  {
+    "id": 21,
+    "category": "設計レビュー",
+    "question": "提案された設計で10のマイクロサービスが1つの共有DBを直接クエリしている。主な問題は何か。",
+    "options": [
+      "パフォーマンスが速すぎる",
+      "密結合 - 1つのサービスのスキーマ変更が他に影響",
+      "コストが低すぎる",
+      "セキュリティが高すぎる"
+    ],
+    "answer": 1,
+    "explanation": "共有DBは密結合を作成: スキーマ変更が全サービスに影響し、独立したデプロイを防止し、単一障害点を作成。",
+    "designNote": "問題: 共有DBアンチパターン。\n修正: 各サービスがデータを所有し、APIで公開。\n移行: CDCを使用して1サービスのテーブルをずつ抽出。\n複数サービスで必要なデータ: API呼び出しまたはイベントベース同期。"
+  },
+  {
+    "id": 22,
+    "category": "設計レビュー",
+    "question": "Webサービスエンドポイントがレスポンス本文にユーザーパスワードを返している。どのセキュリティ問題が発生するか。",
+    "options": [
+      "ユーザー体験の向上",
+      "機密データ露出 - パスワードはアプリケーションインターフェースレスポンスに返してはならない",
+      "問題なし、パスワードは暗号化されている",
+      "パフォーマンスの向上"
+    ],
+    "answer": 1,
+    "explanation": "APIレスポンスでパスワードを返すと、ログ、ブラウザ履歴、ネットワークキャプチャに機密データが露出。パスワードはハッシュ化され、取得可能であってはならない。",
+    "designNote": "修正: パスワードハッシュや暗号化パスワードをAPIレスポンスに含めない。\nAPIレスポンスは安全なユーザーフィールド(id、名前、メール)のみ。\nフィールドレベルフィルタリングを実装して偶発的な露出を防止。\n全APIレスポンスの機密データ漏洩を監査。"
+  },
+  {
+    "id": 23,
+    "category": "設計レビュー",
+    "question": "設計が5つのサービス間で同期HTTP呼び出しを使用している(単一ユーザーリクエスト)。どの問題が発生するか。",
+    "options": [
+      "応答が速すぎる",
+      "カスケードレイテンシ: 合計応答時間 = 全サービスレイテンシの合計、故障確率の乗算",
+      "信頼性の向上",
+      "デバッグが簡単"
+    ],
+    "answer": 1,
+    "explanation": "同期チェーンはレイテンシを乗算(100ms x 5 = 500ms最小)し、故障確率を乗算(いずれかのサービスが故障すると全体が失敗)。",
+    "designNote": "修正オプション:\n1. 可能な限り並列呼び出し(合計レイテンシを削減)\n2. 非クリティカルパスの非同期メッセージング\n3. 中間結果のキャッシング\n4. カスケード故障防止のサーキットブレーカー\n5. API集約レイヤー(ゲートウェイ)で並列集約"
+  },
+  {
+    "id": 24,
+    "category": "設計レビュー",
+    "question": "設計にDB接続のリトライロジックがない。一時的なネットワーク問題時に何が起きるか。",
+    "options": [
+      "接続は即座に成功",
+      "全リクエストが手動介入まで永続的に失敗",
+      "システムはより安全",
+      "パフォーマンスの向上"
+    ],
+    "answer": 1,
+    "explanation": "リトライロジックがないと、一時的な故障(ネットワークブリップ、一時的なDB利用不可)が即座かつ永続的なリクエスト失敗を引き起こす(数秒で解決する問題でも)。",
+    "designNote": "修正: 指数バックオフ付きリトライを実装。\n- 最大リトライ: 3-5\n- バックオフ: 1秒、2秒、4秒、8秒(ジャッター付き)\n- リトライ可能なエラーのみリトライ(接続タイムアウト、デッドロック)\n- リトライ不可エラーではリトライしない(制約違反、認証失敗)"
+  },
+  {
+    "id": 25,
+    "category": "設計レビュー",
+    "question": "キャッシュ層にキャッシュ無効化戦略がない。どの問題が発生するか。",
+    "options": [
+      "時間経過とともにパフォーマンス向上",
+      "古いデータがユーザーに提供 - ソースデータ変更後にキャッシュが古い情報を返す",
+      "キャッシュに問題なし",
+      "メモリ使用量の削減"
+    ],
+    "answer": 1,
+    "explanation": "無効化がないと、ソース更新後にキャッシュデータが古くなる。ユーザーはキャッシュTTLが自然に期限切れするまで古い情報を見る(時間がかかる)。",
+    "designNote": "無効化戦略:\n1. 時間ベース(TTL): シンプルだが古いデータを提供\n2. イベントベース: データ変更時に無効化(即時)\n3. バージョンベース: URLにデータバージョンを含める\n4. ライトスルー: 全書き込みでキャッシュを更新\nベストプラクティス: TTL(フォールバック)とイベントベース無効化の組み合わせ。"
+  },
+  {
+    "id": 26,
+    "category": "設計レビュー",
+    "question": "アプリケーションインターフェース設計が取得リクエストでデータ変更を行っている(取得 /deleteUser?id=123)。何が問題か。",
+    "options": [
+      "実行が速い",
+      "取得は冪等で安全であるべき; 変更は作成/更新/削除リクエストを使用すべき",
+      "問題なし、有効なアプローチ",
+      "セキュリティの向上"
+    ],
+    "answer": 1,
+    "explanation": "GETリクエストは副作用を起こしてはならない。キャッシュ、事前フェッチ、ログ記録が懸念なく行われる。GETでの変更はHTTPセマンティクスに違反。",
+    "designNote": "修正: 適切なHTTPメソッドを使用。\n- GET: 読み取り専用、キャッシュ可能、冪等\n- POST: 作成、非冪等\n- PUT: 置換、冪等\n- DELETE: 削除、冪等\n- PATCH: 部分更新、必ずしも冪等ではない"
+  },
+  {
+    "id": 27,
+    "category": "設計レビュー",
+    "question": "ロードバランサーがラウンドロビン配分を使用しているが、一部サーバーが他より遅い。どの問題が生じるか。",
+    "options": [
+      "完璧な配分",
+      "遅いサーバーも速いサーバーと同じトラフィックを受信し、不均一な応答時間とタイムアウトのリスク",
+      "リソース利用の向上",
+      "問題なし"
+    ],
+    "answer": 1,
+    "explanation": "ラウンドロビンは容量に関係なく全サーバーに等しいトラフィックを送信。遅いサーバーが過負荷になり、速いサーバーは未利用、不整合なユーザー体験を作成。",
+    "designNote": "修正: ウェイト付きラウンドロビンまたは最小接続数を使用。\n- ウェイト付き: サーバーキャパシティに基づく重み付け\n- 最小接続数: アクティブ接続が最も少ないサーバーにルーティング\n- 応答時間ベース: 最速応答サーバーにルーティング\n- ヘルスチェック: 遅いサーバーをローテーションから除外"
+  },
+  {
+    "id": 28,
+    "category": "設計レビュー",
+    "question": "マイクロサービスが別サービスのDBテーブルに直接アクセスしている。どの原則に違反しているか。",
+    "options": [
+      "パフォーマンス最適化",
+      "サービス自律性/疎結合 - 各サービスはデータを所有し、APIでのみ公開すべき",
+      "データセキュリティ",
+      "コスト効率"
+    ],
+    "answer": 1,
+    "explanation": "サービス間の直接DBアクセスは密結合を作成: アクセスするサービスはDBスキーマ変更で壊れ、サービス自律性と独立デプロイ可能性に違反。",
+    "designNote": "原則: サービスごとのDB(サービス自律性)。\n修正: 所有サービスのAPIを通じてデータにアクセス。\nパフォーマンスがクリティカル: イベントベースのデータレプリケーション\nまたはスキーマバージョニング付きの共有読み取り専用レプリカを検討。\n他サービスのDBへのクロスサービス書き込みは絶対に許可しない。"
+  },
+  {
+    "id": 29,
+    "category": "設計レビュー",
+    "question": "パブリックAPIエンドポイントにレート制限がない。どのリスクが導入されるか。",
+    "options": [
+      "リスクなし、無制限アクセスが良い",
+      "悪用、DDoS攻撃、悪意のある/誤設定されたクライアントによるリソース枯渇の脆弱性",
+      "API応答時間の向上",
+      "API使用量の増加"
+    ],
+    "answer": 1,
+    "explanation": "レート制限がないと、任意のクライアントが無制限のリクエストを送信でき、APIを圧倒し、DB接続を枯渇させ、正当なユーザーへのサービスを拒否。",
+    "designNote": "実装:\n1. APIキー/IPごとのレート制限: 例 100リクエスト/分\n2. トークンバケットアルゴリズム: 制限内のバーストを許可\n3. Retry-Afterヘッダー付き429 Too Many Requestsを返す\n4. ティアごとに異なる制限(無料、Pro、エンタープライズ)\n5. マルチインスタンスデプロイ向け分散レート制限"
+  },
+  {
+    "id": 30,
+    "category": "設計レビュー",
+    "question": "全設定(DB URL、APIキー)がソースコードにハードコードされている。どの問題が発生するか。",
+    "options": [
+      "デプロイメントが速い",
+      "設定変更にコードの再デプロイが必要; バージョン管理にクレデンシャルがあるセキュリティリスク",
+      "パフォーマンスの向上",
+      "デバッグが簡単"
+    ],
+    "answer": 1,
+    "explanation": "ハードコードされた設定は設定更新ごとにコード変更と再デプロイを必要とする。コード内のクレデンシャルはセキュリティリスク(バージョン管理に露出)。",
+    "designNote": "修正: 設定を外部化。\n- 環境変数(12ファクターアプリ)\n- コード外の設定ファイル(gitに含めない)\n- シークレット管理(Vault、AWS Secrets Manager)\n- フィーチャーフラグで切り替え可能な設定\n- 環境固有の設定(dev/staging/prod)"
+  },
+  {
+    "id": 31,
+    "category": "設計レビュー",
+    "question": "システムがローカルサーバーメモリにユーザーセッション状態を保存している。サーバー再起動時やロードバランサー後ろで何が起きるか。",
+    "options": [
+      "セッションは正常に維持",
+      "再起動で全セッションが消失; ロードバランスされたインスタンス間でセッションが共有されない",
+      "セキュリティの向上",
+      "パフォーマンスの向上"
+    ],
+    "answer": 1,
+    "explanation": "メモリ内セッション状態はサーバー再起動で消失。複数サーバーのロードバランサー後ろでは、ユーザーがセッション情報のない別サーバーにヒットする可能性。",
+    "designNote": "修正: セッションストレージを外部化。\n- Redis/Memcached: 共有セッションストア\n- スティッキーセッション: 同じユーザーを同じサーバーにルーティング(スケーラビリティ制限)\n- JWTトークン: ステートレス、セッションデータをトークンに\n最適: TTLと暗号化を備えたRedisセッションストア。"
+  },
+  {
+    "id": 32,
+    "category": "設計レビュー",
+    "question": "データベースクエリが50列のテーブルから3列しか必要ないのに全列を取得している。どの問題が発生するか。",
+    "options": [
+      "クエリが速い",
+      "不要なデータ転送による帯域幅とメモリの浪費、クエリの遅延",
+      "データ整合性の向上",
+      "コードがシンプル"
+    ],
+    "answer": 1,
+    "explanation": "SELECT *は大きなテキスト/BLOBフィールドを含む全列を取得し、ネットワーク帯域幅、アプリメモリを浪費し、カバリングインデックススキャンを防止。",
+    "designNote": "修正: 必要な列のみSELECT。\n利点:\n- ネットワーク転送の削減\n- メモリ割り当ての削減\n- カバリングインデックススキャンを有効化\n- 将来のスキーマ変更(新列)がクエリに影響しない\nORM: デフォルト全取得ではなく明示的フィールド選択。"
+  },
+  {
+    "id": 33,
+    "category": "設計レビュー",
+    "question": "サービスが全エラーでHTTP 200でエラー詳細をレスポンス本文に返している。どのAPI設計上の問題か。",
+    "options": [
+      "正しいRESTful設計",
+      "不適切なHTTPステータスコード - エラーは適切な4xx/5xxステータスコードを使用すべき",
+      "ユーザー体験の向上",
+      "問題なし"
+    ],
+    "answer": 1,
+    "explanation": "HTTP 200は成功を示す。成功ステータスコードでエラー情報を返すと、クライアント、APIゲートウェイ、監視システムが実際の応答状態を誤認。",
+    "designNote": "正しいステータスコード:\n- 200: 成功\n- 201: 作成\n- 400: Bad Request(バリデーションエラー)\n- 401: Unauthorized\n- 403: Forbidden\n- 404: Not Found\n- 409: Conflict\n- 422: Unprocessable Entity\n- 500: Internal Server Error\n- 503: Service Unavailable"
+  },
+  {
+    "id": 34,
+    "category": "設計レビュー",
+    "question": "提案されたシステムにヘルスチェックエンドポイントがない。どの運用上のリスクが生じるか。",
+    "options": [
+      "リスクなし",
+      "ロードバランサーが異常インスタンスを検出不可; 監視がサービス劣化を自動検出不可",
+      "セキュリティの向上",
+      "複雑性の削減"
+    ],
+    "answer": 1,
+    "explanation": "ヘルスチェックがないと、異常なインスタンスがトラフィックを受け取り続け(エラーを返す)、サービス劣化を検出・回復する自動化された方法がない。",
+    "designNote": "2つのヘルスチェックタイプを実装:\n1. リブネス: /health/live - プロセス実行中(失敗時は再起動)\n2. レディネス: /health/ready - トラフィック処理可能(失敗時はLBから除外)\n3. レディネスに依存関係チェックを含める(DB、キャッシュ、外部API)\nヘルスチェック間隔: 10-30秒を設定。"
+  },
+  {
+    "id": 35,
+    "category": "設計レビュー",
+    "question": "設計がユーザー入力でSQLクエリを文字列連結している。どの脆弱性が導入されるか。",
+    "options": [
+      "パフォーマンスの向上",
+      "SQLインジェクション - 攻撃者がクエリを操作して不正データにアクセス可能",
+      "脆弱性なし、DBは安全",
+      "柔軟性の向上"
+    ],
+    "answer": 1,
+    "explanation": "ユーザー入力との文字列連結は攻撃者に悪意のあるSQLの注入を許し、データの読み取り、変更、削除、システムコマンドの実行を可能に。",
+    "designNote": "修正: パラメータライズドクエリ/プリペアドステートメント。\n例:\n- Java: PreparedStatement\n- Python: cursor.execute('SELECT * FROM users WHERE id = %s', (user_id,))\n- Node.js: connection.query('SELECT * FROM users WHERE id = ?', [id])\n追加: 入力検証とORM使用。"
+  },
+  {
+    "id": 36,
+    "category": "設計レビュー",
+    "question": "アプリケーションインターフェースがページネーション結果を返すが、総数やページネーションメタデータを含んでいない。クライアントにどの問題が生じるか。",
+    "options": [
+      "アプリケーションインターフェース応答が速い",
+      "クライアントが総ページ数を判定できず、無限スクロールや正確な進捗表示を実装不可",
+      "帯域幅の削減",
+      "実装が簡単"
+    ],
+    "answer": 1,
+    "explanation": "ページネーションメタデータがないと、クライアントは適切なページネーションUI(総ページ、進捗バー)、無限スクロールトリガー、残りデータの推定を実装不可。",
+    "designNote": "ページネーションレスポンスに含める:\n- total_items: 一致するレコードの総数\n- total_pages: 総ページ数\n- current_page: 現在のページ番号\n- per_page: ページあたり項目数\n- has_next: 無限スクロール用ブール\n- next_cursor: カーソルベースページネーション用カーソル"
+  },
+  {
+    "id": 37,
+    "category": "設計レビュー",
+    "question": "システムがユーザー登録時に同期メール送信(SMTP)を使用している。どのユーザー体験の問題が生じるか。",
+    "options": [
+      "登録が速い",
+      "登録が遅く見える(2-5秒) - 応答がメール配信を待つため",
+      "メールの信頼性の向上",
+      "問題なし"
+    ],
+    "answer": 1,
+    "explanation": "SMTP配信は1メールあたり2-5秒かかる。登録をメール送信待ちにすると、不必要に遅い応答時間でユーザー体験が悪化。",
+    "designNote": "修正: メール送信をバックグラウンドキューに移動。\n1. ユーザー登録 -> DB保存 -> 即座に応答返却\n2. 'user_registered'イベントをメッセージキューにパブリッシュ\n3. メールワーカーがイベントを消費 -> メール送信\n4. 一時的故障のリトライロジック\n5. 永続的に失敗するメールのデッドレターキュー。"
+  },
+  {
+    "id": 38,
+    "category": "設計レビュー",
+    "question": "データベースに頻繁にクエリされる列にインデックスがない。どのパフォーマンス問題が発生するか。",
+    "options": [
+      "書き込みが速い",
+      "全クエリでフルテーブルスキャン、対数時間の線形パフォーマンス",
+      "ストレージ使用量の削減",
+      "データ整合性の向上"
+    ],
+    "answer": 1,
+    "explanation": "インデックスがないと、クエリは一致する行を見つけるためにテーブル全体をスキャンする(O(N))。インデックスがあると、DBはBツリルックアップ(O(log N))で高速取得。",
+    "designNote": "インデックス戦略:\n1. WHERE句で使用される全列にインデックス\n2. 複数列クエリ用複合インデックス(先頭列ルール)\n3. 頻繁クエリ用カバリングインデックス(必要列を全て含む)\n4. スロークエリを監視し、インデックスを追加\n5. バランス: インデックスは読み取りを向上させるが書き込みを遅く"
+  },
+  {
+    "id": 39,
+    "category": "設計レビュー",
+    "question": "マイクロサービスアーキテクチャに分散トレーシングがない。どの運用上の課題が生じるか。",
+    "options": [
+      "デバッグが簡単",
+      "サービス境界を越えたリクエストの追跡不可; レイテンシボトルネックと故障原因の特定が困難",
+      "パフォーマンスの向上",
+      "複雑性の削減"
+    ],
+    "answer": 1,
+    "explanation": "分散トレーシングがないと、リクエストが失敗または遅い場合、どのサービスが問題を引き起こしたか、どこに時間が費やされているかを特定不可能。",
+    "designNote": "実装:\n- リクエストにトレースコンテキスト(trace_id, span_id)を追加\n- サービス境界を越えて伝播(HTTPヘッダー、メッセージメタデータ)\n- ツール: Jaeger、Zipkin、AWS X-Ray、OpenTelemetry\n- 全外部呼び出しをトレース: HTTP、DB、キャッシュ、メッセージキュー\n- メトリクス・ロギングと統合(ログにtrace_id)"
+  },
+  {
+    "id": 40,
+    "category": "設計レビュー",
+    "question": "システムが自動増分整数でIDを生成している。分散システムでどの問題が生じるか。",
+    "options": [
+      "パフォーマンスの向上",
+      "サービス間のID衝突、IDの予測可能性(セキュリティリスク)、単一IDジェネレーターのボトルネック",
+      "コードがシンプル",
+      "ストレージ使用量の削減"
+    ],
+    "answer": 1,
+    "explanation": "分散システムの自動増分IDは衝突(複数サービスが同じID生成)、予測可能性(列挙攻撃)、ボトルネックを作成。",
+    "designNote": "分散IDの代替:\n1. UUID v4: グローバルに一意、調整不要(128ビット、ソート不可)\n2. ULID: UUID風だが時系列でソート可能\n3. Snowflake: 時間ベース + マシンID + シーケンス(Twitter)\n4. より大きな割り当てブロックを持つDBシーケンス\n基準: ソート可能性、サイズ、衝突許容度に基づき選択。"
+  },
+  {
+    "id": 41,
+    "category": "移行計画",
+    "question": "オンプレミスからクラウドへの移行の推奨最初のステップは何か。",
+    "options": [
+      "週末に全てを一括移行",
+      "評価と計画: 資産インベントリ、依存関係の識別、ワークロードの分類、移行戦略の定義",
+      "計画をスキップして直ちに移行開始",
+      "最も簡単なサービスのみを先に移行"
+    ],
+    "answer": 1,
+    "explanation": "評価は何があるか、依存関係、互換性問題を識別し、各ワークロードに適切な移行戦略(移設、再プラットフォーム、リファクタ、または買い替え)を選択するのに役立つ。",
+    "designNote": "評価ステップ:\n1. 資産インベントリ(サーバー、DB、アプリケーション)\n2. 依存関係マッピング(何が何に依存)\n3. 複雑性と重要度によるワークロード分類\n4. 互換性評価(OS、ランタイム、DB)\n5. コスト見積り(現在 vs クラウド)\n6. 移行ウェーブ計画"
+  },
+  {
+    "id": 42,
+    "category": "移行計画",
+    "question": "6R移行戦略のうち、最小限の変更で実質的にVMをリフト&シフトするのはどれか。",
+    "options": [
+      "リファクタ",
+      "Rehost(リフト&シフト)",
+      "リアーキテクト",
+      "リタイア"
+    ],
+    "answer": 1,
+    "explanation": "RehostはアプリケーションをそのままクラウドVMに移動し、最小限の変更で最速の移行パスだが、最もクラウド最適化が少ない。",
+    "designNote": "移行の6R:\n1. Rehost: リフト&シフト(IaaS VM)\n2. Replatform: リフト、最適化、シフト(マネージドサービス)\n3. Repurchase: SaaSに置き換え\n4. Refactor/Rearchitect: クラウドネイティブに再設計\n5. Retire: 使用終了システムを廃止\n6. Retain: オンプレミスに維持(コンプライアンス、コスト)"
+  },
+  {
+    "id": 43,
+    "category": "移行計画",
+    "question": "データベース移行中、切り替えのダウンタイムを最小化するにはどうするか。",
+    "options": [
+      "アプリ停止、データコピー、アプリ再開",
+      "変更データキャプチャ(CDC)によるほぼゼロダウンタイム: リアルタイムでデータをレプリケートし、同期してから切り替え",
+      "数日かけて手動でデータコピー",
+      "データベースは移行しない"
+    ],
+    "answer": 1,
+    "explanation": "CDCはソースからターゲットへの変更を継続的にレプリケートし、最小のデータ損失とほぼゼロダウンタイムの迅速な切り替えを可能に。",
+    "designNote": "CDC移行ステップ:\n1. ソースDBの初期フルスナップショット\n2. 継続的変更のCDCストリーム開始\n3. ソースとターゲット間のデータ整合性検証\n4. 切り替えウィンドウ: 書き込み停止、残りのCDCイベントを適用\n5. アプリケーションをターゲットDBに切り替え\n6. 検証と監視"
+  },
+  {
+    "id": 44,
+    "category": "移行計画",
+    "question": "モノリスからマイクロサービスへの移行で、最初に何を移行すべきか。",
+    "options": [
+      "最も複雑なサービス",
+      "リスクが低く境界が明確なサービスを移行し、移行アプローチとツールを検証",
+      "最もクリティカルなビジネスサービス",
+      "全サービスを同時に"
+    ],
+    "answer": 1,
+    "explanation": "リスクの低いサービスから開始すると、移行アプローチを検証、パターンを確立、複雑なサービスに取り組む前に自信を構築できる。",
+    "designNote": "移行順序戦略:\n1. 開始: リスクが低く境界が明確なサービス(例: 通知)\n2. 検証: パターン、CI/CD、監視、デプロイメント\n3. 次: ビジネス優先度に基づき段階的に移行\n4. 段階的に: ドメイン境界でサービスを抽出\n5. 最後に: 最も複雑で密結合のコンポーネント"
+  },
+  {
+    "id": 45,
+    "category": "移行計画",
+    "question": "マネージドDBサービスへの移行で一般的な落とし穴は何か。",
+    "options": [
+      "自動化が多すぎる",
+      "互換性テスト不十分: SQLダイアレクトの違い、機能サポートのギャップ、パフォーマンス特性の違いが生じる可能性",
+      "自動的にパフォーマンスが向上",
+      "コストが自動的に下がる"
+    ],
+    "answer": 1,
+    "explanation": "マネージドDBは異なるSQLダイアレクト、異なるデフォルト設定、特定機能がない場合があり、徹底的な互換性テストが必要。",
+    "designNote": "互換性チェックリスト:\n1. SQLダイアレクト: ストアドプロシージャ、関数、トリガー\n2. データ型: 全列タイプがサポートされるか確認\n3. 設定: デフォルトタイムアウト、バッファサイズ、分離レベル\n4. 機能: 特定の拡張、パーティショニング、全文検索\n5. パフォーマンス: ターゲットでクエリパフォーマンスをベンチマーク\n6. 接続性: コネクションプーリング、SSL、ドライバ互換性"
+  },
+  {
+    "id": 46,
+    "category": "移行計画",
+    "question": "セルフホストRedisからマネージドRedisサービスへの移行。主な運用上のメリットは何か。",
+    "options": [
+      "設定の制御が増える",
+      "マネージドパッチ、バックアップ、フェイルオーバー、監視が運用オーバーヘッドなし",
+      "常にパフォーマンスが向上",
+      "レイテンシが常に低い"
+    ],
+    "answer": 1,
+    "explanation": "マネージドRedisは運用負担を排除: 自動パッチ、ポイントインタイムリカバリ、マルチAZレプリケーション、内蔵モニタリングとアラート。",
+    "designNote": "移行アプローチ:\n1. マネージドRedisクラスタをセットアップ\n2. セルフホストからマネージドへのレプリケーションを設定\n3. デュアルライト期間: 両方に書き込み、セルフホストから読み取り\n4. 読み取りをマネージドに切り替え\n5. セルフホストへの書き込みを停止\n6. セルフホストRedisの廃止"
+  },
+  {
+    "id": 47,
+    "category": "移行計画",
+    "question": "レガシーシステムがOracle PL/SQLを多用している。最もクリティカルな移行検討事項は何か。",
+    "options": [
+      "DBエンジン変更なしで動作する",
+      "ストアドプロシージャのアプリケーションロジックを書き直す必要があるか、DBエンジンがPL/SQL互換性をサポートする必要がある",
+      "ハードウェア互換性のみ",
+      "ネットワーク設定"
+    ],
+    "answer": 1,
+    "explanation": "DB固有機能(PL/SQL)への強い依存は、異なるDBエンジンへの移行を極めて高コストにする(ビジネスロジックを書き直す必要がある)。",
+    "designNote": "PL/SQL多量の移行オプション:\n1. Oracle Cloudに移行(同じエンジン、最小変更)\n2. PL/SQLをアプリケーションコードに移行(長期)\n3. 互換エンジンを使用(例: PostgreSQL + orafce拡張)\n4. 段階的抽出: 時間をかけてロジックをアプリ層に移動\n評価: 戦略選択前にPL/SQL依存度を定量化。"
+  },
+  {
+    "id": 48,
+    "category": "移行計画",
+    "question": "クラウド移行でロールバックプランがなぜ不可欠か。",
+    "options": [
+      "不要",
+      "移行問題発見時に以前の状態に迅速に復旧でき、ビジネス影響を最小化する能力",
+      "法務コンプライアンスのみ",
+      "ドキュメント目的"
+    ],
+    "answer": 1,
+    "explanation": "ロールバックプランは移行で重大な問題が発生した場合に迅速に復旧できることを保証し、ダウンタイムとビジネス影響を最小化。",
+    "designNote": "ロールバックプラン要素:\n1. ロールバックトリガー定義(どの条件でロールバック)\n2. ロールバック手順の文書化(ステップバイステップ)\n3. ソースへのデータ同期\n4. DNS/ルーティングのロールバック\n5. 通信計画(ステークホルダーに通知)\n6. 最大ロールバック時間目標\n7. テスト: 移行前にロールバック手順を検証"
+  },
+  {
+    "id": 49,
+    "category": "移行計画",
+    "question": "クラウドVPCへのネットワーク設定移行で何を慎重に計画すべきか。",
+    "options": [
+      "何もしない、同じように動作する",
+      "IPアドレス計画、サブネット設計、セキュリティグループ、NAT/VPN接続、DNS解決",
+      "ファイアウォールルールのみ",
+      "ロードバランサー設定のみ"
+    ],
+    "answer": 1,
+    "explanation": "クラウドネットワークはIP範囲(オンプレミスと重複なし)、サブネットサイジング、セキュリティグループルール(ステートフル)、ハイブリッド接続(VPN/Direct Connect)、DNSの意図的な計画が必要。",
+    "designNote": "ネットワーク移行チェックリスト:\n1. IPアドレス範囲: オンプレミスと重複なし\n2. サブネット: パブリック(ALB、NAT)とプライベート(アプリ、DB)\n3. セキュリティグループ: オンプレミスファイアウォールルールを置き換え\n4. VPN/Direct Connect: ハイブリッド接続\n5. DNS: スプリットホライズンまたは条件付きフォワーディング\n6. NAT: プライベートサブネットのアウトバウンドインターネット"
+  },
+  {
+    "id": 50,
+    "category": "移行計画",
+    "question": "移行中の「並行実行」とは何か、なぜ重要か。",
+    "options": [
+      "2台のコンピュータで同時に実行",
+      "旧システムと新システムを同時に実行して結果を比較し、完全切り替え前に新システムを検証",
+      "パフォーマンステスト手法",
+      "バックアップ戦略"
+    ],
+    "answer": 1,
+    "explanation": "新旧両方のシステムを同時に実行することで結果を比較、データ整合性の検証、完全切り替え前の新システムの検証が可能。",
+    "designNote": "並行実行アプローチ:\n1. 旧システムと新システムの両方にトラフィックをルーティング\n2. 差異を比較\n3. 全差異を分析のためにログ\n4. 新システムは最初「シャドウ」として(ユーザー影響なし)\n5. 段階的に新システムにトラフィックを移行(カナリア)\n6. 検証期間後に完全切り替え"
+  },
+  {
+    "id": 51,
+    "category": "移行計画",
+    "question": "ピーク業務時間中に移行する最大のリスクは何か。",
+    "options": [
+      "移行が速い",
+      "問題発生時のビジネス影響が最大; ロールバックウィンドウが限定的; チームがプレッシャー下",
+      "テスト条件が良好",
+      "ステークホルダーが多い"
+    ],
+    "answer": 1,
+    "explanation": "ピーク時間の移行は問題の影響を最大化。チームがプレッシャー下、ユーザーが影響を受け、慎重な問題解決の時間が少ない。",
+    "designNote": "移行タイミングのベストプラクティス:\n1. 最もトラフィックの少ないウィンドウにスケジュール\n2. 可能なら週末または祝日\n3. ロールバックを準備しテスト済みに\n4. 通信: 計画メンテナンスをユーザーに通知\n5. 段階的アプローチ: 非クリティカルシステムを先に移行\n6. ウォールーム: 主要メンバーを移行中に待機"
+  },
+  {
+    "id": 52,
+    "category": "移行計画",
+    "question": "企業にオンプレミス200台のサーバーがある。最も効率的な移行ツールは何か。",
+    "options": [
+      "各サーバーを手動で再構成",
+      "サーバーレプリケーションと変換の自動化のためのアプリケーション移行サービス(AWS MGN、Azure Migrate)",
+      "ファイルを手動でコピー",
+      "全アプリケーションを書き直し"
+    ],
+    "answer": 1,
+    "explanation": "クラウド移行サービスはサーバーレプリケーション、OS変換、クラウドVMへのランディングを自動化し、大規模移行の手動作業を劇的に削減。",
+    "designNote": "移行ツール比較:\n1. AWS MGN: 継続的レプリケーション、自動変換\n2. Azure Migrate: 評価 + 移行\n3. GCP Migrate to Virtual Machines: リフト&シフト\n4. コンテナ化の場合: Kubernetes移行ツール\nソースプラットフォームとスケールに基づき選択。"
+  },
+  {
+    "id": 53,
+    "category": "移行計画",
+    "question": "クラウド移行における「データグラビティ」とは何か。",
+    "options": [
+      "サーバーの物理的重量",
+      "データが蓄積する場所の周りにアプリケーションとサービスが集まる傾向で、移行をより複雑にする",
+      "DBのパフォーマンス指標",
+      "ストレージ容量測定値"
+    ],
+    "answer": 1,
+    "explanation": "データグラビティはデータが一箇所に蓄積すると、依存関係、帯域幅コスト、アプリケーション結合により移行が increasingly 困難になることを意味する。",
+    "designNote": "データグラビティの管理:\n1. 大きなデータストアとその依存を識別\n2. データ移行を早期に計画(多くの場合ボトルネック)\n3. ハイブリッドアプローチを検討: クラウドで分析、オンプレミスで初期保存\n4. 継続同期にデータストリーミング(CDC)を使用\n5. 古いデータのアーカイブでデータライフサイクルを評価"
+  },
+  {
+    "id": 54,
+    "category": "移行計画",
+    "question": "クラウド移行後のどのコストトラップに注意すべきか。",
+    "options": [
+      "コストは常に低い",
+      "リソースの過剰プロビジョニング: 必要以上の大きなインスタンス、dev/staging環境のシャットダウン忘れ、リザーブドプライシング未使用",
+      "クラウドは常に高価",
+      "コンピュートコストのみ重要"
+    ],
+    "answer": 1,
+    "explanation": "移行後、組織はリソースを過剰プロビジョニングし、アイドル環境を実行し続け、リザーブド/スポット価格の機会を見逃すことが多く、予想外に高い請求に。",
+    "designNote": "コスト最適化チェックリスト:\n1. 実際の使用量に基づくインスタンスの適正サイジング\n2. 常時ピークキャパシティではなくオートスケーリングを使用\n3. 安定ワークロードにリザーブドインスタンス(30-60%節約)\n4. フォールトトレラントワークロードにスポットインスタンス(60-90%節約)\n5. 非本番環境の自動シャットダウン\n6. ストレージライフサイクルポリシー(コールドデータのアーカイブ)"
+  },
+  {
+    "id": 55,
+    "category": "移行計画",
+    "question": "ゼロダウンタイムでのDBスキーマ移行の推奨アプローチは何か。",
+    "options": [
+      "ピーク時にプロダクションで直接ALTER TABLE",
+      "Expand and Contractパターン: 新しい列/テーブルを旧の横に追加、データ移行、読み取り切り替え、書き込み切り替え、旧を削除",
+      "古いスキーマを削除して再作成",
+      "スキーマを変更しない"
+    ],
+    "answer": 1,
+    "explanation": "Expand-Contractパターンは新しいスキーマ要素を旧の横に追加し、ダウンタイムなしの段階的なデータとコンシューマの移行を可能に。",
+    "designNote": "Expand-Contractステップ:\n1. EXPAND: 新しい列/テーブルを追加(nullable)\n2. MIGRATE: バックグラウンドジョブでデータを新構造にコピー\n3. ADAPT: アプリケーションを旧と新の両方に書き込むように更新\n4. SWITCH: 読み取りを新構造に切り替え\n5. CONTRACT: 旧列/テーブルを削除\n各ステップは独立してデプロイ可能でリバーシブル。"
+  },
+  {
+    "id": 56,
+    "category": "スケーラビリティシナリオ",
+    "question": "アプリのトラフィックが6ヶ月で10倍に成長。最初に対応すべきスケーラビリティのボトルネックは何か。",
+    "options": [
+      "すぐに機能を追加",
+      "DB: スロークエリの特定と最適化、読み取りレプリカの追加、コンピュートスケーリング前にキャッシュ実装",
+      "より多くのサーバーを購入",
+      "アプリ全体を書き直し"
+    ],
+    "answer": 1,
+    "explanation": "DBは通常ロード成長の最初のボトルネック。キャッシング、読み取りレプリカ、クエリ最適化はトラフィック増加への最高ROIを提供。",
+    "designNote": "スケーラビリティ優先順:\n1. キャッシュ(最高ROI、最低労力)\n2. DB最適化(インデックス、読み取りレプリカ)\n3. 非同期処理(メッセージキュー)\n4. 水平スケーリング(アプリインスタンス増)\n5. DBシャーディング(最後の手段、高複雑性)"
+  },
+  {
+    "id": 57,
+    "category": "スケーラビリティシナリオ",
+    "question": "ソーシャルメディアプラットフォームがバイラル、1週間で1千人から100万人のユーザーに急成長。最もクリティカルな即時アクションは何か。",
+    "options": [
+      "アーキテクチャをゼロから再設計",
+      "水平スケーリング: オートスケールコンピュート、CDN追加、レート制限実装、非クリティカル機能をスロットル",
+      "マーケティングに集中",
+      "DBインデックスの追加のみ"
+    ],
+    "answer": 1,
+    "explanation": "即時の生存には水平スケーリング(キャパシティ追加)、CDN(静的コンテンツのオフロード)、レート制限(悪用から保護)が必要。アーキテクチャの再設計は安定化後。",
+    "designNote": "緊急スケーリングチェックリスト:\n1. オートスケールコンピュート(水平)\n2. 全静的アセットにCDN\n3. APIエンドポイントのレート制限\n4. DB読み取りレプリカ\n5. 一時的に非本質機能を無効化\n6. 書き込み用キュー-based処理\n7. 全主要メトリクスを監視・アラート"
+  },
+  {
+    "id": 58,
+    "category": "スケーラビリティシナリオ",
+    "question": "決済処理サービスがフラッシュセールで100TPSから10,000TPSにスケールする必要がある。書き込みスパイクをどう処理するか。",
+    "options": [
+      "より大きなインスタンスの単一DB",
+      "ライトビハインドパターン: 書き込みを永続キューに受け入れ、レート制限付きDB書き込みで非同期処理",
+      "全ての超過決済を拒否",
+      "セール終了時に全書き込みをバッチ処理"
+    ],
+    "answer": 1,
+    "explanation": "永続性のあるメッセージキューが書き込みスパイクを吸収し、決済リクエストをバッファリングして持続可能なレートでDBに供給しながら順序と永続性を維持。",
+    "designNote": "実装:\n1. 決済リクエスト受け付け -> 検証 -> キューに入れる(Kafka/RabbitMQ)\n2. ユーザーに仮確認を返却\n3. コンシューマがキューから処理 -> DB書き込み\n4. WebSocket/プッシュで最終確認\n5. キューデプスを監視 -> コンシューマをスケール\n6. 失敗処理用のデッドレターキュー"
+  },
+  {
+    "id": 59,
+    "category": "スケーラビリティシナリオ",
+    "question": "アプリケーションインターフェース応答時間がトラフィック2倍で100ミリ秒から2秒に増加。考えられるボトルネックは何か。",
+    "options": [
+      "ネットワークが速い",
+      "データベースまたは共有リソースの競合 - コネクションプール枯渇、ロック競合、ディスク入出力飽和",
+      "中央演算処理装置が未使用",
+      "キャッシュが多すぎる"
+    ],
+    "answer": 1,
+    "explanation": "超線形のレイテンシ増加(トラフィックに比例しない)はリソース競合を示す: DBコネクションプール枯渇、ロック競合、I/O飽和。",
+    "designNote": "診断ステップ:\n1. DBコネクションプール使用率を確認\n2. ディスクI/O待ち時間を監視\n3. ロック競合を確認(長時間実行中のトランザクション)\n4. スロークエリログを確認\n5. GC一時停止を確認(JVMの場合)\n6. スレッドプール飽和を確認\n修正: コネクションプーリング、読み取りレプリカ、キャッシング、インデックス。"
+  },
+  {
+    "id": 60,
+    "category": "スケーラビリティシナリオ",
+    "question": "ファイルストレージサービスが1日100万件のファイルアップロード(平均5MB)を処理する必要がある。ストレージをどうスケールするか。",
+    "options": [
+      "大きなディスクの単一サーバー",
+      "オブジェクトストレージ(S3)とマルチパートアップロード、CDN配信、アーカイブ用ライフサイクルポリシー",
+      "ファイルをストレージチームにメール",
+      "全ファイルを1KBに圧縮"
+    ],
+    "answer": 1,
+    "explanation": "クラウドオブジェクトストレージ(S3)は事実上無限の耐久性のあるスケーラブルなストレージを提供。マルチパートアップロードは大ファイルを効率的に処理、ライフサイクルポリシーでコスト管理。",
+    "designNote": "日間ボリューム: 100万 x 5MB = 5TB/日。\nアーキテクチャ:\n1. クライアント→S3直接アップロード用プリサインドURL\n2. 100MB超のファイルにマルチパートアップロード\n3. ダウンロード配信にCDN(CloudFront)\n4. ライフサイクル: 30日後にIA、90日後にGlacierに移動\n5. アップロード後処理のS3イベント通知"
+  },
+  {
+    "id": 61,
+    "category": "スケーラビリティシナリオ",
+    "question": "リアルタイムチャットアプリがサーバーあたり100,000の同時WebSocket接続をサポートする必要がある。主なスケーラビリティの懸念は何か。",
+    "options": [
+      "機能が不足",
+      "接続あたりのメモリ、ファイルディスクリプタ制限、最大同時接続のためのOSカーネルチューニング",
+      "DBのパフォーマンス",
+      "SSL証明書管理"
+    ],
+    "answer": 1,
+    "explanation": "100KのWebSocket接続には各約50KB = サーバーあたり5GBメモリが必要。OS制限(ファイルディスクリプタ、エフェメラルポート)とカーネルチューニングがクリティカル。",
+    "designNote": "チューニングチェックリスト:\n1. ファイルディスクリプタ: ulimit -n 1000000(プロセスあたり)\n2. TCPバックログ: net.core.somaxconn\n3. エフェメラルポート: net.ipv4.ip_local_port_range\n4. メモリ: 適切なWebSocketバッファサイズを設定\n5. ロードバランシング: スティッキーセッションまたはWebSocket対応LB\n6. グレースフルシャットダウンの接続ドレインを検討"
+  },
+  {
+    "id": 62,
+    "category": "スケーラビリティシナリオ",
+    "question": "アプリのDBが5TBに成長し、クエリパフォーマンスが低下。まず検討すべきスケーリングアプローチは何か。",
+    "options": [
+      "より大きなサーバーを購入(垂直スケーリング)",
+      "読み取りレプリカ + クエリ最適化 + 最もホットなテーブルの選択的シャーディング",
+      "古いデータの削除のみ",
+      "スプレッドシートに移行"
+    ],
+    "answer": 1,
+    "explanation": "シャーディング(高複雑性)の前に、読み取り重いワークロードに読み取りレプリカ、クエリ最適化、最も大きい/ホットなテーブルのみの選択的シャーディングを試す。",
+    "designNote": "大規模DBのスケーリングロードマップ:\n1. 最適化: インデックス、クエリ書き換え、スキーマ再設計\n2. 読み取りレプリカ: 読み取りクエリをオフロード\n3. キャッシング: Redisで頻繁な読み取り\n4. パーティショニング: テーブルレベルのパーティショニング(日付ベース)\n5. 選択的シャーディング: 最大のテーブルのみシャード\n6. フルシャーディング: 最後の手段(運用複雑性)"
+  },
+  {
+    "id": 63,
+    "category": "スケーラビリティシナリオ",
+    "question": "推薨エンジンが1時間以内に1,000万人のユーザーにパーソナライズされた提案を生成する必要がある。どうアプローチするか。",
+    "options": [
+      "単一サーバーのシングルスレッド処理",
+      "事前計算されたユーザー特徴ベクトルとオフラインモデルスコアリングによる分散バッチ処理(Spark)",
+      "各ユーザーのリクエスト時にリアルタイム計算",
+      "手動の推薦"
+    ],
+    "answer": 1,
+    "explanation": "分散バッチ処理(Spark)はクラスタ全体で計算を並列化。事前計算された特徴ベクトルが数百万人のユーザーの効率的なバッチスコアリングを有効化。",
+    "designNote": "アーキテクチャ:\n1. ETLパイプライン: ユーザー行動データを集計\n2. 特徴計算: Sparkジョブでユーザー特徴ベクトルを構築\n3. モデルスコアリング: 全ユーザーのバッチ推論\n4. 結果保存: RedisまたはDBで高速ルックアップ\n5. リフレッシュ: 日次または1時間ごとのバッチジョブ\n6. リアルタイム: 最近のインタラクションを次のバッチにキャプチャ"
+  },
+  {
+    "id": 64,
+    "category": "スケーラビリティシナリオ",
+    "question": "グローバルアプリが世界中のユーザーに100ms未満の応答時間を必要としている。どのアーキテクチャがこれを実現するか。",
+    "options": [
+      "1つのリージョンに単一データセンター",
+      "エッジキャッシュ(CDN)とリージョナルデータセンター(ローカルDB読み取り)を備えたマルチリージョンデプロイメント",
+      "DNSラウンドロビンのみ",
+      "遅い応答時間でも可"
+    ],
+    "answer": 1,
+    "explanation": "CDNエッジキャッシュとリージョナルDBを備えたマルチリージョンデプロイメントが世界中で低レイテンシを提供。ユーザーは最も近いエッジから配信され、ローカルレプリカから読み取り。",
+    "designNote": "マルチリージョンアーキテクチャ:\n1. CDN: 最も近いエッジから静的コンテンツ\n2. リージョナルコンピュート: リージョンごとのアプリサーバー\n3. リージョナルDBレプリカ: 高速なローカル読み取り\n4. クロスリージョン書き込み: 競合解決付き非同期レプリケーション\n5. グローバルロードバランサー: 最も近いリージョンにルーティング\n6. トレードオフ: 結果整合性 vs レイテンシ"
+  },
+  {
+    "id": 65,
+    "category": "スケーラビリティシナリオ",
+    "question": "電子商取引サイトの決済サービスが在庫確認ステップでボトルネックに達している。このクリティカルパスをどうスケールするか。",
+    "options": [
+      "在庫確認をスキップ",
+      "リアルタイム在庫用の分散カウンター(Redis)とオプティミスティックロッキング、データベース照合フォールバック",
+      "毎日在庫確認のみ",
+      "売り越しを許可"
+    ],
+    "answer": 1,
+    "explanation": "Redis分散カウンターはリアルタイム在庫確認にO(1)アトミックデクリメントを提供。オプティミスティックロッキングはオーバーセルを防止しながら高スループットを維持。",
+    "designNote": "実装:\n1. Redis DECRでアトミック在庫デクリメント\n2. 結果 < 0の場合: INCRでロールバック(売り切れ)\n3. 在庫イベントをKafkaにパブリッシュして注文処理\n4. DBが真実の情報源(定期照合)\n5. Redis在庫 = DB在庫のキャッシュ\n6. Luaスクリプトまたはトランザクションで競合状態を処理"
+  },
+  {
+    "id": 66,
+    "category": "スケーラビリティシナリオ",
+    "question": "ログ集約システムが1日1TBのログを取り込み、1分以内に検索可能にする必要がある。どのアーキテクチャが機能するか。",
+    "options": [
+      "単一のリレーショナルDB",
+      "ログシッパー -> Kafka -> ストリーム処理 -> 日次インデックス付きElasticsearchクラスタ",
+      "ログをフラットファイルに保存",
+      "管理者にログをメール"
+    ],
+    "answer": 1,
+    "explanation": "Kafkaは高スループットログストリームをバッファ。ストリーム処理(Logstash/Flink)が変換・ルーティングしてElasticsearchに送り、ほぼリアルタイムの全文検索を提供。",
+    "designNote": "パイプライン:\n1. ログシッパー(Fluentd/Filebeat)を各サーバーに配置\n2. Kafka: バッファとサービス/ホストごとのパーティショニング\n3. ストリーム処理: パース、エンリッチ、フィルタ\n4. Elasticsearch: 日次インデックスでインデキシング\n5. Kibana: 検索と可視化\n6. 保持: 保持ポリシーより古いインデックスを削除\nキャパシティ: 1TB/日 = 約12GB/時間"
+  },
+  {
+    "id": 67,
+    "category": "スケーラビリティシナリオ",
+    "question": "サービスが1秒あたり50,000リクエストを受信するが、ロードバランサーがボトルネックに。何をすべきか。",
+    "options": [
+      "ロードバランサーを削除",
+      "DNSベースのロードバランシングまたはコネクションプーリングとSSLオフロードを備えた高キャパシティLBにアップグレード",
+      "アプリサーバーを追加",
+      "ユーザーをブロックしてトラフィックを削減"
+    ],
+    "answer": 1,
+    "explanation": "ロードバランサーボトルネックは高キャパシティLBへのアップグレード、DNSレベルの分散、SSLオフロード、マルチレベルロードバランシング(グローバル+ローカル)で対処可能。",
+    "designNote": "LBスケーリング戦略:\n1. LBキャパシティのアップグレード(上位ティア)\n2. DNSラウンドロビン付きマルチLB\n3. グローバルLB(CloudFront、Route 53) + リージョナルLB\n4. エッジでのSSLオフロード(接続あたりのコスト削減)\n5. LBレベルのコネクションプーリング\n6. HTTP/2マルチプレクシング(必要な接続数を削減)"
+  },
+  {
+    "id": 68,
+    "category": "スケーラビリティシナリオ",
+    "question": "機械学習推論サービスが1秒あたり1,000件の予測を処理する必要がある。各モデルは50ミリ秒かかる。必要なインスタンス数はいくらか。",
+    "options": [
+      "1インスタンス",
+      "10インスタンス(安全マージン付き)",
+      "100インスタンス",
+      "5インスタンス"
+    ],
+    "answer": 1,
+    "explanation": "各インスタンスが100%利用率で1/0.05 = 20リクエスト/秒を処理。1,000リクエスト/秒で70%利用率の場合: 1,000/(20x0.7) = ~72インスタンス。安全マージン込で~100インスタンス。",
+    "designNote": "ML推論スケーリング:\n1. バッチ予測: GPU効率のためにリクエストをグループ化\n2. モデルサーバー: TensorFlow Serving、TorchServe\n3. 高速推論用GPUインスタンス\n4. キューデプスに基づくオートスケーリング\n5. カナリアデプロイメントでモデルバージョンのA/Bテスト\n6. レイテンシ重視のアプリケーションではエッジ推論を検討"
+  },
+  {
+    "id": 69,
+    "category": "スケーラビリティシナリオ",
+    "question": "トラフィックパターンが10%のデータに90%のリクエストが集中している(人気製品)。どのキャッシュ戦略がキャッシュヒット率を最大化するか。",
+    "options": [
+      "全てランダムにキャッシュ",
+      "人気アイテムのワーキングセットを保持できる十分な容量のLRUキャッシュ",
+      "キャッシュ不要",
+      "最も人気のないアイテムをキャッシュ"
+    ],
+    "answer": 1,
+    "explanation": "LRUエビクションは頻繁にアクセスされる人気アイテムを自然にキャッシュに保持する(頻繁アクセスされるため)。10%のワーキングセットを保持できる十分なキャッシュで~90%ヒット率。",
+    "designNote": "キャッシュサイジング:\n1. ワーキングセットを計算: 10%のデータ = サイズを特定\n2. キャッシュ容量: ワーキングセットの1.2倍(20%バッファ)\n3. LRUエビクション: 冷たいアイテムを自然にエビクト\n4. ヒット率を監視: 90%超をターゲット\n5. プリウォーム: スタートアップ時に人気アイテムをロード\n6. 多階層を検討: L1(プロセス内) + L2(Redis)"
+  },
+  {
+    "id": 70,
+    "category": "スケーラビリティシナリオ",
+    "question": "通知サービスが100万人のユーザーに同時に速報をプッシュする必要がある。サンダリングハードをどう回避するか。",
+    "options": [
+      "各ユーザーに個別リクエスト",
+      "メッセージブローカー経由でWebSocket接続にファンアウト、段階的配信とバックプレッシャー",
+      "全ユーザーに1つのブロードキャスト",
+      "全員にメール"
+    ],
+    "answer": 1,
+    "explanation": "メッセージブローカーがメッセージを全接続WebSocketインスタンスにファンアウトし、各インスタンスが接続のサブセットを管理。バックプレッシャーがクライアントの過負荷を防止。",
+    "designNote": "実装:\n1. トピックにメッセージをパブリッシュ(Kafka/RabbitMQ)\n2. 各WebSocketサーバーがサブスクライブしメッセージを1回受信\n3. サーバーが接続クライアントを反復して送信\n4. バックプレッシャー: 書き込みバッファが満杯なら配信を一時停止\n5. 配信確認: どのクライアントが受信したかを追跡\n6. オフラインフォールバック: プッシュ通知またはアプリ内通知"
+  },
+  {
+    "id": 71,
+    "category": "統合設計",
+    "question": "2つのシステムがリアルタイムでデータを共有する必要がある。システムAはREST、システムBはgRPC。最適な統合パターンはどれか。",
+    "options": [
+      "両方のシステムを同じプロトコルに書き直し",
+      "API Gateway/アダプタパターン: ゲートウェイが統一インターフェースを公開、内部でRESTとgRPC間を変換",
+      "システム間で手動データ入力",
+      "統合なし、別々に維持"
+    ],
+    "answer": 1,
+    "explanation": "API Gatewayまたはアダプタパターンはプロトコル間を変換し、両システムのコード変更なしに通信を可能に。",
+    "designNote": "実装オプション:\n1. プロトコル変換を備えたAPI Gateway\n2. サイドカープロキシ(Envoy)でプロトコル変換\n3. メッセージブローカーを統合ポイント(言語非依存)\n4. アダプタサービス: RESTフロントエンド、gRPCバックエンド\nトラフィック量、レイテンシ要件、チーム所有権に基づき選択。"
+  },
+  {
+    "id": 72,
+    "category": "統合設計",
+    "question": "レガシーシステムがファイルベースのデータ交換(CSV)のみをサポート。新システムはリアルタイムデータが必要。どう統合するか。",
+    "options": [
+      "レガシーシステムに直ちにAPIサポートを強制",
+      "モニタリング付きファイルベース統合と並行して新システムのイベントベース統合の実装",
+      "レガシーシステムを破棄",
+      "毎日データを手動でコピー"
+    ],
+    "answer": 1,
+    "explanation": "実用的統合: 既存のファイルベース交換を維持しながら、並行してイベントベース統合を構築し、レガシーシステムの近代化に応じて段階的に移行。",
+    "designNote": "段階的統合:\nフェーズ1(即時): ファイルベース(SFTP + 定期ポーリング)\nフェーズ2(短期): メッセージキュー追加(CSVイベントをパブリッシュ)\nフェーズ3(中期): レガシーシステムのAPIエンドポイントを近代化\nフェーズ4(長期): 完全なイベント駆動統合\n移行期間は常に後方互換性を維持。"
+  },
+  {
+    "id": 73,
+    "category": "統合設計",
+    "question": "サードパーティ決済プロバイダーと統合する必要がある。プロバイダーのSLAは99.5%。システムは99.9%可用性が必要。このギャップをどう埋めるか。",
+    "options": [
+      "低い可用性を受け入れる",
+      "サーキットブレーカーとフォールバック: プロバイダー障害時に決済をキューイング、復旧後に処理",
+      "直ちにプロバイダーを切り替え",
+      "障害時に決済処理を停止"
+    ],
+    "answer": 1,
+    "explanation": "サーキットブレーカーがプロバイダー故障を検出し、フォールバックモード(決済をキューイング)をアクティベート。プロバイダー復旧時にキューされた決済を自動処理。",
+    "designNote": "レジリエンスパターン:\n1. サーキットブレーカー: 持続的故障を検出・トリップ\n2. フォールバック: 決済をキュー(保証付き配送)\n3. タイムアウト: 積極的なタイムアウト(3-5秒)\n4. リトライ: 一時的故障に指数バックオフ\n5. マルチプロバイダー: バックアッププロバイダーにフェイルオーバー\n6. 冪等性: 重複決済処理が安全"
+  },
+  {
+    "id": 74,
+    "category": "統合設計",
+    "question": "10の異なるソースからデータウェアハウスにデータをフローさせる必要がある。最も保守しやすい統合パターンはどれか。",
+    "options": [
+      "各ソースとウェアハウス間のポイントツーポイント接続",
+      "標準化データフォーマット、スキーマレジストリ、一元化監視を備えたイベントバス/ETLパイプライン",
+      "各ソースの手動データ入力",
+      "1つの巨大なストアドプロシージャ"
+    ],
+    "answer": 1,
+    "explanation": "一元化されたイベントバスと標準化フォーマットとスキーマレジストリはN^2のポイントツーポイント接続をN接続に削減し、保守性を向上。",
+    "designNote": "アーキテクチャ:\n1. ソースがメッセージバス(Kafka)にイベントをパブリッシュ\n2. スキーマレジストリ(Avro/Protobuf)で互換性を保証\n3. ETLパイプライン: 変換、検証、エンリッチ\n4. データウェアハウス: 変換済みデータをロード\n5. 監視: パイプラインヘルスとデータ品質を追跡\n6. エラー処理: 失敗イベントのデッドレターキュー\n7. スケーラビリティ: コンシューマを変更せずに新しいソースを追加"
+  },
+  {
+    "id": 75,
+    "category": "統合設計",
+    "question": "2つのマイクロサービスが整合性のあるデータを維持する必要がある。サービスAが注文を作成、サービスBが在庫を更新。整合性を保証するパターンはどれか。",
+    "options": [
+      "サービス間の直接DB呼び出し",
+      "Sagaパターン: サービスAがイベントをパブリッシュ、サービスBが消費して在庫を更新、ロールバック用の補償アクション付き",
+      "整合性は無視して運に任せる",
+      "同じDBを共有"
+    ],
+    "answer": 1,
+    "explanation": "Sagaパターンはイベントでサービス間を調整: 各ステップにロールバック用の補償アクションがあり、分散トランザクションなしで結果整合性を維持。",
+    "designNote": "Saga実装:\nオーケストレーション推奨:\n1. Sagaコーディネータがトランザクションを開始\n2. ステップ1: 注文作成(補償: 注文キャンセル)\n3. ステップ2: 在庫引当(補償: 在庫解放)\n4. ステップ3: 決済処理(補償: 返金)\n5. いずれかのステップ失敗: 逆順で補償アクションを実行"
+  },
+  {
+    "id": 76,
+    "category": "統合設計",
+    "question": "メインアプリのパフォーマンスに影響を与えずに新しいアナリティクスサービスを統合する必要がある。最適なアプローチはどれか。",
+    "options": [
+      "メインアプリのリクエストパスに直接アナリティクスコードを追加",
+      "メインアプリからメッセージキューへのファイアアンドフォーゲットイベントパブリッシュ; アナリティクスサービスが非同期消費",
+      "毎晩データをバッチエクスポート",
+      "同期でアナリティクスAPIを呼び出し"
+    ],
+    "answer": 1,
+    "explanation": "ファイアアンドフォーゲットイベントパブリッシュはアナリティクスをメインリクエストパスから分離し、アナリティクスがアプリのパフォーマンスに影響しないことを保証。",
+    "designNote": "実装:\n1. メインアプリ: リクエスト後、メッセージキューにイベントをパブリッシュ(非ブロッキング)\n2. アナリティクスサービス: 自分のペースでイベントを消費\n3. 利点: メインアプリにゼロ影響、スケーラブルなアナリティクス、リプレイ可能\n4. 考慮: 高スループットのイベントバッファ\n5. 監視: イベントパブリッシュ成功率/失敗率を追跡"
+  },
+  {
+    "id": 77,
+    "category": "統合設計",
+    "question": "パートナー企業のAPIがバージョニングなしで頻繁に変更される。システムをどう保護するか。",
+    "options": [
+      "パートナーを信じて毎回即座に更新",
+      "アンチコラプションレイヤー: パートナーAPIを独自の安定インターフェースの後ろに分離し、自社ドメインに変更を吸収",
+      "統合を停止",
+      "パートナーのAPIを正確にミラー"
+    ],
+    "answer": 1,
+    "explanation": "アンチコラプションレイヤーは自社ドメインモデルとパートナーAPI間を変換し、パートナーの変更を吸収して内部システムを安定に維持。",
+    "designNote": "アンチコラプションレイヤー:\n1. 独自のドメインモデルを定義(安定インターフェース)\n2. アダプタがパートナーAPIを自社モデルに変換\n3. パートナーAPIの変更はアダプタの更新のみ\n4. 自社ドメインサービスは変更なし\n5. アダプタを独立してバージョン管理\n6. 統合テスト: パートナーAPI変更へのアダプタ対応を検証"
+  },
+  {
+    "id": 78,
+    "category": "統合設計",
+    "question": "外部APIを呼び出す必要があるが、平均500msで遅く、時々タイムアウトする。カスケード故障をどう防止するか。",
+    "options": [
+      "毎回同期でAPIを呼び出す",
+      "タイムアウト、バックオフ付きリトライ、キャッシュ済みフォールバックレスポンスを備えたサーキットブレーカー",
+      "統合を削除",
+      "より頻繁にAPIを呼び出し"
+    ],
+    "answer": 1,
+    "explanation": "サーキットブレーカーは繰り返しのタイムアウト後にトリップしてカスケード故障を防止。キャッシュ済みフォールバックは障害中に完全な故障ではなく低下サービスを提供。",
+    "designNote": "レジリエンス構成:\n1. タイムアウト: 3秒(フェイルファスト)\n2. サーキットブレーカー: 30秒間に5故障でトリップ\n3. リトライ: 指数バックオフで2回リトライ(1秒、2秒)\n4. フォールバック: キャッシュ済みレスポンス(5分TTL)\n5. ハーフオープン: 30秒後に1テストリクエストを許可\n6. 監視: サーキットブレーカー状態変化でアラート"
+  },
+  {
+    "id": 79,
+    "category": "統合設計",
+    "question": "バッチシステムが本番DBのパフォーマンスに影響を与えずに、運用DBから1,000万レコードを毎日処理する必要がある。最適なパターンはどれか。",
+    "options": [
+      "夜間に本番DBで直接クエリを実行",
+      "CDC(Change Data Capture)でレプリカにストリーミングし、レプリカでバッチ処理; または専用分析レプリカを使用",
+      "データを手動でエクスポート",
+      "ピーク時にバッチクエリを実行"
+    ],
+    "answer": 1,
+    "explanation": "CDCはリアルタイムで変更をレプリカにキャプチャし、本番DBに影響を与えずにバッチ処理を可能に。専用読み取りレプリカが分析ワークロードを分離。",
+    "designNote": "実装:\n1. CDCツール(Debezium)が本番DBの変更をキャプチャ\n2. ステージング領域または分析レプリカにストリーム\n3. バッチジョブはレプリカで実行(本番から分離)\n4. 処理: フィルタ、変換、集計\n5. 出力: データウェアハウスまたはレポートDB\n6. スケジューリング: cronまたはワークフローオーケストレータ(Airflow)"
+  },
+  {
+    "id": 80,
+    "category": "統合設計",
+    "question": "複数のサービスが顧客データの正準データ形式に合意する必要がある。各サービスが異なるスキーマを持っている。どのアプローチがこれを解決するか。",
+    "options": [
+      "全サービスに一つのサービスのスキーマを即座に強制",
+      "正準データモデルを備えたスキーマレジストリ: 標準スキーマを定義し、各サービスがアダプタで正準形式との変換を実装",
+      "標準化不要",
+      "各サービスの形式で全データを重複"
+    ],
+    "answer": 1,
+    "explanation": "スキーマレジストリと正準データモデルは標準フォーマットを提供。各サービスはアダプタでこのフォーマットに変換し、スキーマ変更を強制せずに相互運用を有効化。",
+    "designNote": "実装:\n1. 正準顧客モデルを定義(Confluent Schema Registry)\n2. 各サービスは独自の内部スキーマを維持\n3. アダプタがサービススキーマ <-> 正準を変換\n4. インターサービス通信は正準フォーマットを使用\n5. 進化: 後方互換性でスキーマをバージョン管理\n6. 検証: 自動化されたスキーマ互換性チェック"
+  }
 ]
