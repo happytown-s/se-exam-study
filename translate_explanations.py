@@ -1,5 +1,6 @@
 import json
 
+import os; os.chdir(r'C:\Users\haro\.openclaw\workspace\se-exam-study')
 with open('src/data/se-exam.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
