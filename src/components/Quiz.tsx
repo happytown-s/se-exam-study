@@ -13,6 +13,19 @@ interface Question {
 const WRONG_KEY = 'se-quiz-wrong';
 const STATS_KEY = 'se-quiz-stats';
 
+const categoryNames: Record<string, string> = {
+  'Requirements Definition': '要求定義',
+  'System Architecture': 'システムアーキテクチャ',
+  'Software Design': 'ソフトウェア設計',
+  'Database Design': 'データベース設計',
+  'UI/UX Design': 'UI/UX設計',
+  'API Design': 'API設計',
+  'Performance Design': '性能設計',
+  'Security Design': 'セキュリティ設計',
+  'Cloud Architecture': 'クラウドアーキテクチャ',
+  'Testing Strategy': 'テスト戦略',
+};
+
 const categories = [...new Set((examData as Question[]).map(q => q.category))];
 
 export default function Quiz() {
@@ -82,6 +95,8 @@ export default function Quiz() {
     }
   };
 
+  const catLabel = (cat: string) => categoryNames[cat] || cat;
+
   if (mode === 'results') {
     const pct = Math.round((score / questions.length) * 100);
     return (
@@ -90,11 +105,11 @@ export default function Quiz() {
           <h2 className="text-2xl font-bold mb-2" style={{ color: pct >= 80 ? '#4ade80' : pct >= 60 ? '#fbbf24' : '#f87171' }}>
             {pct}%
           </h2>
-          <p className="text-[#a0a0c0]">{score} / {questions.length} correct</p>
+          <p className="text-[#a0a0c0]">{score} / {questions.length} 正解</p>
         </div>
         <div className="flex gap-3 justify-center">
-          <button onClick={() => setMode('menu')} className="px-6 py-3 rounded-lg font-semibold" style={{ background: '#e67e22' }}>Back to Menu</button>
-          <button onClick={() => startQuiz(selectedCat)} className="px-6 py-3 rounded-lg font-semibold border border-[#e67e22]">Retry</button>
+          <button onClick={() => setMode('menu')} className="px-6 py-3 rounded-lg font-semibold" style={{ background: '#e67e22' }}>メニューに戻る</button>
+          <button onClick={() => startQuiz(selectedCat)} className="px-6 py-3 rounded-lg font-semibold border border-[#e67e22]">再挑戦</button>
         </div>
       </div>
     );
@@ -106,7 +121,7 @@ export default function Quiz() {
       <div className="p-4 max-w-lg mx-auto">
         <div className="flex justify-between items-center mb-4">
           <span className="text-sm text-[#a0a0c0]">{current + 1} / {questions.length}</span>
-          <span className="text-sm px-2 py-1 rounded" style={{ background: '#1a1a3e' }}>{q.category}</span>
+          <span className="text-sm px-2 py-1 rounded" style={{ background: '#1a1a3e' }}>{catLabel(q.category)}</span>
         </div>
         <div className="w-full h-2 rounded-full mb-6" style={{ background: '#1a1a3e' }}>
           <div className="h-2 rounded-full transition-all" style={{ width: `${((current + 1) / questions.length) * 100}%`, background: '#e67e22' }}></div>
@@ -133,14 +148,14 @@ export default function Quiz() {
         {showAnswer && (
           <div className="mt-6 p-4 rounded-lg" style={{ background: '#1a1a3e' }}>
             <p className="text-sm mb-2" style={{ color: selected === q.answer ? '#4ade80' : '#f87171' }}>
-              {selected === q.answer ? 'Correct!' : `Incorrect. Answer: ${String.fromCharCode(65 + q.answer)}`}
+              {selected === q.answer ? '正解!' : `不正解。正解: ${String.fromCharCode(65 + q.answer)}`}
             </p>
             <p className="text-sm text-[#a0a0c0]">{q.explanation}</p>
           </div>
         )}
         {showAnswer && (
           <button onClick={next} className="mt-4 w-full py-3 rounded-lg font-semibold" style={{ background: '#e67e22' }}>
-            {current + 1 >= questions.length ? 'See Results' : 'Next'}
+            {current + 1 >= questions.length ? '結果を見る' : '次へ'}
           </button>
         )}
       </div>
@@ -149,26 +164,26 @@ export default function Quiz() {
 
   return (
     <div className="p-4 max-w-lg mx-auto">
-      <h2 className="text-xl font-bold mb-4">System Design Specialist Exam</h2>
+      <h2 className="text-xl font-bold mb-4">システム設計専門試験</h2>
       <div className="space-y-2 mb-6">
         <button onClick={() => startQuiz('all')} className="w-full text-left p-4 rounded-lg border border-[#1a1a3e] hover:border-[#f39c12] transition-all">
-          <span className="font-semibold">All Categories</span>
-          <span className="text-sm text-[#a0a0c0] block">{(examData as Question[]).length} questions</span>
+          <span className="font-semibold">全カテゴリ</span>
+          <span className="text-sm text-[#a0a0c0] block">{(examData as Question[]).length} 問</span>
         </button>
         <button onClick={() => startQuiz('wrong')} className="w-full text-left p-4 rounded-lg border border-[#1a1a3e] hover:border-[#f39c12] transition-all">
-          <span className="font-semibold">Wrong Answers Review</span>
-          <span className="text-sm text-[#a0a0c0] block">{wrongIds.length} questions to review</span>
+          <span className="font-semibold">不正解復習</span>
+          <span className="text-sm text-[#a0a0c0] block">{wrongIds.length} 問を復習</span>
         </button>
       </div>
-      <h3 className="text-sm font-semibold text-[#a0a0c0] uppercase mb-3">Categories</h3>
+      <h3 className="text-sm font-semibold text-[#a0a0c0] uppercase mb-3">カテゴリ</h3>
       <div className="space-y-2">
         {categories.map(cat => {
           const count = (examData as Question[]).filter(q => q.category === cat).length;
           const s = stats[cat];
           return (
             <button key={cat} onClick={() => startQuiz(cat)} className="w-full text-left p-3 rounded-lg border border-[#1a1a3e] hover:border-[#f39c12] transition-all">
-              <span className="font-medium">{cat}</span>
-              <span className="text-sm text-[#a0a0c0] block">{count} questions{s ? ` | ${Math.round((s.correct/s.total)*100)}%` : ''}</span>
+              <span className="font-medium">{catLabel(cat)}</span>
+              <span className="text-sm text-[#a0a0c0] block">{count} 問{s ? ` | ${Math.round((s.correct/s.total)*100)}%` : ''}</span>
             </button>
           );
         })}

@@ -13,6 +13,14 @@ interface SubjectBQuestion {
 
 const STATS_KEY = 'se-b-stats';
 
+const categoryNames: Record<string, string> = {
+  'Architecture Decisions': 'アーキテクチャ決定',
+  'Design Review': '設計レビュー',
+  'Migration Planning': '移行計画',
+  'Scalability Scenarios': 'スケーラビリティ',
+  'Integration Design': '統合設計',
+};
+
 const categories = [...new Set((subjectBData as SubjectBQuestion[]).map(q => q.category))];
 
 export default function SubjectBTraining() {
@@ -64,13 +72,15 @@ export default function SubjectBTraining() {
     }
   };
 
+  const catLabel = (cat: string) => categoryNames[cat] || cat;
+
   if (mode === 'results') {
     const pct = Math.round((score / questions.length) * 100);
     return (
       <div className="p-4 max-w-lg mx-auto text-center">
         <h2 className="text-2xl font-bold mb-2" style={{ color: pct >= 80 ? '#4ade80' : pct >= 60 ? '#fbbf24' : '#f87171' }}>{pct}%</h2>
         <p className="text-[#a0a0c0] mb-6">{score} / {questions.length}</p>
-        <button onClick={() => setMode('menu')} className="px-6 py-3 rounded-lg font-semibold" style={{ background: '#e67e22' }}>Back</button>
+        <button onClick={() => setMode('menu')} className="px-6 py-3 rounded-lg font-semibold" style={{ background: '#e67e22' }}>戻る</button>
       </div>
     );
   }
@@ -81,7 +91,7 @@ export default function SubjectBTraining() {
       <div className="p-4 max-w-lg mx-auto">
         <div className="flex justify-between items-center mb-4">
           <span className="text-sm text-[#a0a0c0]">{current + 1} / {questions.length}</span>
-          <span className="text-sm px-2 py-1 rounded" style={{ background: '#1a1a3e' }}>{q.category}</span>
+          <span className="text-sm px-2 py-1 rounded" style={{ background: '#1a1a3e' }}>{catLabel(q.category)}</span>
         </div>
         <p className="text-lg font-medium mb-6">{q.question}</p>
         <div className="space-y-3">
@@ -106,13 +116,13 @@ export default function SubjectBTraining() {
           <div className="mt-6 space-y-3">
             <div className="p-4 rounded-lg" style={{ background: '#1a1a3e' }}>
               <p className="text-sm mb-2" style={{ color: selected === q.answer ? '#4ade80' : '#f87171' }}>
-                {selected === q.answer ? 'Correct!' : `Answer: ${String.fromCharCode(65 + q.answer)}`}
+                {selected === q.answer ? '正解!' : `正解: ${String.fromCharCode(65 + q.answer)}`}
               </p>
               <p className="text-sm text-[#a0a0c0]">{q.explanation}</p>
             </div>
             {q.designNote && (
               <div className="p-4 rounded-lg" style={{ background: '#1a1a3e' }}>
-                <p className="text-sm font-semibold mb-2" style={{ color: '#f39c12' }}>Design Note:</p>
+                <p className="text-sm font-semibold mb-2" style={{ color: '#f39c12' }}>設計メモ:</p>
                 <p className="text-sm text-[#a0a0c0] whitespace-pre-wrap">{q.designNote}</p>
               </div>
             )}
@@ -120,7 +130,7 @@ export default function SubjectBTraining() {
         )}
         {showAnswer && (
           <button onClick={next} className="mt-4 w-full py-3 rounded-lg font-semibold" style={{ background: '#e67e22' }}>
-            {current + 1 >= questions.length ? 'See Results' : 'Next'}
+            {current + 1 >= questions.length ? '結果を見る' : '次へ'}
           </button>
         )}
       </div>
@@ -129,11 +139,11 @@ export default function SubjectBTraining() {
 
   return (
     <div className="p-4 max-w-lg mx-auto">
-      <h2 className="text-xl font-bold mb-2">Subject B Training</h2>
-      <p className="text-sm text-[#a0a0c0] mb-4">Architecture decisions, design review, migration, scalability, integration</p>
+      <h2 className="text-xl font-bold mb-2">科目Bトレーニング</h2>
+      <p className="text-sm text-[#a0a0c0] mb-4">アーキテクチャ決定、設計レビュー、移行、スケーラビリティ、統合</p>
       <button onClick={() => startQuiz('all')} className="w-full text-left p-4 rounded-lg border border-[#1a1a3e] hover:border-[#f39c12] transition-all mb-4">
-        <span className="font-semibold">All Categories</span>
-        <span className="text-sm text-[#a0a0c0] block">{(subjectBData as SubjectBQuestion[]).length} questions</span>
+        <span className="font-semibold">全カテゴリ</span>
+        <span className="text-sm text-[#a0a0c0] block">{(subjectBData as SubjectBQuestion[]).length} 問</span>
       </button>
       <div className="space-y-2">
         {categories.map(cat => {
@@ -141,8 +151,8 @@ export default function SubjectBTraining() {
           const s = stats[cat];
           return (
             <button key={cat} onClick={() => startQuiz(cat)} className="w-full text-left p-3 rounded-lg border border-[#1a1a3e] hover:border-[#f39c12] transition-all">
-              <span className="font-medium">{cat}</span>
-              <span className="text-sm text-[#a0a0c0] block">{count} questions{s ? ` | ${Math.round((s.correct/s.total)*100)}%` : ''}</span>
+              <span className="font-medium">{catLabel(cat)}</span>
+              <span className="text-sm text-[#a0a0c0] block">{count} 問{s ? ` | ${Math.round((s.correct/s.total)*100)}%` : ''}</span>
             </button>
           );
         })}
