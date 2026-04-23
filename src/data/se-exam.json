@@ -2,12 +2,12 @@
   {
     "id": 1,
     "category": "Requirements Definition",
-    "question": "Which technique is primarily used to identify and analyze stakeholders in a software project?",
+    "question": "ソフトウェアプロジェクトでステークホルダーを特定・分析するために主に使用される技法はどれか。",
     "options": [
-      "Use case modeling",
-      "Stakeholder register and analysis",
-      "Code review",
-      "Unit testing"
+      "ユースケースモデリング",
+      "ステークホルダー登録と分析",
+      "コードレビュー",
+      "ユニットテスト"
     ],
     "answer": 1,
     "explanation": "ステークホルダー登録と分析は、プロジェクトに影響を与える、または関与するすべての関係者（関心事、影響力、コミュニケーションニーズを含む）を特定するための主要な手法である。"
@@ -15,12 +15,12 @@
   {
     "id": 2,
     "category": "Requirements Definition",
-    "question": "What distinguishes a functional requirement from a non-functional requirement?",
+    "question": "機能要件と非機能要件の違いは何か。",
     "options": [
-      "Functional requirements describe system features; non-functional describe quality attributes",
-      "Functional requirements are for users; non-functional are for developers",
-      "Non-functional requirements are optional",
-      "Functional requirements cannot be tested"
+      "機能要件はシステムの機能を記述する；非機能要件は品質属性を記述する",
+      "機能要件はユーザー向け；非機能要件は開発者向け",
+      "非機能要件は任意である",
+      "機能要件はテストできない"
     ],
     "answer": 0,
     "explanation": "機能要件はシステムがすべきことを（機能や振る舞いとして）定義し、非機能要件はシステムがどのように動作すべきか（性能、セキュリティ、ユーザビリティ）を定義する。"
@@ -28,12 +28,12 @@
   {
     "id": 3,
     "category": "Requirements Definition",
-    "question": "In use case modeling, what does an 'extend' relationship represent?",
+    "question": "ユースケースモデリングで、「拡張（extend）」関係は何を表すか。",
     "options": [
-      "Mandatory behavior that always occurs",
-      "Optional or conditional behavior added to a base use case",
-      "A use case that replaces another",
-      "A dependency between actors"
+      "常に発生する必須の振る舞い",
+      "ベースユースケースに追加されるオプションまたは条件付きの振る舞い",
+      "別のユースケースに置き換わるもの",
+      "アクター間の依存関係"
     ],
     "answer": 1,
     "explanation": "「拡張（extend）」関係は、特定の条件下でベースユースケースに追加できるオプションまたは条件付きの振る舞いを表す。常にトリガーされるわけではない。"
@@ -41,12 +41,12 @@
   {
     "id": 4,
     "category": "Requirements Definition",
-    "question": "What is the primary purpose of a requirements traceability matrix?",
+    "question": "要求トレーサビリティマトリックスの主な目的は何か。",
     "options": [
-      "To document test cases",
-      "To track requirements from origin through implementation and verification",
-      "To manage project budget",
-      "To assign developers to tasks"
+      "テストケースの文書化",
+      "要件を出所から実装・検証まで追跡する",
+      "プロジェクト予算の管理",
+      "開発者へのタスク割り当て"
     ],
     "answer": 1,
     "explanation": "要求トレーサビリティマトリックス（RTM）は、要件を出所、設計要素、コード、テストケースにリンクし、網羅性を確保し変更の影響を管理する。"
@@ -54,12 +54,12 @@
   {
     "id": 5,
     "category": "Requirements Definition",
-    "question": "Which format best represents a user story?",
+    "question": "ユーザーストーリーを最も適切に表す形式はどれか。",
     "options": [
-      "As a [role], I want [feature] so that [benefit]",
-      "The system shall [action]",
-      "Given [context], when [event], then [outcome]",
-      "Class [Name] has attribute [X] and method [Y]"
+      "[役割]として、[機能]が欲しい。なぜなら[便益]だから。",
+      "システムは[アクション]を実行しなければならない。",
+      "[前提条件]のとき、[イベント]が発生したら、[結果]になる。",
+      "クラス[名前]は属性[X]とメソッド[Y]を持つ"
     ],
     "answer": 0,
     "explanation": "ユーザーストーリーは「As a [役割], I want [機能] so that [便益]」という形式に従う。これは誰が何を必要としているか、そしてなぜをユーザーの視点から捉える。"
@@ -67,12 +67,12 @@
   {
     "id": 6,
     "category": "Requirements Definition",
-    "question": "What is a MoSCoW prioritization technique used for?",
+    "question": "MoSCoW優先順位付け技法は何に使用されるか。",
     "options": [
-      "Writing code",
-      "Prioritizing requirements into Must, Should, Could, Won't categories",
-      "Designing databases",
-      "Creating project schedules"
+      "コードの記述",
+      "要件をMust、Should、Could、Won'tに分類して優先順位付けする",
+      "データベースの設計",
+      "プロジェクトスケジュールの作成"
     ],
     "answer": 1,
     "explanation": "MoSCoWは、要件をMust have（必須）、Should have（推奨）、Could have（あればよい）、Won't have（今回は対象外）に分類して優先順位付けを支援する。"
@@ -80,12 +80,12 @@
   {
     "id": 7,
     "category": "Requirements Definition",
-    "question": "In a use case diagram, what does a stick figure represent?",
+    "question": "ユースケース図で、棒人形は何を表すか。",
     "options": [
-      "A system boundary",
-      "An actor",
-      "A use case",
-      "A relationship"
+      "システム境界",
+      "アクター",
+      "ユースケース",
+      "関係"
     ],
     "answer": 1,
     "explanation": "UMLユースケース図では、棒人形はアクターを表す。アクターとは、モデル化されているシステムと相互作用するエンティティ（ユーザーや他のシステム）である。"
@@ -93,12 +93,12 @@
   {
     "id": 8,
     "category": "Requirements Definition",
-    "question": "What is the main risk of having ambiguous requirements?",
+    "question": "曖昧な要件を持つことの主なリスクは何か。",
     "options": [
-      "The project will be cheaper",
-      "Different stakeholders may have different interpretations, leading to rework",
-      "Development will be faster",
-      "Testing becomes unnecessary"
+      "プロジェクトのコストが安くなる",
+      "異なるステークホルダーが異なる解釈を持ち、手戻りが発生する",
+      "開発が速くなる",
+      "テストが不要になる"
     ],
     "answer": 1,
     "explanation": "曖昧な要件は、誤解、ステークホルダーと開発者間での異なる解釈、スコープクリープ、テストやデプロイ時の高コストな手戻りを引き起こす。"
@@ -106,12 +106,12 @@
   {
     "id": 9,
     "category": "Requirements Definition",
-    "question": "Which elicitation technique involves directly observing users performing their tasks?",
+    "question": "ユーザーがタスクを実行している様子を直接観察する要求引き出し技法はどれか。",
     "options": [
-      "Interview",
-      "Observation (shadowing)",
-      "Brainstorming",
-      "Document analysis"
+      "インタビュー",
+      "観察（シャドーイング）",
+      "ブレインストーミング",
+      "文書分析"
     ],
     "answer": 1,
     "explanation": "観察は、ユーザーが実際の環境でタスクを実行する様子を見ることで、インタビューでは言語化されないワークフローの詳細を明らかにする。"
@@ -119,12 +119,12 @@
   {
     "id": 10,
     "category": "Requirements Definition",
-    "question": "What is a feasibility study primarily used for in requirements engineering?",
+    "question": "フィージビリティスタディは要求工学で主に何に使用されるか。",
     "options": [
-      "Writing test plans",
-      "Assessing whether a project is technically, economically, and operationally viable",
-      "Designing user interfaces",
-      "Coding prototypes"
+      "テスト計画の作成",
+      "プロジェクトが技術的、経済的、運用的に実現可能か評価する",
+      "UIの設計",
+      "プロトタイプのコーディング"
     ],
     "answer": 1,
     "explanation": "フィージビリティスタディは、プロジェクトにリソースを割り当てる前に、技術的実現可能性、経済的妥当性、運用上の実現可能性を評価する。"
@@ -132,12 +132,12 @@
   {
     "id": 11,
     "category": "Requirements Definition",
-    "question": "What does 'verification' of requirements ensure?",
+    "question": "要件の「検証（verification）」は何を保証するか。",
     "options": [
-      "The software is fast enough",
-      "Requirements are correctly documented and meet quality standards",
-      "The software has no bugs",
-      "The team is skilled enough"
+      "ソフトウェアが十分に高速である",
+      "要件が正しく文書化され、品質基準を満たしている",
+      "ソフトウェアにバグがない",
+      "チームが十分なスキルを持っている"
     ],
     "answer": 1,
     "explanation": "検証（Verification）は、要件が正しく記述され、完全で一貫性があり、標準に準拠していることを確認する。妥当性確認（Validation）は、正しい要件が規定されていることを確認する。"
@@ -145,12 +145,12 @@
   {
     "id": 12,
     "category": "Requirements Definition",
-    "question": "In Agile methodology, what is a 'product backlog'?",
+    "question": "アジャイル方法论で、「プロダクトバックログ」とは何か。",
     "options": [
-      "A list of completed features",
-      "A prioritized list of all work needed for the product",
-      "A database schema",
-      "A deployment plan"
+      "完了した機能のリスト",
+      "プロダクトに必要なすべての作業の優先順位付きリスト",
+      "データベーススキーマ",
+      "デプロイメント計画"
     ],
     "answer": 1,
     "explanation": "プロダクトバックログは、プロダクトに必要なすべてのもの（機能、バグ修正、技術的作業）をビジネス価値で優先付けした順序付きリストである。"
@@ -158,12 +158,12 @@
   {
     "id": 13,
     "category": "Requirements Definition",
-    "question": "What is the purpose of a 'system boundary' in a use case diagram?",
+    "question": "ユースケース図の「システム境界」の目的は何か。",
     "options": [
-      "To separate developers",
-      "To define what is inside and outside the scope of the system",
-      "To show network topology",
-      "To indicate programming languages"
+      "開発者を分離する",
+      "システムのスコープの内と外を定義する",
+      "ネットワークトポロジーを表示する",
+      "プログラミング言語を示す"
     ],
     "answer": 1,
     "explanation": "ユースケース図のシステム境界ボックスは、設計対象のシステム内にどのユースケースが含まれるかを明確に定義し、外部アクターと区別する。"
@@ -171,12 +171,12 @@
   {
     "id": 14,
     "category": "Requirements Definition",
-    "question": "Which of the following is NOT a non-functional requirement category?",
+    "question": "次のうち、非機能要件のカテゴリではないものはどれか。",
     "options": [
-      "Performance",
-      "Security",
-      "Login functionality",
-      "Reliability"
+      "性能",
+      "セキュリティ",
+      "ログイン機能",
+      "信頼性"
     ],
     "answer": 2,
     "explanation": "ログイン機能は機能要件（システムが何をするか）である。性能、セキュリティ、信頼性は非機能要件（システムがどの程度うまく動作するか）である。"
@@ -184,12 +184,12 @@
   {
     "id": 15,
     "category": "Requirements Definition",
-    "question": "What is the INVEST principle related to?",
+    "question": "INVEST原則は何に関連しているか。",
     "options": [
-      "Financial planning",
-      "Writing good user stories",
-      "Database indexing",
-      "Network security"
+      "財務計画",
+      "優れたユーザーストーリーの記述",
+      "データベースインデックス",
+      "ネットワークセキュリティ"
     ],
     "answer": 1,
     "explanation": "INVESTは優れたユーザーストーリーの品質を定義する：Independent（独立している）、Negotiable（交渉可能）、Valuable（価値がある）、Estimable（見積可能）、Small（小さい）、Testable（テスト可能）。"
@@ -197,12 +197,12 @@
   {
     "id": 16,
     "category": "Requirements Definition",
-    "question": "What is a prototype in the context of requirements gathering?",
+    "question": "要求収集の文脈で、プロトタイプとは何か。",
     "options": [
-      "Final production code",
-      "An early model of the system to gather feedback",
-      "A test case document",
-      "A project schedule"
+      "最終的な本番コード",
+      "フィードバックを収集するためのシステムの初期モデル",
+      "テストケース文書",
+      "プロジェクトスケジュール"
     ],
     "answer": 1,
     "explanation": "プロトタイプは、本格的な開発前にステークホルダーと要件を検証するために使用されるシステムの初期の簡略化されたモデルであり、誤ったものを構築するリスクを軽減する。"
@@ -210,12 +210,12 @@
   {
     "id": 17,
     "category": "Requirements Definition",
-    "question": "What does 'requirements validation' confirm?",
+    "question": "「要件の妥当性確認（validation）」は何を確認するか。",
     "options": [
-      "The code compiles",
-      "The documented requirements match the actual needs of stakeholders",
-      "The database is normalized",
-      "The tests pass"
+      "コードがコンパイルされる",
+      "文書化された要件がステークホルダーの実際のニーズと一致する",
+      "データベースが正規化されている",
+      "テストが通る"
     ],
     "answer": 1,
     "explanation": "妥当性確認（Validation）は、記録された要件が実際にステークホルダーのニーズと要望を反映していることを確保する。検証（Verification）は文書の正確性を確認する。"
@@ -223,12 +223,12 @@
   {
     "id": 18,
     "category": "Requirements Definition",
-    "question": "In a use case, what is a 'precondition'?",
+    "question": "ユースケースにおける「事前条件」とは何か。",
     "options": [
-      "What happens after the use case completes",
-      "A condition that must be true before the use case can begin",
-      "An alternative flow",
-      "An error message"
+      "ユースケース完了後に発生すること",
+      "ユースケースを開始する前に真でなければならない条件",
+      "代替フロー",
+      "エラーメッセージ"
     ],
     "answer": 1,
     "explanation": "事前条件は、ユースケースを開始する前に存在しなければならない状態や条件を定義し、システムが正しい開始状態にあることを保証する。"
@@ -236,12 +236,12 @@
   {
     "id": 19,
     "category": "Requirements Definition",
-    "question": "What is the difference between a 'shall' and a 'should' in formal requirements documentation?",
+    "question": "正式な要件文書で「shall」と「should」の違いは何か。",
     "options": [
-      "No difference",
-      "Shall indicates a mandatory requirement; should indicates a desirable but optional one",
-      "Shall is for developers; should is for testers",
-      "Should is stronger than shall"
+      "違いはない",
+      "shallは必須要件を示す；shouldは望ましいが任意の要件を示す",
+      "shallは開発者向け；shouldはテスター向け",
+      "shouldはshallより強い"
     ],
     "answer": 1,
     "explanation": "形式的要件言語（IEEE 830など）では、「shall」は満たさなければならない必須要件を示し、「should」は必須ではないが望ましい要件を示す。"
@@ -249,12 +249,12 @@
   {
     "id": 20,
     "category": "Requirements Definition",
-    "question": "What is stakeholder mapping used for?",
+    "question": "ステークホルダーマッピングは何に使用されるか。",
     "options": [
-      "Creating network diagrams",
-      "Visualizing stakeholders by power and interest to plan engagement strategies",
-      "Assigning seating arrangements",
-      "Designing system architecture"
+      "ネットワーク図の作成",
+      "ステークホルダーを権力と関心で可視化し、エンゲージメント戦略を計画する",
+      "座席配置の割り当て",
+      "システムアーキテクチャの設計"
     ],
     "answer": 1,
     "explanation": "ステークホルダーマッピング（パワー/関心グリッドを使用）は、どのステークホルダーに最も注意が必要か、各グループにどのようなコミュニケーション戦略を使うかを特定するのに役立つ。"
@@ -262,12 +262,12 @@
   {
     "id": 21,
     "category": "Requirements Definition",
-    "question": "Which document formally defines the scope, objectives, and constraints of a project?",
+    "question": "プロジェクトのスコープ、目的、制約を正式に定義する文書はどれか。",
     "options": [
-      "Test plan",
-      "Project charter or scope statement",
-      "Code review report",
-      "Deployment guide"
+      "テスト計画",
+      "プロジェクトチャーターまたはスコープステートメント",
+      "コードレビュー報告書",
+      "デプロイメントガイド"
     ],
     "answer": 1,
     "explanation": "プロジェクトチャーターやスコープステートメントは、プロジェクトが何を提供するか、その目的、境界、制約、前提条件を正式に定義する。"
@@ -275,12 +275,12 @@
   {
     "id": 22,
     "category": "Requirements Definition",
-    "question": "What is an 'acceptance criterion' in a user story?",
+    "question": "ユーザーストーリーにおける「受入基準」とは何か。",
     "options": [
-      "The developer's estimated effort",
-      "A condition that must be met for the story to be considered complete",
-      "The project deadline",
-      "The deployment method"
+      "開発者の見積もり工数",
+      "ストーリーが完了と見なされるために満たされなければならない条件",
+      "プロジェクトの期限",
+      "デプロイメント方法"
     ],
     "answer": 1,
     "explanation": "受入基準は、ユーザーストーリーが完了と見なされるために満たさなければならない具体的な条件を定義し、テスト可能な要件として機能する。"
@@ -288,12 +288,12 @@
   {
     "id": 23,
     "category": "Requirements Definition",
-    "question": "What problem does scope creep cause in requirements management?",
+    "question": "要求管理におけるスコープクリープはどのような問題を引き起こすか。",
     "options": [
-      "Faster delivery",
-      "Uncontrolled growth of project scope leading to budget and schedule overruns",
-      "Better quality",
-      "Improved team morale"
+      "より速いデリバリー",
+      "プロジェクトスコープの制御不能な拡大による予算とスケジュールの超過",
+      "より良い品質",
+      "チームの士気の向上"
     ],
     "answer": 1,
     "explanation": "スコープクリープは、時間、コスト、リソースの調整なしにプロジェクトスコープが制御不能に拡大することで、期限の逸脱と予算超過を招く。"
@@ -301,12 +301,12 @@
   {
     "id": 24,
     "category": "Requirements Definition",
-    "question": "In requirements engineering, what is a 'domain model'?",
+    "question": "要求工学における「ドメインモデル」とは何か。",
     "options": [
-      "A web domain name registration",
-      "A visual representation of the problem domain showing key concepts and relationships",
-      "A database connection string",
-      "A deployment environment"
+      "Webドメイン名の登録",
+      "問題ドメインの主要概念と関係を示す視覚的表現",
+      "データベース接続文字列",
+      "デプロイメント環境"
     ],
     "answer": 1,
     "explanation": "ドメインモデルは、問題ドメインにおける主要な概念、エンティティ、およびそれらの関係を捉え、システム設計の概念的基盤として機能する。"
@@ -314,12 +314,12 @@
   {
     "id": 25,
     "category": "Requirements Definition",
-    "question": "What is the difference between 'include' and 'extend' in use case relationships?",
+    "question": "ユースケース関係における「include」と「extend」の違いは何か。",
     "options": [
-      "They are the same",
-      "Include is mandatory extraction of common behavior; extend is optional conditional addition",
-      "Include is for errors; extend is for success",
-      "Extend is mandatory; include is optional"
+      "同じである",
+      "includeは必須の共通振る舞いの抽出；extendはオプションの条件付き追加",
+      "includeはエラー用；extendは成功用",
+      "extendは必須；includeは任意"
     ],
     "answer": 1,
     "explanation": "「包含（include）」はベースユースケースの一部として常に実行される（必須の共通振る舞い）。「拡張（extend）」は特定の条件下でのみトリガーされる（オプションの振る舞い）。"
@@ -327,12 +327,12 @@
   {
     "id": 26,
     "category": "Requirements Definition",
-    "question": "Which technique helps resolve conflicting requirements from different stakeholders?",
+    "question": "異なるステークホルダーからの競合する要件を解決するのに役立つ技法はどれか。",
     "options": [
-      "Ignore the conflict",
-      "Prioritization, negotiation, and stakeholder agreement",
-      "Ask the developer to decide",
-      "Remove all conflicting requirements"
+      "競合を無視する",
+      "優先順位付け、交渉、ステークホルダーの合意",
+      "開発者に決定させる",
+      "競合するすべての要件を削除する"
     ],
     "answer": 1,
     "explanation": "競合する要件は、ステークホルダー間の交渉、優先順位付け（MoSCoWなどの手法を使用）、文書化された合意を通じて解決され、認識の一致を確保する。"
@@ -340,12 +340,12 @@
   {
     "id": 27,
     "category": "Requirements Definition",
-    "question": "What is a 'user story map'?",
+    "question": "「ユーザーストーリーマップ」とは何か。",
     "options": [
-      "A navigation menu",
-      "A visual arrangement of user stories organized by user journey and priority",
-      "A database entity-relationship diagram",
-      "A network topology map"
+      "ナビゲーションメニュー",
+      "ユーザージャーニーと優先度で整理されたユーザーストーリーの視覚的配置",
+      "データベースER図",
+      "ネットワークトポロジーマップ"
     ],
     "answer": 1,
     "explanation": "ユーザーストーリーマップは、ストーリーを水平軸（ユーザーアクティビティ/ステップ）と垂直軸（優先度/リリース）に沿って配置し、完全なユーザージャーニーの可視化とリリース計画を支援する。"
@@ -353,12 +353,12 @@
   {
     "id": 28,
     "category": "Requirements Definition",
-    "question": "What does the 'Definition of Ready' (DoR) specify in Agile?",
+    "question": "アジャイルで「Definition of Ready（DoR）」は何を規定するか。",
     "options": [
-      "When a feature is deployed",
-      "Criteria that a user story must meet before it can be taken into a sprint",
-      "The end date of the project",
-      "The technology stack"
+      "機能がデプロイされたとき",
+      "ユーザーストーリーがスプリントに取り込まれる前に満たすべき基準",
+      "プロジェクトの終了日",
+      "技術スタック"
     ],
     "answer": 1,
     "explanation": "Definition of Readyは、ユーザーストーリーがチームに作業を開始できる前に満たさなければならない条件（明確な受入基準、見積もり済み、ブロッカーなし）を規定する。"
@@ -366,12 +366,12 @@
   {
     "id": 29,
     "category": "Requirements Definition",
-    "question": "Why is it important to version control requirements documents?",
+    "question": "要求文書をバージョン管理することが重要な理由は何か。",
     "options": [
-      "To save disk space",
-      "To track changes, maintain history, and enable rollback of requirement modifications",
-      "To encrypt the data",
-      "To format the document"
+      "ディスク容量の節約",
+      "変更を追跡し、履歴を維持し、要件の修正をロールバック可能にする",
+      "データの暗号化",
+      "文書のフォーマット"
     ],
     "answer": 1,
     "explanation": "要件文書のバージョン管理により、変更の追跡、誰が何をなぜ変更したかの把握、必要に応じた以前のバージョンへのロールバックが可能になる。"
@@ -379,12 +379,12 @@
   {
     "id": 30,
     "category": "Requirements Definition",
-    "question": "What is the primary output of the requirements analysis phase?",
+    "question": "要求分析フェーズの主な成果物は何か。",
     "options": [
-      "Compiled executable code",
-      "A requirements specification document and associated models",
-      "A database backup",
-      "A server configuration"
+      "コンパイル済みの実行可能コード",
+      "要件仕様書と関連モデル",
+      "データベースバックアップ",
+      "サーバー構成"
     ],
     "answer": 1,
     "explanation": "要件分析フェーズは、ソフトウェア要件仕様書（SRS）とともに、ユースケース図、ユーザーストーリー、その他の分析モデルを生成する。"
@@ -392,12 +392,12 @@
   {
     "id": 31,
     "category": "System Architecture",
-    "question": "What is the key advantage of a microservices architecture over a monolithic architecture?",
+    "question": "モノリシックアーキテクチャに対するマイクロサービスアーキテクチャの主な利点は何か。",
     "options": [
-      "Faster initial development",
-      "Independent deployment and scaling of individual services",
-      "Lower memory usage",
-      "Simpler debugging"
+      "初期開発が速い",
+      "各サービスの独立したデプロイとスケーリング",
+      "メモリ使用量の削減",
+      "デバッグが簡素化される"
     ],
     "answer": 1,
     "explanation": "マイクロサービスは各サービスを独立して開発、デプロイ、スケーリングできるようにし、高速な反復、より良いフォールト分離、技術的多様性を可能にする。"
@@ -405,12 +405,12 @@
   {
     "id": 32,
     "category": "System Architecture",
-    "question": "In an event-driven architecture, what role does a message broker play?",
+    "question": "イベント駆動アーキテクチャで、メッセージブローカーの役割は何か。",
     "options": [
-      "It stores the final database records",
-      "It routes and distributes messages between producers and consumers asynchronously",
-      "It compiles the source code",
-      "It renders the user interface"
+      "最終的なデータベースレコードを保存する",
+      "プロデューサーとコンシューマー間でメッセージを非同期にルーティング・配信する",
+      "ソースコードをコンパイルする",
+      "UIをレンダリングする"
     ],
     "answer": 1,
     "explanation": "メッセージブローカー（Kafka、RabbitMQなど）はプロデューサーからメッセージを受信し、適切なコンシューマーにルーティングして、非同期の疎結合な通信を実現する。"
@@ -418,12 +418,12 @@
   {
     "id": 33,
     "category": "System Architecture",
-    "question": "What is the CQRS pattern?",
+    "question": "CQRSパターンとは何か。",
     "options": [
-      "A caching strategy",
-      "Separating read and write operations into different models",
-      "A database backup method",
-      "A network protocol"
+      "キャッシュ戦略",
+      "読み取り操作と書き込み操作を別々のモデルに分離する",
+      "データベースバックアップ方法",
+      "ネットワークプロトコル"
     ],
     "answer": 1,
     "explanation": "CQRS（Command Query Responsibility Segregation）は読み取り側と書き込み側を分離し、それぞれを異なるモデルとストレージで独立して最適化できるようにする。"
@@ -431,12 +431,12 @@
   {
     "id": 34,
     "category": "System Architecture",
-    "question": "In the context of microservices, what is the purpose of a service mesh?",
+    "question": "マイクロサービスの文脈で、サービスメッシュの目的は何か。",
     "options": [
-      "To store application data",
-      "To handle service-to-service communication, discovery, load balancing, and security",
-      "To compile microservices",
-      "To design the user interface"
+      "アプリケーションデータの保存",
+      "サービス間通信、ディスカバリ、ロードバランシング、セキュリティを処理する",
+      "マイクロサービスをコンパイルする",
+      "UIを設計する"
     ],
     "answer": 1,
     "explanation": "サービスメッシュ（Istio、Linkerdなど）は、サービス間通信のインフラストラクチャを提供し、ディスカバリ、ロードバランシング、暗号化、可観測性を実現する。"
@@ -444,12 +444,12 @@
   {
     "id": 35,
     "category": "System Architecture",
-    "question": "What is the Saga pattern used for in distributed systems?",
+    "question": "分散システムでSagaパターンは何に使用されるか。",
     "options": [
-      "Managing user sessions",
-      "Maintaining data consistency across multiple services without distributed transactions",
-      "Caching frequently accessed data",
-      "Compressing network traffic"
+      "ユーザーセッションの管理",
+      "分散トランザクションなしで複数サービス間のデータ整合性を維持する",
+      "頻繁にアクセスされるデータのキャッシュ",
+      "ネットワークトラフィックの圧縮"
     ],
     "answer": 1,
     "explanation": "Sagaパターンは、一連のローカルトランザクションとロールバック用の補償アクションを使用して、分散トランザクションなしでマイクロサービス間のデータ整合性を管理する。"
@@ -457,12 +457,12 @@
   {
     "id": 36,
     "category": "System Architecture",
-    "question": "What is the primary benefit of an API Gateway?",
+    "question": "APIゲートウェイの主な利点は何か。",
     "options": [
-      "It replaces the need for databases",
-      "It provides a single entry point for managing routing, authentication, rate limiting, and composition",
-      "It speeds up database queries",
-      "It compiles code faster"
+      "データベースの必要性をなくす",
+      "ルーティング、認証、レート制限、構成を管理する単一のエントリポイントを提供する",
+      "データベースクエリを高速化する",
+      "コードのコンパイルを高速化する"
     ],
     "answer": 1,
     "explanation": "APIゲートウェイはリバースプロキシと単一のエントリポイントとして機能し、認証、レート制限、ルーティング、リクエスト構成などの横断的関心事を処理する。"
@@ -470,12 +470,12 @@
   {
     "id": 37,
     "category": "System Architecture",
-    "question": "What is eventual consistency?",
+    "question": "結果整合性（eventual consistency）とは何か。",
     "options": [
-      "Data is always immediately consistent across all nodes",
-      "Given enough time without new updates, all replicas will converge to the same state",
-      "Only one node stores data",
-      "Data is never updated"
+      "データは常にすべてのノードで即座に整合する",
+      "新しい更新がない限り、時間をかければすべてのレプリカが同じ状態に収束する",
+      "1つのノードのみがデータを保存する",
+      "データは更新されない"
     ],
     "answer": 1,
     "explanation": "結果整合性とは、システムが一時的に不整合であっても、新しい更新がない限り、すべてのレプリカが最終的に同じ状態に収束するという意味である。"
@@ -483,12 +483,12 @@
   {
     "id": 38,
     "category": "System Architecture",
-    "question": "What distinguishes a hexagonal architecture (ports and adapters) from layered architecture?",
+    "question": "ヘキサゴナルアーキテクチャ（ポートとアダプタ）とレイヤードアーキテクチャの違いは何か。",
     "options": [
-      "It uses more servers",
-      "It isolates the core domain logic from external concerns through defined ports and adapters",
-      "It requires more databases",
-      "It is only for frontend applications"
+      "より多くのサーバーを使用する",
+      "コアドメインロジックをポートとアダプタを通じて外部要素から分離する",
+      "より多くのデータベースを必要とする",
+      "フロントエンドアプリケーション専用である"
     ],
     "answer": 1,
     "explanation": "ヘキサゴナルアーキテクチャは、コアドメインロジックをポート（インターフェース）とアダプタ（実装）でラップし、フレームワーク、データベース、UIから独立させる。"
@@ -496,12 +496,12 @@
   {
     "id": 39,
     "category": "System Architecture",
-    "question": "What is the Strangler Fig pattern used for?",
+    "question": "Strangler Figパターンは何に使用されるか。",
     "options": [
-      "Network security",
-      "Gradually migrating a monolithic system to microservices by incrementally replacing functionality",
-      "Data encryption",
-      "Error handling"
+      "ネットワークセキュリティ",
+      "モノリスシステムの機能を段階的にマイクロサービスに置き換える移行",
+      "データ暗号化",
+      "エラー処理"
     ],
     "answer": 1,
     "explanation": "Strangler Figパターンは、レガシーモノリスの一部を新しいサービスで段階的に置き換え、危険な一括書き直しを回避しながら段階的な移行を可能にする。"
@@ -509,12 +509,12 @@
   {
     "id": 40,
     "category": "System Architecture",
-    "question": "In a publish-subscribe pattern, what decouples the publisher from the subscriber?",
+    "question": "パブリッシュ-サブスクライブパターンで、パブリッシャーとサブスクライバーを分離するものは何か。",
     "options": [
-      "Direct function calls",
-      "A message topic or channel that publishers write to and subscribers listen to",
-      "Shared database tables",
-      "Memory addresses"
+      "直接的な関数呼び出し",
+      "パブリッシャーが書き込み、サブスクライバーがリッスンするメッセージトピックまたはチャネル",
+      "共有データベーステーブル",
+      "メモリアドレス"
     ],
     "answer": 1,
     "explanation": "Pub/Subはトピック/チャネルを仲介役として使用する。パブリッシャーは誰が購読しているか知らずにメッセージをトピックに書き込み、サブスクライバーは誰が発行しているか知らずにトピックから消費する。"
@@ -522,12 +522,12 @@
   {
     "id": 41,
     "category": "System Architecture",
-    "question": "What is the CAP theorem about?",
+    "question": "CAP定理は何について述べているか。",
     "options": [
-      "Project management",
-      "A distributed system can provide at most two of: Consistency, Availability, Partition tolerance",
-      "Coding standards",
-      "Database indexing"
+      "プロジェクト管理",
+      "分散システムは整合性、可用性、分断耐性のうち最大2つしか提供できない",
+      "コーディング標準",
+      "データベースインデックス"
     ],
     "answer": 1,
     "explanation": "CAP定理は、ネットワークパーティションが発生した場合、分散システムは整合性と可用性のどちらかを選ばなければならず、両方を同時に保証できないと述べている。"
@@ -535,12 +535,12 @@
   {
     "id": 42,
     "category": "System Architecture",
-    "question": "What is a circuit breaker pattern used for?",
+    "question": "サーキットブレーカーパターンは何に使用されるか。",
     "options": [
-      "Preventing electrical hazards",
-      "Preventing cascading failures by detecting and short-circuiting failing service calls",
-      "Data compression",
-      "User authentication"
+      "電気的危険の防止",
+      "障害を検出し、失敗するサービス呼び出しを遮断して連鎖的な障害を防ぐ",
+      "データ圧縮",
+      "ユーザー認証"
     ],
     "answer": 1,
     "explanation": "サーキットブレーカーは外部サービスへの呼び出しを監視し、障害がしきい値を超えると「トリップ（リクエスト送信を停止）」し、システム全体へのカスケード障害を防ぐ。"
@@ -548,12 +548,12 @@
   {
     "id": 43,
     "category": "System Architecture",
-    "question": "What is the primary purpose of a service registry in microservices?",
+    "question": "マイクロサービスでサービスレジストリの主な目的は何か。",
     "options": [
-      "To register domain names",
-      "To enable services to discover each other dynamically at runtime",
-      "To store user credentials",
-      "To compile services"
+      "ドメイン名の登録",
+      "サービスが実行時に互いを動的に発見できるようにする",
+      "ユーザー資格情報の保存",
+      "サービスのコンパイル"
     ],
     "answer": 1,
     "explanation": "サービスレジストリ（Eureka、Consulなど）は、利用可能なサービスとその場所のディレクトリを維持し、ハードコードされたエンドポイントなしで動的サービスディスカバリを可能にする。"
@@ -561,12 +561,12 @@
   {
     "id": 44,
     "category": "System Architecture",
-    "question": "Which architecture style is best suited for a high-throughput, real-time data streaming pipeline?",
+    "question": "高スループットのリアルタイムデータストリーミングパイプラインに最も適したアーキテクチャスタイルはどれか。",
     "options": [
-      "Monolithic 3-tier",
-      "Event-driven architecture with stream processing",
-      "Simple static website",
-      "Single-page application"
+      "モノリシック3層",
+      "ストリーム処理を備えたイベント駆動アーキテクチャ",
+      "シンプルな静的Webサイト",
+      "シングルページアプリケーション"
     ],
     "answer": 1,
     "explanation": "ストリーム処理を備えたイベント駆動アーキテクチャ（Kafka、Flink、Spark Streaming）は、高スループットのリアルタイムデータパイプラインに最適であり、並列処理とバックプレッシャー処理を可能にする。"
@@ -574,12 +574,12 @@
   {
     "id": 45,
     "category": "System Architecture",
-    "question": "What is the difference between synchronous and asynchronous communication in microservices?",
+    "question": "マイクロサービスにおける同期通信と非同期通信の違いは何か。",
     "options": [
-      "No difference",
-      "Synchronous waits for a response; asynchronous does not wait and processes later",
-      "Synchronous is faster",
-      "Asynchronous uses less bandwidth"
+      "違いはない",
+      "同期はレスポンスを待つ；非同期は待たずに後で処理する",
+      "同期の方が速い",
+      "非同期は帯域幅を少なく使う"
     ],
     "answer": 1,
     "explanation": "同期通信はレスポンスを受信するまでブロックする（REST、gRPC）。非同期通信はメッセージを送信して継続し（メッセージキュー、イベント）、レジリエンスとスケーラビリティを向上させる。"
@@ -587,12 +587,12 @@
   {
     "id": 46,
     "category": "System Architecture",
-    "question": "What is a bounded context in Domain-Driven Design?",
+    "question": "ドメイン駆動設計（DDD）の「境界付けられたコンテキスト」とは何か。",
     "options": [
-      "A database table boundary",
-      "A logical boundary within which a particular domain model and its ubiquitous language apply",
-      "A network segment",
-      "A user interface section"
+      "データベーステーブルの境界",
+      "特定のドメインモデルとユビキタス言語が適用される論理的境界",
+      "ネットワークセグメント",
+      "UIのセクション"
     ],
     "answer": 1,
     "explanation": "境界付けられたコンテキスト（Bounded Context）は、特定のドメインモデル、その用語、ルールが特定の意味を持つ境界を定義し、複雑なドメインでの混乱を防ぐ。"
@@ -600,12 +600,12 @@
   {
     "id": 47,
     "category": "System Architecture",
-    "question": "What is sidecar pattern in container-based microservices?",
+    "question": "コンテナベースのマイクロサービスにおけるサイドカーパターンとは何か。",
     "options": [
-      "Running a backup server",
-      "Deploying a helper container alongside the main service container for cross-cutting concerns",
-      "Using a secondary database",
-      "Creating a mirrored website"
+      "バックアップサーバーの実行",
+      "メインサービスコンテナの横にヘルパーコンテナを配置して横断的関心事を処理する",
+      "セカンダリデータベースの使用",
+      "ミラーサイトの作成"
     ],
     "answer": 1,
     "explanation": "サイドカーパターンは、メインアプリケーションコードを変更することなく、メインサービスの横にヘルパーコンテナを配置して横断的関心事（ロギング、監視、プロキシ）を処理する。"
@@ -613,12 +613,12 @@
   {
     "id": 48,
     "category": "System Architecture",
-    "question": "What is the main drawback of a microservices architecture?",
+    "question": "マイクロサービスアーキテクチャの主な欠点は何か。",
     "options": [
-      "It is too simple",
-      "Increased complexity in deployment, monitoring, data consistency, and network latency",
-      "It cannot scale",
-      "It requires no DevOps skills"
+      "シンプルすぎる",
+      "デプロイ、監視、データ整合性、ネットワークレイテンシの複雑性の増大",
+      "スケールできない",
+      "DevOpsスキルが不要"
     ],
     "answer": 1,
     "explanation": "マイクロサービスは複雑性をもたらす：分散データ管理、サービスディスカバリ、ネットワークレイテンシ、デプロイメントオーケストレーション、監視、サービス間のデバッグ。"
@@ -626,12 +626,12 @@
   {
     "id": 49,
     "category": "System Architecture",
-    "question": "What is a backing service in twelve-factor app methodology?",
+    "question": "12ファクターアプリ方法论における「バッキングサービス」とは何か。",
     "options": [
-      "A backup power supply",
-      "Any service the app consumes over the network (databases, caches, message brokers) treated as attached resources",
-      "A financial sponsor",
-      "A development framework"
+      "予備電源",
+      "ネットワーク経由で消費するあらゆるサービス（DB、キャッシュ、メッセージブローカー）を接続済みリソースとして扱う",
+      "財務スポンサー",
+      "開発フレームワーク"
     ],
     "answer": 1,
     "explanation": "バッキングサービスは外部リソース（データベース、キャッシュ、メッセージブローカー、SMTP）であり、アプリケーションはコード変更なしで設定可能なアタッチされたリソースとして扱う。"
@@ -639,12 +639,12 @@
   {
     "id": 50,
     "category": "System Architecture",
-    "question": "What is the purpose of blue-green deployment?",
+    "question": "ブルーグリーンデプロイメントの目的は何か。",
     "options": [
-      "Environmentally friendly hosting",
-      "Zero-downtime deployment by maintaining two identical environments and switching traffic",
-      "Color-coded logging",
-      "Blue-themed UI design"
+      "環境に配慮したホスティング",
+      "2つの同一環境を維持し、トラフィックを切り替えてダウンタイムなしデプロイを行う",
+      "カラーコード化されたロギング",
+      "青をテーマにしたUIデザイン"
     ],
     "answer": 1,
     "explanation": "ブルーグリーンデプロイメントは2つの同一の本番環境を維持する。トラフィックは旧バージョン（ブルー）から新バージョン（グリーン）に切り替えられ、問題発生時の即時ロールバックを可能にする。"
@@ -652,12 +652,12 @@
   {
     "id": 51,
     "category": "System Architecture",
-    "question": "What problem does the BFF (Backend for Frontend) pattern solve?",
+    "question": "BFF（Backend for Frontend）パターンはどのような問題を解決するか。",
     "options": [
-      "Frontend compilation speed",
-      "Different frontend clients having different data needs by providing tailored backend services",
-      "Database performance",
-      "API documentation"
+      "フロントエンドのコンパイル速度",
+      "異なるフロントエンドクライアントの異なるデータニーズに対応するための専用バックエンドサービス",
+      "データベース性能",
+      "APIドキュメント"
     ],
     "answer": 1,
     "explanation": "BFFは各フロントエンドタイプ（Web、モバイル、IoT）に専用のバックエンドAPIを提供し、それぞれが最適化されたデータフォーマットと集約を受け取れるようにする。"
@@ -665,12 +665,12 @@
   {
     "id": 52,
     "category": "System Architecture",
-    "question": "What is anti-corruption layer in Domain-Driven Design?",
+    "question": "ドメイン駆動設計の「腐敗防止層（anti-corruption layer）」とは何か。",
     "options": [
-      "Virus protection for code",
-      "A layer that translates between different domain models, preventing one model from corrupting another",
-      "Data validation",
-      "Error logging"
+      "コードのウイルス対策",
+      "異なるドメインモデル間を変換し、一方が他方を汚染するのを防ぐ層",
+      "データ検証",
+      "エラーロギング"
     ],
     "answer": 1,
     "explanation": "腐敗防止層は境界付けられたコンテキスト間に配置され、データフォーマットとモデルを変換して、あるサブドメインの概念が別のサブドメインに漏れ出すのを防ぐ。"
@@ -678,12 +678,12 @@
   {
     "id": 53,
     "category": "System Architecture",
-    "question": "What is the difference between REST and GraphQL?",
+    "question": "RESTとGraphQLの違いは何か。",
     "options": [
-      "They are identical",
-      "REST uses fixed endpoints with defined resources; GraphQL uses a single endpoint with flexible queries defined by the client",
-      "GraphQL is faster than REST",
-      "REST supports queries; GraphQL does not"
+      "同一である",
+      "RESTは固定エンドポイント；GraphQLは単一エンドポイントでクライアント定義の柔軟なクエリ",
+      "GraphQLはRESTより速い",
+      "RESTはクエリをサポートする；GraphQLはしない"
     ],
     "answer": 1,
     "explanation": "RESTは固定のリソースエンドポイントを公開し事前定義されたデータ形状を返す。GraphQLは単一のエンドポイントを公開し、クライアントが正確に必要なデータを指定できる。"
@@ -691,12 +691,12 @@
   {
     "id": 54,
     "category": "System Architecture",
-    "question": "What is an idempotent operation?",
+    "question": "冪等な操作（idempotent operation）とは何か。",
     "options": [
-      "An operation that can only run once",
-      "An operation that produces the same result when executed multiple times",
-      "An operation with no return value",
-      "An operation that runs in parallel"
+      "1回しか実行できない操作",
+      "複数回実行しても同じ結果を生成する操作",
+      "戻り値がない操作",
+      "並列に実行される操作"
     ],
     "answer": 1,
     "explanation": "冪等な操作（RESTのPUTなど）は、何回実行されても同じ結果を生成する。これは分散システムにおけるリトライロジックにとって重要である。"
@@ -704,12 +704,12 @@
   {
     "id": 55,
     "category": "System Architecture",
-    "question": "What is the purpose of health check endpoints in microservices?",
+    "question": "マイクロサービスでヘルスチェックエンドポイントの目的は何か。",
     "options": [
-      "To measure employee wellness",
-      "To allow orchestrators to detect service health and route traffic away from unhealthy instances",
-      "To check code quality",
-      "To validate user input"
+      "従業員の健康状態の測定",
+      "オーケストレーターがサービスの健全性を検知し、異常なインスタンスからトラフィックを迂回できるようにする",
+      "コード品質のチェック",
+      "ユーザー入力の検証"
     ],
     "answer": 1,
     "explanation": "ヘルスチェックエンドポイントはサービスの稼働状態を公開し、オーケストレーター（Kubernetes、ロードバランサー）が障害を検知して健全なインスタンスにトラフィックをルーティングできるようにする。"
@@ -717,12 +717,12 @@
   {
     "id": 56,
     "category": "System Architecture",
-    "question": "What is sharding in the context of database architecture?",
+    "question": "データベースアーキテクチャの文脈で、シャーディングとは何か。",
     "options": [
-      "Making database backups",
-      "Distributing data across multiple database instances based on a shard key",
-      "Encrypting database fields",
-      "Compressing database files"
+      "データベースバックアップの作成",
+      "シャードキーに基づいてデータを複数のデータベースインスタンスに分散させる",
+      "データベースフィールドの暗号化",
+      "データベースファイルの圧縮"
     ],
     "answer": 1,
     "explanation": "シャーディングはシャードキーを使用してデータを複数のデータベースインスタンスに分割し、単一マシンを超えたストレージとクエリスループットの水平スケーリングを可能にする。"
@@ -730,12 +730,12 @@
   {
     "id": 57,
     "category": "System Architecture",
-    "question": "What is a shared-nothing architecture?",
+    "question": "シェアードナッシングアーキテクチャとは何か。",
     "options": [
-      "An architecture with no data storage",
-      "A distributed architecture where nodes are independent and share no memory or disk resources",
-      "An architecture that shares everything",
-      "A peer-to-peer file sharing system"
+      "データストレージがないアーキテクチャ",
+      "ノードが独立し、メモリやディスクリソースを共有しない分散アーキテクチャ",
+      "すべてを共有するアーキテクチャ",
+      "P2Pファイル共有システム"
     ],
     "answer": 1,
     "explanation": "シェアードナッシングアーキテクチャでは、各ノードは独自のメモリとストレージを持つ完全に独立しており、メッセージ経由でのみ通信し、線形の水平スケーラビリティを実現する。"
@@ -743,12 +743,12 @@
   {
     "id": 58,
     "category": "System Architecture",
-    "question": "What is the primary use case for GraphQL subscriptions?",
+    "question": "GraphQLサブスクリプションの主なユースケースは何か。",
     "options": [
-      "Data validation",
-      "Real-time data updates pushed from server to client via WebSocket connections",
-      "Authentication",
-      "Database indexing"
+      "データ検証",
+      "WebSocket接続を通じてサーバーからクライアントにリアルタイムデータ更新をプッシュする",
+      "認証",
+      "データベースインデックス"
     ],
     "answer": 1,
     "explanation": "GraphQLサブスクリプションは、永続的なWebSocket接続を維持し、特定のイベントが発生するたびにクライアントにデータをプッシュすることで、リアルタイム機能を実現する。"
@@ -756,12 +756,12 @@
   {
     "id": 59,
     "category": "System Architecture",
-    "question": "What does the term 'loose coupling' mean in system architecture?",
+    "question": "システムアーキテクチャで「疎結合（loose coupling）」とは何を意味するか。",
     "options": [
-      "Systems are poorly designed",
-      "Components interact through well-defined interfaces with minimal knowledge of each other's internals",
-      "Systems are tightly connected via direct database access",
-      "Code is written in different languages"
+      "システムが不適切に設計されている",
+      "コンポーネントが定義されたインターフェースを通じて相互作用し、互いの内部を最小限しか知らない",
+      "システムが直接的なデータベースアクセスで密結合している",
+      "コードが異なる言語で書かれている"
     ],
     "answer": 1,
     "explanation": "疎結合とは、コンポーネントが定義されたインターフェース/コントラクトを通じて通信し、依存関係を最小限に抑え、あるコンポーネントの変更が他への影響を最小にするという意味である。"
@@ -769,12 +769,12 @@
   {
     "id": 60,
     "category": "System Architecture",
-    "question": "What is an outbox pattern used for?",
+    "question": "アウトボックスパターンは何に使用されるか。",
     "options": [
-      "Email management",
-      "Ensuring reliable message publishing when updating a database by storing messages in an outbox table",
-      "File storage",
-      "User interface design"
+      "メール管理",
+      "アウトボックステーブルにメッセージを保存し、データベース更新時の確実なメッセージ発行を保証する",
+      "ファイルストレージ",
+      "UIデザイン"
     ],
     "answer": 1,
     "explanation": "アウトボックスパターンは、メッセージをビジネスデータと同じデータベーストランザクション内のアウトボックステーブルに書き込み、別プロセスがポーリングしてこれらのメッセージを確実に公開する。"
@@ -782,12 +782,12 @@
   {
     "id": 61,
     "category": "System Architecture",
-    "question": "What is the difference between a queue and a topic in messaging systems?",
+    "question": "メッセージングシステムでキューとトピックの違いは何か。",
     "options": [
-      "No difference",
-      "A queue delivers each message to one consumer; a topic delivers to all subscribers",
-      "A topic is faster than a queue",
-      "A queue is for databases; a topic is for APIs"
+      "違いはない",
+      "キューは各メッセージを1つのコンシューマーに配信；トピックはすべてのサブスクライバーに配信",
+      "トピックはキューより速い",
+      "キューはデータベース用；トピックはAPI用"
     ],
     "answer": 1,
     "explanation": "キューはポイントツーポイントメッセージング（各メッセージを1つのコンシューマーに配信）を実装し、トピックはパブ/サブ（すべてのサブスクライバーが各メッセージを受信）を実装する。"
@@ -795,12 +795,12 @@
   {
     "id": 62,
     "category": "System Architecture",
-    "question": "What is a stateless service design?",
+    "question": "ステートレスサービス設計とは何か。",
     "options": [
-      "A service with no code",
-      "A service that does not store any client context between requests, allowing any instance to handle any request",
-      "A service that never changes",
-      "A service that uses no database"
+      "コードがないサービス",
+      "リクエスト間でクライアントコンテキストを保存せず、どのインスタンスでもどのリクエストでも処理できるサービス",
+      "変更されないサービス",
+      "データベースを使用しないサービス"
     ],
     "answer": 1,
     "explanation": "ステートレスサービスはリクエスト間でクライアントコンテキストを保持せず、どのインスタンスでもどのリクエストでも処理できるようにし、水平スケーリングとロードバランシングを簡素化する。"
@@ -808,12 +808,12 @@
   {
     "id": 63,
     "category": "System Architecture",
-    "question": "What is the purpose of a bulkhead pattern?",
+    "question": "バルクヘッドパターンの目的は何か。",
     "options": [
-      "Ship building",
-      "Isolating failures by partitioning resources so one failing component does not take down the entire system",
-      "Data partitioning",
-      "Code organization"
+      "造船",
+      "リソースを分割して障害を分離し、1つのコンポーネントの障害が全体をダウンさせないようにする",
+      "データパーティショニング",
+      "コード編成"
     ],
     "answer": 1,
     "explanation": "バルクヘッドパターンは、システムの異なる部分を別々のリソースプールに分離し（船の隔壁のように）、ある領域の障害が他に波及しないようにする。"
@@ -821,12 +821,12 @@
   {
     "id": 64,
     "category": "System Architecture",
-    "question": "What is gRPC and when is it preferred over REST?",
+    "question": "gRPCとは何か、またRESTの代わりにいつ好まれるか。",
     "options": [
-      "A database protocol; preferred for data storage",
-      "A high-performance RPC framework using Protocol Buffers; preferred for internal service communication",
-      "A frontend framework; preferred for web apps",
-      "A testing framework; preferred for QA"
+      "データストレージ用のプロトコル；データ保存に推奨",
+      "Protocol Buffersを使用する高性能RPCフレームワーク；内部サービス間通信に推奨",
+      "フロントエンドフレームワーク；Webアプリに推奨",
+      "テストフレームワーク；QAに推奨"
     ],
     "answer": 1,
     "explanation": "gRPCはHTTP/2とProtocol Buffersを使用し、効率的で型安全なバイナリ通信をサービス間で実現し、高パフォーマンスな内部マイクロサービス通信に最適である。"
@@ -834,12 +834,12 @@
   {
     "id": 65,
     "category": "System Architecture",
-    "question": "What is the main advantage of event sourcing?",
+    "question": "イベントソーシングの主な利点は何か。",
     "options": [
-      "Reduced storage usage",
-      "Complete audit trail by storing every state change as an immutable event",
-      "Faster database queries",
-      "Simpler code"
+      "ストレージ使用量の削減",
+      "すべての状態変更を不変イベントとして保存し、完全な監査証跡を提供する",
+      "データベースクエリの高速化",
+      "シンプルなコード"
     ],
     "answer": 1,
     "explanation": "イベントソーシングは、アプリケーション状態へのすべての変更を不変のイベントのシーケンスとして保存し、完全な監査証跡を提供し、時系列クエリとイベントリプレイを可能にする。"
@@ -847,7 +847,7 @@
   {
     "id": 66,
     "category": "Software Design",
-    "question": "Which design pattern ensures a class has only one instance with global access?",
+    "question": "クラスがグローバルアクセス可能な単一のインスタンスのみを持つことを保証するデザインパターンはどれか。",
     "options": [
       "Factory Method",
       "Singleton",
@@ -860,12 +860,12 @@
   {
     "id": 67,
     "category": "Software Design",
-    "question": "What is the Factory Method pattern used for?",
+    "question": "Factory Methodパターンは何に使用されるか。",
     "options": [
-      "Destroying objects",
-      "Creating objects without specifying their exact class, delegating to subclasses",
-      "Sorting arrays",
-      "Error handling"
+      "オブジェクトの破棄",
+      "正確なクラスを指定せず、サブクラスに委譲してオブジェクトを作成する",
+      "配列のソート",
+      "エラー処理"
     ],
     "answer": 1,
     "explanation": "Factory Methodはオブジェクト作成のインターフェースを定義するが、どのクラスをインスタンス化するかはサブクラスに決定させ、クライアントを具象クラスから分離する。"
@@ -873,12 +873,12 @@
   {
     "id": 68,
     "category": "Software Design",
-    "question": "In the Observer pattern, what happens when the subject's state changes?",
+    "question": "Observerパターンで、サブジェクトの状態が変化したとき何が起こるか。",
     "options": [
-      "Nothing happens",
-      "All registered observers are automatically notified and can react",
-      "Only the first observer is notified",
-      "The subject is deleted"
+      "何も起こらない",
+      "登録されたすべてのオブザーバーが自動的に通知され、反応できる",
+      "最初のオブザーバーのみが通知される",
+      "サブジェクトが削除される"
     ],
     "answer": 1,
     "explanation": "Observerパターンは1対多の依存関係を確立し、サブジェクトの状態が変化すると、登録されたすべてのオブザーバーに通知される。イベントシステムで一般的に使用される。"
@@ -886,12 +886,12 @@
   {
     "id": 69,
     "category": "Software Design",
-    "question": "When should you use the Strategy pattern?",
+    "question": "Strategyパターンはいつ使用すべきか。",
     "options": [
-      "When you need one algorithm only",
-      "When you have a family of interchangeable algorithms and need to select one at runtime",
-      "When you want to prevent inheritance",
-      "When you need to create objects"
+      "1つのアルゴリズムのみが必要なとき",
+      "実行時に選択可能な互換可能なアルゴリズムのファミリがあるとき",
+      "継承を防止したいとき",
+      "オブジェクトを作成したいとき"
     ],
     "answer": 1,
     "explanation": "Strategyパターンはアルゴリズムのファミリを定義し、それぞれをカプセル化して実行時に切り替え可能にし、大きな条件分岐文を回避する。"
@@ -899,12 +899,12 @@
   {
     "id": 70,
     "category": "Software Design",
-    "question": "What does high cohesion mean in software design?",
+    "question": "ソフトウェア設計で「高凝集度（high cohesion）」とは何を意味するか。",
     "options": [
-      "Classes have many responsibilities",
-      "A module's elements are strongly related and focused on a single purpose",
-      "Code is duplicated for performance",
-      "Methods are very long"
+      "クラスが多くの責任を持つ",
+      "モジュールの要素が強く関連し、単一の目的に集中している",
+      "パフォーマンスのためにコードが重複している",
+      "メソッドが非常に長い"
     ],
     "answer": 1,
     "explanation": "高凝集度とは、モジュール内のすべての要素が単一の明確に定義された目的に向かって協働することであり、モジュールの理解、テスト、保守を容易にする。"
@@ -912,12 +912,12 @@
   {
     "id": 71,
     "category": "Software Design",
-    "question": "What is the difference between coupling and cohesion?",
+    "question": "結合度（coupling）と凝集度（cohesion）の違いは何か。",
     "options": [
-      "They are the same",
-      "Coupling measures inter-module dependencies; cohesion measures intra-module relatedness",
-      "Coupling is good; cohesion is bad",
-      "Both should be maximized"
+      "同じである",
+      "結合度はモジュール間の依存度を測る；凝集度はモジュール内の関連性を測る",
+      "結合度は良い；凝集度は悪い",
+      "両方を最大化すべき"
     ],
     "answer": 1,
     "explanation": "結合度はモジュール間の依存度を測る（低いべき）。凝集度はモジュール内の要素の集中度を測る（高いべき）。"
@@ -925,12 +925,12 @@
   {
     "id": 72,
     "category": "Software Design",
-    "question": "What does a UML class diagram primarily depict?",
+    "question": "UMLクラス図は主に何を表現するか。",
     "options": [
-      "Sequence of operations",
-      "Classes, their attributes, methods, and relationships (inheritance, association, composition)",
-      "Network topology",
-      "Database table structure"
+      "操作の順序",
+      "クラス、属性、メソッド、および関係（継承、関連、コンポジション）",
+      "ネットワークトポロジー",
+      "データベーステーブル構造"
     ],
     "answer": 1,
     "explanation": "UMLクラス図はシステムの静的構造を示す：属性と操作を持つクラス、および継承、関連、集約、コンポジションなどの関係。"
@@ -938,12 +938,12 @@
   {
     "id": 73,
     "category": "Software Design",
-    "question": "In a UML sequence diagram, what does a vertical dashed line represent?",
+    "question": "UMLシーケンス図で、垂直な破線は何を表すか。",
     "options": [
-      "Data flow",
-      "An object's lifeline showing its existence over time",
-      "A network connection",
-      "A return value"
+      "データフロー",
+      "オブジェクトのライフライン（時間的存在を示す垂直な破線）",
+      "ネットワーク接続",
+      "戻り値"
     ],
     "answer": 1,
     "explanation": "シーケンス図では、垂直な破線はオブジェクトのライフラインを表し、その存在と、そのオブジェクトに送受信されるメッセージの時間的順序を示す。"
@@ -951,12 +951,12 @@
   {
     "id": 74,
     "category": "Software Design",
-    "question": "What is the Decorator pattern used for?",
+    "question": "Decoratorパターンは何に使用されるか。",
     "options": [
-      "Removing functionality",
-      "Adding responsibilities to objects dynamically without subclassing",
-      "Creating objects",
-      "Destroying objects"
+      "機能の削除",
+      "サブクラス化なしで動的にオブジェクトに責任を追加する",
+      "オブジェクトの作成",
+      "オブジェクトの破棄"
     ],
     "answer": 1,
     "explanation": "Decoratorパターンは、オブジェクトをラップすることで動的に責任を追加し、機能拡張のためのサブクラス化の柔軟な代替手段を提供する。"
@@ -964,12 +964,12 @@
   {
     "id": 75,
     "category": "Software Design",
-    "question": "What problem does the Dependency Injection pattern solve?",
+    "question": "Dependency Injectionパターンはどのような問題を解決するか。",
     "options": [
-      "Database performance",
-      "Hard-coded dependencies by providing them from external configuration or containers",
-      "UI rendering speed",
-      "Network latency"
+      "データベース性能",
+      "外部設定やコンテナから依存関係を提供し、ハードコードされた依存を解消する",
+      "UIのレンダリング速度",
+      "ネットワークレイテンシ"
     ],
     "answer": 1,
     "explanation": "依存性の注入（Dependency Injection）は、オブジェクトが依存関係を自ら作成するのではなく、外部から提供することで、テスト容易性、モジュール性、実装の切り替えを向上させる。"
@@ -977,12 +977,12 @@
   {
     "id": 76,
     "category": "Software Design",
-    "question": "What does a UML state diagram represent?",
+    "question": "UML状態図は何を表すか。",
     "options": [
-      "Class hierarchy",
-      "The lifecycle of an object showing its states, transitions, and events",
-      "Database schema",
-      "API endpoints"
+      "クラス階層",
+      "オブジェクトのライフサイクルを示す（状態、遷移、イベント）",
+      "データベーススキーマ",
+      "APIエンドポイント"
     ],
     "answer": 1,
     "explanation": "UML状態図（ステートマシン図）は、オブジェクトが取りうる様々な状態、状態間の遷移、およびそれらの遷移をトリガーするイベントを示す。"
@@ -990,12 +990,12 @@
   {
     "id": 77,
     "category": "Software Design",
-    "question": "What is the Adapter pattern used for?",
+    "question": "Adapterパターンは何に使用されるか。",
     "options": [
-      "Improving network speed",
-      "Converting the interface of a class into another interface that clients expect",
-      "Creating database indexes",
-      "Compressing files"
+      "ネットワーク速度の改善",
+      "クラスのインターフェースをクライアントが期待する別のインターフェースに変換する",
+      "データベースインデックスの作成",
+      "ファイルの圧縮"
     ],
     "answer": 1,
     "explanation": "Adapterパターンは、互換性のないインターフェースを一緒に動作させるために、既存のクラスを新しいインターフェースでラップし、互換性のないコンポーネント間の橋渡しをする。"
@@ -1003,12 +1003,12 @@
   {
     "id": 78,
     "category": "Software Design",
-    "question": "In the MVC (Model-View-Controller) pattern, what is the Controller's responsibility?",
+    "question": "MVC（Model-View-Controller）パターンで、Controllerの責任は何か。",
     "options": [
-      "Rendering the UI",
-      "Handling user input and updating the Model and/or View accordingly",
-      "Storing data",
-      "Database connectivity"
+      "UIのレンダリング",
+      "ユーザー入力を処理し、ModelやViewを適切に更新する",
+      "データの保存",
+      "データベース接続"
     ],
     "answer": 1,
     "explanation": "Controllerはユーザー入力を受け取り、処理し（多くの場合Modelを更新）、どのViewを表示するかを決定し、ModelとViewの仲介役として機能する。"
@@ -1016,12 +1016,12 @@
   {
     "id": 79,
     "category": "Software Design",
-    "question": "What is the difference between aggregation and composition in UML?",
+    "question": "UMLにおける集約（aggregation）とコンポジション（composition）の違いは何か。",
     "options": [
-      "No difference",
-      "Aggregation is a weaker 'has-a' where parts can exist independently; composition is stronger where parts cannot exist without the whole",
-      "Composition is weaker than aggregation",
-      "They are both the same as inheritance"
+      "違いはない",
+      "集約は部分が独立して存在できる弱い「has-a」；コンポジションは全体なしでは部分が存在できない強い関係",
+      "コンポジションは集約より弱い",
+      "どちらも継承と同じ"
     ],
     "answer": 1,
     "explanation": "集約では、部分は全体から独立して存在できる（例：学科と教師）。コンポジションでは、部分のライフサイクルは全体に依存する（例：家と部屋）。"
@@ -1029,12 +1029,12 @@
   {
     "id": 80,
     "category": "Software Design",
-    "question": "What is the Template Method pattern?",
+    "question": "Template Methodパターンとは何か。",
     "options": [
-      "HTML templates",
-      "Defining the skeleton of an algorithm in a base class and letting subclasses override specific steps",
-      "A code formatting tool",
-      "A documentation generator"
+      "HTMLテンプレート",
+      "基底クラスでアルゴリズムの骨組みを定義し、サブクラスが特定のステップをオーバーライドする",
+      "コードフォーマットツール",
+      "ドキュメント生成ツール"
     ],
     "answer": 1,
     "explanation": "Template Methodは抽象クラスでアルゴリズムの全体構造を定義し、具体的なステップはサブクラスで実装され、コードの再利用とカスタマイズを可能にする。"
@@ -1042,12 +1042,12 @@
   {
     "id": 81,
     "category": "Software Design",
-    "question": "What is the SOLID principle 'Open/Closed' about?",
+    "question": "SOLID原則の「開放閉鎖の原則（Open/Closed）」は何について述べているか。",
     "options": [
-      "Code should be public",
-      "Classes should be open for extension but closed for modification",
-      "All classes should be abstract",
-      "Methods should return open types"
+      "コードはパブリックであるべき",
+      "クラスは拡張に対しては開いているが、修正に対しては閉じているべき",
+      "すべてのクラスは抽象的であるべき",
+      "メソッドはオープンな型を返すべき"
     ],
     "answer": 1,
     "explanation": "開放閉鎖の原則は、ソフトウェアエンティティは既存のコードを変更せずに拡張可能であるべきであり、通常は抽象化、インターフェース、ポリモーフィズムで達成される。"
@@ -1055,12 +1055,12 @@
   {
     "id": 82,
     "category": "Software Design",
-    "question": "What is the Facade pattern?",
+    "question": "Facadeパターンとは何か。",
     "options": [
-      "A frontend framework",
-      "A simplified interface to a complex subsystem, making it easier to use",
-      "A database access pattern",
-      "A testing pattern"
+      "フロントエンドフレームワーク",
+      "複雑なサブシステムに対する簡素化されたインターフェース",
+      "データベースアクセスパターン",
+      "テストパターン"
     ],
     "answer": 1,
     "explanation": "Facadeパターンは、サブシステム内のインターフェースのセットに対する統一された簡素化されたインターフェースを提供し、クライアントコードの複雑さと依存関係を軽減する。"
@@ -1068,12 +1068,12 @@
   {
     "id": 83,
     "category": "Software Design",
-    "question": "What does 'Liskov Substitution Principle' require?",
+    "question": "リスコフの置換原則（Liskov Substitution Principle）は何を要求するか。",
     "options": [
-      "Subclasses must have the same name",
-      "Subclasses must be substitutable for their base classes without altering program correctness",
-      "Subclasses must override all methods",
-      "Subclasses must be final"
+      "サブクラスは同じ名前でなければならない",
+      "サブクラスはプログラムの正確性を変えずに基底クラスと置き換え可能でなければならない",
+      "サブクラスはすべてのメソッドをオーバーライドしなければならない",
+      "サブクラスはfinalでなければならない"
     ],
     "answer": 1,
     "explanation": "LSP（リスコフの置換原則）は、スーパークラスのオブジェクトをサブクラスのオブジェクトで置き換えてもアプリケーションが壊れないことを要求し、継承の正しい使用を確保する。"
@@ -1081,12 +1081,12 @@
   {
     "id": 84,
     "category": "Software Design",
-    "question": "What is the Command pattern used for?",
+    "question": "Commandパターンは何に使用されるか。",
     "options": [
-      "Executing shell commands",
-      "Encapsulating a request as an object, allowing parameterization, queuing, and undo operations",
-      "Creating files",
-      "Managing memory"
+      "シェルコマンドの実行",
+      "リクエストをオブジェクトとしてカプセル化し、パラメータ化、キューイング、元に戻す操作を可能にする",
+      "ファイルの作成",
+      "メモリ管理"
     ],
     "answer": 1,
     "explanation": "Commandパターンは、リクエストをすべての必要なパラメータを持つオブジェクトとしてカプセル化し、キューイング、ロギング、元に戻す/やり直す操作、トランザクショナルな振る舞いを可能にする。"
@@ -1094,12 +1094,12 @@
   {
     "id": 85,
     "category": "Software Design",
-    "question": "What is the difference between an abstract class and an interface?",
+    "question": "抽象クラスとインターフェースの違いは何か。",
     "options": [
-      "They are the same",
-      "Abstract classes can have implementation and state; interfaces define contracts with no implementation",
-      "Interfaces can have state; abstract classes cannot",
-      "Abstract classes are deprecated"
+      "同じである",
+      "抽象クラスは実装と状態を持てる；インターフェースは実装なしのコントラクトを定義する",
+      "インターフェースは状態を持てる；抽象クラスは持てない",
+      "抽象クラスは非推奨である"
     ],
     "answer": 1,
     "explanation": "抽象クラスは具象メソッド、フィールド、コンストラクタを持つことができる。インターフェースは（デフォルトメソッド以前の従来のOOPでは）実装なしのメソッドシグネチャと定数を定義する。"
@@ -1107,12 +1107,12 @@
   {
     "id": 86,
     "category": "Software Design",
-    "question": "What is the Repository pattern?",
+    "question": "Repositoryパターンとは何か。",
     "options": [
-      "Git repository management",
-      "An abstraction layer between the domain and data access layers, providing a collection-like interface to data",
-      "A design for storing files",
-      "A backup strategy"
+      "Gitリポジトリ管理",
+      "ドメイン層とデータアクセス層の間の抽象化レイヤーで、コレクション風のインターフェースを提供する",
+      "ファイル保存の設計",
+      "バックアップ戦略"
     ],
     "answer": 1,
     "explanation": "Repositoryパターンはドメイン層とデータマッピング層の間を媒介し、データベースの詳細を公開することなく、ドメインオブジェクトへのコレクション風のアクセスを提供する。"
@@ -1120,12 +1120,12 @@
   {
     "id": 87,
     "category": "Software Design",
-    "question": "What is the Proxy pattern used for?",
+    "question": "Proxyパターンは何に使用されるか。",
     "options": [
-      "Network proxying only",
-      "Controlling access to an object by providing a substitute or placeholder",
-      "Creating database backups",
-      "Compressing images"
+      "ネットワークプロキシのみ",
+      "代替オブジェクトまたはプレースホルダーを提供してオブジェクトへのアクセスを制御する",
+      "データベースバックアップの作成",
+      "画像の圧縮"
     ],
     "answer": 1,
     "explanation": "Proxyパターンは、別のオブジェクトへのアクセスを制御するための代理またはプレースホルダーを提供し、遅延読み込み、アクセス制御、ロギング、リモートアクセスに使用される。"
@@ -1133,12 +1133,12 @@
   {
     "id": 88,
     "category": "Software Design",
-    "question": "In UML, what does an arrow with an open triangle head represent?",
+    "question": "UMLで開いた三角形の矢印先を持つ矢印は何を表すか。",
     "options": [
-      "Association",
-      "Generalization (inheritance)",
-      "Dependency",
-      "Composition"
+      "関連",
+      "汎化（継承）",
+      "依存",
+      "コンポジション"
     ],
     "answer": 1,
     "explanation": "UMLで開いた三角の矢印先を持つ矢印は、汎化（継承）を表し、サブクラスからスーパークラスに向かって指す。"
@@ -1146,12 +1146,12 @@
   {
     "id": 89,
     "category": "Software Design",
-    "question": "What is the Builder pattern used for?",
+    "question": "Builderパターンは何に使用されるか。",
     "options": [
-      "Building physical structures",
-      "Constructing complex objects step by step with a fluent interface",
-      "Destroying objects",
-      "Network construction"
+      "物理的構造物の建設",
+      "流暢なインターフェースで複雑なオブジェクトを段階的に構築する",
+      "オブジェクトの破棄",
+      "ネットワーク構築"
     ],
     "answer": 1,
     "explanation": "Builderパターンは複雑なオブジェクトの構築をその表現から分離し、同じ構築プロセスで異なる表現を作成できるようにする。"
@@ -1159,12 +1159,12 @@
   {
     "id": 90,
     "category": "Software Design",
-    "question": "What is the 'Interface Segregation Principle'?",
+    "question": "「インターフェース分離の原則（Interface Segregation Principle）」とは何か。",
     "options": [
-      "All interfaces should be large",
-      "Clients should not be forced to depend on interfaces they do not use",
-      "Interfaces should be implemented by all classes",
-      "Interfaces must be private"
+      "すべてのインターフェースは大きいべき",
+      "クライアントは使用しないインターフェースへの依存を強制されるべきではない",
+      "インターフェースはすべてのクラスで実装されるべき",
+      "インターフェースはプライベートであるべき"
     ],
     "answer": 1,
     "explanation": "ISP（インターフェース分離の原則）は、汎用的な1つのインターフェースより多くの特定のインターフェースが望ましく、クライアントが必要のないメソッドの実装を強制されないことを示す。"
@@ -1172,12 +1172,12 @@
   {
     "id": 91,
     "category": "Software Design",
-    "question": "What does a UML component diagram show?",
+    "question": "UMLコンポーネント図は何を示すか。",
     "options": [
-      "Class methods",
-      "High-level components and their interfaces and dependencies",
-      "Database tables",
-      "User interface layouts"
+      "クラスメソッド",
+      "高位なコンポーネントとそのインターフェースと依存関係",
+      "データベーステーブル",
+      "UIレイアウト"
     ],
     "answer": 1,
     "explanation": "コンポーネント図はシステムの高位な構造を示し、コンポーネント、その提供・要求インターフェース、およびそれらの関係と依存関係を描写する。"
@@ -1185,12 +1185,12 @@
   {
     "id": 92,
     "category": "Software Design",
-    "question": "What is the Iterator pattern used for?",
+    "question": "Iteratorパターンは何に使用されるか。",
     "options": [
-      "Mathematical iteration",
-      "Providing a way to access elements of an aggregate object sequentially without exposing its underlying representation",
-      "Loop optimization",
-      "Array sorting"
+      "数学的イテレーション",
+      "集約オブジェクトの要素に順次アクセスする方法を、基盤の表現を公開せずに提供する",
+      "ループの最適化",
+      "配列のソート"
     ],
     "answer": 1,
     "explanation": "Iteratorパターンは、基になる表現を公開することなく、異なる集約構造を一様な方法で走査できるようにし、アルゴリズムとコンテナの分離を実現する。"
@@ -1198,12 +1198,12 @@
   {
     "id": 93,
     "category": "Software Design",
-    "question": "What is the Chain of Responsibility pattern?",
+    "question": "Chain of Responsibilityパターンとは何か。",
     "options": [
-      "Employee management",
-      "Passing a request along a chain of handlers, each deciding whether to process or pass it on",
-      "Task scheduling",
-      "Error logging hierarchy"
+      "従業員管理",
+      "リクエストをハンドラのチェーンに渡し、各ハンドラが処理または転送を決定する",
+      "タスクスケジューリング",
+      "エラーログの階層"
     ],
     "answer": 1,
     "explanation": "Chain of Responsibilityパターンは、リクエストをハンドラのチェーンに渡し、各ハンドラが処理または転送し、送信者と受信者の分離を実現する。"
@@ -1211,12 +1211,12 @@
   {
     "id": 94,
     "category": "Software Design",
-    "question": "What is the Mediator pattern used for?",
+    "question": "Mediatorパターンは何に使用されるか。",
     "options": [
-      "Conflict resolution between people",
-      "Centralizing complex communication between objects by having them communicate through a mediator instead of directly",
-      "Data validation",
-      "Performance optimization"
+      "人間の対立解決",
+      "オブジェクト間の複雑な通信をメディエータを通じて中央集権化する",
+      "データ検証",
+      "パフォーマンス最適化"
     ],
     "answer": 1,
     "explanation": "Mediatorパターンはオブジェクト間の通信を中央集権化し、直接的な参照を防ぎ、結合度を低下させ、相互作用をより管理しやすくする。"
@@ -1224,12 +1224,12 @@
   {
     "id": 95,
     "category": "Software Design",
-    "question": "What does 'composition over inheritance' mean?",
+    "question": "「コンポジションを継承に優先（composition over inheritance）」とは何を意味するか。",
     "options": [
-      "Inheritance should never be used",
-      "Prefer building complex types by composing simpler objects rather than using deep inheritance hierarchies",
-      "Always use abstract classes",
-      "Code should be written in one file"
+      "継承を決して使用すべきではない",
+      "深い継承階層より、シンプルなオブジェクトの組み合わせで複雑な型を構築することを推奨する",
+      "常に抽象クラスを使用すべき",
+      "コードは1つのファイルに書かれるべき"
     ],
     "answer": 1,
     "explanation": "コンポジション継承（Composition over Inheritance）は、深い継承階層を作成するよりも、シンプルで焦点を絞ったオブジェクトを組み合わせて振る舞いを構築することを好む。"
@@ -1237,12 +1237,12 @@
   {
     "id": 96,
     "category": "Database Design",
-    "question": "What is the primary goal of database normalization?",
+    "question": "データベース正規化の主な目的は何か。",
     "options": [
-      "Making queries faster",
-      "Reducing data redundancy and preventing update anomalies by organizing data into well-structured tables",
-      "Increasing storage usage",
-      "Creating more tables for no reason"
+      "クエリを速くする",
+      "データを適切に構造化されたテーブルに整理し、冗長性を削減して更新異常を防止する",
+      "ストレージ使用量の増加",
+      "無理由でより多くのテーブルを作成する"
     ],
     "answer": 1,
     "explanation": "正規化は、テーブルを分割し関係を確立することでデータを整理し、冗長性と依存関係を最小化し、挿入・更新・削除異常を防止する。"
@@ -1250,12 +1250,12 @@
   {
     "id": 97,
     "category": "Database Design",
-    "question": "What is an Entity-Relationship (ER) diagram primarily used for?",
+    "question": "ER図（Entity-Relationship diagram）は主に何に使用されるか。",
     "options": [
-      "Writing queries",
-      "Visually modeling the data entities, their attributes, and the relationships between them",
-      "Optimizing indexes",
-      "Managing backups"
+      "クエリの記述",
+      "データエンティティ、属性、およびそれらの間の関係を視覚的にモデル化する",
+      "インデックスの最適化",
+      "バックアップの管理"
     ],
     "answer": 1,
     "explanation": "ER図はデータモデルの視覚的表現を提供し、エンティティ（テーブル）、その属性（列）、およびそれらの間の関係（1:1、1:N、M:N）を示す。"
@@ -1263,12 +1263,12 @@
   {
     "id": 98,
     "category": "Database Design",
-    "question": "What is denormalization and when is it used?",
+    "question": "非正規化（denormalization）とは何か、またいつ使用されるか。",
     "options": [
-      "Removing all tables",
-      "Intentionally adding redundancy to improve read performance at the cost of write complexity",
-      "Normalizing to a higher form",
-      "Encrypting data"
+      "すべてのテーブルの削除",
+      "書き込みの複雑さを犠牲にして読み取り性能を向上させるために、意図的に冗長性を追加する",
+      "より高い正規形への正規化",
+      "データの暗号化"
     ],
     "answer": 1,
     "explanation": "非正規化は、ジョインを減らすことでクエリパフォーマンスを向上させるために、意図的に冗長性を導入し、高速な読み取りと引き換えに書き込みの複雑さと潜在的な異常を許容する。"
@@ -1276,12 +1276,12 @@
   {
     "id": 99,
     "category": "Database Design",
-    "question": "What is the difference between a primary key and a foreign key?",
+    "question": "主キーと外部キーの違いは何か。",
     "options": [
-      "No difference",
-      "A primary key uniquely identifies rows in its table; a foreign key references a primary key in another table",
-      "A foreign key is unique; a primary key is not",
-      "A primary key can be null; a foreign key cannot"
+      "違いはない",
+      "主キーは自分のテーブルの行を一意に識別する；外部キーは別テーブルの主キーを参照する",
+      "外部キーは一意；主キーは一意ではない",
+      "主キーはnull可能；外部キーはnull不可"
     ],
     "answer": 1,
     "explanation": "主キーは自分のテーブルの各行を一意に識別する。外部キーは別のテーブルの主キーを参照し、テーブル間の関係を確立する。"
@@ -1289,12 +1289,12 @@
   {
     "id": 100,
     "category": "Database Design",
-    "question": "What is Third Normal Form (3NF)?",
+    "question": "第3正規形（3NF）とは何か。",
     "options": [
-      "All attributes must be integers",
-      "No transitive dependencies - every non-key attribute depends only on the primary key",
-      "All tables must have exactly three columns",
-      "Data must be encrypted"
+      "すべての属性は整数でなければならない",
+      "推移的依存がない - すべての非キー属性は主キーのみに依存する",
+      "すべてのテーブルは正確に3列でなければならない",
+      "データは暗号化されなければならない"
     ],
     "answer": 1,
     "explanation": "第3正規形（3NF）は、テーブルが第2正規形であり、すべての非キー属性が主キーのみに依存すること（推移的依存がないこと）を要求する。"
@@ -1302,12 +1302,12 @@
   {
     "id": 101,
     "category": "Database Design",
-    "question": "What is a many-to-many relationship typically resolved with in a relational database?",
+    "question": "リレーショナルデータベースで多対多の関係は通常どのように解決されるか。",
     "options": [
-      "Direct foreign key reference",
-      "A junction (association) table that contains foreign keys to both related tables",
-      "A single combined table",
-      "XML data fields"
+      "直接的な外部キー参照",
+      "両方の関連テーブルへの外部キーを含む結合（関連）テーブル",
+      "単一の統合テーブル",
+      "XMLデータフィールド"
     ],
     "answer": 1,
     "explanation": "多対多の関係は、両方の関連テーブルへの外部キーを含む結合/関連テーブルを作成することで解決され、2つの1対多の関係に分解される。"
@@ -1315,12 +1315,12 @@
   {
     "id": 102,
     "category": "Database Design",
-    "question": "What is an index in a database used for?",
+    "question": "データベースのインデックスは何に使用されるか。",
     "options": [
-      "Storing extra copies of data",
-      "Speeding up data retrieval operations at the cost of slower writes and additional storage",
-      "Encrypting data",
-      "Creating backups"
+      "データの余分なコピーの保存",
+      "書き込みの遅延と追加ストレージを犠牲にして、データ取得操作を高速化する",
+      "データの暗号化",
+      "バックアップの作成"
     ],
     "answer": 1,
     "explanation": "インデックスはデータ構造であり、追加の書き込みオーバーヘッドとストレージのコストでデータ検索の速度を向上させる。本の索引に類似している。"
@@ -1328,12 +1328,12 @@
   {
     "id": 103,
     "category": "Database Design",
-    "question": "What is a deadlock in a database context?",
+    "question": "データベースの文脈でデッドロックとは何か。",
     "options": [
-      "A locked database",
-      "A situation where two or more transactions are waiting for each other to release locks, creating an unresolvable cycle",
-      "A slow query",
-      "A corrupted file"
+      "ロックされたデータベース",
+      "2つ以上のトランザクションが互いのロック解放を待ち、解決不可能なサイクルになる状況",
+      "遅いクエリ",
+      "破損したファイル"
     ],
     "answer": 1,
     "explanation": "デッドロックは、トランザクションAがリソースXのロックを保持しYを必要とし、トランザクションBがYを保持しXを必要とする場合に発生し、両者が永遠に待機する。"
@@ -1341,12 +1341,12 @@
   {
     "id": 104,
     "category": "Database Design",
-    "question": "What is data partitioning (sharding) used for?",
+    "question": "データパーティショニング（シャーディング）は何に使用されるか。",
     "options": [
-      "Data encryption",
-      "Distributing data across multiple storage nodes to improve performance and scalability",
-      "Data backup",
-      "Data compression"
+      "データ暗号化",
+      "パフォーマンスとスケーラビリティを向上させるため、データを複数のストレージノードに分散させる",
+      "データバックアップ",
+      "データ圧縮"
     ],
     "answer": 1,
     "explanation": "データパーティショニングは、パーティションキー（範囲、ハッシュ、リスト）に基づいて大きなデータセットを複数のノードに分割し、並列処理と水平スケーラビリティを実現する。"
@@ -1354,12 +1354,12 @@
   {
     "id": 105,
     "category": "Database Design",
-    "question": "What is the difference between optimistic and pessimistic locking?",
+    "question": "楽観的ロックと悲観的ロックの違いは何か。",
     "options": [
-      "They are the same",
-      "Optimistic allows concurrent access and checks for conflicts on commit; pessimistic locks resources immediately",
-      "Pessimistic is always better",
-      "Optimistic uses more locks"
+      "同じである",
+      "楽観的ロックは同時アクセスを許可しコミット時に競合をチェック；悲観的ロックは直ちにリソースをロックする",
+      "悲観的ロックが常に優れている",
+      "楽観的ロックはより多くのロックを使用する"
     ],
     "answer": 1,
     "explanation": "楽観的ロックはコミット時に競合を検出し（バージョン番号を使用）、高い同時実行性を可能にする。悲観的ロックは事前にリソースをロックして競合を防ぎ、同時実行性を低下させる。"
@@ -1367,12 +1367,12 @@
   {
     "id": 106,
     "category": "Database Design",
-    "question": "What is a materialized view?",
+    "question": "マテリアライズドビューとは何か。",
     "options": [
-      "A regular SQL view",
-      "A database object that stores the result of a query physically, enabling faster reads at the cost of refresh overhead",
-      "A temporary table",
-      "A cached web page"
+      "通常のSQLビュー",
+      "クエリ結果を物理的に保存するデータベースオブジェクトで、高速な読み取りを可能にするがリフレッシュオーバーヘッドがある",
+      "一時テーブル",
+      "キャッシュされたWebページ"
     ],
     "answer": 1,
     "explanation": "マテリアライズドビューはクエリ結果を物理的にディスクに保存し、高速な読み取りアクセスを提供するが、最新の状態を維持するために定期的または手動のリフレッシュが必要である。"
@@ -1380,12 +1380,12 @@
   {
     "id": 107,
     "category": "Database Design",
-    "question": "What is a foreign key constraint?",
+    "question": "外部キー制約とは何か。",
     "options": [
-      "A performance optimization",
-      "A rule ensuring that values in a column exist in the referenced table, maintaining referential integrity",
-      "A security measure",
-      "A backup mechanism"
+      "パフォーマンス最適化",
+      "列の値が参照テーブルに存在することを保証し、参照整合性を維持するルール",
+      "セキュリティ対策",
+      "バックアップメカニズム"
     ],
     "answer": 1,
     "explanation": "外部キー制約は参照整合性を強制し、参照列の値が別のテーブルの参照される主キー列に存在することを保証する。"
@@ -1393,12 +1393,12 @@
   {
     "id": 108,
     "category": "Database Design",
-    "question": "What is the difference between vertical and horizontal partitioning?",
+    "question": "垂直パーティショニングと水平パーティショニングの違いは何か。",
     "options": [
-      "No difference",
-      "Vertical splits by columns (tables); horizontal splits by rows (sharding)",
-      "Vertical splits by rows; horizontal splits by columns",
-      "Both split by rows"
+      "違いはない",
+      "垂直は列（テーブル）で分割；水平は行（シャーディング）で分割",
+      "垂直は行で分割；水平は列で分割",
+      "両方とも行で分割"
     ],
     "answer": 1,
     "explanation": "垂直パーティショニングはテーブルを列ごとに複数のテーブルに分割する。水平パーティショニングは行ごとに複数のノードに分割する（シャーディング）。"
@@ -1406,12 +1406,12 @@
   {
     "id": 109,
     "category": "Database Design",
-    "question": "What is ACID in database transactions?",
+    "question": "データベーストランザクションのACIDとは何か。",
     "options": [
-      "A cleaning product",
-      "Atomicity, Consistency, Isolation, Durability - properties guaranteeing reliable transaction processing",
-      "A database brand",
-      "A programming language"
+      "洗浄用品",
+      "原子性、一貫性、分離性、耐久性 - 信頼性の高いトランザクション処理を保証する特性",
+      "データベースブランド",
+      "プログラミング言語"
     ],
     "answer": 1,
     "explanation": "ACID特性：原子性（全か無か）、一貫性（有効な状態遷移）、分離性（並行トランザクションが干渉しない）、耐久性（コミットされた変更は永続する）。"
@@ -1419,12 +1419,12 @@
   {
     "id": 110,
     "category": "Database Design",
-    "question": "What is a surrogate key?",
+    "question": "代替キー（surrogate key）とは何か。",
     "options": [
-      "A backup key",
-      "An artificial primary key with no business meaning, typically auto-incremented or UUID",
-      "A temporary password",
-      "A secondary index"
+      "バックアップキー",
+      "ビジネス上の意味を持たない人工的な主キー、通常は自動増分またはUUID",
+      "一時パスワード",
+      "セカンダリインデックス"
     ],
     "answer": 1,
     "explanation": "代替キーは、システム生成の一意識別子（自動増分、UUID）で主キーとして使用され、データから派生した自然キーとは異なりビジネス的な意味を持たない。"
@@ -1432,12 +1432,12 @@
   {
     "id": 111,
     "category": "Database Design",
-    "question": "What is the purpose of a data dictionary?",
+    "question": "データディクショナリの目的は何か。",
     "options": [
-      "A dictionary for developers",
-      "A centralized repository containing metadata about the database schema, tables, columns, and relationships",
-      "A backup file",
-      "A query optimizer"
+      "開発者向け辞書",
+      "データベーススキーマ、テーブル、列、関係に関するメタデータを含む中央リポジトリ",
+      "バックアップファイル",
+      "クエリオプティマイザ"
     ],
     "answer": 1,
     "explanation": "データディクショナリ（データリポジトリ）は、テーブル定義、列の型、制約、関係など、データベース構造に関するメタデータを保存する。"
@@ -1445,12 +1445,12 @@
   {
     "id": 112,
     "category": "Database Design",
-    "question": "What is a soft delete?",
+    "question": "ソフトデリートとは何か。",
     "options": [
-      "Deleting a row permanently",
-      "Marking a row as deleted (e.g., with a deleted_at flag) instead of physically removing it",
-      "Deleting from a backup",
-      "Compressing deleted data"
+      "行を完全に削除する",
+      "物理的に削除する代わりに、フラグ（deleted_atなど）で削除済みとマークする",
+      "バックアップからの削除",
+      "削除済みデータの圧縮"
     ],
     "answer": 1,
     "explanation": "ソフトデリートは、レコードを物理的に削除する代わりに、フラグやタイムスタンプ列を使用して削除済みとしてマークし、リカバリと参照整合性と監査証跡の維持を可能にする。"
@@ -1458,12 +1458,12 @@
   {
     "id": 113,
     "category": "Database Design",
-    "question": "What is the CAP theorem's implication for database design?",
+    "question": "CAP定理のデータベース設計への影響は何か。",
     "options": [
-      "No implications",
-      "You must choose between consistency and availability during network partitions",
-      "Databases must be SQL",
-      "Databases must be NoSQL"
+      "影響はない",
+      "ネットワークパーティション時に整合性と可用性のどちらかを選択しなければならない",
+      "データベースはSQLでなければならない",
+      "データベースはNoSQLでなければならない"
     ],
     "answer": 1,
     "explanation": "CAP定理は、ネットワークパーティション時に整合性（CP）と可用性（AP）のどちらかを選ぶ必要があり、データベースの選択と設計判断に影響すると述べている。"
@@ -1471,12 +1471,12 @@
   {
     "id": 114,
     "category": "Database Design",
-    "question": "What is a compound (composite) index?",
+    "question": "複合インデックス（compound index）とは何か。",
     "options": [
-      "An index on a single column",
-      "An index on multiple columns that can improve query performance for queries using those columns together",
-      "Multiple separate indexes",
-      "An encrypted index"
+      "単一列のインデックス",
+      "複数列のインデックスで、それらの列を一緒に使用するクエリの性能を向上させる",
+      "複数の別々のインデックス",
+      "暗号化されたインデックス"
     ],
     "answer": 1,
     "explanation": "複合インデックスは複数の列をカバーし、クエリがインデックスの先頭列を順序通りに使用してフィルタまたはソートする場合に効率的である（最左プレフィックスルール）。"
@@ -1484,12 +1484,12 @@
   {
     "id": 115,
     "category": "Database Design",
-    "question": "What is the N+1 query problem?",
+    "question": "N+1クエリ問題とは何か。",
     "options": [
-      "Having too many tables",
-      "Executing one query to fetch a list and then N additional queries for each item, causing performance degradation",
-      "Using N databases",
-      "Running queries in parallel"
+      "テーブルが多すぎる",
+      "リストを取得する1つのクエリと、各アイテムのN個の追加クエリを実行し、性能劣化を引き起こす",
+      "N個のデータベースを使用する",
+      "クエリを並列実行する"
     ],
     "answer": 1,
     "explanation": "N+1問題は、1つのクエリでリストを取得した後に、N個の個別クエリで関連データを実行する場合に発生し、イーガーローディング、JOIN、バッチクエリで解決される。"
@@ -1497,12 +1497,12 @@
   {
     "id": 116,
     "category": "Database Design",
-    "question": "What is a covering index?",
+    "question": "カバリングインデックスとは何か。",
     "options": [
-      "An index that covers all tables",
-      "An index that contains all columns needed by a query, allowing the database to satisfy the query from the index alone",
-      "An index on the entire database",
-      "A backup index"
+      "すべてのテーブルをカバーするインデックス",
+      "クエリに必要なすべての列を含むインデックスで、インデックス単独でクエリを満たせる",
+      "データベース全体のインデックス",
+      "バックアップインデックス"
     ],
     "answer": 1,
     "explanation": "カバリングインデックスはクエリに必要なすべての列（WHEREとSELECT列の両方）を含み、テーブルデータへのアクセスなしにインデックスのみのスキャンを可能にする。"
@@ -1510,12 +1510,12 @@
   {
     "id": 117,
     "category": "Database Design",
-    "question": "What is the difference between a clustered and a non-clustered index?",
+    "question": "クラスタ化インデックスと非クラスタ化インデックスの違いは何か。",
     "options": [
-      "They are the same",
-      "Clustered determines physical sort order of data; non-clustered is a separate structure pointing to data",
-      "Non-clustered is always faster",
-      "Clustered uses less space"
+      "同じである",
+      "クラスタ化はデータの物理的ソート順を決定；非クラスタ化はデータを指す別構造",
+      "非クラスタ化が常に速い",
+      "クラスタ化はスペースを少なく使う"
     ],
     "answer": 1,
     "explanation": "クラスタ化インデックスはデータ行を物理的にソートして保存する。非クラスタ化インデックスは、データ行へのポインタを持つ別の構造を作成する。"
@@ -1523,12 +1523,12 @@
   {
     "id": 118,
     "category": "Database Design",
-    "question": "What is a database migration?",
+    "question": "データベースマイグレーションとは何か。",
     "options": [
-      "Moving a database to another country",
-      "Version-controlling database schema changes in a structured, repeatable way",
-      "Migrating from one vendor to another only",
-      "Importing data from CSV"
+      "データベースを別の国に移動する",
+      "データベーススキーマの変更を構造化された再利用可能な方法でバージョン管理する",
+      "あるベンダーから別のベンダーへの移行のみ",
+      "CSVからのデータインポート"
     ],
     "answer": 1,
     "explanation": "データベースマイグレーションは、データベースの変更をバージョン管理する構造化されたスクリプト（up/down）であり、チームが確実に変更を適用・ロールバックできるようにする。"
@@ -1536,12 +1536,12 @@
   {
     "id": 119,
     "category": "Database Design",
-    "question": "What is a star schema in data warehousing?",
+    "question": "データウェアハウジングのスタースキーマとは何か。",
     "options": [
-      "A schema with five tables",
-      "A denormalized schema with a central fact table connected to dimension tables in a star shape",
-      "A normalized schema for OLTP",
-      "A schema used for NoSQL databases"
+      "5つのテーブルがあるスキーマ",
+      "中央のファクトテーブルが星型にディメンションテーブルに接続される非正規化スキーマ",
+      "OLTP用の正規化スキーマ",
+      "NoSQLデータベース用のスキーマ"
     ],
     "answer": 1,
     "explanation": "スタースキーマは、メトリクスを含む中央のファクトテーブルと、コンテキストを提供するディメンションテーブルで構成され、データウェアハウスの分析クエリに最適化されている。"
@@ -1549,12 +1549,12 @@
   {
     "id": 120,
     "category": "Database Design",
-    "question": "What is referential integrity?",
+    "question": "参照整合性（referential integrity）とは何か。",
     "options": [
-      "Data security encryption",
-      "Ensuring that relationships between tables remain consistent, with every foreign key referencing a valid primary key",
-      "Referencing code documentation",
-      "Data backup integrity"
+      "データセキュリティの暗号化",
+      "テーブル間の関係が一貫しており、すべての外部キーが有効な主キーを参照することを保証する",
+      "コードドキュメントの参照",
+      "データバックアップの整合性"
     ],
     "answer": 1,
     "explanation": "参照整合性は、テーブル間の関係が一貫していることを確保する。すべての外部キー値はNULLまたは参照テーブルの既存の主キー値と一致しなければならない。"
@@ -1562,12 +1562,12 @@
   {
     "id": 121,
     "category": "UI/UX Design",
-    "question": "What is the primary goal of a wireframe in the design process?",
+    "question": "設計プロセスでワイヤーフレームの主な目的は何か。",
     "options": [
-      "Creating final visual designs",
-      "Showing the layout and structure of a page without detailed visual styling",
-      "Writing HTML code",
-      "Testing performance"
+      "最終的なビジュアルデザインの作成",
+      "ビジュアルスタイリングの詳細なしで、ページのレイアウトと構造を示す",
+      "HTMLコードの記述",
+      "パフォーマンステスト"
     ],
     "answer": 1,
     "explanation": "ワイヤーフレームは、色や画像などのビジュアルデザインの詳細なしで、ページの構造、配置、コンテンツの階層を示す低忠実度のレイアウトである。"
@@ -1575,12 +1575,12 @@
   {
     "id": 122,
     "category": "UI/UX Design",
-    "question": "What is responsive design?",
+    "question": "レスポンシブデザインとは何か。",
     "options": [
-      "Design that responds to user input",
-      "Design that adapts the layout and content to different screen sizes and devices",
-      "Design with animations",
-      "Design that changes colors dynamically"
+      "ユーザー入力に応答するデザイン",
+      "レイアウトとコンテンツを異なる画面サイズとデバイスに適応させるデザイン",
+      "アニメーション付きのデザイン",
+      "色が動的に変わるデザイン"
     ],
     "answer": 1,
     "explanation": "レスポンシブデザインは、柔軟なグリッド、メディアクエリ、流体画像を使用して、異なるビューポートサイズにレイアウトを適応させ、あらゆるデバイスで最適な体験を提供する。"
@@ -1588,12 +1588,12 @@
   {
     "id": 123,
     "category": "UI/UX Design",
-    "question": "What is WCAG primarily concerned with?",
+    "question": "WCAGは主に何に関わっているか。",
     "options": [
-      "Web color aesthetics",
-      "Making web content accessible to people with disabilities through guidelines and standards",
-      "Web caching performance",
-      "Web security encryption"
+      "Webカラーの美しさ",
+      "ガイドラインと標準を通じて、障害のある人々がWebコンテンツにアクセスできるようにする",
+      "Webキャッシングのパフォーマンス",
+      "Webセキュリティの暗号化"
     ],
     "answer": 1,
     "explanation": "WCAG（Web Content Accessibility Guidelines）は、障害のあるユーザーにとってWebコンテンツを知覚可能、操作可能、理解可能、堅牢にするための標準を提供する。"
@@ -1601,12 +1601,12 @@
   {
     "id": 124,
     "category": "UI/UX Design",
-    "question": "What is a design system?",
+    "question": "デザインシステムとは何か。",
     "options": [
-      "A single design file",
-      "A collection of reusable design components, patterns, and guidelines ensuring consistency across a product",
-      "A hardware specification",
-      "A network protocol"
+      "単一のデザインファイル",
+      "製品全体の整合性を確保するための再利用可能なデザインコンポーネント、パターン、ガイドラインのコレクション",
+      "ハードウェア仕様",
+      "ネットワークプロトコル"
     ],
     "answer": 1,
     "explanation": "デザインシステムは、製品全体のビジュアルおよび機能的一貫性を確保するための標準化されたコンポーネント（ボタン、フォーム、タイポグラフィ）、パターン、ガイドラインのセットである。"
@@ -1614,12 +1614,12 @@
   {
     "id": 125,
     "category": "UI/UX Design",
-    "question": "What is the purpose of user journey mapping?",
+    "question": "ユーザージャーニーマッピングの目的は何か。",
     "options": [
-      "Creating sitemaps",
-      "Visualizing the complete experience of a user interacting with a product across all touchpoints and stages",
-      "Designing navigation menus",
-      "Writing user stories"
+      "サイトマップの作成",
+      "ユーザーが製品とやり取りするすべてのタッチポイントと段階にわたる完全な体験を視覚化する",
+      "ナビゲーションメニューの設計",
+      "ユーザーストーリーの記述"
     ],
     "answer": 1,
     "explanation": "ユーザージャーニーマップは、ユーザーの目標、アクション、感情、ペインポイントを含む、製品とのすべてのインタラクションにおけるエンドツーエンドの体験を視覚化する。"
@@ -1627,12 +1627,12 @@
   {
     "id": 126,
     "category": "UI/UX Design",
-    "question": "What is the difference between a prototype and a wireframe?",
+    "question": "プロトタイプとワイヤーフレームの違いは何か。",
     "options": [
-      "They are the same",
-      "A wireframe shows structure; a prototype adds interactivity and functionality simulation",
-      "A prototype is lower fidelity than a wireframe",
-      "Wireframes are for developers only"
+      "同じである",
+      "ワイヤーフレームは構造を示す；プロトタイプはインタラクティビティと機能シミュレーションを追加する",
+      "プロトタイプはワイヤーフレームより忠実度が低い",
+      "ワイヤーフレームは開発者専用"
     ],
     "answer": 1,
     "explanation": "ワイヤーフレームは静的な構造レイアウトである。プロトタイプはインタラクティビティ、ナビゲーション、時には実際のデータを追加し、最終製品がどのように動作するかをシミュレートする。"
@@ -1640,12 +1640,12 @@
   {
     "id": 127,
     "category": "UI/UX Design",
-    "question": "What is a breakpoint in responsive design?",
+    "question": "レスポンシブデザインでブレイクポイントとは何か。",
     "options": [
-      "A point where code fails",
-      "A specific screen width at which the layout changes to accommodate different devices",
-      "A debug point",
-      "A security checkpoint"
+      "コードが失敗するポイント",
+      "異なるデバイスに対応するためレイアウトが変わる特定の画面幅",
+      "デバッグポイント",
+      "セキュリティチェックポイント"
     ],
     "answer": 1,
     "explanation": "ブレイクポイントは、CSSメディアクエリが異なるデバイスカテゴリのレイアウト変更をトリガーする定義された画面幅（例：タブレット用768px、デスクトップ用1024px）である。"
@@ -1653,12 +1653,12 @@
   {
     "id": 128,
     "category": "UI/UX Design",
-    "question": "What is the 'mobile-first' design approach?",
+    "question": "「モバイルファースト」デザインアプローチとは何か。",
     "options": [
-      "Only designing for mobile",
-      "Designing for the smallest screen first, then progressively enhancing for larger screens",
-      "Designing for desktop first",
-      "Ignoring mobile users"
+      "モバイルのみのデザイン",
+      "まず最小の画面向けにデザインし、大きな画面に向けて段階的に拡張する",
+      "まずデスクトップ向けにデザインする",
+      "モバイルユーザーを無視する"
     ],
     "answer": 1,
     "explanation": "モバイルファーストは最小のビューポートデザインから始め、プログレッシブエンハンスメントを使用して大きな画面用に複雑さを追加し、すべてのデバイスで確かな基本体験を確保する。"
@@ -1666,12 +1666,12 @@
   {
     "id": 129,
     "category": "UI/UX Design",
-    "question": "What is an A/B test in UX design?",
+    "question": "UXデザインでA/Bテストとは何か。",
     "options": [
-      "Testing two versions of code for bugs",
-      "Comparing two versions of a design with real users to determine which performs better on key metrics",
-      "Testing with two developers",
-      "Automated testing tool"
+      "2つのバージョンのコードのバグテスト",
+      "主要な指標でどちらが優れているかを判断するため、2つのデザインバージョンを実際のユーザーで比較する",
+      "2人の開発者でのテスト",
+      "自動テストツール"
     ],
     "answer": 1,
     "explanation": "A/Bテストは、異なるデザインバリアントを異なるユーザーグループに表示し、コンバージョン、エンゲージメント、満足度などの指標でどちらが優れているかを測定する。"
@@ -1679,12 +1679,12 @@
   {
     "id": 130,
     "category": "UI/UX Design",
-    "question": "What is affordance in UI design?",
+    "question": "UIデザインでアフォーダンス（affordance）とは何か。",
     "options": [
-      "The cost of design tools",
-      "Visual clues that indicate how an element can be interacted with (e.g., a raised button looks clickable)",
-      "The color scheme",
-      "The font choice"
+      "デザインツールのコスト",
+      "要素がどのように操作できるかを示す視覚的手がかり（例：浮き上がったボタンはクリック可能に見える）",
+      "カラースキーム",
+      "フォントの選択"
     ],
     "answer": 1,
     "explanation": "アフォーダンスは、要素がどのように使用されるべきかを示唆するビジュアル特性を指す。例えば、3Dの浮き上がったボタンは押すことができ、トグルは切り替えられることを示唆する。"
@@ -1692,12 +1692,12 @@
   {
     "id": 131,
     "category": "UI/UX Design",
-    "question": "What is information architecture in UX?",
+    "question": "UXにおける情報アーキテクチャとは何か。",
     "options": [
-      "Server architecture",
-      "Organizing, structuring, and labeling content effectively to help users find and understand information",
-      "Database design",
-      "Network topology"
+      "サーバーアーキテクチャ",
+      "ユーザーが情報を見つけやすく理解しやすいように、コンテンツを効果的に整理・構造化する",
+      "データベース設計",
+      "ネットワークトポロジー"
     ],
     "answer": 1,
     "explanation": "情報アーキテクチャ（IA）は、コンテンツを見つけやすく理解しやすいように整理・構造化する実践であり、ナビゲーション、ラベリング、カテゴリゼーションを含む。"
@@ -1705,12 +1705,12 @@
   {
     "id": 132,
     "category": "UI/UX Design",
-    "question": "What is the F-pattern in web reading behavior?",
+    "question": "Webの読み方行動におけるFパターンとは何か。",
     "options": [
-      "A design grid system",
-      "Users tend to scan content in an F-shaped pattern, reading more at the top and left of the page",
-      "A font style",
-      "A color palette"
+      "デザイングリッドシステム",
+      "ユーザーはF字型のパターンでコンテンツをスキャンし、ページの上部と左側をより多く読む",
+      "フォントスタイル",
+      "カラーパレット"
     ],
     "answer": 1,
     "explanation": "アイトラッキング調査によると、ユーザーはWebページをF字型のパターンでスキャンする：上部を横に、下に移動して再び横に。左上のコンテンツが最も目立つ。"
@@ -1718,12 +1718,12 @@
   {
     "id": 133,
     "category": "UI/UX Design",
-    "question": "What is usability testing?",
+    "question": "ユーザビリティテストとは何か。",
     "options": [
-      "Testing if code compiles",
-      "Evaluating a product by testing it with real users to identify usability issues and gather feedback",
-      "Testing server performance",
-      "Automated regression testing"
+      "コードがコンパイルできるかのテスト",
+      "実際のユーザーで製品をテストし、ユーザビリティの問題を特定してフィードバックを収集する",
+      "サーバー性能のテスト",
+      "自動回帰テスト"
     ],
     "answer": 1,
     "explanation": "ユーザビリティテストは、実際のユーザーが製品でタスクを完了しようとする様子を観察し、ペインポイント、混乱、改善領域を特定する。"
@@ -1731,12 +1731,12 @@
   {
     "id": 134,
     "category": "UI/UX Design",
-    "question": "What is the principle of 'progressive disclosure'?",
+    "question": "「プログレッシブディスクロージャ」の原則とは何か。",
     "options": [
-      "Showing all features at once",
-      "Revealing information and features gradually as the user needs them, reducing initial cognitive load",
-      "Hiding all information",
-      "Encrypting user data"
+      "すべての機能を一度に表示する",
+      "情報と機能をユーザーが必要に応じて段階的に明らかにし、初期の認知負荷を削減する",
+      "すべての情報を隠す",
+      "ユーザーデータの暗号化"
     ],
     "answer": 1,
     "explanation": "プログレッシブディスクロージャは、最初に必要な情報のみを表示し、必要に応じて高度なオプションを明らかにすることで、ユーザーが圧倒されるのを防ぐ。"
@@ -1744,12 +1744,12 @@
   {
     "id": 135,
     "category": "UI/UX Design",
-    "question": "What is a component library in UI design?",
+    "question": "UIデザインでコンポーネントライブラリとは何か。",
     "options": [
-      "A library of books",
-      "A reusable collection of pre-built UI components (buttons, inputs, cards) with consistent styling and behavior",
-      "A code compiler",
-      "A testing framework"
+      "本の図書館",
+      "一貫したスタイリングと振る舞いを持つ再利用可能な組み込みUIコンポーネントのコレクション",
+      "コードコンパイラ",
+      "テストフレームワーク"
     ],
     "answer": 1,
     "explanation": "コンポーネントライブラリは、一貫したデザインと振る舞いを持つ事前構築・テスト済みのUIコンポーネントを提供し、開発を加速しビジュアルの一貫性を維持する。"
@@ -1757,12 +1757,12 @@
   {
     "id": 136,
     "category": "UI/UX Design",
-    "question": "What is a persona in UX design?",
+    "question": "UXデザインでペルソナとは何か。",
     "options": [
-      "A user's real identity",
-      "A fictional character representing a user segment, based on research data about real users",
-      "A developer role",
-      "A database schema"
+      "ユーザーの実際の身元",
+      "実際のユーザーの研究データに基づいてユーザーセグメントを表す架空のキャラクター",
+      "開発者の役割",
+      "データベーススキーマ"
     ],
     "answer": 1,
     "explanation": "ペルソナは、フィクションだが研究に基づくキャラクターであり、ユーザータイプを表現し、チームが特定のユーザーのニーズと行動に共感し、設計するのを支援する。"
@@ -1770,12 +1770,12 @@
   {
     "id": 137,
     "category": "UI/UX Design",
-    "question": "What is the Nielsen Norman Group's heuristic about user control and freedom?",
+    "question": "ニールセン・ノーマングループの「ユーザー制御と自由度」に関するヒューリスティックは何を述べているか。",
     "options": [
-      "Users should have no control",
-      "Users should be able to undo and redo actions, and easily navigate back from error states",
-      "Users must follow a fixed path",
-      "All actions should require confirmation"
+      "ユーザーは制御権を持つべきではない",
+      "ユーザーはアクションを元に戻したりやり直したりでき、エラー状態から簡単に戻れるべき",
+      "ユーザーは固定パスに従わなければならない",
+      "すべてのアクションは確認を必要とすべき"
     ],
     "answer": 1,
     "explanation": "このユーザビリティヒューリスティックは、ユーザーはしばしば誤って機能を選択し、長いダイアログを経ることなく不要な状態から離脱するための明確にマークされた「緊急出口」を必要とすることを述べている。"
@@ -1783,12 +1783,12 @@
   {
     "id": 138,
     "category": "UI/UX Design",
-    "question": "What is skeuomorphism in UI design?",
+    "question": "UIデザインでスキューモーフィズム（skeuomorphism）とは何か。",
     "options": [
-      "Minimalist design",
-      "Design elements that mimic real-world objects (e.g., a button that looks 3D and physical)",
-      "Using only black and white",
-      "Grid-based layouts"
+      "ミニマリストデザイン",
+      "実世界のオブジェクトを模倣するデザイン要素（例：3Dで物理的に見えるボタン）",
+      "白黒のみを使用する",
+      "グリッドベースのレイアウト"
     ],
     "answer": 1,
     "explanation": "スキューモーフィズムは、物理世界からの視覚的手がかりを使用してユーザーがデジタルインターフェースを理解できるようにする（例：削除用のごみ箱アイコン、文書用の本棚）。"
@@ -1796,12 +1796,12 @@
   {
     "id": 139,
     "category": "UI/UX Design",
-    "question": "What is the Z-pattern layout used for?",
+    "question": "Zパターンレイアウトは何に使用されるか。",
     "options": [
-      "Database schemas",
-      "Designing landing pages where the user's eye naturally follows a Z-shaped scanning pattern",
-      "Programming patterns",
-      "Network design"
+      "データベーススキーマ",
+      "ユーザーの目がZ字型のスキャンパターンに自然に従うランディングページの設計",
+      "プログラミングパターン",
+      "ネットワーク設計"
     ],
     "answer": 1,
     "explanation": "Zパターンは、テキストが少ないページでユーザーが左上から右上、斜めに左下、そして右下へとZ字型にスキャンする方法を記述する。"
@@ -1809,12 +1809,12 @@
   {
     "id": 140,
     "category": "UI/UX Design",
-    "question": "What is dark mode in UI design primarily associated with?",
+    "question": "ダークモードはUIデザインで主に何と関連しているか。",
     "options": [
-      "Secret features",
-      "A light-on-dark color scheme that reduces eye strain in low-light environments and saves battery on OLED screens",
-      "A debugging mode",
-      "A security feature"
+      "秘密の機能",
+      "暗い環境で目の疲労を軽減し、OLED画面でバッテリーを節約する暗背景・明文字のカラースキーム",
+      "デバッグモード",
+      "セキュリティ機能"
     ],
     "answer": 1,
     "explanation": "ダークモードは暗い背景に明るいテキストを使用し、暗い環境での目の疲労を軽減し、OLED/AMOLEDディスプレイで暗いピクセルがより少ないエネルギーを使用するため電力を節約する。"
@@ -1822,12 +1822,12 @@
   {
     "id": 141,
     "category": "API Design",
-    "question": "What are the main principles of RESTful API design?",
+    "question": "RESTful API設計の主な原則は何か。",
     "options": [
-      "No specific principles",
-      "Stateless communication, resource-based URLs, standard HTTP methods, uniform interface",
-      "Must use XML only",
-      "Must use GraphQL"
+      "特定の原則はない",
+      "ステートレス通信、リソースベースのURL、標準HTTPメソッド、統一インターフェース",
+      "XMLのみを使用しなければならない",
+      "GraphQLを使用しなければならない"
     ],
     "answer": 1,
     "explanation": "RESTの原則には、ステートレスなリクエスト、URIで識別されるリソース、標準HTTPメソッド（GET、POST、PUT、DELETE）、統一インターフェースが含まれる。"
@@ -1835,7 +1835,7 @@
   {
     "id": 142,
     "category": "API Design",
-    "question": "What HTTP status code indicates a successful resource creation?",
+    "question": "リソースの作成成功を示すHTTPステータスコードはどれか。",
     "options": [
       "200 OK",
       "201 Created",
@@ -1848,12 +1848,12 @@
   {
     "id": 143,
     "category": "API Design",
-    "question": "What is the purpose of API versioning?",
+    "question": "APIバージョニングの目的は何か。",
     "options": [
-      "To make APIs slower",
-      "To manage breaking changes without disrupting existing clients by providing multiple API versions simultaneously",
-      "To delete old APIs",
-      "To add more security"
+      "APIを遅くする",
+      "複数のAPIバージョンを同時に提供し、既存クライアントを中断させずに破壊的変更を管理する",
+      "古いAPIの削除",
+      "セキュリティの追加"
     ],
     "answer": 1,
     "explanation": "APIバージョニングは、新しいバージョンで破壊的変更を導入しながら、以前のバージョンを使用する既存クライアントの後方互換性を維持できるようにする。"
@@ -1861,12 +1861,12 @@
   {
     "id": 144,
     "category": "API Design",
-    "question": "What is JWT (JSON Web Token) used for in APIs?",
+    "question": "APIでJWT（JSON Web Token）は何に使用されるか。",
     "options": [
-      "Data storage",
-      "Securely transmitting information between parties as a compact, self-contained token for authentication",
-      "Database queries",
-      "Image processing"
+      "データ保存",
+      "認証用のコンパクトで自己完結型のトークンとして、関係者間で安全に情報を送信する",
+      "データベースクエリ",
+      "画像処理"
     ],
     "answer": 1,
     "explanation": "JWTは、認証に使用されるコンパクトでURLセーフなトークン形式であり、完全性を確保するために暗号署名されたクレーム（ユーザーデータ）を含む。"
@@ -1874,12 +1874,12 @@
   {
     "id": 145,
     "category": "API Design",
-    "question": "What is the OAuth 2.0 protocol primarily used for?",
+    "question": "OAuth 2.0プロトコルは主に何に使用されるか。",
     "options": [
-      "Data encryption",
-      "Delegated authorization allowing third-party applications to access user data without sharing credentials",
-      "Password storage",
-      "File transfer"
+      "データ暗号化",
+      "資格情報を共有せずに、サードパーティアプリケーションがユーザーデータにアクセスできるようにする委任認可",
+      "パスワード保存",
+      "ファイル転送"
     ],
     "answer": 1,
     "explanation": "OAuth 2.0は委任認可を可能にし、ユーザーがパスワードを共有することなく、サードパーティアプリにリソースへの限定的なアクセスを許可できるようにする。"
@@ -1887,12 +1887,12 @@
   {
     "id": 146,
     "category": "API Design",
-    "question": "What is rate limiting in API design?",
+    "question": "API設計でレート制限（rate limiting）とは何か。",
     "options": [
-      "Speeding up APIs",
-      "Restricting the number of requests a client can make within a time period to prevent abuse",
-      "Limiting data size",
-      "Reducing API features"
+      "APIを高速化する",
+      "乱用を防ぐため、クライアントが一定期間内に行えるリクエスト数を制限する",
+      "データサイズの制限",
+      "API機能の削減"
     ],
     "answer": 1,
     "explanation": "レート制限は、指定された時間枠内でクライアントが行えるAPIリクエストの数を制御し、APIの乱用を防止し、公平な使用を確保し、パフォーマンスを維持する。"
@@ -1900,12 +1900,12 @@
   {
     "id": 147,
     "category": "API Design",
-    "question": "What is the OpenAPI Specification (formerly Swagger)?",
+    "question": "OpenAPI Specification（旧Swagger）とは何か。",
     "options": [
-      "A programming language",
-      "A standard for describing RESTful APIs using a machine-readable format for documentation and code generation",
-      "A testing tool",
-      "A database schema"
+      "プログラミング言語",
+      "ドキュメントとコード生成のために機械可読形式でRESTful APIを記述する標準",
+      "テストツール",
+      "データベーススキーマ"
     ],
     "answer": 1,
     "explanation": "OpenAPI SpecificationはREST APIの言語に依存しない標準的なインターフェース記述を定義し、自動化されたドキュメント、クライアントSDK生成、テストを可能にする。"
@@ -1913,12 +1913,12 @@
   {
     "id": 148,
     "category": "API Design",
-    "question": "What is the difference between PUT and PATCH HTTP methods?",
+    "question": "PUTとPATCHのHTTPメソッドの違いは何か。",
     "options": [
-      "They are the same",
-      "PUT replaces the entire resource; PATCH partially updates specific fields",
-      "PATCH is for deletion; PUT is for creation",
-      "PUT is deprecated"
+      "同じである",
+      "PUTはリソース全体を置き換える；PATCHは特定のフィールドを部分的に更新する",
+      "PATCHは削除用；PUTは作成用",
+      "PUTは非推奨"
     ],
     "answer": 1,
     "explanation": "PUTはクライアントに完全なリソース表現を送信して置き換えることを要求し、PATCHは変更が必要なフィールドのみを送信する。"
@@ -1926,12 +1926,12 @@
   {
     "id": 149,
     "category": "API Design",
-    "question": "What is HATEOAS in REST?",
+    "question": "RESTにおけるHATEOASとは何か。",
     "options": [
-      "A type of error",
-      "Hypermedia as the Engine of Application State - including relevant links in API responses for navigation",
-      "A caching mechanism",
-      "A security protocol"
+      "エラーの種類",
+      "Hypermedia as the Engine of Application State - APIレスポンスにナビゲーション用の関連リンクを含める",
+      "キャッシュメカニズム",
+      "セキュリティプロトコル"
     ],
     "answer": 1,
     "explanation": "HATEOASは、APIレスポンスにハイパーメディアリンクを含めるRESTの制約であり、クライアントが事前知識なしに動的にアクションを発見しAPIをナビゲートできるようにする。"
@@ -1939,12 +1939,12 @@
   {
     "id": 150,
     "category": "API Design",
-    "question": "What is idempotency in the context of HTTP methods?",
+    "question": "HTTPメソッドの文脈で冪等性（idempotency）とは何か。",
     "options": [
-      "Methods that always return 200",
-      "Methods that produce the same result regardless of how many times they are called",
-      "Methods that require authentication",
-      "Methods that are faster"
+      "常に200を返すメソッド",
+      "何回呼び出されても同じ結果を生成するメソッド",
+      "認証が必要なメソッド",
+      "より速いメソッド"
     ],
     "answer": 1,
     "explanation": "冪等なHTTPメソッド（GET、PUT、DELETE）は複数回呼び出されても同じ結果を生成し、リトライロジックとネットワークのレジリエンスにとって重要である。"
@@ -1952,12 +1952,12 @@
   {
     "id": 151,
     "category": "API Design",
-    "question": "What is a webhook?",
+    "question": "Webhookとは何か。",
     "options": [
-      "A type of hook in fishing",
-      "An HTTP callback triggered by events, allowing servers to push real-time data to clients proactively",
-      "A debugging tool",
-      "A logging mechanism"
+      "釣り用のフック",
+      "イベントによってトリガーされるHTTPコールバックで、サーバーがクライアントにリアルタイムデータを能動的にプッシュする",
+      "デバッグツール",
+      "ロギングメカニズム"
     ],
     "answer": 1,
     "explanation": "Webhookは、特定のイベントによってトリガーされるユーザー定義のHTTPコールバックであり、ポーリングなしで1つのシステムがリアルタイムで別のシステムに通知できるようにする。"
@@ -1965,12 +1965,12 @@
   {
     "id": 152,
     "category": "API Design",
-    "question": "What is the recommended approach for API authentication over HTTPS?",
+    "question": "HTTPS over でのAPI認証の推奨アプローチはどれか。",
     "options": [
-      "Basic auth with plain passwords",
-      "Bearer tokens (like JWT) sent in the Authorization header",
-      "Sending credentials in URL parameters",
-      "Using IP addresses only"
+      "平文パスワードのベーシック認証",
+      "Authorizationヘッダーで送信されるベアラートークン（JWTなど）",
+      "URLパラメータで資格情報を送信する",
+      "IPアドレスのみを使用する"
     ],
     "answer": 1,
     "explanation": "Authorizationヘッダー内のベアラートークンは、API認証の標準であり、ロードバランサーやマイクロサービスでうまく機能するステートレスな認証を提供する。"
@@ -1978,12 +1978,12 @@
   {
     "id": 153,
     "category": "API Design",
-    "question": "What is the purpose of pagination in API responses?",
+    "question": "APIレスポンスでページネーションの目的は何か。",
     "options": [
-      "Creating page layouts",
-      "Splitting large result sets into smaller chunks to improve performance and reduce payload size",
-      "Adding page numbers to documents",
-      "Creating new web pages"
+      "ページレイアウトの作成",
+      "大きな結果セットを小さなチャンクに分割し、パフォーマンスを向上させペイロードサイズを削減する",
+      "ドキュメントにページ番号を追加する",
+      "新しいWebページの作成"
     ],
     "answer": 1,
     "explanation": "ページネーションは大きなデータセットを管理可能なページに分割し、応答時間、メモリ使用量、帯域幅を削減しながら、クライアントがデータを段階的にリクエストできるようにする。"
@@ -1991,12 +1991,12 @@
   {
     "id": 154,
     "category": "API Design",
-    "question": "What is a GraphQL mutation used for?",
+    "question": "GraphQLのミューテーション（mutation）は何に使用されるか。",
     "options": [
-      "Querying data",
-      "Modifying data (create, update, delete) on the server, analogous to POST/PUT/DELETE in REST",
-      "Subscribing to events",
-      "Defining types"
+      "データのクエリ",
+      "サーバー側のデータを変更する（作成、更新、削除）。RESTのPOST/PUT/DELETEに相当",
+      "イベントへのサブスクライブ",
+      "型の定義"
     ],
     "answer": 1,
     "explanation": "GraphQLでは、ミューテーションはサーバー側のデータを変更する操作（作成、更新、削除）であり、クエリはデータの読み取りに使用される。"
@@ -2004,12 +2004,12 @@
   {
     "id": 155,
     "category": "API Design",
-    "question": "What is CORS (Cross-Origin Resource Sharing)?",
+    "question": "CORS（Cross-Origin Resource Sharing）とは何か。",
     "options": [
-      "A security vulnerability",
-      "A mechanism allowing servers to specify which origins can access their resources from web browsers",
-      "A caching strategy",
-      "A compression algorithm"
+      "セキュリティ脆弱性",
+      "サーバーがどのオリジンがリソースにアクセスできるかを指定できるメカニズム",
+      "キャッシュ戦略",
+      "圧縮アルゴリズム"
     ],
     "answer": 1,
     "explanation": "CORSはブラウザセキュリティメカニズムであり、異なるオリジンのWebページがAPIにリクエストを送信できるかを制御し、不正なクロスオリジンアクセスを防止する。"
@@ -2017,12 +2017,12 @@
   {
     "id": 156,
     "category": "API Design",
-    "question": "What is the difference between authorization and authentication?",
+    "question": "認証（authentication）と認可（authorization）の違いは何か。",
     "options": [
-      "They are the same",
-      "Authentication verifies identity (who you are); authorization determines permissions (what you can do)",
-      "Authorization is more secure",
-      "Authentication is not needed with authorization"
+      "同じである",
+      "認証は身元を検証する（誰であるか）；認可は権限を決定する（何ができるか）",
+      "認可の方がセキュア",
+      "認可があれば認証は不要"
     ],
     "answer": 1,
     "explanation": "認証は誰であるかを証明する（ログイン）。認可は何を許可されているかを決定する（権限）。セキュアなAPIアクセスには両方が必要。"
@@ -2030,12 +2030,12 @@
   {
     "id": 157,
     "category": "API Design",
-    "question": "What is a REST API resource?",
+    "question": "REST APIのリソースとは何か。",
     "options": [
-      "A code library",
-      "Any information that can be named and represented (nouns), identified by URIs and manipulated via HTTP methods",
-      "A server process",
-      "A database table"
+      "コードライブラリ",
+      "名前をつけて表現できるあらゆる情報（名詞）で、URIで識別されHTTPメソッドで操作される",
+      "サーバープロセス",
+      "データベーステーブル"
     ],
     "answer": 1,
     "explanation": "RESTでは、リソースはシステムの名詞（ユーザー、注文、製品）であり、URIで識別され、動詞として機能する標準HTTPメソッドを使用して操作される。"
@@ -2043,12 +2043,12 @@
   {
     "id": 158,
     "category": "API Design",
-    "question": "What is API throttling?",
+    "question": "APIスロットリング（throttling）とは何か。",
     "options": [
-      "Improving API speed",
-      "Temporarily limiting or blocking API access when a client exceeds their rate limit or quota",
-      "Caching API responses",
-      "Compressing API data"
+      "API速度の改善",
+      "クライアントがレート制限やクォータを超えたとき、APIアクセスを一時的に制限またはブロックする",
+      "APIレスポンスのキャッシュ",
+      "APIデータの圧縮"
     ],
     "answer": 1,
     "explanation": "スロットリングは、使用量が定義された制限を超えるとAPIアクセスを一時的に制限またはブロックし、サービスの過使用を防ぎ、すべてのクライアントのパフォーマンスを維持する。"
@@ -2056,12 +2056,12 @@
   {
     "id": 159,
     "category": "API Design",
-    "question": "What is the difference between GraphQL and REST for data fetching?",
+    "question": "データ取得におけるGraphQLとRESTの違いは何か。",
     "options": [
-      "No difference",
-      "GraphQL lets clients request exactly the data they need in a single query; REST requires accessing multiple endpoints",
-      "REST is always faster",
-      "GraphQL uses more bandwidth"
+      "違いはない",
+      "GraphQLは単一クエリで正確に必要なデータを取得できる；RESTは複数エンドポイントへのアクセスが必要な場合がある",
+      "RESTは常に速い",
+      "GraphQLはより多くの帯域幅を使用する"
     ],
     "answer": 1,
     "explanation": "GraphQLは、クライアントが単一のクエリで正確なデータニーズを指定できるようにし、オーバーフェッチとアンダーフェッチを排除する。RESTは複数のエンドポイント呼び出しを必要とする場合がある。"
@@ -2069,12 +2069,12 @@
   {
     "id": 160,
     "category": "API Design",
-    "question": "What is the recommended URL pattern for REST API versioning?",
+    "question": "REST APIバージョニングの推奨URLパターンはどれか。",
     "options": [
-      "Adding version to query parameters (/api/users?v=2)",
-      "Including version in the URL path (/api/v2/users)",
-      "Using different domains for each version",
-      "No versioning needed"
+      "クエリパラメータにバージョンを追加（/api/users?v=2）",
+      "URLパスにバージョンを含める（/api/v2/users）",
+      "各バージョンで異なるドメインを使用する",
+      "バージョニングは不要"
     ],
     "answer": 1,
     "explanation": "URLパスバージョニング（/api/v2/users）は最も一般的で明示的なアプローチであり、APIバージョンを明確にし、標準ルーティングで管理しやすくする。"
@@ -2082,7 +2082,7 @@
   {
     "id": 161,
     "category": "API Design",
-    "question": "What is a REST API endpoint for retrieving a specific user by ID?",
+    "question": "IDで特定のユーザーを取得するREST APIエンドポイントはどれか。",
     "options": [
       "POST /api/users/{id}",
       "GET /api/users/{id}",
@@ -2095,12 +2095,12 @@
   {
     "id": 162,
     "category": "API Design",
-    "question": "What is the purpose of an API gateway rate limiter?",
+    "question": "APIゲートウェイのレートリミッターの目的は何か。",
     "options": [
-      "To speed up requests",
-      "To protect backend services from being overwhelmed by too many requests from a single client",
-      "To authenticate users",
-      "To compress responses"
+      "リクエストを高速化する",
+      "単一クライアントからの多すぎるリクエストからバックエンドサービスを保護する",
+      "ユーザー認証",
+      "レスポンスの圧縮"
     ],
     "answer": 1,
     "explanation": "APIゲートウェイのレートリミッターは、クライアント/IPごとのリクエストレートを制御し、単一クライアントが過剰なリソースを消費するのを防ぎ、バックエンドサービスを保護する。"
@@ -2108,12 +2108,12 @@
   {
     "id": 163,
     "category": "API Design",
-    "question": "What is the 'Accept' HTTP header used for?",
+    "question": "「Accept」HTTPヘッダーの用途は何か。",
     "options": [
-      "Accepting cookies",
-      "Specifying the expected response format (e.g., application/json) the client can handle",
-      "Accepting terms of service",
-      "Accepting file uploads"
+      "Cookieの受け入れ",
+      "クライアントが処理できる期待されるレスポンス形式（例：application/json）の指定",
+      "利用規約の受け入れ",
+      "ファイルアップロードの受け入れ"
     ],
     "answer": 1,
     "explanation": "Acceptヘッダーは、クライアントが処理できるコンテンツタイプ（application/json、text/htmlなど）をサーバーに伝え、コンテンツネゴシエーションを可能にする。"
@@ -2121,12 +2121,12 @@
   {
     "id": 164,
     "category": "API Design",
-    "question": "What is the difference between a 401 and 403 HTTP status code?",
+    "question": "401と403のHTTPステータスコードの違いは何か。",
     "options": [
-      "They are the same",
-      "401 means unauthenticated (not logged in); 403 means unauthorized (no permission)",
-      "403 means unauthenticated; 401 means unauthorized",
-      "Both mean success"
+      "同じである",
+      "401は未認証（ログインなし）；403は認可なし（権限なし）",
+      "403は未認証；401は認可なし",
+      "どちらも成功を意味する"
     ],
     "answer": 1,
     "explanation": "401 Unauthorizedは認証が必要または失敗したことを意味する。403 Forbiddenはクライアントは認証されているが、要求されたリソースへの権限がないことを意味する。"
@@ -2134,12 +2134,12 @@
   {
     "id": 165,
     "category": "API Design",
-    "question": "What is the purpose of an API sandbox?",
+    "question": "APIサンドボックスの目的は何か。",
     "options": [
-      "A testing playground",
-      "A simulated environment where developers can test API calls without affecting production data or systems",
-      "A backup environment",
-      "A development IDE"
+      "テスト用遊び場",
+      "本番データやシステムに影響を与えずに、開発者がAPI呼び出しをテストできるシミュレートされた環境",
+      "バックアップ環境",
+      "開発IDE"
     ],
     "answer": 1,
     "explanation": "APIサンドボックスは、開発者がモックデータを使用してAPI呼び出しを安全な分離環境で実験できるようにし、リスクを軽減し開発を加速する。"
@@ -2147,12 +2147,12 @@
   {
     "id": 166,
     "category": "Performance Design",
-    "question": "What is the difference between vertical and horizontal scaling?",
+    "question": "垂直スケーリングと水平スケーリングの違いは何か。",
     "options": [
-      "They are the same",
-      "Vertical adds more power to existing machines; horizontal adds more machines",
-      "Horizontal adds more power; vertical adds more machines",
-      "Neither is effective"
+      "同じである",
+      "垂直は既存マシンの能力を増強；水平はマシンを追加する",
+      "水平は能力を増強；垂直はマシンを追加",
+      "どちらも効果的でない"
     ],
     "answer": 1,
     "explanation": "垂直スケーリング（スケールアップ）は既存サーバーのリソース（CPU、RAM）を増加させる。水平スケーリング（スケールアウト）は負荷を分散するためにサーバーを追加する。"
@@ -2160,12 +2160,12 @@
   {
     "id": 167,
     "category": "Performance Design",
-    "question": "What is the primary benefit of caching?",
+    "question": "キャッシングの主な利点は何か。",
     "options": [
-      "Storing more data",
-      "Reducing response time and database load by serving frequently accessed data from fast storage",
-      "Encrypting data",
-      "Compressing data"
+      "より多くのデータを保存する",
+      "高速なストレージから頻繁にアクセスされるデータを提供し、応答時間とデータベース負荷を削減する",
+      "データの暗号化",
+      "データの圧縮"
     ],
     "answer": 1,
     "explanation": "キャッシングは、頻繁にアクセスされるデータを高速ストレージ（メモリ、SSD）に保存し、応答時間とバックエンドシステムおよびデータベースの負荷を劇的に削減する。"
@@ -2173,12 +2173,12 @@
   {
     "id": 168,
     "category": "Performance Design",
-    "question": "What is a Content Delivery Network (CDN)?",
+    "question": "CDN（Content Delivery Network）とは何か。",
     "options": [
-      "A database network",
-      "A distributed network of edge servers that cache and serve content geographically close to users",
-      "A social network",
-      "A corporate intranet"
+      "データベースネットワーク",
+      "エッジサーバーの分散ネットワークで、ユーザーの地理的に近い位置でコンテンツをキャッシュ・配信する",
+      "ソーシャルネットワーク",
+      "企業イントラネット"
     ],
     "answer": 1,
     "explanation": "CDNは静的コンテンツを世界中のエッジサーバーにキャッシュし、地理的に最も近いサーバーからユーザーに配信し、レイテンシを削減して読み込み時間を改善する。"
@@ -2186,12 +2186,12 @@
   {
     "id": 169,
     "category": "Performance Design",
-    "question": "What is load balancing primarily used for?",
+    "question": "ロードバランシングは主に何に使用されるか。",
     "options": [
-      "Generating more traffic",
-      "Distributing incoming network traffic across multiple servers to ensure no single server is overwhelmed",
-      "Encrypting traffic",
-      "Compressing traffic"
+      "より多くのトラフィックを生成する",
+      "着信ネットワークトラフィックを複数のサーバーに分散し、単一サーバーの過負荷を防止する",
+      "トラフィックの暗号化",
+      "トラフィックの圧縮"
     ],
     "answer": 1,
     "explanation": "ロードバランサーは受信リクエストを複数のバックエンドサーバーに分散し、可用性、信頼性、応答時間を向上させ、単一サーバーの過負荷を防止する。"
@@ -2199,12 +2199,12 @@
   {
     "id": 170,
     "category": "Performance Design",
-    "question": "What is asynchronous processing used for?",
+    "question": "非同期処理は何に使用されるか。",
     "options": [
-      "Making code run faster",
-      "Handling time-consuming tasks in the background without blocking the main thread, improving user-perceived performance",
-      "Processing data sequentially",
-      "Simplifying code"
+      "コードを速く実行する",
+      "時間のかかるタスクをメインスレッドをブロックせずバックグラウンドで処理し、ユーザー体感パフォーマンスを向上させる",
+      "データを順次処理する",
+      "コードを簡素化する"
     ],
     "answer": 1,
     "explanation": "非同期処理は、実行に時間のかかるタスク（メール、ファイル処理、レポート）をバックグラウンドワーカーやキューに移動し、メインの応答を高速に保ちユーザー体験を向上させる。"
@@ -2212,12 +2212,12 @@
   {
     "id": 171,
     "category": "Performance Design",
-    "question": "What caching strategy is 'cache-aside' (lazy loading)?",
+    "question": "「キャッシュアサイド（lazy loading）」キャッシュ戦略とは何か。",
     "options": [
-      "Always caching everything",
-      "Application checks cache first, on miss retrieves from database and populates cache for future requests",
-      "Pre-loading all data into cache",
-      "Never using a cache"
+      "常にすべてをキャッシュする",
+      "アプリケーションがまずキャッシュをチェックし、ミスの場合はデータベースから取得してキャッシュに保存する",
+      "すべてのデータをキャッシュにプリロードする",
+      "キャッシュを一切使用しない"
     ],
     "answer": 1,
     "explanation": "キャッシュアサイドは各リクエストでキャッシュをチェックし、ミスの場合はソースデータベースから取得してキャッシュに書き込む。アプリケーションがキャッシュの投入を管理する。"
@@ -2225,12 +2225,12 @@
   {
     "id": 172,
     "category": "Performance Design",
-    "question": "What is the purpose of a read replica?",
+    "question": "読み取りレプリカの目的は何か。",
     "options": [
-      "Creating backups only",
-      "Offloading read queries to copies of the primary database to improve read throughput and reduce primary load",
-      "Writing data faster",
-      "Storing logs"
+      "バックアップのみの作成",
+      "読み取りクエリをプライマリデータベースのコピーにオフロードし、読み取りスループットを向上させプライマリ負荷を削減する",
+      "データの高速書き込み",
+      "ログの保存"
     ],
     "answer": 1,
     "explanation": "読み取りレプリカはプライマリデータベースのコピーで読み取りクエリに応答し、読み取り負荷を分散してデータベース全体のスループットを向上させ、プライマリは書き込みを処理する。"
@@ -2238,12 +2238,12 @@
   {
     "id": 173,
     "category": "Performance Design",
-    "question": "What is connection pooling?",
+    "question": "コネクションプーリングとは何か。",
     "options": [
-      "Connecting to multiple databases",
-      "Reusing existing database connections instead of creating new ones for each request, reducing overhead",
-      "Creating persistent connections only",
-      "Encrypting connections"
+      "複数のデータベースに接続する",
+      "新しい接続を作成する代わりに既存のデータベース接続を再利用し、オーバーヘッドを削減する",
+      "永続的な接続のみの作成",
+      "接続の暗号化"
     ],
     "answer": 1,
     "explanation": "コネクションプーリングは、再利用可能なアクティブなデータベース接続のセットを維持し、各リクエストごとの新しい接続の確立のオーバーヘッドを削除する。"
@@ -2251,12 +2251,12 @@
   {
     "id": 174,
     "category": "Performance Design",
-    "question": "What is the difference between LRU and LFU cache eviction policies?",
+    "question": "LRUとLFUのキャッシュ退去ポリシーの違いは何か。",
     "options": [
-      "They are the same",
-      "LRU evicts least recently used items; LFU evicts least frequently used items",
-      "LRU is always better",
-      "LFU uses less memory"
+      "同じである",
+      "LRUは最も長く使用されていないアイテムを退去；LFUは最も使用頻度の低いアイテムを退去",
+      "LRUが常に優れている",
+      "LFUはメモリを少なく使う"
     ],
     "answer": 1,
     "explanation": "LRU（Least Recently Used）は最も長くアクセスされていないアイテムを削除する。LFU（Least Frequently Used）はアクセス回数が最も少ないアイテムを削除する。"
@@ -2264,12 +2264,12 @@
   {
     "id": 175,
     "category": "Performance Design",
-    "question": "What is backpressure in system design?",
+    "question": "システム設計でバックプレッシャー（backpressure）とは何か。",
     "options": [
-      "Water pressure",
-      "A flow-control mechanism that slows down upstream producers when downstream consumers cannot keep up",
-      "Network security",
-      "Data compression"
+      "水圧",
+      "ダウンストリームのコンシューマーが追いつけないとき、アップストリームのプロデューサーに減速を要求するフロー制御メカニズム",
+      "ネットワークセキュリティ",
+      "データ圧縮"
     ],
     "answer": 1,
     "explanation": "バックプレッシャーは、ダウンストリームシステムがデータを十分に速く処理できない場合、アップストリームプロデューサーに減速または停止を通知し、バッファオーバーフローとクラッシュを防止する。"
@@ -2277,12 +2277,12 @@
   {
     "id": 176,
     "category": "Performance Design",
-    "question": "What is the benefit of a reverse proxy like Nginx?",
+    "question": "Nginxのようなリバースプロキシの利点は何か。",
     "options": [
-      "Forwarding requests to the internet",
-      "Handling SSL termination, compression, caching, and distributing requests to backend servers",
-      "Blocking all traffic",
-      "Replacing databases"
+      "インターネットへのリクエスト転送",
+      "SSL終端、圧縮、キャッシング、バックエンドサーバーへのリクエスト分散を処理する",
+      "すべてのトラフィックのブロック",
+      "データベースの置き換え"
     ],
     "answer": 1,
     "explanation": "リバースプロキシはバックエンドサーバーの前に配置され、SSL終端、圧縮、静的コンテンツのキャッシング、ロードバランシング、リクエストルーティングを処理する。"
@@ -2290,12 +2290,12 @@
   {
     "id": 177,
     "category": "Performance Design",
-    "question": "What is lazy loading in the context of web performance?",
+    "question": "Webパフォーマンスの文脈で遅延読み込み（lazy loading）とは何か。",
     "options": [
-      "Loading all resources upfront",
-      "Deferring the loading of non-critical resources until they are needed (e.g., images below the fold)",
-      "Loading resources in parallel",
-      "Compressing resources"
+      "すべてのリソースを事前に読み込む",
+      "クリティカルでないリソース（例：折りたたみ位置以下の画像）の読み込みを必要になるまで遅延する",
+      "リソースを並列に読み込む",
+      "リソースを圧縮する"
     ],
     "answer": 1,
     "explanation": "遅延読み込みは、リソース（画像、スクリプト、コンポーネント）が実際に必要になるまで読み込みを遅らせ、初期ページロード時間と帯域幅使用量を削減する。"
@@ -2303,12 +2303,12 @@
   {
     "id": 178,
     "category": "Performance Design",
-    "question": "What is the 'write-through' cache strategy?",
+    "question": "「ライトスルー」キャッシュ戦略とは何か。",
     "options": [
-      "Writing only to cache",
-      "Writing data to both cache and the backing store simultaneously, ensuring consistency",
-      "Writing only to the database",
-      "Writing asynchronously to cache"
+      "キャッシュのみに書き込む",
+      "データをキャッシュとバッキングストアの両方に同時に書き込み、整合性を保証する",
+      "データベースのみに書き込む",
+      "非同期にキャッシュに書き込む"
     ],
     "answer": 1,
     "explanation": "ライトスルーはデータをキャッシュと永続ストアの両方に同時に書き込み、キャッシュに古いデータが含まれないことを保証するが、書き込みレイテンシが追加される。"
@@ -2316,12 +2316,12 @@
   {
     "id": 179,
     "category": "Performance Design",
-    "question": "What is a 'warm' versus 'cold' cache?",
+    "question": "「ウォーム」キャッシュと「コールド」キャッシュの違いは何か。",
     "options": [
-      "Temperature of the server",
-      "A warm cache contains frequently accessed data; a cold cache is empty and requires loading from the source",
-      "A warm cache is for winter; cold is for summer",
-      "No difference"
+      "サーバーの稼働時間",
+      "ウォームキャッシュは頻繁にアクセスされるデータを含む；コールドキャッシュは空でソースからの読み込みが必要",
+      "ウォームキャッシュは冬用；コールドキャッシュは夏用",
+      "違いはない"
     ],
     "answer": 1,
     "explanation": "ウォームキャッシュは以前のリクエストからデータが読み込まれており高速な応答を提供する。コールドキャッシュは空（再起動後）でソースから取得する必要があり、初期応答が遅くなる。"
@@ -2329,12 +2329,12 @@
   {
     "id": 180,
     "category": "Performance Design",
-    "question": "What is the purpose of data compression in API responses?",
+    "question": "APIレスポンスでのデータ圧縮の目的は何か。",
     "options": [
-      "Making data unreadable",
-      "Reducing response payload size to decrease bandwidth usage and improve transfer speed",
-      "Encrypting data",
-      "Adding metadata"
+      "データを読めなくする",
+      "レスポンスのペイロードサイズを削減し、帯域幅使用量を減らし転送速度を向上させる",
+      "データの暗号化",
+      "メタデータの追加"
     ],
     "answer": 1,
     "explanation": "圧縮（gzip、brotli）はAPIレスポンスのサイズを削減し、帯域幅消費を減少させ、転送速度を向上させ、サーバー負荷を軽減する。"
@@ -2342,12 +2342,12 @@
   {
     "id": 181,
     "category": "Performance Design",
-    "question": "What is horizontal partitioning of a database?",
+    "question": "データベースの水平パーティショニングとは何か。",
     "options": [
-      "Adding columns to a table",
-      "Splitting rows of a table across multiple servers based on a partition key (sharding)",
-      "Creating indexes",
-      "Adding foreign keys"
+      "テーブルに列を追加する",
+      "パーティションキーに基づいてテーブルの行を複数のサーバーに分割する（シャーディング）",
+      "インデックスの作成",
+      "外部キーの追加"
     ],
     "answer": 1,
     "explanation": "水平パーティショニング（シャーディング）は、パーティションキーを使用して行を複数のデータベースインスタンスに分散し、並列クエリ処理とストレージのスケーリングを可能にする。"
@@ -2355,12 +2355,12 @@
   {
     "id": 182,
     "category": "Performance Design",
-    "question": "What is the role of a message queue in performance optimization?",
+    "question": "パフォーマンス最適化でメッセージキューの役割は何か。",
     "options": [
-      "Storing files",
-      "Buffering and asynchronously processing tasks to smooth out traffic spikes and decouple components",
-      "Sending emails only",
-      "Managing sessions"
+      "ファイルの保存",
+      "タスクをバッファリングし非同期に処理して、トラフィックスパイクを平滑化しコンポーネントを分離する",
+      "メール送信のみ",
+      "セッションの管理"
     ],
     "answer": 1,
     "explanation": "メッセージキューは受信リクエストをバッファリングして非同期に処理し、負荷スパイクを平滑化し、システムの過負荷を防ぎ、プロデューサーとコンシューマーの分離を実現する。"
@@ -2368,12 +2368,12 @@
   {
     "id": 183,
     "category": "Performance Design",
-    "question": "What is the trade-off of using a CDN for dynamic content?",
+    "question": "動的コンテンツにCDNを使用する際のトレードオフは何か。",
     "options": [
-      "No trade-offs",
-      "CDN edge caching of dynamic content can serve stale data; requires careful cache invalidation strategy",
-      "CDN makes dynamic content slower",
-      "CDN cannot serve dynamic content"
+      "トレードオフはない",
+      "動的コンテンツのCDNエッジキャッシュは古いデータを配信する可能性があり、慎重なキャッシュ無効化戦略が必要",
+      "CDNは動的コンテンツを遅くする",
+      "CDNは動的コンテンツを配信できない"
     ],
     "answer": 1,
     "explanation": "CDNは静的コンテンツに優れているが、動的コンテンツのキャッシュは古いデータを配信するリスクがあり、短いTTL、キャッシュキーデザイン、パージAPIなどの戦略が必要。"
@@ -2381,12 +2381,12 @@
   {
     "id": 184,
     "category": "Performance Design",
-    "question": "What is the purpose of a health check endpoint in a load-balanced environment?",
+    "question": "ロードバランシング環境でヘルスチェックエンドポイントの目的は何か。",
     "options": [
-      "Checking employee health",
-      "Allowing the load balancer to detect unhealthy servers and route traffic to healthy ones",
-      "Monitoring code quality",
-      "Checking database integrity"
+      "従業員の健康チェック",
+      "ロードバランサーが異常サーバーを検出し、健全なサーバーにトラフィックをルーティングできるようにする",
+      "コード品質の監視",
+      "データベース整合性のチェック"
     ],
     "answer": 1,
     "explanation": "ヘルスチェックエンドポイントにより、ロードバランサーはサーバーの健全性（読み取り/ライブネス）を確認し、自動的に障害インスタンスからトラフィックを迂回させてサービスの可用性を維持する。"
@@ -2394,12 +2394,12 @@
   {
     "id": 185,
     "category": "Performance Design",
-    "question": "What is database query optimization primarily about?",
+    "question": "データベースクエリ最適化は主に何についてか。",
     "options": [
-      "Writing more queries",
-      "Improving query performance through indexing, query restructuring, and execution plan analysis",
-      "Using more databases",
-      "Caching all queries"
+      "より多くのクエリを書く",
+      "インデックス、クエリ再構築、実行計画の分析を通じてクエリパフォーマンスを向上させる",
+      "より多くのデータベースを使用する",
+      "すべてのクエリをキャッシュする"
     ],
     "answer": 1,
     "explanation": "クエリ最適化は、実行プランの分析、適切なインデックスの追加、クエリの再構築、データベース固有の機能の使用を通じて応答時間を削減する。"
@@ -2407,12 +2407,12 @@
   {
     "id": 186,
     "category": "Performance Design",
-    "question": "What is the benefit of edge computing for performance?",
+    "question": "エッジコンピューティングのパフォーマンス上の利点は何か。",
     "options": [
-      "Cheaper hardware",
-      "Processing data closer to the user at edge locations, reducing latency for real-time applications",
-      "Simpler applications",
-      "Better security only"
+      "安価なハードウェア",
+      "エッジロケーションでデータを処理し、リアルタイムアプリケーションのレイテンシを削減する",
+      "シンプルなアプリケーション",
+      "セキュリティの向上のみ"
     ],
     "answer": 1,
     "explanation": "エッジコンピューティングは、データソース（エッジロケーション）でデータを処理し、中央サーバーへの往復レイテンシを削減する。リアルタイムアプリケーションに重要である。"
@@ -2420,12 +2420,12 @@
   {
     "id": 187,
     "category": "Performance Design",
-    "question": "What is the 'bulkhead' pattern in performance design?",
+    "question": "パフォーマンス設計における「バルクヘッド」パターンとは何か。",
     "options": [
-      "Ship construction",
-      "Isolating resources into separate pools so one overloaded component does not affect others",
-      "Resource sharing for efficiency",
-      "Creating backups"
+      "船の建造",
+      "リソースを別々のプールに分離し、過負荷コンポーネントが他に影響しないようにする",
+      "効率化のためのリソース共有",
+      "バックアップの作成"
     ],
     "answer": 1,
     "explanation": "バルクヘッドパターンはリソース（スレッドプール、接続）を分離されたグループに分割し、障害中または遅いコンポーネントがすべてのリソースを枯渇させるのを防止する。"
@@ -2433,12 +2433,12 @@
   {
     "id": 188,
     "category": "Performance Design",
-    "question": "What is the impact of the N+1 query problem on performance?",
+    "question": "N+1クエリ問題がパフォーマンスに与える影響は何か。",
     "options": [
-      "Minimal impact",
-      "Severe performance degradation due to executing many individual database queries instead of a few batched ones",
-      "Improved caching",
-      "Better data integrity"
+      "最小限の影響",
+      "少数のバッチクエリの代わりに多数の個別データベースクエリを実行する深刻なパフォーマンス劣化",
+      "キャッシュの改善",
+      "データ整合性の向上"
     ],
     "answer": 1,
     "explanation": "N+1問題はN個の関連アイテムに対してO(N)のデータベース往復を引き起こし、深刻なレイテンシを生む。解決策にはイーガーローディング、JOIN、バッチクエリが含まれる。"
@@ -2446,12 +2446,12 @@
   {
     "id": 189,
     "category": "Performance Design",
-    "question": "What is auto-scaling in cloud environments?",
+    "question": "クラウド環境でのオートスケーリングとは何か。",
     "options": [
-      "Manual scaling",
-      "Automatically adjusting the number of compute instances based on demand metrics (CPU, memory, request count)",
-      "Scaling down only",
-      "Fixed capacity"
+      "手動スケーリング",
+      "需要メトリクス（CPU、メモリ、リクエスト数）に基づいてコンピュートインスタンス数を自動調整する",
+      "縮小のみ",
+      "固定容量"
     ],
     "answer": 1,
     "explanation": "オートスケーリングは、トラフィックススパイク時にインスタンスを自動的に追加し、低負荷時に削除し、パフォーマンスを維持しながらコストを最適化する。"
@@ -2459,12 +2459,12 @@
   {
     "id": 190,
     "category": "Performance Design",
-    "question": "What is the purpose of a circuit breaker with a fallback in performance design?",
+    "question": "パフォーマンス設計でフォールバック付きサーキットブレーカーの目的は何か。",
     "options": [
-      "Stopping all traffic",
-      "Providing degraded but acceptable responses when a dependency fails, instead of making the caller wait",
-      "Improving speed when healthy",
-      "Replacing the failed service permanently"
+      "すべてのトラフィックを停止する",
+      "依存関係が障害時に劣化したが許容可能なレスポンスを提供し、呼び出し元を待たせない",
+      "正常時の速度向上",
+      "障害サービスの永久置き換え"
     ],
     "answer": 1,
     "explanation": "フォールバック付きサーキットブレーカーは、依存関係が障害時にキャッシュされたデータやデフォルトデータを返し、障害サービスの回復中もユーザビリティを維持する。"
@@ -2472,12 +2472,12 @@
   {
     "id": 191,
     "category": "Security Design",
-    "question": "What is the primary goal of threat modeling?",
+    "question": "脅威モデリングの主な目的は何か。",
     "options": [
-      "Writing code faster",
-      "Identifying potential security threats and vulnerabilities in a system design before implementation",
-      "Testing performance",
-      "Creating documentation"
+      "コードを速く書く",
+      "実装前にシステム設計における潜在的なセキュリティ脅威と脆弱性を特定する",
+      "パフォーマンステスト",
+      "ドキュメントの作成"
     ],
     "answer": 1,
     "explanation": "脅威モデリングは、実装前にシステムアーキテクチャにおける潜在的なセキュリティ脅威、攻撃ベクトル、脆弱性を体系的に特定する。"
@@ -2485,12 +2485,12 @@
   {
     "id": 192,
     "category": "Security Design",
-    "question": "What is the STRIDE threat model used for?",
+    "question": "STRIDE脅威モデルは何に使用されるか。",
     "options": [
-      "Performance testing",
-      "Categorizing threats into Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege",
-      "Code formatting",
-      "Project management"
+      "パフォーマンステスト",
+      "脅威をSpoofing、Tampering、Repudiation、Information Disclosure、Denial of Service、Elevation of Privilegeに分類する",
+      "コードフォーマット",
+      "プロジェクト管理"
     ],
     "answer": 1,
     "explanation": "STRIDEは脅威モデリングフレームワークで、脅威を6つのタイプに分類する：Spoofing（なりすまし）、Tampering（改ざん）、Repudiation（否認）、Information Disclosure（情報漏洩）、Denial of Service（サービス拒否）、Elevation of Privilege（権限昇格）。"
@@ -2498,12 +2498,12 @@
   {
     "id": 193,
     "category": "Security Design",
-    "question": "What is the principle of least privilege?",
+    "question": "最小権限の原則（principle of least privilege）とは何か。",
     "options": [
-      "Giving everyone admin access",
-      "Granting users and services only the minimum permissions necessary to perform their tasks",
-      "Denying all access by default",
-      "Sharing passwords"
+      "全員に管理者アクセスを与える",
+      "ユーザーとサービスにタスク実行に必要な最小限の権限のみを付与する",
+      "デフォルトですべてのアクセスを拒否する",
+      "パスワードの共有"
     ],
     "answer": 1,
     "explanation": "最小権限の原則は、各ロールに必要な最小限のアクセス権に制限し、攻撃対象領域を縮小し、侵害されたアカウントからの潜在的な被害を制限する。"
@@ -2511,12 +2511,12 @@
   {
     "id": 194,
     "category": "Security Design",
-    "question": "What is the difference between encryption at rest and encryption in transit?",
+    "question": "保存時暗号化と転送時暗号化の違いは何か。",
     "options": [
-      "No difference",
-      "Encryption at rest protects stored data; encryption in transit protects data being transmitted over networks",
-      "Encryption at rest is faster",
-      "Encryption in transit uses less memory"
+      "違いはない",
+      "保存時暗号化は格納データを保護；転送時暗号化はネットワーク上の転送データを保護",
+      "保存時暗号化の方が速い",
+      "転送時暗号化はメモリを少なく使う"
     ],
     "answer": 1,
     "explanation": "保存時暗号化（AES）はディスク/データベースに保存されたデータを保護する。転送時暗号化（TLS/SSL）はクライアントとサーバー間のデータ転送を保護する。"
@@ -2524,12 +2524,12 @@
   {
     "id": 195,
     "category": "Security Design",
-    "question": "What is SQL injection and how is it prevented?",
+    "question": "SQLインジェクションとは何か、またどのように防ぐか。",
     "options": [
-      "A database feature",
-      "An attack that inserts malicious SQL through user input; prevented by parameterized queries and input validation",
-      "A performance issue",
-      "A network protocol"
+      "データベースの機能",
+      "ユーザー入力を通じて悪意のあるSQLを挿入する攻撃；プリペアドステートメントと入力検証で防止",
+      "パフォーマンスの問題",
+      "ネットワークプロトコル"
     ],
     "answer": 1,
     "explanation": "SQLインジェクションはサニタイズされていないユーザー入力を悪用して悪意のあるSQLを実行する。対策にはプリペアドステートメント、ORM、入力検証が含まれる。"
@@ -2537,12 +2537,12 @@
   {
     "id": 196,
     "category": "Security Design",
-    "question": "What is OAuth 2.0 primarily designed for?",
+    "question": "OAuth 2.0は主に何のために設計されているか。",
     "options": [
-      "Encryption",
-      "Authorization - allowing users to grant third-party applications limited access to their resources without sharing credentials",
-      "Authentication only",
-      "Password management"
+      "暗号化",
+      "認可 - 資格情報を共有せずに、サードパーティアプリにリソースへの限定的なアクセスを許可する",
+      "認証のみ",
+      "パスワード管理"
     ],
     "answer": 1,
     "explanation": "OAuth 2.0は認可フレームワークで、ユーザーがパスワードを共有する代わりにアクセストークンを使用して、サードパーティアプリにリソースへの限定的なアクセスを委任できるようにする。"
@@ -2550,12 +2550,12 @@
   {
     "id": 197,
     "category": "Security Design",
-    "question": "What is Cross-Site Scripting (XSS)?",
+    "question": "クロスサイトスクリプティング（XSS）とは何か。",
     "options": [
-      "A CSS framework",
-      "An attack that injects malicious scripts into web pages viewed by other users",
-      "A database technique",
-      "A performance optimization"
+      "CSSフレームワーク",
+      "他のユーザーが閲覧するWebページに悪意のあるスクリプトを注入する攻撃",
+      "データベース技法",
+      "パフォーマンス最適化"
     ],
     "answer": 1,
     "explanation": "XSS攻撃は他のユーザーのブラウザで実行される悪意のあるJavaScriptをWebページに注入し、セッションハイジャック、サイト改ざん、データ窃取を可能にする。"
@@ -2563,12 +2563,12 @@
   {
     "id": 198,
     "category": "Security Design",
-    "question": "What is a JSON Web Token (JWT) composed of?",
+    "question": "JWT（JSON Web Token）は何で構成されているか。",
     "options": [
-      "One encrypted block",
-      "Three parts: Header, Payload, and Signature separated by dots",
-      "Two parts: Key and Value",
-      "Four parts: User, Role, Expiry, Signature"
+      "1つの暗号化ブロック",
+      "ドットで区切られた3つの部分：Header、Payload、Signature",
+      "2つの部分：KeyとValue",
+      "4つの部分：User、Role、Expiry、Signature"
     ],
     "answer": 1,
     "explanation": "JWTは3つのBase64URLエンコードされた部分で構成される：Header（アルゴリズムとトークンタイプ）、Payload（クレーム/データ）、Signature（暗号署名検証）。"
@@ -2576,12 +2576,12 @@
   {
     "id": 199,
     "category": "Security Design",
-    "question": "What is the purpose of Content Security Policy (CSP)?",
+    "question": "CSP（Content Security Policy）の目的は何か。",
     "options": [
-      "Content delivery",
-      "Preventing XSS and data injection attacks by specifying which content sources are allowed to be loaded",
-      "Content formatting",
-      "Content caching"
+      "コンテンツ配信",
+      "許可されたコンテンツソースを指定し、XSSやデータ注入攻撃を防止する",
+      "コンテンツフォーマット",
+      "コンテンツキャッシング"
     ],
     "answer": 1,
     "explanation": "CSPは、承認されたコンテンツソース（スクリプト、スタイル、画像）を指定するHTTPヘッダーであり、不正なコード実行を防止しXSS攻撃を緩和する。"
@@ -2589,12 +2589,12 @@
   {
     "id": 200,
     "category": "Security Design",
-    "question": "What is the difference between authentication and authorization in security?",
+    "question": "セキュリティにおける認証と認可の違いは何か。",
     "options": [
-      "They are the same",
-      "Authentication verifies identity; authorization determines what actions an authenticated entity can perform",
-      "Authorization is a subset of authentication",
-      "They are both optional"
+      "同じである",
+      "認証は身元を検証する；認可は認証されたエンティティが実行できるアクションを決定する",
+      "認可は認証のサブセット",
+      "両方とも任意"
     ],
     "answer": 1,
     "explanation": "認証（AuthN）は「あなたは誰か」に答え（ログイン）。認可（AuthZ）は「あなたは何を許可されているか」に答える（権限）。セキュリティには両方が不可欠。"
@@ -2602,12 +2602,12 @@
   {
     "id": 201,
     "category": "Security Design",
-    "question": "What is HTTPS and why is it important for API security?",
+    "question": "HTTPSとは何か、またAPIセキュリティにとってなぜ重要か。",
     "options": [
-      "A programming language",
-      "HTTP over TLS encryption, protecting data in transit from eavesdropping and tampering",
-      "A faster version of HTTP",
-      "A caching mechanism"
+      "プログラミング言語",
+      "TLS暗号化を備えたHTTPで、転送中のデータを傍受と改ざんから保護する",
+      "より速いHTTPバージョン",
+      "キャッシュメカニズム"
     ],
     "answer": 1,
     "explanation": "HTTPSはTLSを使用してクライアントとサーバー間のすべての通信を暗号化し、攻撃者がデータを傍受、読み取り、または改ざんすることを防止する。"
@@ -2615,12 +2615,12 @@
   {
     "id": 202,
     "category": "Security Design",
-    "question": "What is a salt in password hashing?",
+    "question": "パスワードハッシュにおけるソルト（salt）とは何か。",
     "options": [
-      "A seasoning ingredient",
-      "Random data added to a password before hashing to defend against rainbow table attacks",
-      "A type of encryption key",
-      "A backup password"
+      "調味料",
+      "レインボーテーブル攻撃に対抗するため、ハッシュ前にパスワードに追加するランダムデータ",
+      "暗号化キーの種類",
+      "バックアップパスワード"
     ],
     "answer": 1,
     "explanation": "ソルトはパスワードをハッシュする前に組み合わせるランダムデータであり、同じパスワードでも異なるハッシュを生成して、事前計算されたレインボーテーブル攻撃を無効化する。"
@@ -2628,12 +2628,12 @@
   {
     "id": 203,
     "category": "Security Design",
-    "question": "What is defense in depth in security architecture?",
+    "question": "セキュリティアーキテクチャにおけるディフェンスインデプス（defense in depth）とは何か。",
     "options": [
-      "Hiding the application",
-      "Using multiple layers of security controls so that if one fails, others still provide protection",
-      "Having one strong firewall",
-      "Using only encryption"
+      "アプリケーションを隠す",
+      "1つの制御が失敗しても他が保護を提供するよう、複数のセキュリティ制御レイヤーを使用する",
+      "1つの強力なファイアウォールを持つ",
+      "暗号化のみを使用する"
     ],
     "answer": 1,
     "explanation": "ディフェンスインデプスは、複数のセキュリティレイヤー（ネットワーク、アプリケーション、データ、物理）を適用し、1つの制御の障害がシステム全体を危険に晒さないようにする。"
@@ -2641,12 +2641,12 @@
   {
     "id": 204,
     "category": "Security Design",
-    "question": "What is the purpose of input validation?",
+    "question": "入力検証の目的は何か。",
     "options": [
-      "Improving performance",
-      "Preventing injection attacks and ensuring data integrity by validating all user input against expected formats",
-      "Encrypting user data",
-      "Compressing input"
+      "パフォーマンスの改善",
+      "すべてのユーザー入力を期待される形式に対して検証し、インジェクション攻撃とデータ整合性の問題を防止する",
+      "ユーザーデータの暗号化",
+      "入力の圧縮"
     ],
     "answer": 1,
     "explanation": "入力検証は、ユーザー提供のすべてのデータを期待される型、長さ、パターンに対してチェックし、SQLインジェクション、XSS、バッファオーバーフロー、その他のインジェクション攻撃を防止する。"
@@ -2654,12 +2654,12 @@
   {
     "id": 205,
     "category": "Security Design",
-    "question": "What is Cross-Site Request Forgery (CSRF)?",
+    "question": "CSRF（Cross-Site Request Forgery）とは何か。",
     "options": [
-      "A CSS vulnerability",
-      "An attack that tricks a user's browser into making unauthorized requests to a different site where they are authenticated",
-      "A database attack",
-      "A network protocol flaw"
+      "CSSの脆弱性",
+      "ユーザーのブラウザを騙して、認証済みの別サイトに不正なリクエストを送らせる攻撃",
+      "データベース攻撃",
+      "ネットワークプロトコルの欠陥"
     ],
     "answer": 1,
     "explanation": "CSRFはブラウザの資格情報（Cookie）の自動的な包含を悪用して、認証されたアプリケーションに偽造リクエストを送信する。CSRFトークンとSameSite Cookieで防止される。"
@@ -2667,12 +2667,12 @@
   {
     "id": 206,
     "category": "Security Design",
-    "question": "What is a zero-trust security model?",
+    "question": "ゼロトラストセキュリティモデルとは何か。",
     "options": [
-      "Trusting no one",
-      "Never trusting, always verifying - requiring authentication and authorization for every request regardless of network location",
-      "A network with no users",
-      "Removing all passwords"
+      "誰も信頼しない",
+      "常に信頼せず常に検証する - ネットワーク位置に関係なくすべてのリクエストに認証と認可を要求する",
+      "ユーザーがいないネットワーク",
+      "すべてのパスワードを削除する"
     ],
     "answer": 1,
     "explanation": "ゼロトラストセキュリティは、ユーザー、デバイス、ネットワークを本質的に信頼できると仮定せず、すべてのアクセス要求に対して継続的な検証と認証を要求する。"
@@ -2680,12 +2680,12 @@
   {
     "id": 207,
     "category": "Security Design",
-    "question": "What is the purpose of a Web Application Firewall (WAF)?",
+    "question": "WAF（Web Application Firewall）の目的は何か。",
     "options": [
-      "Firewall for physical buildings",
-      "Filtering and monitoring HTTP traffic to block common web attacks like SQL injection and XSS",
-      "Improving web design",
-      "Managing web servers"
+      "物理建築物のファイアウォール",
+      "HTTPトラフィックをフィルタリング・監視し、SQLインジェクションやXSSなどの一般的なWeb攻撃をブロックする",
+      "Webデザインの改善",
+      "Webサーバーの管理"
     ],
     "answer": 1,
     "explanation": "WAFは受信HTTPトラフィックを検査し、事前定義されたルールに基づいて悪意のあるリクエストをフィルタリングし、一般的な攻撃パターンからWebアプリケーションを保護する。"
@@ -2693,12 +2693,12 @@
   {
     "id": 208,
     "category": "Security Design",
-    "question": "What is an API key used for?",
+    "question": "APIキーは何に使用されるか。",
     "options": [
-      "Encrypting APIs",
-      "Identifying the calling application or user for authentication and rate limiting purposes",
-      "Opening API documentation",
-      "Database access"
+      "APIの暗号化",
+      "呼び出しアプリケーションまたはユーザーを識別し、認証とレート制限を目的とする",
+      "APIドキュメントを開く",
+      "データベースアクセス"
     ],
     "answer": 1,
     "explanation": "APIキーはAPIリクエストと一緒に渡される一意の識別子であり、呼び出しアプリケーションを識別し、アクセス制御、使用状況追跡、レート制限を可能にする。"
@@ -2706,12 +2706,12 @@
   {
     "id": 209,
     "category": "Security Design",
-    "question": "What is data masking?",
+    "question": "データマスキングとは何か。",
     "options": [
-      "Hiding UI elements",
-      "Replacing sensitive data with fictional but realistic-looking data for non-production environments",
-      "Encrypting data",
-      "Deleting data"
+      "UI要素の非表示",
+      "非本番環境で機密データを架空だが現実的に見えるデータに置き換える",
+      "データの暗号化",
+      "データの削除"
     ],
     "answer": 1,
     "explanation": "データマスキングは、開発/テスト環境で機密情報（名前、個人番号、クレジットカード番号）を現実的だが偽のデータに置き換え、実際のデータを保護しながらユーザビリティを維持する。"
@@ -2719,12 +2719,12 @@
   {
     "id": 210,
     "category": "Security Design",
-    "question": "What is a security audit?",
+    "question": "セキュリティ監査とは何か。",
     "options": [
-      "A financial audit",
-      "A systematic evaluation of a system's security policies, procedures, and controls to identify vulnerabilities",
-      "A performance review",
-      "A code review"
+      "財務監査",
+      "システムのセキュリティポリシー、手順、制御を体系的に評価し、脆弱性を特定する",
+      "パフォーマンスレビュー",
+      "コードレビュー"
     ],
     "answer": 1,
     "explanation": "セキュリティ監査は、組織のセキュリティ態勢を包括的に評価し、脆弱性を特定し、標準へのコンプライアンスを検証し、改善を推奨する。"
@@ -2732,12 +2732,12 @@
   {
     "id": 211,
     "category": "Cloud Architecture",
-    "question": "What is Infrastructure as Code (IaC)?",
+    "question": "IaC（Infrastructure as Code）とは何か。",
     "options": [
-      "Writing infrastructure in plain text",
-      "Managing and provisioning infrastructure through machine-readable configuration files instead of manual processes",
-      "Coding in C only",
-      "Compiling infrastructure"
+      "プレーンテキストでインフラを書く",
+      "手動プロセスの代わりに、機械可読な構成ファイルでインフラストラクチャを管理・プロビジョニングする",
+      "C言語のみでのコーディング",
+      "インフラのコンパイル"
     ],
     "answer": 1,
     "explanation": "IaCは宣言的な構成ファイル（Terraform、CloudFormation）を使用してインフラストラクチャを定義および管理し、バージョン管理、再現性、自動化を可能にする。"
@@ -2745,12 +2745,12 @@
   {
     "id": 212,
     "category": "Cloud Architecture",
-    "question": "What is serverless computing?",
+    "question": "サーバーレスコンピューティングとは何か。",
     "options": [
-      "Running without a server",
-      "A cloud execution model where the provider dynamically manages servers, and you pay only for actual execution time",
-      "Peer-to-peer computing",
-      "Running on local machines only"
+      "サーバーなしで実行する",
+      "プロバイダーがサーバーを動的に管理し、実際の実行時間分のみ支払うクラウド実行モデル",
+      "P2Pコンピューティング",
+      "ローカルマシンのみで実行"
     ],
     "answer": 1,
     "explanation": "サーバーレス（AWS Lambdaなど）はサーバー管理を完全に抽象化する。コード/関数をデプロイし、プロバイダーがスケーリングを処理し、呼び出し時間あたりで課金される。"
@@ -2758,12 +2758,12 @@
   {
     "id": 213,
     "category": "Cloud Architecture",
-    "question": "What is the primary benefit of containerization with Docker?",
+    "question": "Dockerによるコンテナ化の主な利点は何か。",
     "options": [
-      "Replacing virtual machines entirely",
-      "Packaging applications with their dependencies into portable, consistent environments that run anywhere",
-      "Improving database performance",
-      "Creating GUIs"
+      "仮想マシンを完全に置き換える",
+      "アプリケーションと依存関係をポータブルで一貫した環境にパッケージ化し、どこでも実行できるようにする",
+      "データベース性能の改善",
+      "GUIの作成"
     ],
     "answer": 1,
     "explanation": "Dockerコンテナはアプリケーションとすべての依存関係を軽量でポータブルなユニットにパッケージ化し、あらゆる環境で一貫して実行されるようにし、「自分のマシンでは動く」問題を解決する。"
@@ -2771,12 +2771,12 @@
   {
     "id": 214,
     "category": "Cloud Architecture",
-    "question": "What is Kubernetes used for?",
+    "question": "Kubernetesは何に使用されるか。",
     "options": [
-      "Writing applications",
-      "Orchestrating containerized applications - managing deployment, scaling, networking, and availability of containers",
-      "Storing data",
-      "Monitoring logs"
+      "アプリケーションの記述",
+      "コンテナ化されたアプリケーションのオーケストレーション - デプロイ、スケーリング、ネットワーキング、可用性の管理",
+      "データの保存",
+      "ログの監視"
     ],
     "answer": 1,
     "explanation": "Kubernetes（K8s）はコンテナ化されたアプリケーションのデプロイ、スケーリング、管理を自動化し、サービスディスカバリ、ロードバランシング、自己修復、ローリングアップデートを提供する。"
@@ -2784,12 +2784,12 @@
   {
     "id": 215,
     "category": "Cloud Architecture",
-    "question": "What is an AWS S3 bucket primarily used for?",
+    "question": "AWS S3バケットは主に何に使用されるか。",
     "options": [
-      "Running applications",
-      "Object storage for files, images, backups, and static website hosting",
-      "Running databases",
-      "Managing containers"
+      "アプリケーションの実行",
+      "ファイル、画像、バックアップ、静的Webサイトホスティング用のオブジェクトストレージ",
+      "データベースの実行",
+      "コンテナの管理"
     ],
     "answer": 1,
     "explanation": "Amazon S3は任意のタイプのデータ（ファイル、画像、バックアップ）のためのスケーラブルなオブジェクトストレージを提供し、API経由でアクセス可能で、高い耐久性と可用性を持つ。"
@@ -2797,12 +2797,12 @@
   {
     "id": 216,
     "category": "Cloud Architecture",
-    "question": "What is the difference between IaaS, PaaS, and SaaS?",
+    "question": "IaaS、PaaS、SaaSの違いは何か。",
     "options": [
-      "No difference",
-      "IaaS provides infrastructure; PaaS provides platform; SaaS provides software - differing levels of managed services",
-      "PaaS is cheaper than IaaS",
-      "SaaS is only for small businesses"
+      "違いはない",
+      "IaaSはインフラを提供；PaaSはプラットフォームを提供；SaaSはソフトウェアを提供 - 管理サービスのレベルが異なる",
+      "PaaSはIaaSより安い",
+      "SaaSは小規模ビジネス専用"
     ],
     "answer": 1,
     "explanation": "IaaS（EC2、VM）は生のインフラを提供。PaaS（App Engine、Heroku）はプラットフォーム/ランタイムを追加。SaaS（Gmail、Slack）は完全な管理済みアプリケーションを提供する。"
@@ -2810,12 +2810,12 @@
   {
     "id": 217,
     "category": "Cloud Architecture",
-    "question": "What is a cloud load balancer?",
+    "question": "クラウドロードバランサーとは何か。",
     "options": [
-      "A physical device only",
-      "A managed service that distributes incoming traffic across multiple targets (instances, containers, IPs) for high availability",
-      "A bandwidth limiter",
-      "A firewall"
+      "物理デバイスのみ",
+      "高可用性のために、着信トラフィックを複数のターゲット（インスタンス、コンテナ、IP）に分散するマネージドサービス",
+      "帯域幅リミッター",
+      "ファイアウォール"
     ],
     "answer": 1,
     "explanation": "クラウドロードバランサー（ALB、NLB）は複数のターゲットにトラフィックを分散し、高可用性、自動スケーリング統合、SSL終端、ヘルスチェックを提供する。"
@@ -2823,12 +2823,12 @@
   {
     "id": 218,
     "category": "Cloud Architecture",
-    "question": "What is the purpose of an Auto Scaling Group in AWS?",
+    "question": "AWSのAuto Scaling Groupの目的は何か。",
     "options": [
-      "Manual scaling",
-      "Automatically adjusting the number of EC2 instances based on demand to maintain performance and optimize cost",
-      "Scaling storage only",
-      "Fixed capacity management"
+      "手動スケーリング",
+      "需要に応じてEC2インスタンス数を自動調整し、パフォーマンスを維持してコストを最適化する",
+      "ストレージのスケーリングのみ",
+      "固定容量管理"
     ],
     "answer": 1,
     "explanation": "Auto Scaling Groupは、需要メトリクス（CPU、メモリ、リクエスト数）に基づいてEC2インスタンスを自動的に起動または終了し、スパイク時のパフォーマンスと低負荷時のコスト削減を確保する。"
@@ -2836,12 +2836,12 @@
   {
     "id": 219,
     "category": "Cloud Architecture",
-    "question": "What is a Virtual Private Cloud (VPC)?",
+    "question": "VPC（Virtual Private Cloud）とは何か。",
     "options": [
-      "A public cloud",
-      "An isolated virtual network within a public cloud where you control IP ranges, subnets, route tables, and security groups",
-      "A private data center",
-      "A VPN connection only"
+      "パブリッククラウド",
+      "パブリッククラウド内の分離された仮想ネットワークで、IP範囲、サブネット、ルートテーブル、セキュリティグループを制御する",
+      "プライベートデータセンター",
+      "VPN接続のみ"
     ],
     "answer": 1,
     "explanation": "VPCはパブリッククラウド内の分離されたネットワークを提供し、IP範囲、サブネット、インターネットゲートウェイ、セキュリティルールの完全な制御を与える。"
@@ -2849,12 +2849,12 @@
   {
     "id": 220,
     "category": "Cloud Architecture",
-    "question": "What is a managed database service advantage over self-hosted?",
+    "question": "マネージドデータベースサービスの自己ホストに対する利点は何か。",
     "options": [
-      "More control over configuration",
-      "The provider handles maintenance, patching, backups, replication, and scaling automatically",
-      "Lower cost always",
-      "Better performance always"
+      "設定のより詳細な制御",
+      "プロバイダーが保守、パッチ、バックアップ、レプリケーション、スケーリングを自動的に処理する",
+      "常に低コスト",
+      "常に高性能"
     ],
     "answer": 1,
     "explanation": "マネージドデータベースサービス（RDS、Cloud SQL、DynamoDB）はパッチ適用、バックアップ、レプリケーションなどの運用タスクを処理し、チームがアプリケーション開発に集中できるようにする。"
@@ -2862,12 +2862,12 @@
   {
     "id": 221,
     "category": "Cloud Architecture",
-    "question": "What is a cloud region and availability zone?",
+    "question": "クラウドリージョンとアベイラビリティゾーンとは何か。",
     "options": [
-      "They are the same",
-      "A region is a geographic area; an availability zone is an isolated data center within a region",
-      "A region is a single data center",
-      "An AZ is larger than a region"
+      "同じである",
+      "リージョンは地理的領域；アベイラビリティゾーンはリージョン内の分離されたデータセンター",
+      "リージョンは単一のデータセンター",
+      "AZはリージョンより大きい"
     ],
     "answer": 1,
     "explanation": "クラウドリージョンは地理的な領域（例：us-east-1）。アベイラビリティゾーン（AZ）はリージョン内の分離されたデータセンターで、フォールトトレランスと低レイテンシーの冗長性を提供する。"
@@ -2875,12 +2875,12 @@
   {
     "id": 222,
     "category": "Cloud Architecture",
-    "question": "What is infrastructure immutability in cloud design?",
+    "question": "クラウド設計におけるインフラストラクチャの不変性（immutability）とは何か。",
     "options": [
-      "Infrastructure that never changes",
-      "Replacing servers rather than modifying them - building new instances from defined images for consistent, reproducible deployments",
-      "Keeping old servers running",
-      "Manual configuration"
+      "決して変更されないインフラ",
+      "サーバーを変更せず置き換える - 定義済みイメージから新しいインスタンスを構築し、一貫性のある再現可能なデプロイを実現する",
+      "古いサーバーを稼働し続ける",
+      "手動設定"
     ],
     "answer": 1,
     "explanation": "不変インフラストラクチャとは、実行中のサーバーを変更せず、バージョン管理されたイメージから構築された新しいインスタンスで置き換えることを意味し、一貫性と再現性を確保する。"
@@ -2888,12 +2888,12 @@
   {
     "id": 223,
     "category": "Cloud Architecture",
-    "question": "What is a cloud function trigger?",
+    "question": "クラウドファンクショントリガーとは何か。",
     "options": [
-      "A manual button press",
-      "An event (HTTP request, file upload, database change) that automatically invokes a serverless function",
-      "A timer on a server",
-      "A user login"
+      "手動のボタン押下",
+      "サーバーレス関数を自動的に呼び出すイベント（HTTPリクエスト、ファイルアップロード、データベース変更）",
+      "サーバー上のタイマー",
+      "ユーザーログイン"
     ],
     "answer": 1,
     "explanation": "クラウドファンクショントリガーは、サーバーインフラストラクチャを維持することなくイベント駆動アーキテクチャを実現し、自動的にサーバーレス関数を起動するイベントである。"
@@ -2901,12 +2901,12 @@
   {
     "id": 224,
     "category": "Cloud Architecture",
-    "question": "What is the shared responsibility model in cloud computing?",
+    "question": "クラウドコンピューティングの共有責任モデルとは何か。",
     "options": [
-      "The provider handles everything",
-      "The cloud provider secures the infrastructure; the customer secures their data, applications, and access management",
-      "The customer handles everything",
-      "Security is not needed in the cloud"
+      "プロバイダーがすべてを処理する",
+      "クラウドプロバイダーはインフラを保護；顧客はデータ、アプリケーション、アクセス管理を保護する",
+      "顧客がすべてを処理する",
+      "クラウドではセキュリティは不要"
     ],
     "answer": 1,
     "explanation": "共有責任モデルはセキュリティを分割する：プロバイダーはクラウドインフラ（ハードウェア、ネットワーク）を保護し、顧客はクラウドに配置するもの（データ、アプリ、IAM）を保護する。"
@@ -2914,12 +2914,12 @@
   {
     "id": 225,
     "category": "Cloud Architecture",
-    "question": "What is a deployment strategy using canary releases?",
+    "question": "カナリアリリースを使用するデプロイ戦略とは何か。",
     "options": [
-      "Releasing to canary islands",
-      "Gradually rolling out changes to a small subset of users before expanding to all users",
-      "Deploying bird-themed applications",
-      "Releasing on Fridays"
+      "カナリア諸島へのリリース",
+      "すべてのユーザーに展開する前に、少数のユーザーに変更を段階的にロールアウトする",
+      "鳥をテーマにしたアプリケーションのデプロイ",
+      "金曜日にリリースする"
     ],
     "answer": 1,
     "explanation": "カナリアリリースは、新しいバージョンをまず少数のユーザーにデプロイし、問題を監視してから全ユーザーベースに段階的に拡大し、デプロイリスクを削減する。"
@@ -2927,12 +2927,12 @@
   {
     "id": 226,
     "category": "Cloud Architecture",
-    "question": "What is a cloud-native application?",
+    "question": "クラウドネイティブアプリケーションとは何か。",
     "options": [
-      "An application running in a cloud",
-      "An application designed specifically for cloud environments using microservices, containers, dynamic orchestration, and CI/CD",
-      "A SaaS application only",
-      "An application that cannot run locally"
+      "クラウドで実行されるアプリケーション",
+      "マイクロサービス、コンテナ、動的オーケストレーション、CI/CDを使用してクラウド環境向けに設計されたアプリケーション",
+      "SaaSアプリケーションのみ",
+      "ローカルで実行できないアプリケーション"
     ],
     "answer": 1,
     "explanation": "クラウドネイティブアプリケーションは、マイクロサービスアーキテクチャ、コンテナ化、動的オーケストレーション、CI/CDパイプライン、レジリエンスパターンを使用して構築される。"
@@ -2940,12 +2940,12 @@
   {
     "id": 227,
     "category": "Cloud Architecture",
-    "question": "What is the purpose of a cloud security group?",
+    "question": "クラウドセキュリティグループの目的は何か。",
     "options": [
-      "A team of security experts",
-      "A virtual firewall that controls inbound and outbound traffic at the instance or resource level",
-      "A chat group",
-      "A backup system"
+      "セキュリティ専門家のチーム",
+      "インスタンスまたはリソースレベルで着信・発信トラフィックを制御する仮想ファイアウォール",
+      "チャットグループ",
+      "バックアップシステム"
     ],
     "answer": 1,
     "explanation": "セキュリティグループは、許可ルールを使用してインスタンスレベルでトラフィックを制御するステートフルな仮想ファイアウォールであり、どのポートとIP範囲がリソースにアクセスできるかを定義する。"
@@ -2953,12 +2953,12 @@
   {
     "id": 228,
     "category": "Cloud Architecture",
-    "question": "What is a TTL (Time to Live) in cloud storage?",
+    "question": "クラウドストレージのTTL（Time to Live）とは何か。",
     "options": [
-      "How long a server runs",
-      "An expiration policy that automatically deletes objects after a specified time period",
-      "How long a password is valid",
-      "Network latency"
+      "サーバーの稼働時間",
+      "指定した期間後にオブジェクトを自動的に削除する有効期限ポリシー",
+      "パスワードの有効期間",
+      "ネットワークレイテンシ"
     ],
     "answer": 1,
     "explanation": "クラウドストレージのTTLは、オブジェクトがいつ期限切れになり自動的に削除されるかを定義し、一時データ、ログ、キャッシュ管理に有用である。"
@@ -2966,12 +2966,12 @@
   {
     "id": 229,
     "category": "Cloud Architecture",
-    "question": "What is a service mesh in a Kubernetes environment?",
+    "question": "Kubernetes環境のサービスメッシュとは何か。",
     "options": [
-      "A network cable",
-      "An infrastructure layer handling service-to-service communication, providing observability, security, and traffic management",
-      "A database layer",
-      "A storage system"
+      "ネットワークケーブル",
+      "サービス間通信を処理し、可観測性、セキュリティ、トラフィック管理を提供するインフラ層",
+      "データベース層",
+      "ストレージシステム"
     ],
     "answer": 1,
     "explanation": "サービスメッシュ（Istio、Linkerd）は、Kubernetesサービス向けにmTLS暗号化、トラフィック管理、サーキットブレーキング、可観測性などの透過的なネットワーキング機能を提供する。"
@@ -2979,12 +2979,12 @@
   {
     "id": 230,
     "category": "Cloud Architecture",
-    "question": "What is multi-cloud architecture?",
+    "question": "マルチクラウドアーキテクチャとは何か。",
     "options": [
-      "Running multiple copies of one app",
-      "Using services from multiple cloud providers to avoid vendor lock-in, optimize costs, and increase resilience",
-      "Running multiple apps on one cloud",
-      "Having multiple user accounts"
+      "1つのアプリの複数コピーの実行",
+      "ベンダーロックインを回避し、コストを最適化し、レジリエンスを高めるため、複数のクラウドプロバイダーのサービスを使用する",
+      "1つのクラウドで複数アプリの実行",
+      "複数のユーザーアカウントを持つこと"
     ],
     "answer": 1,
     "explanation": "マルチクラウド戦略は複数のクラウドプロバイダー（AWS + GCPなど）を使用し、ベストオブブリードサービスを活用し、ベンダーロックインを回避し、プロバイダーの障害に対する冗長性を提供する。"
@@ -2992,12 +2992,12 @@
   {
     "id": 231,
     "category": "Testing Strategy",
-    "question": "What is the primary difference between unit tests and integration tests?",
+    "question": "ユニットテストと統合テストの主な違いは何か。",
     "options": [
-      "No difference",
-      "Unit tests verify individual components in isolation; integration tests verify that components work together correctly",
-      "Integration tests are faster",
-      "Unit tests test everything together"
+      "違いはない",
+      "ユニットテストは個別コンポーネントを分離して検証；統合テストはコンポーネントが連携して正しく動作することを検証",
+      "統合テストの方が速い",
+      "ユニットテストはすべてを一緒にテストする"
     ],
     "answer": 1,
     "explanation": "ユニットテストはモックされた依存関係で個々の関数/クラスを分離してテストする。統合テストは複数のコンポーネントが接続されたときに正しく動作することを検証する。"
@@ -3005,12 +3005,12 @@
   {
     "id": 232,
     "category": "Testing Strategy",
-    "question": "What is Test-Driven Development (TDD)?",
+    "question": "TDD（Test-Driven Development）とは何か。",
     "options": [
-      "Testing after development",
-      "Writing tests before writing the production code, following a Red-Green-Refactor cycle",
-      "Testing by a dedicated team",
-      "Automated testing only"
+      "開発後のテスト",
+      "本番コードを書く前にテストを書き、Red-Green-Refactorサイクルに従う",
+      "専任チームによるテスト",
+      "自動テストのみ"
     ],
     "answer": 1,
     "explanation": "TDDはサイクルに従う：失敗するテストを書く（Red）、それを通過する最小限のコードを書く（Green）、そしてリファクタリング（Refactor）。最初からテストカバレッジとクリーンな設計を確保する。"
@@ -3018,12 +3018,12 @@
   {
     "id": 233,
     "category": "Testing Strategy",
-    "question": "What is the testing pyramid concept?",
+    "question": "テストピラミッドの概念とは何か。",
     "options": [
-      "A pyramid-shaped database",
-      "Many unit tests at the base, fewer integration tests in the middle, and even fewer E2E tests at the top",
-      "Testing only the top layer",
-      "All tests are equal"
+      "ピラミッド型のデータベース",
+      "ベースに多くのユニットテスト、中間にいくつかの統合テスト、トップに少数のE2Eテスト",
+      "最上層のみのテスト",
+      "すべてのテストは同等"
     ],
     "answer": 1,
     "explanation": "テストピラミッドは、多くの高速なユニットテスト、いくつかの統合テスト、少数の遅いE2Eテストを推奨し、速度、カバレッジ、信頼性のバランスを取りながらテストスイートの保守性を維持する。"
@@ -3031,12 +3031,12 @@
   {
     "id": 234,
     "category": "Testing Strategy",
-    "question": "What is a code coverage metric?",
+    "question": "コードカバレッジメトリクスとは何か。",
     "options": [
-      "How many lines of code exist",
-      "The percentage of code (lines, branches, functions) that is executed by the test suite",
-      "How fast code runs",
-      "How many developers wrote the code"
+      "既存のコード行数",
+      "テストスイートによって実行されるコード（行、分岐、関数）の割合",
+      "コードの実行速度",
+      "コードを書いた開発者数"
     ],
     "answer": 1,
     "explanation": "コードカバレッジはテスト中に実行されるソースコードの割合を測定し、行カバレッジ、分岐カバレッジ、関数カバレッジを含み、テストの網羅性を示す。"
@@ -3044,12 +3044,12 @@
   {
     "id": 235,
     "category": "Testing Strategy",
-    "question": "What is end-to-end (E2E) testing?",
+    "question": "E2E（エンドツーエンド）テストとは何か。",
     "options": [
-      "Testing individual functions",
-      "Testing the complete application flow from start to finish, simulating real user scenarios",
-      "Testing database queries only",
-      "Testing network protocols"
+      "個別関数のテスト",
+      "実際のユーザーシナリオをシミュレートして、開始から終了までの完全なアプリケーションフローをテストする",
+      "データベースクエリのみのテスト",
+      "ネットワークプロトコルのテスト"
     ],
     "answer": 1,
     "explanation": "E2Eテストは、UIを通じた実際のユーザーワークフローをシミュレートしてアプリケーションスタック全体を検証し、統合されたすべてのコンポーネントが正しく動作することを確認する。"
@@ -3057,12 +3057,12 @@
   {
     "id": 236,
     "category": "Testing Strategy",
-    "question": "What is a mock object in testing?",
+    "question": "テストでモックオブジェクトとは何か。",
     "options": [
-      "A fake application",
-      "A simulated object that mimics the behavior of real objects with pre-programmed responses",
-      "A real database",
-      "A production server"
+      "偽のアプリケーション",
+      "事前プログラムされたレスポンスで実際のオブジェクトの振る舞いを模倣するシミュレートオブジェクト",
+      "実際のデータベース",
+      "本番サーバー"
     ],
     "answer": 1,
     "explanation": "モックオブジェクトは、制御されたレスポンスで実際の依存関係（API、データベース）の振る舞いをシミュレートし、外部依存関係なしでユニットテストを分離して実行できるようにする。"
@@ -3070,12 +3070,12 @@
   {
     "id": 237,
     "category": "Testing Strategy",
-    "question": "What is smoke testing?",
+    "question": "スモークテストとは何か。",
     "options": [
-      "Testing for fire hazards",
-      "A quick, initial test to verify that the most critical functionality works after a new build or deployment",
-      "A comprehensive test suite",
-      "A performance test"
+      "火災危険のテスト",
+      "新しいビルドやデプロイの後に最も重要な機能が動作することを検証する迅速な初期テスト",
+      "包括的なテストスイート",
+      "パフォーマンステスト"
     ],
     "answer": 1,
     "explanation": "スモークテスト（ビルド検証テスト）は基本機能が動作することを迅速に検証し、このビルドでより広範なテストを追求する価値があるかを判断する。"
@@ -3083,12 +3083,12 @@
   {
     "id": 238,
     "category": "Testing Strategy",
-    "question": "What is regression testing?",
+    "question": "回帰テスト（regression testing）とは何か。",
     "options": [
-      "Testing new features only",
-      "Re-running tests to ensure that new changes have not broken previously working functionality",
-      "Testing backward compatibility",
-      "Testing database connections"
+      "新機能のみのテスト",
+      "新しい変更が以前動作していた機能を壊していないことを確認するためテストを再実行する",
+      "後方互換性のテスト",
+      "データベース接続のテスト"
     ],
     "answer": 1,
     "explanation": "回帰テストは、最近のコード変更、バグ修正、新機能が新しいバグを導入したり、既存の機能を壊したりしていないことを確認する。"
@@ -3096,12 +3096,12 @@
   {
     "id": 239,
     "category": "Testing Strategy",
-    "question": "What is load testing used for?",
+    "question": "負荷テスト（load testing）は何に使用されるか。",
     "options": [
-      "Testing battery life",
-      "Measuring system behavior under expected load conditions to verify performance, response times, and resource usage",
-      "Testing user interfaces",
-      "Testing security"
+      "バッテリー寿命のテスト",
+      "期待される負荷条件下でのシステムの動作を測定し、パフォーマンス、応答時間、リソース使用量を検証する",
+      "UIのテスト",
+      "セキュリティのテスト"
     ],
     "answer": 1,
     "explanation": "負荷テストは、期待されるユーザートラフィックをシミュレートし、システムが許容可能な応答時間閾値とリソース使用量で動作することを検証する。"
@@ -3109,12 +3109,12 @@
   {
     "id": 240,
     "category": "Testing Strategy",
-    "question": "What is a test fixture?",
+    "question": "テストフィクスチャとは何か。",
     "options": [
-      "A physical testing device",
-      "A fixed environment or baseline state in which tests run, ensuring consistent and repeatable test conditions",
-      "A type of test case",
-      "A testing framework"
+      "物理的なテストデバイス",
+      "テストが実行される固定環境またはベースライン状態で、一貫した再現可能なテスト条件を保証する",
+      "テストケースの種類",
+      "テストフレームワーク"
     ],
     "answer": 1,
     "explanation": "テストフィクスチャは、テストが一貫して実行され再現可能な結果を生成するために必要な既知のベースライン状態（テストデータ、設定）を設定する。"
@@ -3122,12 +3122,12 @@
   {
     "id": 241,
     "category": "Testing Strategy",
-    "question": "What is the difference between functional and non-functional testing?",
+    "question": "機能テストと非機能テストの違いは何か。",
     "options": [
-      "They are the same",
-      "Functional testing verifies specific features and behaviors; non-functional testing verifies quality attributes like performance and security",
-      "Functional testing is more important",
-      "Non-functional testing is optional"
+      "同じである",
+      "機能テストは特定の機能と振る舞いを検証；非機能テストはパフォーマンスやセキュリティなどの品質属性を検証",
+      "機能テストの方が重要",
+      "非機能テストは任意"
     ],
     "answer": 1,
     "explanation": "機能テストはシステムが「何をするか」を検証する（機能が正しく動作する）。非機能テストはシステムが「どれくらいうまく動作するか」を検証する（速度、ユーザビリティ、セキュリティ、信頼性）。"
@@ -3135,12 +3135,12 @@
   {
     "id": 242,
     "category": "Testing Strategy",
-    "question": "What is a test stub?",
+    "question": "テストスタブとは何か。",
     "options": [
-      "A broken test",
-      "A minimal implementation of a dependency that returns predefined values, used in place of real components",
-      "A testing framework plugin",
-      "A documentation file"
+      "壊れたテスト",
+      "事前定義された値を返す依存関係の最小限の実装で、実際のコンポーネントの代わりに使用する",
+      "テストフレームワークのプラグイン",
+      "ドキュメントファイル"
     ],
     "answer": 1,
     "explanation": "テストスタブは、テスト中の呼び出しに対して事前定義された回答を提供し、まだ実装されていないかユニットテストで使用するには複雑すぎる実際のコンポーネントの代わりとなる。"
@@ -3148,12 +3148,12 @@
   {
     "id": 243,
     "category": "Testing Strategy",
-    "question": "What is stress testing?",
+    "question": "ストレステストとは何か。",
     "options": [
-      "Testing developer stress levels",
-      "Testing system behavior beyond normal load to find the breaking point and verify graceful degradation",
-      "Testing network stress",
-      "Testing under ideal conditions"
+      "開発者のストレスレベルのテスト",
+      "限界点を見つけ、正常な劣化を検証するため、通常負荷を超えたシステム動作をテストする",
+      "ネットワークストレスのテスト",
+      "理想条件下でのテスト"
     ],
     "answer": 1,
     "explanation": "ストレステストは、システムを期待される容量制限を超えて押し込み、限界点を特定し、極端な条件下でエラーハンドリングと正常な劣化を検証する。"
@@ -3161,12 +3161,12 @@
   {
     "id": 244,
     "category": "Testing Strategy",
-    "question": "What is CI/CD in the context of testing?",
+    "question": "テストの文脈でCI/CDとは何か。",
     "options": [
-      "A database system",
-      "Continuous Integration (automated testing on every commit) and Continuous Delivery/Delivery (automated deployment)",
-      "A content management system",
-      "A communication protocol"
+      "データベースシステム",
+      "継続的インテグレーション（コミットごとの自動テスト）と継続的デリバリー（自動デプロイメント）",
+      "コンテンツ管理システム",
+      "通信プロトコル"
     ],
     "answer": 1,
     "explanation": "CIはすべてのコードコミットで自動的にテストを実行する。CDは合格したビルドをステージング/本番に自動的にデプロイし、迅速なフィードバックと信頼性の高いリリースを確保する。"
@@ -3174,12 +3174,12 @@
   {
     "id": 245,
     "category": "Testing Strategy",
-    "question": "What is acceptance testing?",
+    "question": "受入テストとは何か。",
     "options": [
-      "Accepting all code changes",
-      "Formal testing to determine if a system satisfies acceptance criteria and business requirements",
-      "Testing by developers only",
-      "Automated unit testing"
+      "すべてのコード変更を受け入れる",
+      "システムが受入基準とビジネス要件を満たしているかを判断する正式なテスト",
+      "開発者のみによるテスト",
+      "自動ユニットテスト"
     ],
     "answer": 1,
     "explanation": "受入テストは、システムがビジネス要件と受入基準を満たしていることを検証し、通常リリース前にステークホルダーやプロダクトオーナーが実行する。"
@@ -3187,12 +3187,12 @@
   {
     "id": 246,
     "category": "Testing Strategy",
-    "question": "What is mutation testing?",
+    "question": "変異テスト（mutation testing）とは何か。",
     "options": [
-      "Testing genetic algorithms",
-      "Evaluating test quality by introducing small code changes (mutations) and verifying that tests fail (detect the mutations)",
-      "Changing requirements during testing",
-      "Random testing"
+      "遺伝的アルゴリズムのテスト",
+      "小さなコード変更を導入し、テストが失敗するかを確認してテスト品質を評価する",
+      "テスト中の要件変更",
+      "ランダムテスト"
     ],
     "answer": 1,
     "explanation": "変異テストは小さなコード変更を導入し、テストスイートがそれらを検出するかを確認する。検出されない変異はテストカバレッジのギャップや弱いアサーションを示す。"
@@ -3200,12 +3200,12 @@
   {
     "id": 247,
     "category": "Testing Strategy",
-    "question": "What is the purpose of a test environment?",
+    "question": "テスト環境の目的は何か。",
     "options": [
-      "Production use",
-      "An isolated environment replicating production for testing purposes, separate from development and production environments",
-      "Development only",
-      "No specific purpose"
+      "本番使用",
+      "テスト目的で本番を再現する分離された環境で、開発環境と本番環境から切り離されている",
+      "開発のみ",
+      "特定の目的はない"
     ],
     "answer": 1,
     "explanation": "テスト環境は本番構成をミラー化した環境で、本番から分離され、偶然のデータ破損やサービス中断を防止する。"
@@ -3213,12 +3213,12 @@
   {
     "id": 248,
     "category": "Testing Strategy",
-    "question": "What is snapshot testing primarily used for?",
+    "question": "スナップショットテストは主に何に使用されるか。",
     "options": [
-      "Performance testing",
-      "Capturing and comparing UI component output to detect unexpected changes in rendered output",
-      "Security testing",
-      "Database testing"
+      "パフォーマンステスト",
+      "UIコンポーネントの出力をキャプチャして比較し、レンダリング出力の予期しない変更を検出する",
+      "セキュリティテスト",
+      "データベーステスト"
     ],
     "answer": 1,
     "explanation": "スナップショットテストはUIコンポーネントのレンダリング出力をキャプチャし、保存されたスナップショットと比較して、予期しないビジュアル変更を開発者に警告する。"
@@ -3226,12 +3226,12 @@
   {
     "id": 249,
     "category": "Testing Strategy",
-    "question": "What is a boundary value in testing?",
+    "question": "テストにおける境界値とは何か。",
     "options": [
-      "The edge of the network",
-      "Values at the boundaries of input ranges (min, max, just outside) where errors are most likely to occur",
-      "Average values",
-      "Random values"
+      "ネットワークの端",
+      "入力範囲の境界（最小、最大、境界の外側）の値で、エラーが最も発生しやすい",
+      "平均値",
+      "ランダム値"
     ],
     "answer": 1,
     "explanation": "境界値分析は、有効範囲の端（例：0、1、max-1、max）の値をテストする。ほとんどの欠陥は範囲の中央ではなく境界で発生するため。"
@@ -3239,12 +3239,12 @@
   {
     "id": 250,
     "category": "Testing Strategy",
-    "question": "What is the primary goal of a test plan?",
+    "question": "テスト計画の主な目的は何か。",
     "options": [
-      "Writing all tests at once",
-      "Documenting the testing strategy, scope, resources, schedule, and deliverables for a testing effort",
-      "Replacing automated tests",
-      "Managing project budgets"
+      "すべてのテストを一度に書く",
+      "テスト努力におけるテスト戦略、スコープ、リソース、スケジュール、成果物を文書化する",
+      "自動テストの置き換え",
+      "プロジェクト予算の管理"
     ],
     "answer": 1,
     "explanation": "テスト計画は、何を、どのように、誰が、どのリソースで、どのスケジュールでテストするかを定義し、テスト努力のロードマップを提供して包括的なカバレッジを確保する。"
